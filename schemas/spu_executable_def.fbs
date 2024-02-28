@@ -1,0 +1,198 @@
+/*
+ * Copyright (c) 2018-2023 MOFFETT AI. All Rights Reserved.
+
+ * NOTICE: All intellectual and technical information contained herein
+ * are proprietary to MOFFETT AI. Any unauthorized disemination,
+ * copying or redistribution of this file via any medium is strictly prohibited,
+ * unless you get a prior written permission or an applicable license agreement
+ * from MOFFETT AI.
+ */
+
+namespace hal.spu;
+
+// 'SPU Executable'.
+file_identifier "SPUE";
+file_extension "spue";
+
+// Defines VI as virtual instruction that can be used to schedule engines.
+enum VI : uint32 { _unused_ }
+
+// Defines VI op code.
+enum ViOpCode : int8 { SET_ENABLE = 0, WAIT_DONE, START, END, CONFIG, PP, CPU }
+
+// Defines data type of SPU needed.
+enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, INT64, UINT8, UINT16, UINT32, 
+  UINT64, INT24, UINT24, BF24, FP32, FP64, MF16, NF16, NF18, FP8_52, FP8_43, FP16 }
+
+// Defines engines of SPU, in which from 'CONFIG' to 'INVLIAD' are CPU Ops,
+// need to be handled by runtime.
+enum EngineType : int32 { DMA = 0, GCPY, PEA, VPU, TRANSPOSE, TOPK, ACTIV, DMA1, 
+  DMA2, DMA3, DMA4, DMA5, DMA6, DMA7, CONFIG, START, END, CPU, PP, INVLIAD = 255 }
+
+// Defines accessing mode for argument.
+enum AccessMode : int32 { ReadOnly = 0, WriteOnly, ReadWrite }
+
+// Defines the function of some DMAs. By default, we specify DMA5 as input, 
+// DMA6 as output.
+enum DmaFunc : int32 { NORMAL = 0, INPUT, OUTPUT }
+
+// Some CPU Ops like 'CONFIG'/'CPU'/'PP' would need auxiliary configuration.
+// We will gather all of such configurations by order in VI.
+struct ScheduleConfigDef {
+  // Indicates how many bytes to this configuration, but excludes 'length' field.
+  length:int32;
+  // ...
+}
+
+table FuncDataDef {
+  data:[uint8];
+}
+
+table FuncDataPointerDef {
+  addr:int64;
+  offset:int32;
+  length:int32;
+}
+
+table ScheduleVIDef {
+  // A list of VIs.
+  vi_list:FuncDataPointerDef;
+
+  // All of ScheduleConfigDef would be stored here.
+  configs:[uint8];
+
+  // The current position of 'vi_list', which be used by runtime.
+  vi_pos:int32;
+
+  // The current position of 'configs', which be used by runtime.
+  config_pos:int32;
+}
+
+table ScheduleDef {
+  // All of VI are divided into input/main/output for forming pipeline during runtime.
+  // The more details please refer to [http://wiki.moffett.local:8090/pages/viewpage.action?pageId=58467128]
+  input:ScheduleVIDef;
+  main:ScheduleVIDef;
+  output:ScheduleVIDef;
+
+  // configuration for initialization of SPU.
+  init_config:[uint8];
+}
+
+// Source code location denoted by a file name and line within that file.
+table FileLineLocDef {
+  filename:string;
+  line:int32;
+}
+
+table DataLocDef {
+  offset:int32;
+  length:int32;
+}
+
+table CmdsLocDef {
+  is_dma:bool;
+  index:int32;
+  offset:int32;
+  length:int32;
+}
+
+table OpLocDef {
+  name:string;
+  source_locations:FileLineLocDef;
+  cmds_location:CmdsLocDef;
+  data_location:DataLocDef;
+}
+
+// Defines a argument to maintain its traits and storage address during runtime.
+table ArgumentDef {
+  pos:int32;
+  dims:[int32];
+  dtype:DataType;
+  access:AccessMode;
+  addr:int64;
+}
+
+// Defines constant data.
+table ConstantsDef {
+  data:FuncDataPointerDef;
+}
+
+// Defines engine CMDs, here engine excludes DMA
+table EngineCmdsDef {
+  // CMDs storage.
+  data:FuncDataPointerDef;
+  engine_type:EngineType;
+}
+
+// Defines DMA CMDs
+table DmaCmdsDef {
+  // CMDs storage.
+  data:FuncDataPointerDef;
+  dma_type:EngineType;
+  func:DmaFunc;
+  interval:int32;
+}
+
+// Defines a argument reference, in which 'dma_location' is used to trace
+// the location in DMA CMDs for address modification since the address
+// of tensor would be reallocated by runtime.
+table ArgumentRefDef {
+  // The index in args.
+  arg_index:int32;
+
+  // DMA Cmds location associate with argument.
+  dma_locations:[CmdsLocDef];
+}
+
+table ClusterDef {
+  // Specified cluster_id to execute, can be executed on any Cluster if it's -1.
+  cluster_id:int32;
+
+  // All of constant datas
+  constants:ConstantsDef;
+
+  // A list of CMDs for each engine that exclude DMAs.
+  engines_cmds:[EngineCmdsDef];
+
+  // A list of CMDs for each DMA.
+  dmas_cmds:[DmaCmdsDef];
+
+  // It is used by low-level runtime to execute the whole executable function
+  schedule:ScheduleDef;
+
+  // Argument references for current Cluster.
+  arg_refs:[ArgumentRefDef];
+
+  // A map of native Ops to multi locations.
+  op_locations:[OpLocDef];
+}
+
+// Each executable function would include up to 16 Cluster. We select a Core
+// to execute the function, and dispatch it to different Cluster.
+table ExecutableFuncDef {
+  // Specified core_id to execute, can be executed on any Core if it's -1.
+  core_id:int32;
+
+  // A list of arguments of the function.
+  args:[ArgumentDef];
+
+  // A list of Cluster to dispath.
+  clusters:[ClusterDef];
+}
+
+table ExecutableDef {
+  // A map of entry point ordinals to string names.
+  entry_points:[string];
+
+  // A list of funcs for each entry point.
+  funcs:[ExecutableFuncDef];
+
+  // A list of data for each func
+  func_datas:[FuncDataDef];
+
+  // A map of entry point ordinals to source locations.
+  source_locations:[FileLineLocDef];
+}
+
+root_type ExecutableDef;
