@@ -37,6 +37,7 @@
 #include <unordered_set>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <signal.h>
 
 #include "json.h"
 #include "defs.h"
@@ -322,5 +323,39 @@ DLL_PUBLIC void SetHwVersion(int ver);
 #ifdef __cplusplus
 }
 #endif
+
+namespace spu {
+class Initializer {
+protected:
+  Initializer(std::string exeName, std::function<void()> moreInitFunc) {
+    FLAGS_colorlogtostderr = true;
+    google::InitGoogleLogging(exeName.c_str());
+    google::SetStderrLogging(google::GLOG_INFO);
+    signal(SIGABRT, &abortHandler);
+    signal(SIGSEGV, &abortHandler);
+
+    if (moreInitFunc) {
+      moreInitFunc();
+    }
+  }
+
+  static void abortHandler(int signal_number) {
+    LOG(ERROR) << google::GetStackTrace();
+    if(SIGSEGV == signal_number) {
+      abort();
+    }
+  }
+
+public:
+  static Initializer *getInstance(std::string exeName, 
+      std::function<void()> moreInitFunc=nullptr) {
+    static Initializer instance(exeName, moreInitFunc);
+    return &instance;
+  }
+  virtual ~Initializer() {
+    google::ShutdownGoogleLogging();
+  }
+};
+} // namespace spu
 
 #endif
