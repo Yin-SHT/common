@@ -340,8 +340,8 @@ protected:
   }
 
   static void abortHandler(int signal_number) {
-    LOG(ERROR) << google::GetStackTrace();
-    if(SIGSEGV == signal_number) {
+    if (SIGSEGV == signal_number) {
+      LOG(ERROR) << google::GetStackTrace();
       abort();
     }
   }
