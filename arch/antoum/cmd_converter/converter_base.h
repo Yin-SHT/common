@@ -48,9 +48,5 @@ class TKEConverter_t : public ConverterBase {
     public:
         TKEConverter_t(std::shared_ptr<MFPara> para) : ConverterBase(para) {};
 };
-class VPUConverter_t : public ConverterBase {
-    public:
-        VPUConverter_t(std::shared_ptr<MFPara> para) : ConverterBase(para) {};
-};
 
 #endif

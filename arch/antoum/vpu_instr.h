@@ -8,17 +8,43 @@
  * from MOFFETT AI.
  */
 
-#ifndef QAUARK_INSTR_INTERFACE_H
-#define QAUARK_INSTR_INTERFACE_H
+#ifndef ANTOUM_INSTR_INTERFACE_H
+#define ANTOUM_INSTR_INTERFACE_H
 
 #include <stdint.h>
 #include <memory>
 #include <map>
 #include "instr_interface.h"
-#include "antoum/vpu_instr.h"
 
-namespace quark {
+enum class VpuAluType {
+  BF16_ALU = 0,
+  SCALAR_ALU,
+  FP32_ALU,
+  INT32_ALU,
+  FP16_ALU,
+};
 
+enum class VpuDataType {
+  VPU_INT8 = 0,
+  VPU_UINT8,
+  VPU_BF16,
+  VPU_INT16,
+  VPU_UINT16,
+  VPU_FP32,
+  VPU_INT32,
+  VPU_FP8_52,
+  VPU_FP8_43,
+  VPU_FP16,
+};
+
+enum class VpuDataMode {
+  DATA_MODE_TENSOR = 0,
+  DATA_MODE_WEIGHT_DENSE,
+  DATA_MODE_WEIGHT_VALUE,
+  DATA_MODE_WEIGHT_INDEX,
+};
+
+namespace antoum {
 enum class VpuOpcode {
   V_INVALID,
   V_NOP,
@@ -52,74 +78,6 @@ enum class VpuOpcode {
   V_SEL,
   V_LUI,
   V_LI,
-  
-  S_ADDI,
-  S_ADDIU,
-  S_SUBI,
-  S_ANDI,
-  S_ORI,
-  S_XORI,
-  S_SGTI,
-  S_SLTI,
-  S_SEQI,
-  S_SGEI,
-  S_SLEI,
-  S_SRAI,
-  S_SRLI,
-  S_SLLI,
-  S_LUI,
-  S_ADD,
-  S_ADDU,
-  S_SUB,
-  S_MUL,
-  S_MULH,
-  S_MULHU,
-  S_MIN,
-  S_MAX,
-  S_MINU,
-  S_MAXU,
-  S_AND,
-  S_OR,
-  S_XOR,
-  S_SGT,
-  S_SLT,
-  S_SEQ,
-  S_SGE,
-  S_SLE,
-  S_CMPSEL,
-  S_SRA,
-  S_SRL,
-  S_SLL,
-  S_JUMP,
-  S_JAL,
-  S_JR,
-  S_BNE,
-  S_BEQ,
-  S_BLT,
-  S_BLTU,
-  S_BGE,
-  S_BGEU,
-  S_SETCFG,
-  S_SETRF,
-};
-
-enum class ScalarSetCfg {
-   S_SET_LOAD_STRIDE = 0,
-   S_SET_LOAD_CLUSTER_MSK,
-   S_SET_LOAD_BANK_MSK,
-   S_SET_LOAD_CLUSTER_BRD,
-   S_SET_LOAD_BANK_BRD,
-   S_SET_LOAD_BASE0,
-   S_SET_LOAD_DQUAN0,
-   S_SET_LOAD_BASE1,
-   S_SET_LOAD_DQUAN1,
-   S_SET_STORE_BASE,
-   S_SET_STORE_STRIDE,
-   S_SET_STORE_CLUSTER_MSK,
-   S_SET_STORE_BANK_MSK,
-   S_SET_STORE_QUAN,
-   S_SET_LOAD_CHANN_BRD,
-   S_SET_BF16_OR_FP16,
 };
 
 struct VpuInstrFormat {
@@ -161,7 +119,6 @@ public:
   uint32_t bankMask;
   uint32_t clusterBroadcast;
   uint32_t bankBroadcast;
-  uint32_t channelBroadcast;
   uint32_t quantize;
   uint32_t dequantize;
   uint32_t rs;
@@ -169,18 +126,13 @@ public:
   uint32_t rd;
   uint32_t imm;
   uint32_t offset;
+  uint32_t isBf16;
+  uint32_t isUnsigned;
   uint32_t hasImm;
   uint32_t upper;
-  uint32_t dtype;
-  uint32_t alu;
-  uint32_t spRd0;
-  uint32_t spRd1;
-  uint32_t srcNum;
-  uint32_t rfSel;
-  uint32_t fsSel;
-  uint32_t consecutiveReg;
+  uint32_t isInt16;
 };
 
-} // namespace quark 
+} // namespace antoum
 
-#endif // QAUARK_INSTR_INTERFACE_H
+#endif // ANTOUM_INSTR_INTERFACE_H

@@ -18,6 +18,7 @@
 #include <functional>
 #include <vector>
 #include <map>
+#include "instr_interface.h"
 
 namespace quark {
 
@@ -31,25 +32,25 @@ namespace quark {
   setters.push_back([this](uint32_t x){ set##field(x); });\
 } while(0)
 
-class SpuInstr {
+class SpuInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType { LDT = 0, LDW, LDM, STT, GEMM, TR, TRA, ACT, 
     ACTI, ACTA, SORT, TOPK, CPY, CPYA, QNT, QNTI, DQT, DQTI, LPS, 
     LPSI, LPE, SET, SETI, SETIH, SETIL, AAI, END, INVALID = 255 };
 
 public:
-  explicit SpuInstr(OpCodeType opCode) 
-    : opCode(opCode) {}
+  explicit SpuInstr(OpCodeType opCode);
   virtual ~SpuInstr() = default;
 
   static std::string opCodeToString(OpCodeType opCode);
   static OpCodeType stringToOpCode(std::string name);
 
   OpCodeType getOpCode();
-  bool loadBinary(uint32_t binary);
-  uint32_t toBinary();
-  bool loadText(std::string text);
-  std::string toText();
+  std::shared_ptr<spu::InstrInterface> clone() override;
+  bool loadBinary(const std::vector<uint8_t>& bin) override;
+  const std::vector<uint8_t>& toBinary() override;
+  bool loadText(const std::string& text) override;
+  const std::string& toText() override;
 
   template <typename T>  
   static std::shared_ptr<T> create(const std::vector<size_t> &args) {
@@ -66,6 +67,8 @@ protected:
   uint32_t fields = 0;
   std::vector<std::function<uint32_t(void)>> getters;
   std::vector<std::function<void(uint32_t)>> setters;
+  std::string text;
+  std::vector<uint8_t> binary;
 };
 
 class LdtInstr : public SpuInstr {

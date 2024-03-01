@@ -44,6 +44,10 @@ static const std::map<SpuInstr::OpCodeType, std::string> opCodeStrMap = {
   {SpuInstr::OpCodeType::END,   "end"},
 };
 
+SpuInstr::SpuInstr(OpCodeType opCode) : 
+    opCode(opCode), binary(4, 0) {
+}
+
 std::string SpuInstr::opCodeToString(OpCodeType opCode) {
   if(opCodeStrMap.find(opCode) != opCodeStrMap.end()) {
     return opCodeStrMap.at(opCode);
@@ -63,17 +67,24 @@ SpuInstr::OpCodeType SpuInstr::getOpCode() {
   return opCode;
 }
 
-bool SpuInstr::loadBinary(uint32_t binary) {
-  opCode = OpCodeType((binary>>26)&0x3f);
-  fields = binary&(((uint32_t)1<<26)-1);
+std::shared_ptr<spu::InstrInterface> SpuInstr::clone() {
+  return std::shared_ptr<SpuInstr>(new SpuInstr(opCode));
+}
+
+bool SpuInstr::loadBinary(const std::vector<uint8_t>& bin) {
+  auto x = *reinterpret_cast<const uint32_t *>(bin.data());
+  opCode = OpCodeType((x>>26)&0x3f);
+  fields = x&(((uint32_t)1<<26)-1);
   return true;
 }
 
-uint32_t SpuInstr::toBinary() {
-  return ((uint32_t)opCode<<26) | (fields&(((uint32_t)1<<26)-1));
+const std::vector<uint8_t>& SpuInstr::toBinary() {
+  *reinterpret_cast<uint32_t *>(binary.data()) = 
+      ((uint32_t)opCode<<26) | (fields&(((uint32_t)1<<26)-1));
+  return binary;
 }
 
-bool SpuInstr::loadText(std::string text) {
+bool SpuInstr::loadText(const std::string& text) {
   std::vector<std::string> v;
   split(text, v);
 
@@ -88,13 +99,14 @@ bool SpuInstr::loadText(std::string text) {
   return true;
 }
 
-std::string SpuInstr::toText() {
+const std::string& SpuInstr::toText() {
   std::stringstream ss;
   ss << opCodeToString(opCode);
   for(size_t i = 0; i < getters.size(); i++) {
     ss << " " << getters[i]();
   }
-  return ss.str();
+  text = ss.str();
+  return text;
 }
 
 } // namespace quark

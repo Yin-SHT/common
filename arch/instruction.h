@@ -7,7 +7,6 @@
 #include "antoum/instr_desc/pea_instr.h"
 #include "antoum/instr_desc/topk_instr.h"
 #include "antoum/instr_desc/trans_instr.h"
-#include "antoum/instr_desc/vpu_instr.h"
 
 void registerInstructionClass();
 

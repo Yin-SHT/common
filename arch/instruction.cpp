@@ -6,15 +6,8 @@
 #include "antoum/cmd_converter/pea_converter.h"
 #include "antoum/cmd_converter/te_converter.h"
 #include "antoum/cmd_converter/tke_converter.h"
-#include "antoum/cmd_converter/vpu_converter.h"
-
-#include "quark/vpu_instr.h"
-#include "quark/vpu_converter.h"
 
 void registerInstructionClass() {
-    REGISTER_CLASS(VPUInstrFields_t, antoum::VPUInstrFields, HW_VER1);
-    REGISTER_CLASS(VPUOperation_t, antoum::VPUOperation, HW_VER1);
-    REGISTER_CLASS(VPUInstruction_t, antoum::VPUInstruction, HW_VER1);
     REGISTER_CLASS(AEInstrFields_t, antoum::AEInstrFields, HW_VER1);
     REGISTER_CLASS(AEInstruction_t, antoum::AEInstruction, HW_VER1);
     REGISTER_CLASS(DMAInstruction_t, antoum::DMAInstruction, HW_VER1);
@@ -35,10 +28,4 @@ void registerInstructionClass() {
     REGISTER_CLASS(PEAConverter_t, antoum::PEAConverter, HW_VER1);
     REGISTER_CLASS(TEConverter_t, antoum::TEConverter, HW_VER1);
     REGISTER_CLASS(TKEConverter_t, antoum::TKEConverter, HW_VER1);
-    REGISTER_CLASS(VPUConverter_t, antoum::VPUConverter, HW_VER1);
-
-    REGISTER_CLASS(VPUInstrFields_t, quark::VPUInstrFields, HW_VER2_0);
-    REGISTER_CLASS(VPUOperation_t, quark::VPUOperation, HW_VER2_0);
-    REGISTER_CLASS(VPUInstruction_t, quark::VPUInstruction, HW_VER2_0);
-    REGISTER_CLASS(VPUConverter_t, quark::VPUConverter, HW_VER2_0);
 }

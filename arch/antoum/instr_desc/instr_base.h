@@ -11,18 +11,6 @@ public:
     virtual void DumpFields(std::map<std::string, uint32_t> &field_map) = 0;
 };
 
-class VPUInstrFields_t : public MFObject {
-    public:
-        VPUInstrFields_t(std::shared_ptr<MFPara> para) : MFObject(para) {};
-};
-class VPUOperation_t : public MFObject {
-    public:
-        VPUOperation_t(std::shared_ptr<MFPara> para) : MFObject(para) {};
-};
-class VPUInstruction_t : public InstrBase {
-    public:
-        VPUInstruction_t(std::shared_ptr<MFPara> para) : InstrBase(para) {};
-};
 class AEInstrFields_t : public MFObject {
     public:
         AEInstrFields_t(std::shared_ptr<MFPara> para) : MFObject(para) {};
