@@ -8,7 +8,7 @@
  * from MOFFETT AI.
  */
 
-#include "spu_instr.h"
+#include "quark/spu_instr.h"
 #include "utils.h"
 #include <sstream>
 

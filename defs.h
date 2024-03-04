@@ -99,7 +99,7 @@ struct TensorShapeDesc {
   TensorShape org;
   TensorShape beg;
   TensorShape end;
-  GLBAddress addr;
+  uint64_t addr;
   DataType dtype;
 };
 

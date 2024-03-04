@@ -8,7 +8,7 @@
  * from MOFFETT AI.
  */
 
-#include "vpu_instr.h"
+#include "quark/vpu_instr.h"
 #include "utils.h"
 
 namespace quark {
@@ -477,7 +477,18 @@ std::vector<VpuInstrFormat> VpuInstr::instrFmtTable = {
 };
 
 VpuInstr::VpuInstr() : 
-    binary(MemMapping.at(MM_VPU_CMD).cmd_width, 0) {
+    binary(kSizePerVpuCmd, 0) {
+  mapFields();
+  resetFields();
+}
+
+std::shared_ptr<spu::InstrInterface> VpuInstr::clone() {
+  auto ret = std::shared_ptr<VpuInstr>(new VpuInstr(*this));
+  ret->mapFields();
+  return ret;
+}
+
+void VpuInstr::mapFields() {
   fieldMap = {
     {"op", &op},
     {"op2", &op2},
@@ -507,11 +518,6 @@ VpuInstr::VpuInstr() :
     {"fs_sel", &fsSel},
     {"consecutive_reg", &consecutiveReg},
   };
-  resetFields();
-}
-
-std::shared_ptr<spu::InstrInterface> VpuInstr::clone() {
-  return std::shared_ptr<VpuInstr>(new VpuInstr(*this));
 }
 
 void VpuInstr::resetFields() {
@@ -572,9 +578,15 @@ std::map<VpuOpcode, std::vector<VpuInstrFormat*>>& VpuInstr::getOpInstrMap() {
 bool VpuInstr::check() {
   CHECK(clusterBroadcast <= 4);
   CHECK(bankBroadcast <= 6);
-  CHECK(rs <= 3);
-  CHECK(rt <= 3);
-  CHECK(rd <= 3);
+  if (op >= (size_t)VpuOpcode::S_ADDI && op <= (size_t)VpuOpcode::S_SETRF) {
+    CHECK(rs <= 15);
+    CHECK(rt <= 15);
+    CHECK(rd <= 15);
+  } else {
+    CHECK(rs <= 3);
+    CHECK(rt <= 3);
+    CHECK(rd <= 3);
+  }
   return true;
 }
 

@@ -5,7 +5,7 @@
 namespace antoum {
 
 DMAConverter::DMAConverter(std::shared_ptr<MFPara> para) : DMAConverter_t(para), 
-    _instr_mem(MemMapping.at(MM_DMA_CMD).cmd_width, 0) {
+    _instr_mem(kSizePerDmaCmd, 0) {
     _instr = CREATE_CLASS_DPC(DMAInstruction_t, para, DMAInstruction);
     _instr_map = {
         FieldMappingEntry(&_instr_mem[0x00], 0, 0, &_instr->OP_END,                   0,  0),
@@ -52,13 +52,13 @@ DMAConverter::DMAConverter(std::shared_ptr<MFPara> para) : DMAConverter_t(para),
 }
 
 void DMAConverter::SetNOP(uint64_t srcAddr, uint64_t dstAddr) {
-    this->LoadBinary(DMABinary_t(ASIC_DMA_CMD_WIDTH, 0));
-    _instr->OP_CODE = DMAMV_OP_CODE;
+    this->LoadBinary(DMABinary_t(kSizePerDmaCmd, 0));
+    _instr->OP_CODE = (size_t)IsaOpcode::DMAMV;
     _instr->SRC_DST_MODE = DMAMV_DDR_TO_DDR;
     _instr->SRC_LINE_LENGTH = 16/4 - 1;
     _instr->DST_LINE_LENGTH = 16/4 - 1;
-    _instr->SRC_START_ADDR = (MemMapping.at(MM_CORE_DDR).begin_addr+srcAddr)/4;
-    _instr->DST_START_ADDR = (MemMapping.at(MM_CORE_DDR).begin_addr+dstAddr)/4;
+    _instr->SRC_START_ADDR = (kCoreDdrAddr+srcAddr)/4;
+    _instr->DST_START_ADDR = (kCoreDdrAddr+dstAddr)/4;
 }
 
 bool DMAConverter::SetField(std::string name,uint32_t val) {
@@ -291,7 +291,7 @@ ConverterBase* DMAConverter::LoadText(std::string text) {
     split(text, v);
 
     if(v.size() > 0) {
-        _instr->OP_CODE = (v[0]=="dma_mv") ?DMAMV_OP_CODE :NOP_OP_CODE;
+        _instr->OP_CODE = (v[0]=="dma_mv") ?(size_t)IsaOpcode::DMAMV :(size_t)IsaOpcode::NOP;
     }
 
     std::map<std::string, uint32_t> fields;
@@ -330,7 +330,7 @@ ConverterBase* DMAConverter::LoadBinary(const std::vector<uint8_t> &bin) {
     for(auto &it : _instr_map) {
         it.MemToField();
     }
-    assert(_instr->OP_CODE==DMAMV_OP_CODE || _instr->OP_CODE==NOP_OP_CODE);
+    assert(_instr->OP_CODE==(size_t)IsaOpcode::DMAMV || _instr->OP_CODE==(size_t)IsaOpcode::NOP);
     return this;
 }
 
@@ -353,10 +353,10 @@ std::shared_ptr<InstrBase> DMAConverter::ToInstr() {
 
 int64_t DMAConverter::EvalCycleNum(int64_t line_length) {
     float cycle_num = 0;
-    for(int64_t i = 0; i < line_length; i+= DMA_TRANSFER_LENGTH) {
-        int64_t cur_length = std::min((int64_t)DMA_TRANSFER_LENGTH, line_length-i);
-        cycle_num += DMA_EXTRA_LATENCY;
-        cycle_num += (float)cur_length/DMA_BANDWITH_TO_DDR;
+    for(int64_t i = 0; i < line_length; i+= kDmaTransferLength) {
+        int64_t cur_length = std::min((int64_t)kDmaTransferLength, line_length-i);
+        cycle_num += kDmaExtraLatency;
+        cycle_num += (float)cur_length/kDmaBandwidthToDdr;
     }
     return (int64_t)cycle_num;
 }

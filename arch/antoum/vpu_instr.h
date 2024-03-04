@@ -8,8 +8,8 @@
  * from MOFFETT AI.
  */
 
-#ifndef ANTOUM_INSTR_INTERFACE_H
-#define ANTOUM_INSTR_INTERFACE_H
+#ifndef ANTOUM_VPU_INSTR_H
+#define ANTOUM_VPU_INSTR_H
 
 #include <stdint.h>
 #include <memory>
@@ -95,6 +95,7 @@ public:
   const std::vector<uint8_t>& toBinary() override;
 
 protected:
+  void mapFields();
   void resetFields();
   void setFields(const std::map<std::string, uint32_t>& fields);
   void getFields(std::map<std::string, uint32_t>& fields);
@@ -135,4 +136,4 @@ public:
 
 } // namespace antoum
 
-#endif // ANTOUM_INSTR_INTERFACE_H
+#endif // ANTOUM_VPU_INSTR_H

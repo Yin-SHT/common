@@ -8,8 +8,8 @@
  * from MOFFETT AI.
  */
 
-#ifndef QAUARK_INSTR_INTERFACE_H
-#define QAUARK_INSTR_INTERFACE_H
+#ifndef QAUARK_VPU_INSTR_H
+#define QAUARK_VPU_INSTR_H
 
 #include <stdint.h>
 #include <memory>
@@ -138,6 +138,7 @@ public:
 
 protected:
   void resetFields();
+  void mapFields();
   void setFields(const std::map<std::string, uint32_t>& fields);
   void getFields(std::map<std::string, uint32_t>& fields);
   std::map<std::string, std::vector<VpuInstrFormat*>>& getNameInstrMap();
@@ -183,4 +184,4 @@ public:
 
 } // namespace quark 
 
-#endif // QAUARK_INSTR_INTERFACE_H
+#endif // QAUARK_VPU_INSTR_H

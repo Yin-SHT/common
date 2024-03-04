@@ -167,7 +167,7 @@ std::vector<std::pair<uint32_t,uint32_t>> TEConverter::GetConfigurationRegs(int 
     _config->GetFields(fields);
     for(int i = 0; i < (int)te_isa_namespace["TE_CONFIG"].size(); i++)
     {
-        regs[i].first = ASIC_TRANSPOSE_REG_BASE_ADDR + 0xC + (i * 8 + config_idx)*4;
+        regs[i].first = kSizeTranposeRegAddr + 0xC + (i * 8 + config_idx)*4;
         regs[i].second =  fields[te_isa_namespace["TE_CONFIG"][i].first];
     }
     return regs;

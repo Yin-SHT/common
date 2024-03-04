@@ -8,7 +8,7 @@
  * from MOFFETT AI.
  */
 
-#include "vpu_instr.h"
+#include "antoum/vpu_instr.h"
 #include "utils.h"
 
 namespace antoum {
@@ -182,7 +182,18 @@ std::vector<VpuInstrFormat> VpuInstr::instrFmtTable = {
 };
 
 VpuInstr::VpuInstr() : 
-    binary(MemMapping.at(MM_VPU_CMD).cmd_width, 0) {
+    binary(kSizePerVpuCmd, 0) {
+  mapFields();
+  resetFields();
+}
+
+std::shared_ptr<spu::InstrInterface> VpuInstr::clone() {
+  auto ret = std::shared_ptr<VpuInstr>(new VpuInstr(*this));
+  ret->mapFields();
+  return ret;
+}
+
+void VpuInstr::mapFields() {
   fieldMap = {
     {"op", &op},
     {"op2", &op2},
@@ -206,11 +217,6 @@ VpuInstr::VpuInstr() :
     {"upper", &upper},
     {"is_int16", &isInt16},
   };
-  resetFields();
-}
-
-std::shared_ptr<spu::InstrInterface> VpuInstr::clone() {
-  return std::shared_ptr<VpuInstr>(new VpuInstr(*this));
 }
 
 void VpuInstr::resetFields() {

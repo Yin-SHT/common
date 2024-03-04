@@ -43,17 +43,6 @@
 #include "defs.h"
 #include "hw_config.h"
 
-enum ISAOpCode {
-  NOP_OP_CODE = 0x0,
-  LOADCFG_OP_CODE = 0x1,
-  CONV2D_OP_CODE = 0x2,
-  ACTIV_OP_CODE = 0x3,
-  TOPK_OP_CODE = 0x4,
-  TRANS_OP_CODE = 0x5,
-  GLBCPY_OP_CODE = 0x6,
-  DMAMV_OP_CODE = 0x7,
-  INSTR_GEN_OP_CODE = 0x8,
-};
 struct FieldMappingEntry {
   uint8_t *mem;
   size_t m_end;
@@ -183,43 +172,6 @@ inline void split(const std::string &text, std::vector<std::string> &v) {
       v.emplace_back(s);
     }
   }
-}
-
-enum EngineIndex {
-  DMA_ENGINE_IDX = 0,
-  GCPY_ENGINE_IDX,
-  PEA_ENGINE_IDX,
-  VPU_ENGINE_IDX,
-  TRANSPOSE_ENGINE_IDX,
-  TOPK_ENGINE_IDX,
-  ACTIV_ENGINE_IDX,
-  DMA1_ENGINE_IDX,
-  DMA2_ENGINE_IDX,
-  DMA3_ENGINE_IDX,
-  DMA4_ENGINE_IDX,
-  DMA5_ENGINE_IDX,
-  DMA6_ENGINE_IDX,
-  DMA7_ENGINE_IDX,
-  ENGINE_SIZE,
-  CONFIG_ENGINE_IDX = ENGINE_SIZE,
-  START_ENGINE_IDX,
-  END_ENGINE_IDX,
-  CPU_ENGINE_IDX,
-  PP_ENGINE_IDX,
-  INVLIAD_ENGINE_IDX = 255,
-};
-
-#define CORE_INT_STAT       (0x202000 + 0x420)
-#define BASE_ENGINE_CTRL    (0x201500)
-#define ENGINE_OP_ENABLE    (1)
-#define EXT_ENGINE_NUM 5
-
-inline MemMappingIdx findMemMappingIdx(uint64_t addr) {
-  for(auto &it : MemMapping) {
-    if(addr >= it.second.begin_addr && addr <= it.second.end_addr)
-      return it.first;
-  }
-  return MM_INVALID;
 }
 
 typedef struct {
@@ -357,5 +309,40 @@ public:
   }
 };
 } // namespace spu
+
+namespace quark {
+
+inline std::string getDdrName(size_t coreId) {
+  std::stringstream ss;
+  ss << "Core" << coreId << "." << "DDR";
+  return ss.str();
+}
+
+inline std::string getSharedMemoryName(size_t coreId, size_t clusterId) {
+  std::stringstream ss;
+  ss << "Core" << coreId << "." << "Cluster" << clusterId << "." << "SharedMemory";
+  return ss.str();
+}
+
+inline std::string getEngineName(EngineType engine) {
+  switch  (engine) {
+    case EngineType::SPU: return "SPU";
+    case EngineType::VPU: return "VPU";
+    case EngineType::AE:  return "AE";
+    case EngineType::TE:  return "TE";
+    case EngineType::SE:  return "SE";
+    case EngineType::DMA: return "DMA";
+    default:              return "";
+  }
+}
+
+inline std::string getCmdMemoryName(size_t coreId, size_t clusterId, EngineType engine) {
+  std::stringstream ss;
+  ss << "Core" << coreId << "." << "Cluster" << clusterId << "." 
+    << getEngineName(engine) << "." << "CmdMemory";
+  return ss.str();
+}
+
+};
 
 #endif
