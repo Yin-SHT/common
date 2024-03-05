@@ -326,13 +326,20 @@ inline std::string getSharedMemoryName(size_t coreId, size_t clusterId) {
 
 inline std::string getEngineName(EngineType engine) {
   switch  (engine) {
-    case EngineType::SPU: return "SPU";
-    case EngineType::VPU: return "VPU";
-    case EngineType::AE:  return "AE";
-    case EngineType::TE:  return "TE";
-    case EngineType::SE:  return "SE";
-    case EngineType::DMA: return "DMA";
-    default:              return "";
+    case EngineType::SPU:  return "SPU";
+    case EngineType::VPU:  return "VPU";
+    case EngineType::AE:   return "AE";
+    case EngineType::TE:   return "TE";
+    case EngineType::SE:   return "SE";
+    case EngineType::DMA0: return "DMA0";
+    case EngineType::DMA1: return "DMA1";
+    case EngineType::DMA2: return "DMA2";
+    case EngineType::DMA3: return "DMA3";
+    case EngineType::DMA4: return "DMA4";
+    case EngineType::DMA5: return "DMA5";
+    case EngineType::DMA6: return "DMA6";
+    case EngineType::DMA7: return "DMA7";
+    default:               return "";
   }
 }
 
