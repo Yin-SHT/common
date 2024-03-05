@@ -62,6 +62,10 @@ public:
     return x;
   }
 
+  static std::shared_ptr<SpuInstr> create(OpCodeType opCode);
+  static std::shared_ptr<SpuInstr> create(const std::string& text);
+  static std::shared_ptr<SpuInstr> create(const std::vector<uint8_t>& bin);
+
 protected:
   OpCodeType opCode;
   uint32_t fields = 0;

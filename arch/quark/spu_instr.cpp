@@ -68,7 +68,9 @@ SpuInstr::OpCodeType SpuInstr::getOpCode() {
 }
 
 std::shared_ptr<spu::InstrInterface> SpuInstr::clone() {
-  return std::shared_ptr<SpuInstr>(new SpuInstr(opCode));
+  auto ret = create(opCode);
+  ret->fields = fields;
+  return ret;
 }
 
 bool SpuInstr::loadBinary(const std::vector<uint8_t>& bin) {
@@ -107,6 +109,63 @@ const std::string& SpuInstr::toText() {
   }
   text = ss.str();
   return text;
+}
+
+std::shared_ptr<SpuInstr> SpuInstr::create(OpCodeType opCode) {
+  switch (opCode) {
+    case OpCodeType::LDT:   return std::shared_ptr<LdtInstr>(new LdtInstr);
+    case OpCodeType::LDW:   return std::shared_ptr<LdwInstr>(new LdwInstr);
+    case OpCodeType::LDM:   return std::shared_ptr<LdmInstr>(new LdmInstr);
+    case OpCodeType::STT:   return std::shared_ptr<SttInstr>(new SttInstr);
+    case OpCodeType::GEMM:  return std::shared_ptr<GemmInstr>(new GemmInstr);
+    case OpCodeType::TR:    return std::shared_ptr<TrInstr>(new TrInstr);
+    case OpCodeType::TRA:   return std::shared_ptr<TraInstr>(new TraInstr);
+    case OpCodeType::ACT:   return std::shared_ptr<ActInstr>(new ActInstr);
+    case OpCodeType::ACTI:  return std::shared_ptr<ActiInstr>(new ActiInstr);
+    case OpCodeType::ACTA:  return std::shared_ptr<ActaInstr>(new ActaInstr);
+    case OpCodeType::SORT:  return std::shared_ptr<SortInstr>(new SortInstr);
+    case OpCodeType::TOPK:  return std::shared_ptr<TopkInstr>(new TopkInstr);
+    case OpCodeType::CPY:   return std::shared_ptr<CpyInstr>(new CpyInstr);
+    case OpCodeType::CPYA:  return std::shared_ptr<CpyaInstr>(new CpyaInstr);
+    case OpCodeType::QNT:   return std::shared_ptr<QntInstr>(new QntInstr);
+    case OpCodeType::QNTI:  return std::shared_ptr<QntiInstr>(new QntiInstr);
+    case OpCodeType::DQT:   return std::shared_ptr<DqtInstr>(new DqtInstr);
+    case OpCodeType::DQTI:  return std::shared_ptr<DqtiInstr>(new DqtiInstr);
+    case OpCodeType::LPS:   return std::shared_ptr<LpsInstr>(new LpsInstr);
+    case OpCodeType::LPSI:  return std::shared_ptr<LpsiInstr>(new LpsiInstr);
+    case OpCodeType::LPE:   return std::shared_ptr<LpeInstr>(new LpeInstr);
+    case OpCodeType::SET:   return std::shared_ptr<SetInstr>(new SetInstr);
+    case OpCodeType::SETI:  return std::shared_ptr<SetiInstr>(new SetiInstr);
+    case OpCodeType::SETIH: return std::shared_ptr<SetihInstr>(new SetihInstr);
+    case OpCodeType::SETIL: return std::shared_ptr<SetilInstr>(new SetilInstr);
+    case OpCodeType::AAI:   return std::shared_ptr<AaiInstr>(new AaiInstr);
+    case OpCodeType::END:   return std::shared_ptr<EndInstr>(new EndInstr);
+    default:                return nullptr;
+  }
+}
+
+std::shared_ptr<SpuInstr> SpuInstr::create(const std::string& text) {
+  std::vector<std::string> fields;
+  split(text, fields);
+  if (fields.empty())
+    return nullptr;
+
+  auto opCode = stringToOpCode(fields[0]);
+  auto ret = create(opCode);
+  if (ret != nullptr)
+    ret->loadText(text);
+
+  return ret;
+}
+
+std::shared_ptr<SpuInstr> SpuInstr::create(const std::vector<uint8_t>& bin) {
+  auto x = *reinterpret_cast<const uint32_t *>(bin.data());
+  auto opCode = OpCodeType((x>>26)&0x3f);
+  auto ret = create(opCode);
+  if (ret != nullptr)
+    ret->loadBinary(bin);
+
+  return ret;
 }
 
 } // namespace quark
