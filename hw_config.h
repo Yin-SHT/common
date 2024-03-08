@@ -154,7 +154,7 @@ const size_t kNumCore = 4;
 const size_t kSizeMemPage = 8192;
 const size_t kNumCluster = 16;
 const size_t kSizeCoreDdr = 4UL << 30;
-const size_t kSizeClusterSharedMem = 2UL << 20;
+const size_t kSizeSharedMem = 1UL << 20;
 const size_t kSizePerSpuCmd = 4;
 const size_t kSizePerVpuCmd = 4;
 
