@@ -43,8 +43,10 @@ namespace pels {
 class PelsInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType {
-    ENB = 57,
-    WFI = 58,
+    ENB = 55,
+    WFI = 56,
+    TMS = 57,
+    TME = 58,
     LCK = 59,
     ULCK = 60,
     CALL = 61,
@@ -57,6 +59,8 @@ public:
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
       {OpCodeType::ENB,  "enb"},
       {OpCodeType::WFI,  "wfi"},
+      {OpCodeType::TMS,  "tms"},
+      {OpCodeType::TME,  "tme"},
       {OpCodeType::LCK,  "lck"},
       {OpCodeType::ULCK, "ulck"},
       {OpCodeType::CALL, "call"},
@@ -245,6 +249,22 @@ public:
   QUARK_GEN_GETTER_SETTER(Spu, 0, 0);
 };
 
+class TmsInstr : public PelsInstr {
+public:
+  explicit TmsInstr() : PelsInstr(OpCodeType::TMS) {
+    QUARK_PUSH_GETTER_SETTER(EventId);
+  }
+  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
+};
+
+class TmeInstr : public PelsInstr {
+public:
+  explicit TmeInstr() : PelsInstr(OpCodeType::TME) {
+    QUARK_PUSH_GETTER_SETTER(EventId);
+  }
+  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
+};
+
 class LckInstr : public PelsInstr {
 public:
   explicit LckInstr() : PelsInstr(OpCodeType::LCK) {
@@ -264,9 +284,11 @@ public:
 class CallInstr : public PelsInstr {
 public:
   explicit CallInstr() : PelsInstr(OpCodeType::CALL) {
+    QUARK_PUSH_GETTER_SETTER(Com);
     QUARK_PUSH_GETTER_SETTER(Func);
   }
-  QUARK_GEN_GETTER_SETTER(Func, 7, 0);
+  QUARK_GEN_GETTER_SETTER(Com, 25, 24);
+  QUARK_GEN_GETTER_SETTER(Func, 15, 0);
 };
 
 class StrInstr : public PelsInstr {
@@ -290,6 +312,8 @@ std::shared_ptr<PelsInstr> PelsInstr::create(OpCodeType opCode) {
   switch (opCode) {
     case OpCodeType::ENB:  return std::shared_ptr<EnbInstr>(new EnbInstr);
     case OpCodeType::WFI:  return std::shared_ptr<WfiInstr>(new WfiInstr);
+    case OpCodeType::TMS:  return std::shared_ptr<TmsInstr>(new TmsInstr);
+    case OpCodeType::TME:  return std::shared_ptr<TmeInstr>(new TmeInstr);
     case OpCodeType::LCK:  return std::shared_ptr<LckInstr>(new LckInstr);
     case OpCodeType::ULCK: return std::shared_ptr<UlckInstr>(new UlckInstr);
     case OpCodeType::CALL: return std::shared_ptr<CallInstr>(new CallInstr);

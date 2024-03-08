@@ -433,11 +433,13 @@ public:
     QUARK_PUSH_GETTER_SETTER(SurIdx);
     QUARK_PUSH_GETTER_SETTER(LineIdx);
     QUARK_PUSH_GETTER_SETTER(RLength);
+    QUARK_PUSH_GETTER_SETTER(PeId);
   }
   QUARK_GEN_GETTER_SETTER(VolIdx, 25, 23);
   QUARK_GEN_GETTER_SETTER(SurIdx, 22, 20);
   QUARK_GEN_GETTER_SETTER(LineIdx, 19, 17);
   QUARK_GEN_GETTER_SETTER(RLength, 16, 16);
+  QUARK_GEN_GETTER_SETTER(PeId, 6, 0);
 };
 
 class RcvInstr : public SpuInstr {
@@ -445,7 +447,7 @@ public:
   explicit RcvInstr() : SpuInstr(OpCodeType::RCV) {
     QUARK_PUSH_GETTER_SETTER(PeId);
   }
-  QUARK_GEN_GETTER_SETTER(PeId, 25, 20);
+  QUARK_GEN_GETTER_SETTER(PeId, 6, 0);
 };
 
 class LpsInstr : public SpuInstr {
