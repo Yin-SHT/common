@@ -7,8 +7,8 @@
  * unless you get a prior written permission or an applicable license agreement
  * from MOFFETT AI.
  */
-#ifndef QUARK_PELS_INSTR_H
-#define QUARK_PELS_INSTR_H
+#ifndef QUARK_CHLS_INSTR_H
+#define QUARK_CHLS_INSTR_H
 
 #include <stdint.h>
 #include <assert.h>
@@ -38,9 +38,9 @@
 extern void split(const std::string &text, std::vector<std::string> &v);
 
 namespace quark {
-namespace pels {
+namespace chls {
 
-class PelsInstr : public spu::InstrInterface {
+class ChlsInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType {
     ENB = 54,
@@ -73,11 +73,11 @@ public:
   }
 
 public:
-  explicit PelsInstr(OpCodeType opCode) : 
+  explicit ChlsInstr(OpCodeType opCode) : 
       opCode(opCode), binary(4, 0) {
   }
 
-  virtual ~PelsInstr() = default;
+  virtual ~ChlsInstr() = default;
 
   static std::string opCodeToString(OpCodeType opCode)  {
     auto &opCodeStrMap = getOpCodeStrMap();
@@ -154,9 +154,9 @@ public:
     return x;
   }
 
-  static inline std::shared_ptr<PelsInstr> create(OpCodeType opCode);
+  static inline std::shared_ptr<ChlsInstr> create(OpCodeType opCode);
 
-  static std::shared_ptr<PelsInstr> create(const std::string& text) {
+  static std::shared_ptr<ChlsInstr> create(const std::string& text) {
     std::vector<std::string> fields;
     split(text, fields);
     if (fields.empty())
@@ -169,7 +169,7 @@ public:
     return ret;
   }
 
-  static std::shared_ptr<PelsInstr> create(const std::vector<uint8_t>& bin) {
+  static std::shared_ptr<ChlsInstr> create(const std::vector<uint8_t>& bin) {
     auto x = *reinterpret_cast<const uint32_t *>(bin.data());
     auto opCode = OpCodeType((x>>26)&0x3f);
     auto ret = create(opCode);
@@ -187,105 +187,69 @@ protected:
   std::vector<uint8_t> binary;
 };
 
-class EnbInstr : public PelsInstr {
+class EnbInstr : public ChlsInstr {
 public:
-  explicit EnbInstr() : PelsInstr(OpCodeType::ENB) {
-    QUARK_PUSH_GETTER_SETTER(SpuInstr);
-    QUARK_PUSH_GETTER_SETTER(VpuInstr);
-    QUARK_PUSH_GETTER_SETTER(TeInstr);
-    QUARK_PUSH_GETTER_SETTER(SeInstr);
-    QUARK_PUSH_GETTER_SETTER(AeInstr);
-    QUARK_PUSH_GETTER_SETTER(DmaInstr);
-    QUARK_PUSH_GETTER_SETTER(Send);
-    QUARK_PUSH_GETTER_SETTER(Recv);
-    QUARK_PUSH_GETTER_SETTER(Ae);
-    QUARK_PUSH_GETTER_SETTER(Se);
-    QUARK_PUSH_GETTER_SETTER(Te);
-    QUARK_PUSH_GETTER_SETTER(Vpu);
-    QUARK_PUSH_GETTER_SETTER(Spu);
+  explicit EnbInstr() : ChlsInstr(OpCodeType::ENB) {
+    QUARK_PUSH_GETTER_SETTER(Core3);
+    QUARK_PUSH_GETTER_SETTER(Core2);
+    QUARK_PUSH_GETTER_SETTER(Core1);
+    QUARK_PUSH_GETTER_SETTER(Core0);
   }
-  QUARK_GEN_GETTER_SETTER(SpuInstr, 7, 7);
-  QUARK_GEN_GETTER_SETTER(VpuInstr, 8, 8);
-  QUARK_GEN_GETTER_SETTER(TeInstr, 9, 9);
-  QUARK_GEN_GETTER_SETTER(SeInstr, 10, 10);
-  QUARK_GEN_GETTER_SETTER(AeInstr, 11, 11);
-  QUARK_GEN_GETTER_SETTER(DmaInstr, 12, 12);
-  QUARK_GEN_GETTER_SETTER(Send, 5, 5);
-  QUARK_GEN_GETTER_SETTER(Recv, 6, 6);
-  QUARK_GEN_GETTER_SETTER(Ae, 4, 4);
-  QUARK_GEN_GETTER_SETTER(Se, 3, 3);
-  QUARK_GEN_GETTER_SETTER(Te, 2, 2);
-  QUARK_GEN_GETTER_SETTER(Vpu, 1, 1);
-  QUARK_GEN_GETTER_SETTER(Spu, 0, 0);
+  QUARK_GEN_GETTER_SETTER(Core3, 3, 3);
+  QUARK_GEN_GETTER_SETTER(Core2, 2, 2);
+  QUARK_GEN_GETTER_SETTER(Core1, 1, 1);
+  QUARK_GEN_GETTER_SETTER(Core0, 0, 0);
 };
 
-class WfiInstr : public PelsInstr {
+class WfiInstr : public ChlsInstr {
 public:
-  explicit WfiInstr() : PelsInstr(OpCodeType::WFI) {
-    QUARK_PUSH_GETTER_SETTER(SpuInstr);
-    QUARK_PUSH_GETTER_SETTER(VpuInstr);
-    QUARK_PUSH_GETTER_SETTER(TeInstr);
-    QUARK_PUSH_GETTER_SETTER(SeInstr);
-    QUARK_PUSH_GETTER_SETTER(AeInstr);
-    QUARK_PUSH_GETTER_SETTER(DmaInstr);
-    QUARK_PUSH_GETTER_SETTER(Send);
-    QUARK_PUSH_GETTER_SETTER(Recv);
-    QUARK_PUSH_GETTER_SETTER(Se);
-    QUARK_PUSH_GETTER_SETTER(Te);
-    QUARK_PUSH_GETTER_SETTER(Ae);
-    QUARK_PUSH_GETTER_SETTER(Vpu);
-    QUARK_PUSH_GETTER_SETTER(Spu);
+  explicit WfiInstr() : ChlsInstr(OpCodeType::WFI) {
+    QUARK_PUSH_GETTER_SETTER(Core3);
+    QUARK_PUSH_GETTER_SETTER(Core2);
+    QUARK_PUSH_GETTER_SETTER(Core1);
+    QUARK_PUSH_GETTER_SETTER(Core0);
   }
-  QUARK_GEN_GETTER_SETTER(SpuInstr, 7, 7);
-  QUARK_GEN_GETTER_SETTER(VpuInstr, 8, 8);
-  QUARK_GEN_GETTER_SETTER(TeInstr, 9, 9);
-  QUARK_GEN_GETTER_SETTER(SeInstr, 10, 10);
-  QUARK_GEN_GETTER_SETTER(AeInstr, 11, 11);
-  QUARK_GEN_GETTER_SETTER(DmaInstr, 12, 12);
-  QUARK_GEN_GETTER_SETTER(Send, 5, 5);
-  QUARK_GEN_GETTER_SETTER(Recv, 6, 6);
-  QUARK_GEN_GETTER_SETTER(Se, 4, 4);
-  QUARK_GEN_GETTER_SETTER(Te, 3, 3);
-  QUARK_GEN_GETTER_SETTER(Ae, 2, 2);
-  QUARK_GEN_GETTER_SETTER(Vpu, 1, 1);
-  QUARK_GEN_GETTER_SETTER(Spu, 0, 0);
+  QUARK_GEN_GETTER_SETTER(Core3, 3, 3);
+  QUARK_GEN_GETTER_SETTER(Core2, 2, 2);
+  QUARK_GEN_GETTER_SETTER(Core1, 1, 1);
+  QUARK_GEN_GETTER_SETTER(Core0, 0, 0);
 };
 
-class TmsInstr : public PelsInstr {
+class TmsInstr : public ChlsInstr {
 public:
-  explicit TmsInstr() : PelsInstr(OpCodeType::TMS) {
+  explicit TmsInstr() : ChlsInstr(OpCodeType::TMS) {
     QUARK_PUSH_GETTER_SETTER(EventId);
   }
   QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
 };
 
-class TmeInstr : public PelsInstr {
+class TmeInstr : public ChlsInstr {
 public:
-  explicit TmeInstr() : PelsInstr(OpCodeType::TME) {
+  explicit TmeInstr() : ChlsInstr(OpCodeType::TME) {
     QUARK_PUSH_GETTER_SETTER(EventId);
   }
   QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
 };
 
-class LckInstr : public PelsInstr {
+class LckInstr : public ChlsInstr {
 public:
-  explicit LckInstr() : PelsInstr(OpCodeType::LCK) {
+  explicit LckInstr() : ChlsInstr(OpCodeType::LCK) {
     QUARK_PUSH_GETTER_SETTER(Region);
   }
   QUARK_GEN_GETTER_SETTER(Region, 0, 0);
 };
 
-class UlckInstr : public PelsInstr {
+class UlckInstr : public ChlsInstr {
 public:
-  explicit UlckInstr() : PelsInstr(OpCodeType::ULCK) {
+  explicit UlckInstr() : ChlsInstr(OpCodeType::ULCK) {
     QUARK_PUSH_GETTER_SETTER(Region);
   }
   QUARK_GEN_GETTER_SETTER(Region, 0, 0);
 };
 
-class CallInstr : public PelsInstr {
+class CallInstr : public ChlsInstr {
 public:
-  explicit CallInstr() : PelsInstr(OpCodeType::CALL) {
+  explicit CallInstr() : ChlsInstr(OpCodeType::CALL) {
     QUARK_PUSH_GETTER_SETTER(Com);
     QUARK_PUSH_GETTER_SETTER(Func);
   }
@@ -293,17 +257,17 @@ public:
   QUARK_GEN_GETTER_SETTER(Func, 15, 0);
 };
 
-class StrInstr : public PelsInstr {
+class StrInstr : public ChlsInstr {
 public:
-  explicit StrInstr() : PelsInstr(OpCodeType::STR) {
+  explicit StrInstr() : ChlsInstr(OpCodeType::STR) {
     QUARK_PUSH_GETTER_SETTER(Stage);
   }
   QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
 };
 
-class SetInstr : public PelsInstr {
+class SetInstr : public ChlsInstr {
 public:
-  explicit SetInstr() : PelsInstr(OpCodeType::SET) {
+  explicit SetInstr() : ChlsInstr(OpCodeType::SET) {
     QUARK_PUSH_GETTER_SETTER(RDst);
     QUARK_PUSH_GETTER_SETTER(Offset);
     QUARK_PUSH_GETTER_SETTER(Imm);
@@ -313,16 +277,16 @@ public:
   QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
 };
 
-class EndInstr : public PelsInstr {
+class EndInstr : public ChlsInstr {
 public:
-  explicit EndInstr() : PelsInstr(OpCodeType::END) {
+  explicit EndInstr() : ChlsInstr(OpCodeType::END) {
     QUARK_PUSH_GETTER_SETTER(Stage);
   }
   QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
 };
 
 
-std::shared_ptr<PelsInstr> PelsInstr::create(OpCodeType opCode) {
+std::shared_ptr<ChlsInstr> ChlsInstr::create(OpCodeType opCode) {
   switch (opCode) {
     case OpCodeType::ENB:  return std::shared_ptr<EnbInstr>(new EnbInstr);
     case OpCodeType::WFI:  return std::shared_ptr<WfiInstr>(new WfiInstr);
@@ -338,7 +302,7 @@ std::shared_ptr<PelsInstr> PelsInstr::create(OpCodeType opCode) {
   }
 }
 
-} // namespace pels
+} // namespace chls
 } // namespace quark
 
-#endif // QUARK_PELS_INSTR_H
+#endif // QUARK_CHLS_INSTR_H
