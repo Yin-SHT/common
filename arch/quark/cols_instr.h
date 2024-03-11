@@ -47,27 +47,17 @@ public:
     WFI = 55,
     TMS = 56,
     TME = 57,
-    LCK = 58,
-    ULCK = 59,
-    CALL = 60,
-    STR = 61,
     SET = 62,
-    END = 63,
     INVALID = 255
   };
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
-      {OpCodeType::ENB,  "enb"},
-      {OpCodeType::WFI,  "wfi"},
-      {OpCodeType::TMS,  "tms"},
-      {OpCodeType::TME,  "tme"},
-      {OpCodeType::LCK,  "lck"},
-      {OpCodeType::ULCK, "ulck"},
-      {OpCodeType::CALL, "call"},
-      {OpCodeType::STR,  "str"},
-      {OpCodeType::SET,  "set"},
-      {OpCodeType::END,  "end"},
+      {OpCodeType::ENB, "enb"},
+      {OpCodeType::WFI, "wfi"},
+      {OpCodeType::TMS, "tms"},
+      {OpCodeType::TME, "tme"},
+      {OpCodeType::SET, "set"},
     };
     return opCodeStrMap;
   }
@@ -279,40 +269,6 @@ public:
   QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
 };
 
-class LckInstr : public ColsInstr {
-public:
-  explicit LckInstr() : ColsInstr(OpCodeType::LCK) {
-    QUARK_PUSH_GETTER_SETTER(Region);
-  }
-  QUARK_GEN_GETTER_SETTER(Region, 0, 0);
-};
-
-class UlckInstr : public ColsInstr {
-public:
-  explicit UlckInstr() : ColsInstr(OpCodeType::ULCK) {
-    QUARK_PUSH_GETTER_SETTER(Region);
-  }
-  QUARK_GEN_GETTER_SETTER(Region, 0, 0);
-};
-
-class CallInstr : public ColsInstr {
-public:
-  explicit CallInstr() : ColsInstr(OpCodeType::CALL) {
-    QUARK_PUSH_GETTER_SETTER(Com);
-    QUARK_PUSH_GETTER_SETTER(Func);
-  }
-  QUARK_GEN_GETTER_SETTER(Com, 25, 24);
-  QUARK_GEN_GETTER_SETTER(Func, 15, 0);
-};
-
-class StrInstr : public ColsInstr {
-public:
-  explicit StrInstr() : ColsInstr(OpCodeType::STR) {
-    QUARK_PUSH_GETTER_SETTER(Stage);
-  }
-  QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
-};
-
 class SetInstr : public ColsInstr {
 public:
   explicit SetInstr() : ColsInstr(OpCodeType::SET) {
@@ -325,27 +281,14 @@ public:
   QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
 };
 
-class EndInstr : public ColsInstr {
-public:
-  explicit EndInstr() : ColsInstr(OpCodeType::END) {
-    QUARK_PUSH_GETTER_SETTER(Stage);
-  }
-  QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
-};
-
 
 std::shared_ptr<ColsInstr> ColsInstr::create(OpCodeType opCode) {
   switch (opCode) {
-    case OpCodeType::ENB:  return std::shared_ptr<EnbInstr>(new EnbInstr);
-    case OpCodeType::WFI:  return std::shared_ptr<WfiInstr>(new WfiInstr);
-    case OpCodeType::TMS:  return std::shared_ptr<TmsInstr>(new TmsInstr);
-    case OpCodeType::TME:  return std::shared_ptr<TmeInstr>(new TmeInstr);
-    case OpCodeType::LCK:  return std::shared_ptr<LckInstr>(new LckInstr);
-    case OpCodeType::ULCK: return std::shared_ptr<UlckInstr>(new UlckInstr);
-    case OpCodeType::CALL: return std::shared_ptr<CallInstr>(new CallInstr);
-    case OpCodeType::STR:  return std::shared_ptr<StrInstr>(new StrInstr);
-    case OpCodeType::SET:  return std::shared_ptr<SetInstr>(new SetInstr);
-    case OpCodeType::END:  return std::shared_ptr<EndInstr>(new EndInstr);
+    case OpCodeType::ENB: return std::shared_ptr<EnbInstr>(new EnbInstr);
+    case OpCodeType::WFI: return std::shared_ptr<WfiInstr>(new WfiInstr);
+    case OpCodeType::TMS: return std::shared_ptr<TmsInstr>(new TmsInstr);
+    case OpCodeType::TME: return std::shared_ptr<TmeInstr>(new TmeInstr);
+    case OpCodeType::SET: return std::shared_ptr<SetInstr>(new SetInstr);
     default:                return nullptr;
   }
 }

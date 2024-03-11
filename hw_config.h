@@ -157,6 +157,9 @@ const size_t kSizeCoreDdr = 4UL << 30;
 const size_t kSizeSharedMem = 1UL << 20;
 const size_t kSizePerSpuCmd = 4;
 const size_t kSizePerVpuCmd = 4;
+const size_t kSizePerPelsCmd = 4;
+const size_t kSizePerColsCmd = 4;
+const size_t kSizePerChlsCmd = 4;
 
 const size_t kSizeSpuCmdMem = 2UL << 10;
 const size_t kSizeVpuCmdMem = 4UL << 10;
@@ -164,6 +167,9 @@ const size_t kSizeDmaCmdMem = 2UL << 10;
 const size_t kSizeAeCmdMem = 2UL << 10;
 const size_t kSizeTeCmdMem = 2UL << 10;
 const size_t kSizeSeCmdMem = 2UL << 10;
+const size_t kSizePelsCmdMem = 2UL << 10;
+const size_t kSizeColsCmdMem = 2UL << 10;
+const size_t kSizeChlsCmdMem = 2UL << 10;
 
 const size_t kNumVpuVectorReg = 4;
 const size_t kVpuVectorRegDepth = 64;
