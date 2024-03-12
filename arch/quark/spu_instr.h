@@ -19,7 +19,6 @@
 #include <map>
 #include <sstream>
 #include "instr_interface.h"
-#include "resources/com_register.h"
 
 #ifndef QUARK_GEN_GETTER_SETTER
 #define QUARK_GEN_GETTER_SETTER(field, high, low)\
@@ -106,7 +105,7 @@ public:
 
   static std::string opCodeToString(OpCodeType opCode)  {
     auto &opCodeStrMap = getOpCodeStrMap();
-    if(opCodeStrMap.find(opCode) != opCodeStrMap.end()) {
+    if (opCodeStrMap.find(opCode) != opCodeStrMap.end()) {
       return opCodeStrMap.at(opCode);
     }
     return "";
@@ -115,7 +114,7 @@ public:
   static OpCodeType stringToOpCode(std::string name) {
     auto &opCodeStrMap = getOpCodeStrMap();
     for(auto &it : opCodeStrMap) {
-      if(it.second == name)
+      if (it.second == name)
         return it.first;
     }
     return OpCodeType::INVALID;
@@ -148,9 +147,9 @@ public:
     std::vector<std::string> v;
     split(text, v);
 
-    if(v.size() != (setters.size()+1))
+    if (v.size() != (setters.size()+1))
       return false;
-    if((opCode = stringToOpCode(v[0])) == OpCodeType::INVALID)
+    if ((opCode = stringToOpCode(v[0])) == OpCodeType::INVALID)
       return false;
 
     for(size_t i = 0; i < setters.size(); i++) {
@@ -570,7 +569,7 @@ std::shared_ptr<SpuInstr> SpuInstr::create(OpCodeType opCode) {
     case OpCodeType::AAIP: return std::shared_ptr<AaipInstr>(new AaipInstr);
     case OpCodeType::DCFG: return std::shared_ptr<DcfgInstr>(new DcfgInstr);
     case OpCodeType::END:  return std::shared_ptr<EndInstr>(new EndInstr);
-    default:                return nullptr;
+    default: return nullptr;
   }
 }
 

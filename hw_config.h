@@ -18,17 +18,6 @@
 
 namespace antoum {
 
-enum class IsaOpcode {
-  NOP = 0x0,
-  LOADCFG,
-  CONV2D,
-  ACTIV,
-  TOPK,
-  TRANS,
-  GLBCPY,
-  DMAMV,
-};
-
 enum class MemoryType {
   ATCM = 0,
   BTCM,
@@ -66,6 +55,11 @@ enum class EngineType {
   SIZE = DMA7,
   INVALID = 255,
 };
+
+const size_t kRegionMode = 3;
+const size_t kGlbBankSize = 8;
+const bool kAssertGlbConflict = true;
+const size_t kFp8Format = 0;
 
 const size_t kNumCore = 4;
 const size_t kSizeMemPage = 8192;
