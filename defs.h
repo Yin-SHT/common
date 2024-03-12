@@ -1,6 +1,7 @@
 #ifndef __DEFS_H
 #define __DEFS_H
 
+#include <queue>
 #include <vector>
 #include <string>
 #include <iostream>
@@ -67,6 +68,8 @@ enum DataType {
   DTYPE_FP8_52,
   DTYPE_FP8_43,
   DTYPE_FP16,
+  DTYPE_INT4,
+  DTYPE_INT2
 };
 
 enum HwVersion {
@@ -104,6 +107,10 @@ struct TensorShapeDesc {
 };
 
 const std::map<std::string, DataType> dTypeMapping = {
+  { "i2",         DTYPE_INT2   },
+  { "int2",       DTYPE_INT2   },
+  { "i4",         DTYPE_INT4   },
+  { "int4",       DTYPE_INT4   },
   { "i8",         DTYPE_INT8   },
   { "int8",       DTYPE_INT8   },
   { "i16",        DTYPE_INT16  },
