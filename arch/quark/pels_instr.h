@@ -43,14 +43,15 @@ namespace pels {
 class PelsInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType {
-    ENB = 55,
-    WFI = 56,
-    TMS = 57,
-    TME = 58,
-    LCK = 59,
-    ULCK = 60,
-    CALL = 61,
-    STR = 62,
+    ENB = 54,
+    WFI = 55,
+    TMS = 56,
+    TME = 57,
+    LCK = 58,
+    ULCK = 59,
+    CALL = 60,
+    STR = 61,
+    SET = 62,
     END = 63,
     INVALID = 255
   };
@@ -65,6 +66,7 @@ public:
       {OpCodeType::ULCK, "ulck"},
       {OpCodeType::CALL, "call"},
       {OpCodeType::STR,  "str"},
+      {OpCodeType::SET,  "set"},
       {OpCodeType::END,  "end"},
     };
     return opCodeStrMap;
@@ -299,6 +301,18 @@ public:
   QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
 };
 
+class SetInstr : public PelsInstr {
+public:
+  explicit SetInstr() : PelsInstr(OpCodeType::SET) {
+    QUARK_PUSH_GETTER_SETTER(RDst);
+    QUARK_PUSH_GETTER_SETTER(Offset);
+    QUARK_PUSH_GETTER_SETTER(Imm);
+  }
+  QUARK_GEN_GETTER_SETTER(RDst, 25, 18);
+  QUARK_GEN_GETTER_SETTER(Offset, 17, 16);
+  QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
+};
+
 class EndInstr : public PelsInstr {
 public:
   explicit EndInstr() : PelsInstr(OpCodeType::END) {
@@ -318,6 +332,7 @@ std::shared_ptr<PelsInstr> PelsInstr::create(OpCodeType opCode) {
     case OpCodeType::ULCK: return std::shared_ptr<UlckInstr>(new UlckInstr);
     case OpCodeType::CALL: return std::shared_ptr<CallInstr>(new CallInstr);
     case OpCodeType::STR:  return std::shared_ptr<StrInstr>(new StrInstr);
+    case OpCodeType::SET:  return std::shared_ptr<SetInstr>(new SetInstr);
     case OpCodeType::END:  return std::shared_ptr<EndInstr>(new EndInstr);
     default:                return nullptr;
   }
