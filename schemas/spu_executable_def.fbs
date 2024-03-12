@@ -17,17 +17,14 @@ file_extension "spue";
 // Defines VI as virtual instruction that can be used to schedule engines.
 enum VI : uint32 { _unused_ }
 
-// Defines VI op code.
-enum ViOpCode : int8 { SET_ENABLE = 0, WAIT_DONE, START, END, CONFIG, PP, CPU }
-
 // Defines data type of SPU needed.
 enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, INT64, UINT8, UINT16, UINT32, 
   UINT64, INT24, UINT24, BF24, FP32, FP64, MF16, NF16, NF18, FP8_52, FP8_43, FP16 }
 
 // Defines engines of SPU, in which from 'CONFIG' to 'INVLIAD' are CPU Ops,
 // need to be handled by runtime.
-enum EngineType : int32 { DMA = 0, GCPY, PEA, VPU, TRANSPOSE, TOPK, ACTIV, DMA1, 
-  DMA2, DMA3, DMA4, DMA5, DMA6, DMA7, CONFIG, START, END, CPU, PP, INVLIAD = 255 }
+enum EngineType : int32 { SPU = 0, VPU, AE, TE, SE, DMA0, DMA1, DMA2, 
+  DMA3, DMA4, DMA5, DMA6, INVLIAD = 255 }
 
 // Defines accessing mode for argument.
 enum AccessMode : int32 { ReadOnly = 0, WriteOnly, ReadWrite }
@@ -59,7 +56,7 @@ table ScheduleVIDef {
   vi_list:FuncDataPointerDef;
 
   // All of ScheduleConfigDef would be stored here.
-  configs:[uint8];
+  configs:FuncDataPointerDef;
 
   // The current position of 'vi_list', which be used by runtime.
   vi_pos:int32;

@@ -181,7 +181,6 @@ inline std::string getEngineName(EngineType engine) {
     case EngineType::DMA4: return "DMA4";
     case EngineType::DMA5: return "DMA5";
     case EngineType::DMA6: return "DMA6";
-    case EngineType::DMA7: return "DMA7";
     default:               return "";
   }
 }
