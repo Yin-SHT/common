@@ -49,10 +49,29 @@ public:
     LCK = 58,
     ULCK = 59,
     CALL = 60,
-    STR = 61,
-    SET = 62,
+    SET = 61,
+    STR = 62,
     END = 63,
     INVALID = 255
+  };
+  enum class EnableType {
+    Engine = 0,
+    RVV = 1,
+    Instr = 2,
+    TCM = 3,
+  };
+  enum class InterruptType {
+    Engine = 0,
+    RVV = 1,
+    Instr = 2,
+    TCM = 3,
+    Unlock = 4,
+    RVV_Com = 4,
+  };
+  enum class StageType {
+    Input = 0,
+    Execution = 1,
+    Output = 2,
   };
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
@@ -64,8 +83,8 @@ public:
       {OpCodeType::LCK,  "lck"},
       {OpCodeType::ULCK, "ulck"},
       {OpCodeType::CALL, "call"},
-      {OpCodeType::STR,  "str"},
       {OpCodeType::SET,  "set"},
+      {OpCodeType::STR,  "str"},
       {OpCodeType::END,  "end"},
     };
     return opCodeStrMap;
@@ -189,28 +208,26 @@ protected:
 class EnbInstr : public PelsInstr {
 public:
   explicit EnbInstr() : PelsInstr(OpCodeType::ENB) {
-    QUARK_PUSH_GETTER_SETTER(SpuInstr);
-    QUARK_PUSH_GETTER_SETTER(VpuInstr);
-    QUARK_PUSH_GETTER_SETTER(TeInstr);
-    QUARK_PUSH_GETTER_SETTER(SeInstr);
-    QUARK_PUSH_GETTER_SETTER(AeInstr);
-    QUARK_PUSH_GETTER_SETTER(DmaInstr);
-    QUARK_PUSH_GETTER_SETTER(Send);
-    QUARK_PUSH_GETTER_SETTER(Recv);
+    QUARK_PUSH_GETTER_SETTER(EnType);
+    QUARK_PUSH_GETTER_SETTER(Dma5);
+    QUARK_PUSH_GETTER_SETTER(Dma4);
+    QUARK_PUSH_GETTER_SETTER(Dma3);
+    QUARK_PUSH_GETTER_SETTER(Dma2);
+    QUARK_PUSH_GETTER_SETTER(Dma1);
+    QUARK_PUSH_GETTER_SETTER(Dma0);
     QUARK_PUSH_GETTER_SETTER(Ae);
     QUARK_PUSH_GETTER_SETTER(Se);
     QUARK_PUSH_GETTER_SETTER(Te);
     QUARK_PUSH_GETTER_SETTER(Vpu);
     QUARK_PUSH_GETTER_SETTER(Spu);
   }
-  QUARK_GEN_GETTER_SETTER(SpuInstr, 7, 7);
-  QUARK_GEN_GETTER_SETTER(VpuInstr, 8, 8);
-  QUARK_GEN_GETTER_SETTER(TeInstr, 9, 9);
-  QUARK_GEN_GETTER_SETTER(SeInstr, 10, 10);
-  QUARK_GEN_GETTER_SETTER(AeInstr, 11, 11);
-  QUARK_GEN_GETTER_SETTER(DmaInstr, 12, 12);
-  QUARK_GEN_GETTER_SETTER(Send, 5, 5);
-  QUARK_GEN_GETTER_SETTER(Recv, 6, 6);
+  QUARK_GEN_GETTER_SETTER(EnType, 25, 23);
+  QUARK_GEN_GETTER_SETTER(Dma5, 10, 10);
+  QUARK_GEN_GETTER_SETTER(Dma4, 9, 9);
+  QUARK_GEN_GETTER_SETTER(Dma3, 8, 8);
+  QUARK_GEN_GETTER_SETTER(Dma2, 7, 7);
+  QUARK_GEN_GETTER_SETTER(Dma1, 6, 6);
+  QUARK_GEN_GETTER_SETTER(Dma0, 5, 5);
   QUARK_GEN_GETTER_SETTER(Ae, 4, 4);
   QUARK_GEN_GETTER_SETTER(Se, 3, 3);
   QUARK_GEN_GETTER_SETTER(Te, 2, 2);
@@ -221,31 +238,37 @@ public:
 class WfiInstr : public PelsInstr {
 public:
   explicit WfiInstr() : PelsInstr(OpCodeType::WFI) {
-    QUARK_PUSH_GETTER_SETTER(SpuInstr);
-    QUARK_PUSH_GETTER_SETTER(VpuInstr);
-    QUARK_PUSH_GETTER_SETTER(TeInstr);
-    QUARK_PUSH_GETTER_SETTER(SeInstr);
-    QUARK_PUSH_GETTER_SETTER(AeInstr);
-    QUARK_PUSH_GETTER_SETTER(DmaInstr);
-    QUARK_PUSH_GETTER_SETTER(Send);
-    QUARK_PUSH_GETTER_SETTER(Recv);
+    QUARK_PUSH_GETTER_SETTER(IrType);
+    QUARK_PUSH_GETTER_SETTER(Rvv3);
+    QUARK_PUSH_GETTER_SETTER(Rvv2);
+    QUARK_PUSH_GETTER_SETTER(Rvv1);
+    QUARK_PUSH_GETTER_SETTER(Rvv0);
+    QUARK_PUSH_GETTER_SETTER(Dma5);
+    QUARK_PUSH_GETTER_SETTER(Dma4);
+    QUARK_PUSH_GETTER_SETTER(Dma3);
+    QUARK_PUSH_GETTER_SETTER(Dma2);
+    QUARK_PUSH_GETTER_SETTER(Dma1);
+    QUARK_PUSH_GETTER_SETTER(Dma0);
+    QUARK_PUSH_GETTER_SETTER(Ae);
     QUARK_PUSH_GETTER_SETTER(Se);
     QUARK_PUSH_GETTER_SETTER(Te);
-    QUARK_PUSH_GETTER_SETTER(Ae);
     QUARK_PUSH_GETTER_SETTER(Vpu);
     QUARK_PUSH_GETTER_SETTER(Spu);
   }
-  QUARK_GEN_GETTER_SETTER(SpuInstr, 7, 7);
-  QUARK_GEN_GETTER_SETTER(VpuInstr, 8, 8);
-  QUARK_GEN_GETTER_SETTER(TeInstr, 9, 9);
-  QUARK_GEN_GETTER_SETTER(SeInstr, 10, 10);
-  QUARK_GEN_GETTER_SETTER(AeInstr, 11, 11);
-  QUARK_GEN_GETTER_SETTER(DmaInstr, 12, 12);
-  QUARK_GEN_GETTER_SETTER(Send, 5, 5);
-  QUARK_GEN_GETTER_SETTER(Recv, 6, 6);
-  QUARK_GEN_GETTER_SETTER(Se, 4, 4);
-  QUARK_GEN_GETTER_SETTER(Te, 3, 3);
-  QUARK_GEN_GETTER_SETTER(Ae, 2, 2);
+  QUARK_GEN_GETTER_SETTER(IrType, 25, 23);
+  QUARK_GEN_GETTER_SETTER(Rvv3, 18, 18);
+  QUARK_GEN_GETTER_SETTER(Rvv2, 17, 17);
+  QUARK_GEN_GETTER_SETTER(Rvv1, 16, 16);
+  QUARK_GEN_GETTER_SETTER(Rvv0, 15, 15);
+  QUARK_GEN_GETTER_SETTER(Dma5, 10, 10);
+  QUARK_GEN_GETTER_SETTER(Dma4, 9, 9);
+  QUARK_GEN_GETTER_SETTER(Dma3, 8, 8);
+  QUARK_GEN_GETTER_SETTER(Dma2, 7, 7);
+  QUARK_GEN_GETTER_SETTER(Dma1, 6, 6);
+  QUARK_GEN_GETTER_SETTER(Dma0, 5, 5);
+  QUARK_GEN_GETTER_SETTER(Ae, 4, 4);
+  QUARK_GEN_GETTER_SETTER(Se, 3, 3);
+  QUARK_GEN_GETTER_SETTER(Te, 2, 2);
   QUARK_GEN_GETTER_SETTER(Vpu, 1, 1);
   QUARK_GEN_GETTER_SETTER(Spu, 0, 0);
 };
@@ -292,14 +315,6 @@ public:
   QUARK_GEN_GETTER_SETTER(Func, 15, 0);
 };
 
-class StrInstr : public PelsInstr {
-public:
-  explicit StrInstr() : PelsInstr(OpCodeType::STR) {
-    QUARK_PUSH_GETTER_SETTER(Stage);
-  }
-  QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
-};
-
 class SetInstr : public PelsInstr {
 public:
   explicit SetInstr() : PelsInstr(OpCodeType::SET) {
@@ -310,6 +325,14 @@ public:
   QUARK_GEN_GETTER_SETTER(RDst, 25, 18);
   QUARK_GEN_GETTER_SETTER(Offset, 17, 16);
   QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
+};
+
+class StrInstr : public PelsInstr {
+public:
+  explicit StrInstr() : PelsInstr(OpCodeType::STR) {
+    QUARK_PUSH_GETTER_SETTER(Stage);
+  }
+  QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
 };
 
 class EndInstr : public PelsInstr {
@@ -330,8 +353,8 @@ std::shared_ptr<PelsInstr> PelsInstr::create(OpCodeType opCode) {
     case OpCodeType::LCK:  return std::shared_ptr<LckInstr>(new LckInstr);
     case OpCodeType::ULCK: return std::shared_ptr<UlckInstr>(new UlckInstr);
     case OpCodeType::CALL: return std::shared_ptr<CallInstr>(new CallInstr);
-    case OpCodeType::STR:  return std::shared_ptr<StrInstr>(new StrInstr);
     case OpCodeType::SET:  return std::shared_ptr<SetInstr>(new SetInstr);
+    case OpCodeType::STR:  return std::shared_ptr<StrInstr>(new StrInstr);
     case OpCodeType::END:  return std::shared_ptr<EndInstr>(new EndInstr);
     default: return nullptr;
   }

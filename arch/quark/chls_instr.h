@@ -46,8 +46,22 @@ public:
     WFI = 55,
     TMS = 56,
     TME = 57,
-    SET = 62,
+    SET = 61,
     INVALID = 255
+  };
+  enum class EnableType {
+    Engine = 0,
+    RVV = 1,
+    Instr = 2,
+    TCM = 3,
+  };
+  enum class InterruptType {
+    Engine = 0,
+    RVV = 1,
+    Instr = 2,
+    TCM = 3,
+    Unlock = 4,
+    RVV_Com = 4,
   };
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
@@ -179,11 +193,13 @@ protected:
 class EnbInstr : public ChlsInstr {
 public:
   explicit EnbInstr() : ChlsInstr(OpCodeType::ENB) {
+    QUARK_PUSH_GETTER_SETTER(EnType);
     QUARK_PUSH_GETTER_SETTER(Core3);
     QUARK_PUSH_GETTER_SETTER(Core2);
     QUARK_PUSH_GETTER_SETTER(Core1);
     QUARK_PUSH_GETTER_SETTER(Core0);
   }
+  QUARK_GEN_GETTER_SETTER(EnType, 25, 23);
   QUARK_GEN_GETTER_SETTER(Core3, 3, 3);
   QUARK_GEN_GETTER_SETTER(Core2, 2, 2);
   QUARK_GEN_GETTER_SETTER(Core1, 1, 1);
@@ -193,11 +209,13 @@ public:
 class WfiInstr : public ChlsInstr {
 public:
   explicit WfiInstr() : ChlsInstr(OpCodeType::WFI) {
+    QUARK_PUSH_GETTER_SETTER(IrType);
     QUARK_PUSH_GETTER_SETTER(Core3);
     QUARK_PUSH_GETTER_SETTER(Core2);
     QUARK_PUSH_GETTER_SETTER(Core1);
     QUARK_PUSH_GETTER_SETTER(Core0);
   }
+  QUARK_GEN_GETTER_SETTER(IrType, 25, 23);
   QUARK_GEN_GETTER_SETTER(Core3, 3, 3);
   QUARK_GEN_GETTER_SETTER(Core2, 2, 2);
   QUARK_GEN_GETTER_SETTER(Core1, 1, 1);

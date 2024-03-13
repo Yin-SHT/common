@@ -138,7 +138,6 @@ enum class EngineType {
   DMA3,
   DMA4,
   DMA5,
-  DMA6,
   SIZE,
   INVALID = 255,
 };
