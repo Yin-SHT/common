@@ -161,9 +161,9 @@ inline std::string getDdrName(size_t coreId) {
   return ss.str();
 }
 
-inline std::string getSharedMemoryName(size_t coreId, size_t clusterId) {
+inline std::string getSharedMemoryName(size_t coreId, size_t peId) {
   std::stringstream ss;
-  ss << "Core" << coreId << "." << "Cluster" << clusterId << "." << "SharedMemory";
+  ss << "Core" << coreId << "." << "Pe" << peId << "." << "SharedMemory";
   return ss.str();
 }
 
@@ -184,9 +184,9 @@ inline std::string getEngineName(EngineType engine) {
   }
 }
 
-inline std::string getCmdMemoryName(size_t coreId, size_t clusterId, EngineType engine) {
+inline std::string getCmdMemoryName(size_t coreId, size_t peId, EngineType engine) {
   std::stringstream ss;
-  ss << "Core" << coreId << "." << "Cluster" << clusterId << "." 
+  ss << "Core" << coreId << "." << "Pe" << peId << "." 
     << getEngineName(engine) << "." << "CmdMemory";
   return ss.str();
 }

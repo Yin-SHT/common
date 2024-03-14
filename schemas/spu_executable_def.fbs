@@ -142,9 +142,9 @@ table ArgumentRefDef {
   dma_locations:[CmdsLocDef];
 }
 
-table ClusterDef {
-  // Specified cluster_id to execute, can be executed on any Cluster if it's -1.
-  cluster_id:int32;
+table PeDef {
+  // Specified pe_id to execute, can be executed on any PE if it's -1.
+  pe_id:int32;
 
   // All of constant datas
   constants:ConstantsDef;
@@ -158,15 +158,15 @@ table ClusterDef {
   // It is used by low-level runtime to execute the whole executable function
   schedule:ScheduleDef;
 
-  // Argument references for current Cluster.
+  // Argument references for current PE.
   arg_refs:[ArgumentRefDef];
 
   // A map of native Ops to multi locations.
   op_locations:[OpLocDef];
 }
 
-// Each executable function would include up to 16 Cluster. We select a Core
-// to execute the function, and dispatch it to different Cluster.
+// Each executable function would include up to 16 PE. We select a Core
+// to execute the function, and dispatch it to different PE.
 table ExecutableFuncDef {
   // Specified core_id to execute, can be executed on any Core if it's -1.
   core_id:int32;
@@ -174,8 +174,8 @@ table ExecutableFuncDef {
   // A list of arguments of the function.
   args:[ArgumentDef];
 
-  // A list of Cluster to dispath.
-  clusters:[ClusterDef];
+  // A list of PE to dispath.
+  pes:[PeDef];
 }
 
 table ExecutableDef {
