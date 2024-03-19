@@ -25,37 +25,38 @@ namespace quark {
 #define ASIC_SPU_P_PROCS_NUM 8
 #define ASIC_SPU_DEFAULT_BANK_SIZE 64
 #define ASIC_SPU_INSTR_PIPELINE_NUM 5
+#define ASIC_SPU_REG_START_IDX 0
 
 const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { // TBD
     {"ADDRESS", {
-                {"SRC_TSR",     2},
-                {"SRC_WGT",     10},
-                {"SRC_MI",      18},
-                {"SRC_MO",      26},
-                {"SRC_QNT",     34},
-                {"SRC_ACC",     42},
-                {"DST_TSR",     110}
+                {"SRC_TSR",     ASIC_SPU_REG_START_IDX},
+                {"SRC_WGT",     ASIC_SPU_REG_START_IDX+8},
+                {"SRC_MI",      ASIC_SPU_REG_START_IDX+16},
+                {"SRC_MO",      ASIC_SPU_REG_START_IDX+24},
+                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+32},
+                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+40},
+                {"DST_TSR",     ASIC_SPU_REG_START_IDX+48}
                 }}, // type7 x loop8
     {"STRIDE",  {
-                {"SRC_TSR",     50},
-                {"SRC_WGT",     58},
-                {"SRC_MI",      66},
-                {"SRC_MO",      74},
-                {"SRC_QNT",     82},
-                {"SRC_ACC",     90},
-                {"DST_TSR",     118}
+                {"SRC_TSR",     ASIC_SPU_REG_START_IDX+56},
+                {"SRC_WGT",     ASIC_SPU_REG_START_IDX+64},
+                {"SRC_MI",      ASIC_SPU_REG_START_IDX+72},
+                {"SRC_MO",      ASIC_SPU_REG_START_IDX+80},
+                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+88},
+                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+96},
+                {"DST_TSR",     ASIC_SPU_REG_START_IDX+104}
                 }}, // type7 x loop8
     {"LENGTH",  {
-                {"SRC_TSR",     98},
-                {"SRC_WGT",     100},
-                {"SRC_MI",      102},
-                {"SRC_MO",      104},
-                {"SRC_QNT",     106},
-                {"SRC_ACC",     108},
-                {"DST_TSR",     126}
+                {"SRC_TSR",     ASIC_SPU_REG_START_IDX+112},
+                {"SRC_WGT",     ASIC_SPU_REG_START_IDX+114},
+                {"SRC_MI",      ASIC_SPU_REG_START_IDX+115},
+                {"SRC_MO",      ASIC_SPU_REG_START_IDX+116},
+                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+117},
+                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+118},
+                {"DST_TSR",     ASIC_SPU_REG_START_IDX+119}
                 }},  // type7 x 2
     {"CTRL",    {
-                {"LOOP_COUNT",  128},
+                {"LOOP_COUNT",  ASIC_SPU_REG_START_IDX+258},
                 }}
 };
 
