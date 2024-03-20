@@ -50,10 +50,10 @@ const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { 
                 {"SRC_TSR",     ASIC_SPU_REG_START_IDX+112},
                 {"SRC_WGT",     ASIC_SPU_REG_START_IDX+114},
                 {"SRC_MI",      ASIC_SPU_REG_START_IDX+115},
-                {"SRC_MO",      ASIC_SPU_REG_START_IDX+116},
-                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+117},
-                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+118},
-                {"DST_TSR",     ASIC_SPU_REG_START_IDX+119}
+                {"SRC_MO",      ASIC_SPU_REG_START_IDX+117},
+                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+119},
+                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+120},
+                {"DST_TSR",     ASIC_SPU_REG_START_IDX+122}
                 }},  // type7 x 2
     {"CTRL",    {
                 {"LOOP_COUNT",  ASIC_SPU_REG_START_IDX+258},
