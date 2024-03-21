@@ -157,37 +157,37 @@ namespace quark {
 
 inline std::string getDdrName(size_t coreId) {
   std::stringstream ss;
-  ss << "Core" << coreId << "." << "DDR";
+  ss << "core" << coreId << "." << "ddr";
   return ss.str();
 }
 
 inline std::string getSharedMemoryName(size_t coreId, size_t peId) {
   std::stringstream ss;
-  ss << "Core" << coreId << "." << "Pe" << peId << "." << "SharedMemory";
+  ss << "core" << coreId << "." << "pe" << peId << "." << "sm";
   return ss.str();
 }
 
 inline std::string getEngineName(EngineType engine) {
   switch  (engine) {
-    case EngineType::SPU:  return "SPU";
-    case EngineType::VPU:  return "VPU";
-    case EngineType::AE:   return "AE";
-    case EngineType::TE:   return "TE";
-    case EngineType::SE:   return "SE";
-    case EngineType::DMA0: return "DMA0";
-    case EngineType::DMA1: return "DMA1";
-    case EngineType::DMA2: return "DMA2";
-    case EngineType::DMA3: return "DMA3";
-    case EngineType::DMA4: return "DMA4";
-    case EngineType::DMA5: return "DMA5";
+    case EngineType::SPU:  return "spu";
+    case EngineType::VPU:  return "vpu";
+    case EngineType::AE:   return "ae";
+    case EngineType::TE:   return "te";
+    case EngineType::SE:   return "se";
+    case EngineType::DMA0: return "dma0";
+    case EngineType::DMA1: return "dma1";
+    case EngineType::DMA2: return "dma2";
+    case EngineType::DMA3: return "dma3";
+    case EngineType::DMA4: return "dma4";
+    case EngineType::DMA5: return "dma5";
     default:               return "";
   }
 }
 
 inline std::string getCmdMemoryName(size_t coreId, size_t peId, EngineType engine) {
   std::stringstream ss;
-  ss << "Core" << coreId << "." << "Pe" << peId << "." 
-    << getEngineName(engine) << "." << "CmdMemory";
+  ss << "core" << coreId << "." << "pe" << peId << "." 
+    << getEngineName(engine) << "." << "cmd";
   return ss.str();
 }
 
