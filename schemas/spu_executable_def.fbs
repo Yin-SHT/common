@@ -51,29 +51,27 @@ table FuncDataPointerDef {
   length:int32;
 }
 
-table ScheduleVIDef {
+table PelsStageDef {
   // A list of VIs.
   vi_list:FuncDataPointerDef;
 
   // All of ScheduleConfigDef would be stored here.
   configs:FuncDataPointerDef;
-
-  // The current position of 'vi_list', which be used by runtime.
-  vi_pos:int32;
-
-  // The current position of 'configs', which be used by runtime.
-  config_pos:int32;
 }
 
-table ScheduleDef {
+table PelsDef {
   // All of VI are divided into input/main/output for forming pipeline during runtime.
   // The more details please refer to [http://wiki.moffett.local:8090/pages/viewpage.action?pageId=58467128]
-  input:ScheduleVIDef;
-  main:ScheduleVIDef;
-  output:ScheduleVIDef;
+  input:PelsStageDef;
+  main:PelsStageDef;
+  output:PelsStageDef;
 
   // configuration for initialization of SPU.
   init_config:[uint8];
+}
+
+table ColsDef {
+  vi_list:FuncDataPointerDef;
 }
 
 // Source code location denoted by a file name and line within that file.
@@ -156,7 +154,7 @@ table PeDef {
   dmas_cmds:[DmaCmdsDef];
 
   // It is used by low-level runtime to execute the whole executable function
-  schedule:ScheduleDef;
+  pels:PelsDef;
 
   // Argument references for current PE.
   arg_refs:[ArgumentRefDef];
@@ -176,6 +174,9 @@ table ExecutableFuncDef {
 
   // A list of PE to dispath.
   pes:[PeDef];
+
+  // It is used by Core-Level Scheduler
+  cols:ColsDef;
 }
 
 table ExecutableDef {

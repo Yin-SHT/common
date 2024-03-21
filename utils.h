@@ -43,61 +43,6 @@
 #include "defs.h"
 #include "hw_config.h"
 
-struct FieldMappingEntry {
-  uint8_t *mem;
-  size_t m_end;
-  size_t m_beg;
-  size_t f_end;
-  size_t f_beg;
-  uint8_t *field;
-  
-  explicit FieldMappingEntry(void *_mem, size_t _m_end, size_t _m_beg, 
-    void *_field, size_t _f_end, size_t _f_beg) :
-    mem((uint8_t *)_mem), m_end(_m_end), m_beg(_m_beg), 
-    f_end(_f_end), f_beg(_f_beg), field((uint8_t *)_field) {
-    assert(m_end >= m_beg);
-    assert(f_end >= f_beg);
-    assert(m_end-_m_beg == f_end-f_beg);
-  }
-  
-  void FieldToMem() {
-    for(size_t i = m_beg, j = f_beg; i <= m_end; i+=8, j+=8) {
-      SetByte(mem, i, m_end+1, GetByte(field, j, f_end+1));
-    }
-  }
-  
-  void MemToField() {
-    for(size_t i = f_beg, j = m_beg; i <= f_end; i+=8, j+=8) {
-      SetByte(field, i, f_end+1, GetByte(mem, j, m_end+1));
-    }
-  }
-
-protected:
-  static uint8_t GetByte(uint8_t *buf, size_t beg, size_t end) {
-    size_t idx = beg/8;
-    uint8_t ofs = beg%8;
-    size_t len = std::min<size_t>(8, end-beg);
-    if(((size_t)8-ofs) < len) {
-      return (buf[idx] >> ofs) | (buf[idx+1] << ((size_t)8-ofs));
-    }
-    return buf[idx] >> ofs;
-  }
-  
-  static void SetByte(uint8_t *buf, size_t beg, size_t end, uint8_t dat) {
-    size_t idx = beg/8;
-    uint8_t ofs = beg%8;
-    size_t len = std::min<size_t>(8, end-beg);
-    if(((size_t)8-ofs) < len) {
-      size_t len2 = len - ((size_t)8-ofs);
-      uint8_t msk = (1<<len2)-1;
-      len -= len2;
-      buf[idx+1] = (buf[idx+1] & (~msk)) | ((dat >> len) & msk);
-    }
-    uint8_t msk = ((1<<len)-1) << ofs;
-    buf[idx] = (buf[idx] & (~msk)) | ((dat << ofs) & msk);
-  }
-};
-
 std::vector<uint64_t> bin8ToBin64(const std::vector<uint8_t> &bin8);
 std::vector<uint8_t> bin64ToBin8(const std::vector<uint64_t> &bin64);
 std::vector<uint32_t> bin8ToBin32(const std::vector<uint8_t> &bin8);
