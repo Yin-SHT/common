@@ -89,13 +89,13 @@ struct TensorDesc {
 
 struct TensorShape {
   TensorShape() {}
-  TensorShape(uint32_t n, uint32_t h, uint32_t w, uint32_t c):
+  TensorShape(int64_t n, int64_t h, int64_t w, int64_t c):
     N(n), H(h), W(w), C(c) {}
-  uint32_t N;
-  uint32_t H;
-  uint32_t W;
-  uint32_t C;
-  std::vector<uint32_t> dims;
+  int64_t N;
+  int64_t H;
+  int64_t W;
+  int64_t C;
+  std::vector<int64_t> dims;
 };
 
 struct TensorShapeDesc {
