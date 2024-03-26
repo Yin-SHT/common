@@ -125,6 +125,9 @@ inline std::string getEngineName(EngineType engine) {
     case EngineType::DMA3: return "dma3";
     case EngineType::DMA4: return "dma4";
     case EngineType::DMA5: return "dma5";
+    case EngineType::PELS: return "pels";
+    case EngineType::COLS: return "cols";
+    case EngineType::CHLS: return "chls";
     default:               return "";
   }
 }
