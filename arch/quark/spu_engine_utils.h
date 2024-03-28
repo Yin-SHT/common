@@ -61,23 +61,25 @@ const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { 
 };
 
 const std::map<std::string, uint32_t> spuRegAddrMaskEncode = {
-    {"SRC_TSR",     0},
-    {"SRC_WGT",     1},
-    {"SRC_MI",      2},
-    {"SRC_MO",      3},
-    {"SRC_QNT",     4},
-    {"SRC_ACC",     5},
-    {"DST_TSR",     6}
+    {"SRC_TSR",     7},
+    {"SRC_WGT",     6},
+    {"SRC_MI",      5},
+    {"SRC_MO",      4},
+    {"SRC_QNT",     3},
+    {"SRC_ACC",     2},
+    {"DST_TSR",     1},
+    {"NOT_DEFINE",  0}
 };
 
 const std::map<uint32_t, std::string> spuRegAddrMaskDecode = {
-    {0,    "SRC_TSR"},
-    {1,    "SRC_WGT"},
-    {2,    "SRC_MI"},
-    {3,    "SRC_MO"},
-    {4,    "SRC_QNT"},
-    {5,    "SRC_ACC"},
-    {6,    "DST_TSR"}
+    {7,    "SRC_TSR"},
+    {6,    "SRC_WGT"},
+    {5,    "SRC_MI"},
+    {4,    "SRC_MO"},
+    {3,    "SRC_QNT"},
+    {2,    "SRC_ACC"},
+    {1,    "DST_TSR"},
+    {0,    "NOT_DEFINE"}
 };
 
 const std::map<DataType,uint32_t> spuDtypeEncode = {
