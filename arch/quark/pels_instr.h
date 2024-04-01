@@ -68,11 +68,6 @@ public:
     Unlock = 4,
     RVV_Com = 5,
   };
-  enum class StageType {
-    Input = 0,
-    Execution = 1,
-    Output = 2,
-  };
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
