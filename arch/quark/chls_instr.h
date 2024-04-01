@@ -42,11 +42,11 @@ namespace chls {
 class ChlsInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType {
-    ENB = 54,
-    WFI = 55,
-    TMS = 56,
-    TME = 57,
-    SET = 61,
+    SET = 19,
+    TMS = 55,
+    TME = 56,
+    ENB = 57,
+    WFI = 58,
     INVALID = 255
   };
   enum class EnableType {
@@ -61,16 +61,16 @@ public:
     Instr = 2,
     TCM = 3,
     Unlock = 4,
-    RVV_Com = 4,
+    RVV_Com = 5,
   };
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
-      {OpCodeType::ENB, "enb"},
-      {OpCodeType::WFI, "wfi"},
+      {OpCodeType::SET, "set"},
       {OpCodeType::TMS, "tms"},
       {OpCodeType::TME, "tme"},
-      {OpCodeType::SET, "set"},
+      {OpCodeType::ENB, "enb"},
+      {OpCodeType::WFI, "wfi"},
     };
     return opCodeStrMap;
   }
@@ -190,6 +190,34 @@ protected:
   std::vector<uint8_t> binary;
 };
 
+class SetInstr : public ChlsInstr {
+public:
+  explicit SetInstr() : ChlsInstr(OpCodeType::SET) {
+    QUARK_PUSH_GETTER_SETTER(RDst);
+    QUARK_PUSH_GETTER_SETTER(Offset);
+    QUARK_PUSH_GETTER_SETTER(Imm);
+  }
+  QUARK_GEN_GETTER_SETTER(RDst, 25, 18);
+  QUARK_GEN_GETTER_SETTER(Offset, 17, 16);
+  QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
+};
+
+class TmsInstr : public ChlsInstr {
+public:
+  explicit TmsInstr() : ChlsInstr(OpCodeType::TMS) {
+    QUARK_PUSH_GETTER_SETTER(EventId);
+  }
+  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
+};
+
+class TmeInstr : public ChlsInstr {
+public:
+  explicit TmeInstr() : ChlsInstr(OpCodeType::TME) {
+    QUARK_PUSH_GETTER_SETTER(EventId);
+  }
+  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
+};
+
 class EnbInstr : public ChlsInstr {
 public:
   explicit EnbInstr() : ChlsInstr(OpCodeType::ENB) {
@@ -222,42 +250,14 @@ public:
   QUARK_GEN_GETTER_SETTER(Core0, 0, 0);
 };
 
-class TmsInstr : public ChlsInstr {
-public:
-  explicit TmsInstr() : ChlsInstr(OpCodeType::TMS) {
-    QUARK_PUSH_GETTER_SETTER(EventId);
-  }
-  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
-};
-
-class TmeInstr : public ChlsInstr {
-public:
-  explicit TmeInstr() : ChlsInstr(OpCodeType::TME) {
-    QUARK_PUSH_GETTER_SETTER(EventId);
-  }
-  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
-};
-
-class SetInstr : public ChlsInstr {
-public:
-  explicit SetInstr() : ChlsInstr(OpCodeType::SET) {
-    QUARK_PUSH_GETTER_SETTER(RDst);
-    QUARK_PUSH_GETTER_SETTER(Offset);
-    QUARK_PUSH_GETTER_SETTER(Imm);
-  }
-  QUARK_GEN_GETTER_SETTER(RDst, 25, 18);
-  QUARK_GEN_GETTER_SETTER(Offset, 17, 16);
-  QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
-};
-
 
 std::shared_ptr<ChlsInstr> ChlsInstr::create(OpCodeType opCode) {
   switch (opCode) {
-    case OpCodeType::ENB: return std::shared_ptr<EnbInstr>(new EnbInstr);
-    case OpCodeType::WFI: return std::shared_ptr<WfiInstr>(new WfiInstr);
+    case OpCodeType::SET: return std::shared_ptr<SetInstr>(new SetInstr);
     case OpCodeType::TMS: return std::shared_ptr<TmsInstr>(new TmsInstr);
     case OpCodeType::TME: return std::shared_ptr<TmeInstr>(new TmeInstr);
-    case OpCodeType::SET: return std::shared_ptr<SetInstr>(new SetInstr);
+    case OpCodeType::ENB: return std::shared_ptr<EnbInstr>(new EnbInstr);
+    case OpCodeType::WFI: return std::shared_ptr<WfiInstr>(new WfiInstr);
     default: return nullptr;
   }
 }
