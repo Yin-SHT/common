@@ -24,14 +24,13 @@ enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, INT64, UINT8, UINT16, UINT
 // Defines engines of SPU, in which from 'CONFIG' to 'INVLIAD' are CPU Ops,
 // need to be handled by runtime.
 enum EngineType : int32 { SPU = 0, VPU, AE, TE, SE, DMA0, DMA1, DMA2, 
-  DMA3, DMA4, DMA5, DMA6, INVLIAD = 255 }
+  DMA3, DMA4, DMA5, INVLIAD = 255 }
 
 // Defines accessing mode for argument.
 enum AccessMode : int32 { ReadOnly = 0, WriteOnly, ReadWrite }
 
-// Defines the function of some DMAs. By default, we specify DMA5 as input, 
-// DMA6 as output.
-enum DmaFunc : int32 { NORMAL = 0, INPUT, OUTPUT }
+// Defines the function of some DMAs.
+enum DmaFunc : int32 { IN = 0, OUT, SEND, RECV, LOAD, STORE }
 
 // Some CPU Ops like 'CONFIG'/'CPU'/'PP' would need auxiliary configuration.
 // We will gather all of such configurations by order in VI.
@@ -71,6 +70,10 @@ table PelsDef {
 }
 
 table ColsDef {
+  vi_list:FuncDataPointerDef;
+}
+
+table ChlsDef {
   vi_list:FuncDataPointerDef;
 }
 
@@ -163,20 +166,28 @@ table PeDef {
   op_locations:[OpLocDef];
 }
 
-// Each executable function would include up to 16 PE. We select a Core
-// to execute the function, and dispatch it to different PE.
-table ExecutableFuncDef {
+table CoreDef {
   // Specified core_id to execute, can be executed on any Core if it's -1.
   core_id:int32;
-
-  // A list of arguments of the function.
-  args:[ArgumentDef];
 
   // A list of PE to dispath.
   pes:[PeDef];
 
   // It is used by Core-Level Scheduler
   cols:ColsDef;
+}
+
+// Each executable function would include up to 16 PE. We select a Core
+// to execute the function, and dispatch it to different PE.
+table ExecutableFuncDef {
+  // A list of arguments of the function.
+  args:[ArgumentDef];
+
+  // A list of Core to dispath.
+  cores:[CoreDef];
+
+  // It is used by Chip-Level Scheduler
+  chls:ChlsDef;
 }
 
 table ExecutableDef {

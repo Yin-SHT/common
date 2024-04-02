@@ -42,14 +42,14 @@ namespace pels {
 class PelsInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType {
-    ENB = 54,
-    WFI = 55,
-    TMS = 56,
-    TME = 57,
-    LCK = 58,
-    ULCK = 59,
-    CALL = 60,
-    SET = 61,
+    SET = 19,
+    TMS = 55,
+    TME = 56,
+    ENB = 57,
+    WFI = 58,
+    LCK = 59,
+    ULCK = 60,
+    CALL = 61,
     STR = 62,
     END = 63,
     INVALID = 255
@@ -66,24 +66,19 @@ public:
     Instr = 2,
     TCM = 3,
     Unlock = 4,
-    RVV_Com = 4,
-  };
-  enum class StageType {
-    Input = 0,
-    Execution = 1,
-    Output = 2,
+    RVV_Com = 5,
   };
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
-      {OpCodeType::ENB,  "enb"},
-      {OpCodeType::WFI,  "wfi"},
+      {OpCodeType::SET,  "set"},
       {OpCodeType::TMS,  "tms"},
       {OpCodeType::TME,  "tme"},
+      {OpCodeType::ENB,  "enb"},
+      {OpCodeType::WFI,  "wfi"},
       {OpCodeType::LCK,  "lck"},
       {OpCodeType::ULCK, "ulck"},
       {OpCodeType::CALL, "call"},
-      {OpCodeType::SET,  "set"},
       {OpCodeType::STR,  "str"},
       {OpCodeType::END,  "end"},
     };
@@ -205,6 +200,34 @@ protected:
   std::vector<uint8_t> binary;
 };
 
+class SetInstr : public PelsInstr {
+public:
+  explicit SetInstr() : PelsInstr(OpCodeType::SET) {
+    QUARK_PUSH_GETTER_SETTER(RDst);
+    QUARK_PUSH_GETTER_SETTER(Offset);
+    QUARK_PUSH_GETTER_SETTER(Imm);
+  }
+  QUARK_GEN_GETTER_SETTER(RDst, 25, 18);
+  QUARK_GEN_GETTER_SETTER(Offset, 17, 16);
+  QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
+};
+
+class TmsInstr : public PelsInstr {
+public:
+  explicit TmsInstr() : PelsInstr(OpCodeType::TMS) {
+    QUARK_PUSH_GETTER_SETTER(EventId);
+  }
+  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
+};
+
+class TmeInstr : public PelsInstr {
+public:
+  explicit TmeInstr() : PelsInstr(OpCodeType::TME) {
+    QUARK_PUSH_GETTER_SETTER(EventId);
+  }
+  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
+};
+
 class EnbInstr : public PelsInstr {
 public:
   explicit EnbInstr() : PelsInstr(OpCodeType::ENB) {
@@ -273,22 +296,6 @@ public:
   QUARK_GEN_GETTER_SETTER(Spu, 0, 0);
 };
 
-class TmsInstr : public PelsInstr {
-public:
-  explicit TmsInstr() : PelsInstr(OpCodeType::TMS) {
-    QUARK_PUSH_GETTER_SETTER(EventId);
-  }
-  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
-};
-
-class TmeInstr : public PelsInstr {
-public:
-  explicit TmeInstr() : PelsInstr(OpCodeType::TME) {
-    QUARK_PUSH_GETTER_SETTER(EventId);
-  }
-  QUARK_GEN_GETTER_SETTER(EventId, 3, 0);
-};
-
 class LckInstr : public PelsInstr {
 public:
   explicit LckInstr() : PelsInstr(OpCodeType::LCK) {
@@ -315,45 +322,29 @@ public:
   QUARK_GEN_GETTER_SETTER(Func, 15, 0);
 };
 
-class SetInstr : public PelsInstr {
-public:
-  explicit SetInstr() : PelsInstr(OpCodeType::SET) {
-    QUARK_PUSH_GETTER_SETTER(RDst);
-    QUARK_PUSH_GETTER_SETTER(Offset);
-    QUARK_PUSH_GETTER_SETTER(Imm);
-  }
-  QUARK_GEN_GETTER_SETTER(RDst, 25, 18);
-  QUARK_GEN_GETTER_SETTER(Offset, 17, 16);
-  QUARK_GEN_GETTER_SETTER(Imm, 15, 0);
-};
-
 class StrInstr : public PelsInstr {
 public:
   explicit StrInstr() : PelsInstr(OpCodeType::STR) {
-    QUARK_PUSH_GETTER_SETTER(Stage);
   }
-  QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
 };
 
 class EndInstr : public PelsInstr {
 public:
   explicit EndInstr() : PelsInstr(OpCodeType::END) {
-    QUARK_PUSH_GETTER_SETTER(Stage);
   }
-  QUARK_GEN_GETTER_SETTER(Stage, 25, 24);
 };
 
 
 std::shared_ptr<PelsInstr> PelsInstr::create(OpCodeType opCode) {
   switch (opCode) {
-    case OpCodeType::ENB:  return std::shared_ptr<EnbInstr>(new EnbInstr);
-    case OpCodeType::WFI:  return std::shared_ptr<WfiInstr>(new WfiInstr);
+    case OpCodeType::SET:  return std::shared_ptr<SetInstr>(new SetInstr);
     case OpCodeType::TMS:  return std::shared_ptr<TmsInstr>(new TmsInstr);
     case OpCodeType::TME:  return std::shared_ptr<TmeInstr>(new TmeInstr);
+    case OpCodeType::ENB:  return std::shared_ptr<EnbInstr>(new EnbInstr);
+    case OpCodeType::WFI:  return std::shared_ptr<WfiInstr>(new WfiInstr);
     case OpCodeType::LCK:  return std::shared_ptr<LckInstr>(new LckInstr);
     case OpCodeType::ULCK: return std::shared_ptr<UlckInstr>(new UlckInstr);
     case OpCodeType::CALL: return std::shared_ptr<CallInstr>(new CallInstr);
-    case OpCodeType::SET:  return std::shared_ptr<SetInstr>(new SetInstr);
     case OpCodeType::STR:  return std::shared_ptr<StrInstr>(new StrInstr);
     case OpCodeType::END:  return std::shared_ptr<EndInstr>(new EndInstr);
     default: return nullptr;
