@@ -139,6 +139,20 @@ inline std::string getCmdMemoryName(size_t coreId, size_t peId, EngineType engin
   return ss.str();
 }
 
+inline std::string getReadFifoName(size_t coreId, size_t peId) {
+  std::stringstream ss;
+  ss << "/tmp/quark_sim/";
+  ss << "core" << coreId << "." << "pe" << peId << "." << "read_fifo";
+  return ss.str();
+}
+
+inline std::string getWriteFifoName(size_t coreId, size_t peId) {
+  std::stringstream ss;
+  ss << "/tmp/quark_sim/";
+  ss << "core" << coreId << "." << "pe" << peId << "." << "write_fifo";
+  return ss.str();
+}
+
 };
 
 #endif
