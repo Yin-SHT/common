@@ -149,6 +149,7 @@ const size_t kNumCore = 4;
 const size_t kSizeMemPage = 8192;
 const size_t kNumPe = 16;
 const size_t kSizeDdr = 192UL << 30;
+const size_t kSizeTcm = 256UL << 10;
 const size_t kSizeSharedMem = 1UL << 20;
 const size_t kSizePerSpuCmd = 4;
 const size_t kSizePerVpuCmd = 4;
