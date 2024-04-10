@@ -139,17 +139,31 @@ inline std::string getCmdMemoryName(size_t coreId, size_t peId, EngineType engin
   return ss.str();
 }
 
-inline std::string getReadFifoName(size_t coreId, size_t peId) {
+inline std::string getTcmName(size_t coreId, size_t peId) {
   std::stringstream ss;
-  ss << "/tmp/quark_sim/";
-  ss << "core" << coreId << "." << "pe" << peId << "." << "read_fifo";
+  ss << "core" << coreId << "." << "pe" << peId << "." << "tcm";
   return ss.str();
 }
 
-inline std::string getWriteFifoName(size_t coreId, size_t peId) {
+inline std::string getReadFifoName(size_t coreId=-1, size_t peId=-1) {
   std::stringstream ss;
   ss << "/tmp/quark_sim/";
-  ss << "core" << coreId << "." << "pe" << peId << "." << "write_fifo";
+  if (coreId != size_t(-1))
+    ss << "core" << coreId << ".";
+  if (peId != size_t(-1))
+    ss << "pe" << peId << ".";
+  ss << "read_fifo";
+  return ss.str();
+}
+
+inline std::string getWriteFifoName(size_t coreId=-1, size_t peId=-1) {
+  std::stringstream ss;
+  ss << "/tmp/quark_sim/";
+  if (coreId != size_t(-1))
+    ss << "core" << coreId << ".";
+  if (peId != size_t(-1))
+    ss << "pe" << peId << ".";
+  ss << "write_fifo";
   return ss.str();
 }
 
