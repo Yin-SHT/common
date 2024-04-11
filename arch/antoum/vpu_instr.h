@@ -41,11 +41,9 @@ extern void split(const std::string &text, std::vector<std::string> &v);
 namespace antoum {
 
 enum class AluType {
-  BF16_ALU = 0,
-  SCALAR_ALU,
+  SCALAR_ALU = 0,
   FP32_ALU,
   INT32_ALU,
-  FP16_ALU,
 };
 
 enum class DataMode {
