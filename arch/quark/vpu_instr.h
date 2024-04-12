@@ -24,9 +24,9 @@
 #define VPU_GEN_GETTER_SETTER(field, high, low)\
   uint32_t get##field() { return (fields >> low) & (((uint32_t)1<<(high-low+1))-1); }\
   void set##field(uint32_t field) {\
-    n##field = field;\
     uint32_t m = (((uint32_t)1<<(high-low+1))-1)<<low;\
-    fields = (fields&(~m)) | (field<<low)&m; }
+    fields = (fields&(~m)) | (field<<low)&m;\
+    n##field = field; }
 #endif
 
 #ifndef VPU_PUSH_GETTER_SETTER
@@ -72,331 +72,330 @@ public:
     SET_DEQUANTIZE = 6,
     SET_DEQUANTIZE2 = 7,
     SET_FS = 8,
-    SET_CMASK_HIGH = 9,
-    NOP = 10,
-    OP_END = 11,
-    I8_DLOAD = 12,
-    I8_LOAD = 13,
-    U8_DLOAD = 14,
-    U8_LOAD = 15,
-    E43_DLOAD = 16,
-    E43_LOAD = 17,
-    E52_DLOAD = 18,
-    E52_LOAD = 19,
-    I16_DLOAD = 20,
-    I16_LOAD = 21,
-    F16_DLOAD = 22,
-    F16_LOAD = 23,
-    F32_DLOAD = 24,
-    F32_LOAD = 25,
-    I32_DLOAD = 26,
-    I32_LOAD = 27,
-    I8_STORE = 28,
-    U8_STORE = 29,
-    E43_STORE = 30,
-    E52_STORE = 31,
-    I16_STORE = 32,
-    F16_STORE = 33,
-    F32_STORE = 34,
-    I32_I32STORE = 35,
-    F32_ADD = 36,
-    F32_SUB = 37,
-    F32_MUL = 38,
-    F32_MAX = 39,
-    F32_MIN = 40,
-    F32_GREATER = 41,
-    F32_GREATER_EQUAL = 42,
-    F32_LESS = 43,
-    F32_LESS_EQUAL = 44,
-    F32_EQUAL = 45,
-    F32_SEL = 46,
-    F32_ADDI = 47,
-    F32_SUBI = 48,
-    F32_MULI = 49,
-    F32_MAXI = 50,
-    F32_MINI = 51,
-    F32_MOVI = 52,
-    F32_GREATERI = 53,
-    F32_GREATER_EQUALI = 54,
-    F32_LESSI = 55,
-    F32_LESS_EQUALI = 56,
-    F32_EQUALI = 57,
-    F32_SELI = 58,
-    F32_LUI = 59,
-    F32_LI = 60,
-    I32_ADD = 61,
-    I32_SUB = 62,
-    I32_MUL = 63,
-    I32_MAX = 64,
-    I32_MIN = 65,
-    I32_GREATER = 66,
-    I32_GREATER_EQUAL = 67,
-    I32_LESS = 68,
-    I32_LESS_EQUAL = 69,
-    I32_EQUAL = 70,
-    I32_SEL = 71,
-    I32_ADDI = 72,
-    I32_SUBI = 73,
-    I32_MULI = 74,
-    I32_MAXI = 75,
-    I32_MINI = 76,
-    I32_MOVI = 77,
-    I32_GREATERI = 78,
-    I32_GREATER_EQUALI = 79,
-    I32_LESSI = 80,
-    I32_LESS_EQUALI = 81,
-    I32_EQUALI = 82,
-    I32_SELI = 83,
-    I32_LUI = 84,
-    I32_LI = 85,
-    I8_DLOAD_ADD = 86,
-    I8_DLOAD_SUB = 87,
-    I8_DLOAD_MUL = 88,
-    I8_DLOAD_MAX = 89,
-    I8_DLOAD_MIN = 90,
-    I8_LOAD_ADD = 91,
-    I8_LOAD_SUB = 92,
-    I8_LOAD_MUL = 93,
-    I8_LOAD_MAX = 94,
-    I8_LOAD_MIN = 95,
-    U8_DLOAD_ADD = 96,
-    U8_DLOAD_SUB = 97,
-    U8_DLOAD_MUL = 98,
-    U8_DLOAD_MAX = 99,
-    U8_DLOAD_MIN = 100,
-    U8_LOAD_ADD = 101,
-    U8_LOAD_SUB = 102,
-    U8_LOAD_MUL = 103,
-    U8_LOAD_MAX = 104,
-    U8_LOAD_MIN = 105,
-    E43_DLOAD_ADD = 106,
-    E43_DLOAD_SUB = 107,
-    E43_DLOAD_MUL = 108,
-    E43_DLOAD_MAX = 109,
-    E43_DLOAD_MIN = 110,
-    E43_LOAD_ADD = 111,
-    E43_LOAD_SUB = 112,
-    E43_LOAD_MUL = 113,
-    E43_LOAD_MAX = 114,
-    E43_LOAD_MIN = 115,
-    E52_DLOAD_ADD = 116,
-    E52_DLOAD_SUB = 117,
-    E52_DLOAD_MUL = 118,
-    E52_DLOAD_MAX = 119,
-    E52_DLOAD_MIN = 120,
-    E52_LOAD_ADD = 121,
-    E52_LOAD_SUB = 122,
-    E52_LOAD_MUL = 123,
-    E52_LOAD_MAX = 124,
-    E52_LOAD_MIN = 125,
-    I16_DLOAD_ADD = 126,
-    I16_DLOAD_SUB = 127,
-    I16_DLOAD_MUL = 128,
-    I16_DLOAD_MAX = 129,
-    I16_DLOAD_MIN = 130,
-    I16_LOAD_ADD = 131,
-    I16_LOAD_SUB = 132,
-    I16_LOAD_MUL = 133,
-    I16_LOAD_MAX = 134,
-    I16_LOAD_MIN = 135,
-    F16_DLOAD_ADD = 136,
-    F16_DLOAD_SUB = 137,
-    F16_DLOAD_MUL = 138,
-    F16_DLOAD_MAX = 139,
-    F16_DLOAD_MIN = 140,
-    F16_LOAD_ADD = 141,
-    F16_LOAD_SUB = 142,
-    F16_LOAD_MUL = 143,
-    F16_LOAD_MAX = 144,
-    F16_LOAD_MIN = 145,
-    F32_DLOAD_ADD = 146,
-    F32_DLOAD_SUB = 147,
-    F32_DLOAD_MUL = 148,
-    F32_DLOAD_MAX = 149,
-    F32_DLOAD_MIN = 150,
-    F32_LOAD_ADD = 151,
-    F32_LOAD_SUB = 152,
-    F32_LOAD_MUL = 153,
-    F32_LOAD_MAX = 154,
-    F32_LOAD_MIN = 155,
-    I32_DLOAD_ADD = 156,
-    I32_DLOAD_SUB = 157,
-    I32_DLOAD_MUL = 158,
-    I32_DLOAD_MAX = 159,
-    I32_DLOAD_MIN = 160,
-    I32_LOAD_ADD = 161,
-    I32_LOAD_SUB = 162,
-    I32_LOAD_MUL = 163,
-    I32_LOAD_MAX = 164,
-    I32_LOAD_MIN = 165,
-    I8_ADD_STORE = 166,
-    I8_SUB_STORE = 167,
-    I8_MUL_STORE = 168,
-    I8_MAX_STORE = 169,
-    I8_MIN_STORE = 170,
-    U8_ADD_STORE = 171,
-    U8_SUB_STORE = 172,
-    U8_MUL_STORE = 173,
-    U8_MAX_STORE = 174,
-    U8_MIN_STORE = 175,
-    E43_ADD_STORE = 176,
-    E43_SUB_STORE = 177,
-    E43_MUL_STORE = 178,
-    E43_MAX_STORE = 179,
-    E43_MIN_STORE = 180,
-    E52_ADD_STORE = 181,
-    E52_SUB_STORE = 182,
-    E52_MUL_STORE = 183,
-    E52_MAX_STORE = 184,
-    E52_MIN_STORE = 185,
-    I16_ADD_STORE = 186,
-    I16_SUB_STORE = 187,
-    I16_MUL_STORE = 188,
-    I16_MAX_STORE = 189,
-    I16_MIN_STORE = 190,
-    F16_ADD_STORE = 191,
-    F16_SUB_STORE = 192,
-    F16_MUL_STORE = 193,
-    F16_MAX_STORE = 194,
-    F16_MIN_STORE = 195,
-    F32_ADD_STORE = 196,
-    F32_SUB_STORE = 197,
-    F32_MUL_STORE = 198,
-    F32_MAX_STORE = 199,
-    F32_MIN_STORE = 200,
-    I32_ADD_STORE = 201,
-    I32_SUB_STORE = 202,
-    I32_MUL_STORE = 203,
-    I32_MAX_STORE = 204,
-    I32_MIN_STORE = 205,
-    I8_DLOAD_ADD_STORE = 206,
-    I8_DLOAD_SUB_STORE = 207,
-    I8_DLOAD_MUL_STORE = 208,
-    I8_DLOAD_MAX_STORE = 209,
-    I8_DLOAD_MIN_STORE = 210,
-    I8_LOAD_ADD_STORE = 211,
-    I8_LOAD_SUB_STORE = 212,
-    I8_LOAD_MUL_STORE = 213,
-    I8_LOAD_MAX_STORE = 214,
-    I8_LOAD_MIN_STORE = 215,
-    U8_DLOAD_ADD_STORE = 216,
-    U8_DLOAD_SUB_STORE = 217,
-    U8_DLOAD_MUL_STORE = 218,
-    U8_DLOAD_MAX_STORE = 219,
-    U8_DLOAD_MIN_STORE = 220,
-    U8_LOAD_ADD_STORE = 221,
-    U8_LOAD_SUB_STORE = 222,
-    U8_LOAD_MUL_STORE = 223,
-    U8_LOAD_MAX_STORE = 224,
-    U8_LOAD_MIN_STORE = 225,
-    E43_DLOAD_ADD_STORE = 226,
-    E43_DLOAD_SUB_STORE = 227,
-    E43_DLOAD_MUL_STORE = 228,
-    E43_DLOAD_MAX_STORE = 229,
-    E43_DLOAD_MIN_STORE = 230,
-    E43_LOAD_ADD_STORE = 231,
-    E43_LOAD_SUB_STORE = 232,
-    E43_LOAD_MUL_STORE = 233,
-    E43_LOAD_MAX_STORE = 234,
-    E43_LOAD_MIN_STORE = 235,
-    E52_DLOAD_ADD_STORE = 236,
-    E52_DLOAD_SUB_STORE = 237,
-    E52_DLOAD_MUL_STORE = 238,
-    E52_DLOAD_MAX_STORE = 239,
-    E52_DLOAD_MIN_STORE = 240,
-    E52_LOAD_ADD_STORE = 241,
-    E52_LOAD_SUB_STORE = 242,
-    E52_LOAD_MUL_STORE = 243,
-    E52_LOAD_MAX_STORE = 244,
-    E52_LOAD_MIN_STORE = 245,
-    I16_DLOAD_ADD_STORE = 246,
-    I16_DLOAD_SUB_STORE = 247,
-    I16_DLOAD_MUL_STORE = 248,
-    I16_DLOAD_MAX_STORE = 249,
-    I16_DLOAD_MIN_STORE = 250,
-    I16_LOAD_ADD_STORE = 251,
-    I16_LOAD_SUB_STORE = 252,
-    I16_LOAD_MUL_STORE = 253,
-    I16_LOAD_MAX_STORE = 254,
-    I16_LOAD_MIN_STORE = 255,
-    F16_DLOAD_ADD_STORE = 256,
-    F16_DLOAD_SUB_STORE = 257,
-    F16_DLOAD_MUL_STORE = 258,
-    F16_DLOAD_MAX_STORE = 259,
-    F16_DLOAD_MIN_STORE = 260,
-    F16_LOAD_ADD_STORE = 261,
-    F16_LOAD_SUB_STORE = 262,
-    F16_LOAD_MUL_STORE = 263,
-    F16_LOAD_MAX_STORE = 264,
-    F16_LOAD_MIN_STORE = 265,
-    F32_DLOAD_ADD_STORE = 266,
-    F32_DLOAD_SUB_STORE = 267,
-    F32_DLOAD_MUL_STORE = 268,
-    F32_DLOAD_MAX_STORE = 269,
-    F32_DLOAD_MIN_STORE = 270,
-    F32_LOAD_ADD_STORE = 271,
-    F32_LOAD_SUB_STORE = 272,
-    F32_LOAD_MUL_STORE = 273,
-    F32_LOAD_MAX_STORE = 274,
-    F32_LOAD_MIN_STORE = 275,
-    I32_DLOAD_ADD_STORE = 276,
-    I32_DLOAD_SUB_STORE = 277,
-    I32_DLOAD_MUL_STORE = 278,
-    I32_DLOAD_MAX_STORE = 279,
-    I32_DLOAD_MIN_STORE = 280,
-    I32_LOAD_ADD_STORE = 281,
-    I32_LOAD_SUB_STORE = 282,
-    I32_LOAD_MUL_STORE = 283,
-    I32_LOAD_MAX_STORE = 284,
-    I32_LOAD_MIN_STORE = 285,
-    S_ADDI = 286,
-    S_ADDIU = 287,
-    S_SUBI = 288,
-    S_ANDI = 289,
-    S_ORI = 290,
-    S_XORI = 291,
-    S_SGTI = 292,
-    S_SLTI = 293,
-    S_SEQI = 294,
-    S_SGEI = 295,
-    S_SLEI = 296,
-    S_SRAI = 297,
-    S_SRLI = 298,
-    S_SLLI = 299,
-    S_LUI = 300,
-    S_ADD = 301,
-    S_ADDU = 302,
-    S_SUB = 303,
-    S_MUL = 304,
-    S_MULH = 305,
-    S_MULHU = 306,
-    S_MIN = 307,
-    S_MAX = 308,
-    S_MINU = 309,
-    S_MAXU = 310,
-    S_AND = 311,
-    S_OR = 312,
-    S_XOR = 313,
-    S_SGT = 314,
-    S_SLT = 315,
-    S_SEQ = 316,
-    S_SGE = 317,
-    S_SLE = 318,
-    S_CMPSEL = 319,
-    S_SRA = 320,
-    S_SRL = 321,
-    S_SLL = 322,
-    S_JUMP = 323,
-    S_JAL = 324,
-    S_JR = 325,
-    S_BNE = 326,
-    S_BEQ = 327,
-    S_BLT = 328,
-    S_BLTU = 329,
-    S_BGE = 330,
-    S_BGEU = 331,
-    S_SETCFG = 332,
-    S_SETRF = 333,
+    NOP = 9,
+    OP_END = 10,
+    I8_DLOAD = 11,
+    I8_LOAD = 12,
+    U8_DLOAD = 13,
+    U8_LOAD = 14,
+    E43_DLOAD = 15,
+    E43_LOAD = 16,
+    E52_DLOAD = 17,
+    E52_LOAD = 18,
+    I16_DLOAD = 19,
+    I16_LOAD = 20,
+    F16_DLOAD = 21,
+    F16_LOAD = 22,
+    F32_DLOAD = 23,
+    F32_LOAD = 24,
+    I32_DLOAD = 25,
+    I32_LOAD = 26,
+    I8_STORE = 27,
+    U8_STORE = 28,
+    E43_STORE = 29,
+    E52_STORE = 30,
+    I16_STORE = 31,
+    F16_STORE = 32,
+    F32_STORE = 33,
+    I32_STORE = 34,
+    F32_ADD = 35,
+    F32_SUB = 36,
+    F32_MUL = 37,
+    F32_MAX = 38,
+    F32_MIN = 39,
+    F32_GREATER = 40,
+    F32_GREATER_EQUAL = 41,
+    F32_LESS = 42,
+    F32_LESS_EQUAL = 43,
+    F32_EQUAL = 44,
+    F32_SEL = 45,
+    F32_ADDI = 46,
+    F32_SUBI = 47,
+    F32_MULI = 48,
+    F32_MAXI = 49,
+    F32_MINI = 50,
+    F32_MOVI = 51,
+    F32_GREATERI = 52,
+    F32_GREATER_EQUALI = 53,
+    F32_LESSI = 54,
+    F32_LESS_EQUALI = 55,
+    F32_EQUALI = 56,
+    F32_SELI = 57,
+    F32_LUI = 58,
+    F32_LI = 59,
+    I32_ADD = 60,
+    I32_SUB = 61,
+    I32_MUL = 62,
+    I32_MAX = 63,
+    I32_MIN = 64,
+    I32_GREATER = 65,
+    I32_GREATER_EQUAL = 66,
+    I32_LESS = 67,
+    I32_LESS_EQUAL = 68,
+    I32_EQUAL = 69,
+    I32_SEL = 70,
+    I32_ADDI = 71,
+    I32_SUBI = 72,
+    I32_MULI = 73,
+    I32_MAXI = 74,
+    I32_MINI = 75,
+    I32_MOVI = 76,
+    I32_GREATERI = 77,
+    I32_GREATER_EQUALI = 78,
+    I32_LESSI = 79,
+    I32_LESS_EQUALI = 80,
+    I32_EQUALI = 81,
+    I32_SELI = 82,
+    I32_LUI = 83,
+    I32_LI = 84,
+    I8_DLOAD_ADD = 85,
+    I8_DLOAD_SUB = 86,
+    I8_DLOAD_MUL = 87,
+    I8_DLOAD_MAX = 88,
+    I8_DLOAD_MIN = 89,
+    I8_LOAD_ADD = 90,
+    I8_LOAD_SUB = 91,
+    I8_LOAD_MUL = 92,
+    I8_LOAD_MAX = 93,
+    I8_LOAD_MIN = 94,
+    U8_DLOAD_ADD = 95,
+    U8_DLOAD_SUB = 96,
+    U8_DLOAD_MUL = 97,
+    U8_DLOAD_MAX = 98,
+    U8_DLOAD_MIN = 99,
+    U8_LOAD_ADD = 100,
+    U8_LOAD_SUB = 101,
+    U8_LOAD_MUL = 102,
+    U8_LOAD_MAX = 103,
+    U8_LOAD_MIN = 104,
+    E43_DLOAD_ADD = 105,
+    E43_DLOAD_SUB = 106,
+    E43_DLOAD_MUL = 107,
+    E43_DLOAD_MAX = 108,
+    E43_DLOAD_MIN = 109,
+    E43_LOAD_ADD = 110,
+    E43_LOAD_SUB = 111,
+    E43_LOAD_MUL = 112,
+    E43_LOAD_MAX = 113,
+    E43_LOAD_MIN = 114,
+    E52_DLOAD_ADD = 115,
+    E52_DLOAD_SUB = 116,
+    E52_DLOAD_MUL = 117,
+    E52_DLOAD_MAX = 118,
+    E52_DLOAD_MIN = 119,
+    E52_LOAD_ADD = 120,
+    E52_LOAD_SUB = 121,
+    E52_LOAD_MUL = 122,
+    E52_LOAD_MAX = 123,
+    E52_LOAD_MIN = 124,
+    I16_DLOAD_ADD = 125,
+    I16_DLOAD_SUB = 126,
+    I16_DLOAD_MUL = 127,
+    I16_DLOAD_MAX = 128,
+    I16_DLOAD_MIN = 129,
+    I16_LOAD_ADD = 130,
+    I16_LOAD_SUB = 131,
+    I16_LOAD_MUL = 132,
+    I16_LOAD_MAX = 133,
+    I16_LOAD_MIN = 134,
+    F16_DLOAD_ADD = 135,
+    F16_DLOAD_SUB = 136,
+    F16_DLOAD_MUL = 137,
+    F16_DLOAD_MAX = 138,
+    F16_DLOAD_MIN = 139,
+    F16_LOAD_ADD = 140,
+    F16_LOAD_SUB = 141,
+    F16_LOAD_MUL = 142,
+    F16_LOAD_MAX = 143,
+    F16_LOAD_MIN = 144,
+    F32_DLOAD_ADD = 145,
+    F32_DLOAD_SUB = 146,
+    F32_DLOAD_MUL = 147,
+    F32_DLOAD_MAX = 148,
+    F32_DLOAD_MIN = 149,
+    F32_LOAD_ADD = 150,
+    F32_LOAD_SUB = 151,
+    F32_LOAD_MUL = 152,
+    F32_LOAD_MAX = 153,
+    F32_LOAD_MIN = 154,
+    I32_DLOAD_ADD = 155,
+    I32_DLOAD_SUB = 156,
+    I32_DLOAD_MUL = 157,
+    I32_DLOAD_MAX = 158,
+    I32_DLOAD_MIN = 159,
+    I32_LOAD_ADD = 160,
+    I32_LOAD_SUB = 161,
+    I32_LOAD_MUL = 162,
+    I32_LOAD_MAX = 163,
+    I32_LOAD_MIN = 164,
+    I8_ADD_STORE = 165,
+    I8_SUB_STORE = 166,
+    I8_MUL_STORE = 167,
+    I8_MAX_STORE = 168,
+    I8_MIN_STORE = 169,
+    U8_ADD_STORE = 170,
+    U8_SUB_STORE = 171,
+    U8_MUL_STORE = 172,
+    U8_MAX_STORE = 173,
+    U8_MIN_STORE = 174,
+    E43_ADD_STORE = 175,
+    E43_SUB_STORE = 176,
+    E43_MUL_STORE = 177,
+    E43_MAX_STORE = 178,
+    E43_MIN_STORE = 179,
+    E52_ADD_STORE = 180,
+    E52_SUB_STORE = 181,
+    E52_MUL_STORE = 182,
+    E52_MAX_STORE = 183,
+    E52_MIN_STORE = 184,
+    I16_ADD_STORE = 185,
+    I16_SUB_STORE = 186,
+    I16_MUL_STORE = 187,
+    I16_MAX_STORE = 188,
+    I16_MIN_STORE = 189,
+    F16_ADD_STORE = 190,
+    F16_SUB_STORE = 191,
+    F16_MUL_STORE = 192,
+    F16_MAX_STORE = 193,
+    F16_MIN_STORE = 194,
+    F32_ADD_STORE = 195,
+    F32_SUB_STORE = 196,
+    F32_MUL_STORE = 197,
+    F32_MAX_STORE = 198,
+    F32_MIN_STORE = 199,
+    I32_ADD_STORE = 200,
+    I32_SUB_STORE = 201,
+    I32_MUL_STORE = 202,
+    I32_MAX_STORE = 203,
+    I32_MIN_STORE = 204,
+    I8_DLOAD_ADD_STORE = 205,
+    I8_DLOAD_SUB_STORE = 206,
+    I8_DLOAD_MUL_STORE = 207,
+    I8_DLOAD_MAX_STORE = 208,
+    I8_DLOAD_MIN_STORE = 209,
+    I8_LOAD_ADD_STORE = 210,
+    I8_LOAD_SUB_STORE = 211,
+    I8_LOAD_MUL_STORE = 212,
+    I8_LOAD_MAX_STORE = 213,
+    I8_LOAD_MIN_STORE = 214,
+    U8_DLOAD_ADD_STORE = 215,
+    U8_DLOAD_SUB_STORE = 216,
+    U8_DLOAD_MUL_STORE = 217,
+    U8_DLOAD_MAX_STORE = 218,
+    U8_DLOAD_MIN_STORE = 219,
+    U8_LOAD_ADD_STORE = 220,
+    U8_LOAD_SUB_STORE = 221,
+    U8_LOAD_MUL_STORE = 222,
+    U8_LOAD_MAX_STORE = 223,
+    U8_LOAD_MIN_STORE = 224,
+    E43_DLOAD_ADD_STORE = 225,
+    E43_DLOAD_SUB_STORE = 226,
+    E43_DLOAD_MUL_STORE = 227,
+    E43_DLOAD_MAX_STORE = 228,
+    E43_DLOAD_MIN_STORE = 229,
+    E43_LOAD_ADD_STORE = 230,
+    E43_LOAD_SUB_STORE = 231,
+    E43_LOAD_MUL_STORE = 232,
+    E43_LOAD_MAX_STORE = 233,
+    E43_LOAD_MIN_STORE = 234,
+    E52_DLOAD_ADD_STORE = 235,
+    E52_DLOAD_SUB_STORE = 236,
+    E52_DLOAD_MUL_STORE = 237,
+    E52_DLOAD_MAX_STORE = 238,
+    E52_DLOAD_MIN_STORE = 239,
+    E52_LOAD_ADD_STORE = 240,
+    E52_LOAD_SUB_STORE = 241,
+    E52_LOAD_MUL_STORE = 242,
+    E52_LOAD_MAX_STORE = 243,
+    E52_LOAD_MIN_STORE = 244,
+    I16_DLOAD_ADD_STORE = 245,
+    I16_DLOAD_SUB_STORE = 246,
+    I16_DLOAD_MUL_STORE = 247,
+    I16_DLOAD_MAX_STORE = 248,
+    I16_DLOAD_MIN_STORE = 249,
+    I16_LOAD_ADD_STORE = 250,
+    I16_LOAD_SUB_STORE = 251,
+    I16_LOAD_MUL_STORE = 252,
+    I16_LOAD_MAX_STORE = 253,
+    I16_LOAD_MIN_STORE = 254,
+    F16_DLOAD_ADD_STORE = 255,
+    F16_DLOAD_SUB_STORE = 256,
+    F16_DLOAD_MUL_STORE = 257,
+    F16_DLOAD_MAX_STORE = 258,
+    F16_DLOAD_MIN_STORE = 259,
+    F16_LOAD_ADD_STORE = 260,
+    F16_LOAD_SUB_STORE = 261,
+    F16_LOAD_MUL_STORE = 262,
+    F16_LOAD_MAX_STORE = 263,
+    F16_LOAD_MIN_STORE = 264,
+    F32_DLOAD_ADD_STORE = 265,
+    F32_DLOAD_SUB_STORE = 266,
+    F32_DLOAD_MUL_STORE = 267,
+    F32_DLOAD_MAX_STORE = 268,
+    F32_DLOAD_MIN_STORE = 269,
+    F32_LOAD_ADD_STORE = 270,
+    F32_LOAD_SUB_STORE = 271,
+    F32_LOAD_MUL_STORE = 272,
+    F32_LOAD_MAX_STORE = 273,
+    F32_LOAD_MIN_STORE = 274,
+    I32_DLOAD_ADD_STORE = 275,
+    I32_DLOAD_SUB_STORE = 276,
+    I32_DLOAD_MUL_STORE = 277,
+    I32_DLOAD_MAX_STORE = 278,
+    I32_DLOAD_MIN_STORE = 279,
+    I32_LOAD_ADD_STORE = 280,
+    I32_LOAD_SUB_STORE = 281,
+    I32_LOAD_MUL_STORE = 282,
+    I32_LOAD_MAX_STORE = 283,
+    I32_LOAD_MIN_STORE = 284,
+    S_ADDI = 285,
+    S_ADDIU = 286,
+    S_SUBI = 287,
+    S_ANDI = 288,
+    S_ORI = 289,
+    S_XORI = 290,
+    S_SGTI = 291,
+    S_SLTI = 292,
+    S_SEQI = 293,
+    S_SGEI = 294,
+    S_SLEI = 295,
+    S_SRAI = 296,
+    S_SRLI = 297,
+    S_SLLI = 298,
+    S_LUI = 299,
+    S_ADD = 300,
+    S_ADDU = 301,
+    S_SUB = 302,
+    S_MUL = 303,
+    S_MULH = 304,
+    S_MULHU = 305,
+    S_MIN = 306,
+    S_MAX = 307,
+    S_MINU = 308,
+    S_MAXU = 309,
+    S_AND = 310,
+    S_OR = 311,
+    S_XOR = 312,
+    S_SGT = 313,
+    S_SLT = 314,
+    S_SEQ = 315,
+    S_SGE = 316,
+    S_SLE = 317,
+    S_CMPSEL = 318,
+    S_SRA = 319,
+    S_SRL = 320,
+    S_SLL = 321,
+    S_JUMP = 322,
+    S_JAL = 323,
+    S_JR = 324,
+    S_BNE = 325,
+    S_BEQ = 326,
+    S_BLT = 327,
+    S_BLTU = 328,
+    S_BGE = 329,
+    S_BGEU = 330,
+    S_SETCFG = 331,
+    S_SETRF = 332,
     INVALID = 65536
   };
 
@@ -411,7 +410,6 @@ public:
       {OpCodeType::SET_DEQUANTIZE,      {"set_dequantize",      0xff000000, 0x03000000}},
       {OpCodeType::SET_DEQUANTIZE2,     {"set_dequantize2",     0xff000000, 0x06000000}},
       {OpCodeType::SET_FS,              {"set_fs",              0xffffff00, 0x0a000000}},
-      {OpCodeType::SET_CMASK_HIGH,      {"set_cmask_high",      0xff00ffff, 0x0b000000}},
       {OpCodeType::NOP,                 {"nop",                 0xffffffff, 0x00000000}},
       {OpCodeType::OP_END,              {"op_end",              0xffffffff, 0xff000000}},
       {OpCodeType::I8_DLOAD,            {"i8_dload",            0xff0f0000, 0xc4020000}},
@@ -437,7 +435,7 @@ public:
       {OpCodeType::I16_STORE,           {"i16_store",           0xffcf0000, 0xce000000}},
       {OpCodeType::F16_STORE,           {"f16_store",           0xffcf0000, 0xec000000}},
       {OpCodeType::F32_STORE,           {"f32_store",           0xffcf0000, 0xfc000000}},
-      {OpCodeType::I32_I32STORE,        {"i32_i32store",        0xffcf0000, 0xda000000}},
+      {OpCodeType::I32_STORE,           {"i32_store",           0xffcf0000, 0xda000000}},
       {OpCodeType::F32_ADD,             {"f32_add",             0xff007fff, 0x90000000}},
       {OpCodeType::F32_SUB,             {"f32_sub",             0xff007fff, 0x91000000}},
       {OpCodeType::F32_MUL,             {"f32_mul",             0xff007fff, 0x92000000}},
@@ -813,12 +811,15 @@ public:
     return text;
   }
 
+  void setArgs(const std::vector<size_t> &args) {
+    assert(setters.size() == args.size());
+    for (size_t i = 0; i < args.size(); ++i)
+      setters[i](args[i]);
+  }
   template <typename T>  
   static std::shared_ptr<T> create(const std::vector<size_t> &args) {
     std::shared_ptr<T> x(new T);
-    assert(x->setters.size() == args.size());
-    for (size_t i = 0; i < args.size(); ++i)
-      x->setters[i](args[i]);
+    x->setArgs(args);
     return x;
   }
 
@@ -881,11 +882,11 @@ public:
   uint32_t nStride = 0;
 };
 
-class DualLoadComputeStoreInstr {
+class DloadComputeStoreInstr {
 public:
-  DualLoadComputeStoreInstr(VpuInstr::OpCodeType load, VpuInstr::OpCodeType compute, VpuInstr::OpCodeType store) : 
+  DloadComputeStoreInstr(VpuInstr::OpCodeType load, VpuInstr::OpCodeType compute, VpuInstr::OpCodeType store) : 
       load(load), compute(compute), store(store) {}
-  virtual ~DualLoadComputeStoreInstr() = default;
+  virtual ~DloadComputeStoreInstr() = default;
   VpuInstr::OpCodeType load;
   VpuInstr::OpCodeType compute;
   VpuInstr::OpCodeType store;
@@ -901,11 +902,11 @@ public:
   VpuInstr::OpCodeType store;
 };
 
-class DualLoadComputeInstr {
+class DloadComputeInstr {
 public:
-  DualLoadComputeInstr(VpuInstr::OpCodeType load, VpuInstr::OpCodeType compute) : 
+  DloadComputeInstr(VpuInstr::OpCodeType load, VpuInstr::OpCodeType compute) : 
       load(load), compute(compute) {}
-  virtual ~DualLoadComputeInstr() = default;
+  virtual ~DloadComputeInstr() = default;
   VpuInstr::OpCodeType load;
   VpuInstr::OpCodeType compute;
 };
@@ -938,9 +939,9 @@ public:
   virtual ~VectorInstr() = default;
 };
 
-class DualLoadInstr {
+class DloadInstr {
 public:
-  virtual ~DualLoadInstr() = default;
+  virtual ~DloadInstr() = default;
 };
 
 class LoadInstr {
@@ -1048,15 +1049,6 @@ public:
   VPU_GEN_GETTER_SETTER(FsSel, 7, 0);
 };
 
-class SetCmaskHighInstr : public VpuInstr {
-public:
-  explicit SetCmaskHighInstr() : VpuInstr(OpCodeType::SET_CMASK_HIGH) {
-    VPU_PUSH_GETTER_SETTER(ClusterMask);
-    nAlu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(ClusterMask, 23, 16);
-};
-
 class NopInstr : public VpuInstr {
 public:
   explicit NopInstr() : VpuInstr(OpCodeType::NOP) {
@@ -1071,7 +1063,7 @@ public:
   }
 };
 
-class I8DloadInstr : public VpuInstr, public DualLoadInstr {
+class I8DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit I8DloadInstr() : VpuInstr(OpCodeType::I8_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1095,7 +1087,7 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class U8DloadInstr : public VpuInstr, public DualLoadInstr {
+class U8DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit U8DloadInstr() : VpuInstr(OpCodeType::U8_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1121,7 +1113,7 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class E43DloadInstr : public VpuInstr, public DualLoadInstr {
+class E43DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit E43DloadInstr() : VpuInstr(OpCodeType::E43_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1147,7 +1139,7 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class E52DloadInstr : public VpuInstr, public DualLoadInstr {
+class E52DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit E52DloadInstr() : VpuInstr(OpCodeType::E52_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1173,7 +1165,7 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I16DloadInstr : public VpuInstr, public DualLoadInstr {
+class I16DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit I16DloadInstr() : VpuInstr(OpCodeType::I16_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1199,7 +1191,7 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class F16DloadInstr : public VpuInstr, public DualLoadInstr {
+class F16DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit F16DloadInstr() : VpuInstr(OpCodeType::F16_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1225,7 +1217,7 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class F32DloadInstr : public VpuInstr, public DualLoadInstr {
+class F32DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit F32DloadInstr() : VpuInstr(OpCodeType::F32_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1251,7 +1243,7 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32DloadInstr : public VpuInstr, public DualLoadInstr {
+class I32DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit I32DloadInstr() : VpuInstr(OpCodeType::I32_DLOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -1360,9 +1352,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32I32storeInstr : public VpuInstr, public StoreInstr {
+class I32StoreInstr : public VpuInstr, public StoreInstr {
 public:
-  explicit I32I32storeInstr() : VpuInstr(OpCodeType::I32_I32STORE) {
+  explicit I32StoreInstr() : VpuInstr(OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 3;
@@ -2048,9 +2040,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
-class I8DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class I8DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I8DloadAddInstr() : VpuInstr(OpCodeType::I8_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_ADD) {
+  explicit I8DloadAddInstr() : VpuInstr(OpCodeType::I8_DLOAD_ADD), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nAlu = 1;
@@ -2059,9 +2051,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I8DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class I8DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I8DloadSubInstr() : VpuInstr(OpCodeType::I8_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_SUB) {
+  explicit I8DloadSubInstr() : VpuInstr(OpCodeType::I8_DLOAD_SUB), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nAlu = 1;
@@ -2070,9 +2062,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I8DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class I8DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I8DloadMulInstr() : VpuInstr(OpCodeType::I8_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MUL) {
+  explicit I8DloadMulInstr() : VpuInstr(OpCodeType::I8_DLOAD_MUL), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nAlu = 1;
@@ -2081,9 +2073,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I8DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class I8DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I8DloadMaxInstr() : VpuInstr(OpCodeType::I8_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MAX) {
+  explicit I8DloadMaxInstr() : VpuInstr(OpCodeType::I8_DLOAD_MAX), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nAlu = 1;
@@ -2092,9 +2084,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I8DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class I8DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I8DloadMinInstr() : VpuInstr(OpCodeType::I8_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MIN) {
+  explicit I8DloadMinInstr() : VpuInstr(OpCodeType::I8_DLOAD_MIN), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nAlu = 1;
@@ -2168,9 +2160,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class U8DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class U8DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit U8DloadAddInstr() : VpuInstr(OpCodeType::U8_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_ADD) {
+  explicit U8DloadAddInstr() : VpuInstr(OpCodeType::U8_DLOAD_ADD), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 5;
@@ -2180,9 +2172,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class U8DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class U8DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit U8DloadSubInstr() : VpuInstr(OpCodeType::U8_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_SUB) {
+  explicit U8DloadSubInstr() : VpuInstr(OpCodeType::U8_DLOAD_SUB), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 5;
@@ -2192,9 +2184,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class U8DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class U8DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit U8DloadMulInstr() : VpuInstr(OpCodeType::U8_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MUL) {
+  explicit U8DloadMulInstr() : VpuInstr(OpCodeType::U8_DLOAD_MUL), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 5;
@@ -2204,9 +2196,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class U8DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class U8DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit U8DloadMaxInstr() : VpuInstr(OpCodeType::U8_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MAX) {
+  explicit U8DloadMaxInstr() : VpuInstr(OpCodeType::U8_DLOAD_MAX), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 5;
@@ -2216,9 +2208,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class U8DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class U8DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit U8DloadMinInstr() : VpuInstr(OpCodeType::U8_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MIN) {
+  explicit U8DloadMinInstr() : VpuInstr(OpCodeType::U8_DLOAD_MIN), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 5;
@@ -2298,9 +2290,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E43DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class E43DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E43DloadAddInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD) {
+  explicit E43DloadAddInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 18;
@@ -2310,9 +2302,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E43DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class E43DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E43DloadSubInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB) {
+  explicit E43DloadSubInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 18;
@@ -2322,9 +2314,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E43DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class E43DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E43DloadMulInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL) {
+  explicit E43DloadMulInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 18;
@@ -2334,9 +2326,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E43DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class E43DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E43DloadMaxInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX) {
+  explicit E43DloadMaxInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 18;
@@ -2346,9 +2338,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E43DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class E43DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E43DloadMinInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN) {
+  explicit E43DloadMinInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 18;
@@ -2428,9 +2420,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E52DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class E52DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E52DloadAddInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD) {
+  explicit E52DloadAddInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 17;
@@ -2440,9 +2432,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E52DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class E52DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E52DloadSubInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB) {
+  explicit E52DloadSubInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 17;
@@ -2452,9 +2444,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E52DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class E52DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E52DloadMulInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL) {
+  explicit E52DloadMulInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 17;
@@ -2464,9 +2456,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E52DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class E52DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E52DloadMaxInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX) {
+  explicit E52DloadMaxInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 17;
@@ -2476,9 +2468,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class E52DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class E52DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit E52DloadMinInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN) {
+  explicit E52DloadMinInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 17;
@@ -2558,9 +2550,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I16DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class I16DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I16DloadAddInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD) {
+  explicit I16DloadAddInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 2;
@@ -2570,9 +2562,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I16DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class I16DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I16DloadSubInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB) {
+  explicit I16DloadSubInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 2;
@@ -2582,9 +2574,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I16DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class I16DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I16DloadMulInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL) {
+  explicit I16DloadMulInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 2;
@@ -2594,9 +2586,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I16DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class I16DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I16DloadMaxInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX) {
+  explicit I16DloadMaxInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 2;
@@ -2606,9 +2598,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I16DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class I16DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I16DloadMinInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN) {
+  explicit I16DloadMinInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 2;
@@ -2688,9 +2680,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F16DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class F16DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F16DloadAddInstr() : VpuInstr(OpCodeType::F16_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_ADD) {
+  explicit F16DloadAddInstr() : VpuInstr(OpCodeType::F16_DLOAD_ADD), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 1;
@@ -2700,9 +2692,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F16DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class F16DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F16DloadSubInstr() : VpuInstr(OpCodeType::F16_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_SUB) {
+  explicit F16DloadSubInstr() : VpuInstr(OpCodeType::F16_DLOAD_SUB), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 1;
@@ -2712,9 +2704,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F16DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class F16DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F16DloadMulInstr() : VpuInstr(OpCodeType::F16_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MUL) {
+  explicit F16DloadMulInstr() : VpuInstr(OpCodeType::F16_DLOAD_MUL), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 1;
@@ -2724,9 +2716,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F16DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class F16DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F16DloadMaxInstr() : VpuInstr(OpCodeType::F16_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MAX) {
+  explicit F16DloadMaxInstr() : VpuInstr(OpCodeType::F16_DLOAD_MAX), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 1;
@@ -2736,9 +2728,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F16DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class F16DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F16DloadMinInstr() : VpuInstr(OpCodeType::F16_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MIN) {
+  explicit F16DloadMinInstr() : VpuInstr(OpCodeType::F16_DLOAD_MIN), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 1;
@@ -2818,9 +2810,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F32DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class F32DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F32DloadAddInstr() : VpuInstr(OpCodeType::F32_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_ADD) {
+  explicit F32DloadAddInstr() : VpuInstr(OpCodeType::F32_DLOAD_ADD), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 12;
@@ -2830,9 +2822,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F32DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class F32DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F32DloadSubInstr() : VpuInstr(OpCodeType::F32_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_SUB) {
+  explicit F32DloadSubInstr() : VpuInstr(OpCodeType::F32_DLOAD_SUB), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 12;
@@ -2842,9 +2834,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F32DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class F32DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F32DloadMulInstr() : VpuInstr(OpCodeType::F32_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MUL) {
+  explicit F32DloadMulInstr() : VpuInstr(OpCodeType::F32_DLOAD_MUL), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 12;
@@ -2854,9 +2846,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F32DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class F32DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F32DloadMaxInstr() : VpuInstr(OpCodeType::F32_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MAX) {
+  explicit F32DloadMaxInstr() : VpuInstr(OpCodeType::F32_DLOAD_MAX), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 12;
@@ -2866,9 +2858,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class F32DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class F32DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit F32DloadMinInstr() : VpuInstr(OpCodeType::F32_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MIN) {
+  explicit F32DloadMinInstr() : VpuInstr(OpCodeType::F32_DLOAD_MIN), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 12;
@@ -2948,9 +2940,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadAddInstr : public VpuInstr, public DualLoadComputeInstr {
+class I32DloadAddInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadAddInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD), DualLoadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD) {
+  explicit I32DloadAddInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 3;
@@ -2960,9 +2952,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadSubInstr : public VpuInstr, public DualLoadComputeInstr {
+class I32DloadSubInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadSubInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB), DualLoadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB) {
+  explicit I32DloadSubInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 3;
@@ -2972,9 +2964,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadMulInstr : public VpuInstr, public DualLoadComputeInstr {
+class I32DloadMulInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadMulInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL), DualLoadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL) {
+  explicit I32DloadMulInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 3;
@@ -2984,9 +2976,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadMaxInstr : public VpuInstr, public DualLoadComputeInstr {
+class I32DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadMaxInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX), DualLoadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX) {
+  explicit I32DloadMaxInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 3;
@@ -2996,9 +2988,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadMinInstr : public VpuInstr, public DualLoadComputeInstr {
+class I32DloadMinInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadMinInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN), DualLoadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN) {
+  explicit I32DloadMinInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     nDtype = 3;
@@ -3565,7 +3557,7 @@ public:
 
 class I32AddStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32AddStoreInstr() : VpuInstr(OpCodeType::I32_ADD_STORE), ComputeStoreInstr(OpCodeType::I32_ADD, OpCodeType::I32_I32STORE) {
+  explicit I32AddStoreInstr() : VpuInstr(OpCodeType::I32_ADD_STORE), ComputeStoreInstr(OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -3579,7 +3571,7 @@ public:
 
 class I32SubStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32SubStoreInstr() : VpuInstr(OpCodeType::I32_SUB_STORE), ComputeStoreInstr(OpCodeType::I32_SUB, OpCodeType::I32_I32STORE) {
+  explicit I32SubStoreInstr() : VpuInstr(OpCodeType::I32_SUB_STORE), ComputeStoreInstr(OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -3593,7 +3585,7 @@ public:
 
 class I32MulStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32MulStoreInstr() : VpuInstr(OpCodeType::I32_MUL_STORE), ComputeStoreInstr(OpCodeType::I32_MUL, OpCodeType::I32_I32STORE) {
+  explicit I32MulStoreInstr() : VpuInstr(OpCodeType::I32_MUL_STORE), ComputeStoreInstr(OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -3607,7 +3599,7 @@ public:
 
 class I32MaxStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32MaxStoreInstr() : VpuInstr(OpCodeType::I32_MAX_STORE), ComputeStoreInstr(OpCodeType::I32_MAX, OpCodeType::I32_I32STORE) {
+  explicit I32MaxStoreInstr() : VpuInstr(OpCodeType::I32_MAX_STORE), ComputeStoreInstr(OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -3621,7 +3613,7 @@ public:
 
 class I32MinStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32MinStoreInstr() : VpuInstr(OpCodeType::I32_MIN_STORE), ComputeStoreInstr(OpCodeType::I32_MIN, OpCodeType::I32_I32STORE) {
+  explicit I32MinStoreInstr() : VpuInstr(OpCodeType::I32_MIN_STORE), ComputeStoreInstr(OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
@@ -3633,45 +3625,45 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I8DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I8DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I8DloadAddStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_ADD, OpCodeType::I8_STORE) {
+  explicit I8DloadAddStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_ADD, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nAlu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I8DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I8DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I8DloadSubStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_SUB, OpCodeType::I8_STORE) {
+  explicit I8DloadSubStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_SUB, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nAlu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I8DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I8DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I8DloadMulStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MUL, OpCodeType::I8_STORE) {
+  explicit I8DloadMulStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MUL, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nAlu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I8DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I8DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I8DloadMaxStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MAX, OpCodeType::I8_STORE) {
+  explicit I8DloadMaxStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MAX, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nAlu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I8DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I8DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I8DloadMinStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MIN, OpCodeType::I8_STORE) {
+  explicit I8DloadMinStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MIN, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nAlu = 1;
   }
@@ -3733,9 +3725,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class U8DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class U8DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit U8DloadAddStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_ADD, OpCodeType::U8_STORE) {
+  explicit U8DloadAddStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_ADD, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 5;
     nAlu = 1;
@@ -3743,9 +3735,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class U8DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class U8DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit U8DloadSubStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_SUB, OpCodeType::U8_STORE) {
+  explicit U8DloadSubStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_SUB, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 5;
     nAlu = 1;
@@ -3753,9 +3745,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class U8DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class U8DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit U8DloadMulStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MUL, OpCodeType::U8_STORE) {
+  explicit U8DloadMulStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MUL, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 5;
     nAlu = 1;
@@ -3763,9 +3755,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class U8DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class U8DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit U8DloadMaxStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MAX, OpCodeType::U8_STORE) {
+  explicit U8DloadMaxStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MAX, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 5;
     nAlu = 1;
@@ -3773,9 +3765,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class U8DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class U8DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit U8DloadMinStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MIN, OpCodeType::U8_STORE) {
+  explicit U8DloadMinStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MIN, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 5;
     nAlu = 1;
@@ -3843,9 +3835,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class E43DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E43DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E43DloadAddStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD, OpCodeType::E43_STORE) {
+  explicit E43DloadAddStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 18;
     nAlu = 1;
@@ -3853,9 +3845,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E43DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E43DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E43DloadSubStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB, OpCodeType::E43_STORE) {
+  explicit E43DloadSubStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 18;
     nAlu = 1;
@@ -3863,9 +3855,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E43DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E43DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E43DloadMulStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL, OpCodeType::E43_STORE) {
+  explicit E43DloadMulStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 18;
     nAlu = 1;
@@ -3873,9 +3865,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E43DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E43DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E43DloadMaxStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX, OpCodeType::E43_STORE) {
+  explicit E43DloadMaxStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 18;
     nAlu = 1;
@@ -3883,9 +3875,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E43DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E43DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E43DloadMinStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN, OpCodeType::E43_STORE) {
+  explicit E43DloadMinStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 18;
     nAlu = 1;
@@ -3953,9 +3945,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class E52DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E52DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E52DloadAddStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD, OpCodeType::E52_STORE) {
+  explicit E52DloadAddStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 17;
     nAlu = 1;
@@ -3963,9 +3955,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E52DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E52DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E52DloadSubStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB, OpCodeType::E52_STORE) {
+  explicit E52DloadSubStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 17;
     nAlu = 1;
@@ -3973,9 +3965,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E52DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E52DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E52DloadMulStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL, OpCodeType::E52_STORE) {
+  explicit E52DloadMulStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 17;
     nAlu = 1;
@@ -3983,9 +3975,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E52DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E52DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E52DloadMaxStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX, OpCodeType::E52_STORE) {
+  explicit E52DloadMaxStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 17;
     nAlu = 1;
@@ -3993,9 +3985,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class E52DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class E52DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit E52DloadMinStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN, OpCodeType::E52_STORE) {
+  explicit E52DloadMinStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 17;
     nAlu = 1;
@@ -4063,9 +4055,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I16DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I16DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I16DloadAddStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD, OpCodeType::I16_STORE) {
+  explicit I16DloadAddStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 2;
     nAlu = 1;
@@ -4073,9 +4065,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I16DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I16DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I16DloadSubStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB, OpCodeType::I16_STORE) {
+  explicit I16DloadSubStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 2;
     nAlu = 1;
@@ -4083,9 +4075,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I16DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I16DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I16DloadMulStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL, OpCodeType::I16_STORE) {
+  explicit I16DloadMulStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 2;
     nAlu = 1;
@@ -4093,9 +4085,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I16DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I16DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I16DloadMaxStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX, OpCodeType::I16_STORE) {
+  explicit I16DloadMaxStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 2;
     nAlu = 1;
@@ -4103,9 +4095,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I16DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I16DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I16DloadMinStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN, OpCodeType::I16_STORE) {
+  explicit I16DloadMinStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 2;
     nAlu = 1;
@@ -4173,9 +4165,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class F16DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F16DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F16DloadAddStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_ADD, OpCodeType::F16_STORE) {
+  explicit F16DloadAddStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_ADD, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 1;
     nAlu = 1;
@@ -4183,9 +4175,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F16DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F16DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F16DloadSubStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_SUB, OpCodeType::F16_STORE) {
+  explicit F16DloadSubStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_SUB, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 1;
     nAlu = 1;
@@ -4193,9 +4185,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F16DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F16DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F16DloadMulStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MUL, OpCodeType::F16_STORE) {
+  explicit F16DloadMulStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MUL, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 1;
     nAlu = 1;
@@ -4203,9 +4195,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F16DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F16DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F16DloadMaxStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MAX, OpCodeType::F16_STORE) {
+  explicit F16DloadMaxStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MAX, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 1;
     nAlu = 1;
@@ -4213,9 +4205,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F16DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F16DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F16DloadMinStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MIN, OpCodeType::F16_STORE) {
+  explicit F16DloadMinStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MIN, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 1;
     nAlu = 1;
@@ -4283,9 +4275,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class F32DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F32DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F32DloadAddStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_ADD, OpCodeType::F32_STORE) {
+  explicit F32DloadAddStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_ADD, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 12;
     nAlu = 1;
@@ -4293,9 +4285,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F32DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F32DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F32DloadSubStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_SUB, OpCodeType::F32_STORE) {
+  explicit F32DloadSubStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_SUB, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 12;
     nAlu = 1;
@@ -4303,9 +4295,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F32DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F32DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F32DloadMulStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MUL, OpCodeType::F32_STORE) {
+  explicit F32DloadMulStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MUL, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 12;
     nAlu = 1;
@@ -4313,9 +4305,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F32DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F32DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F32DloadMaxStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MAX, OpCodeType::F32_STORE) {
+  explicit F32DloadMaxStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MAX, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 12;
     nAlu = 1;
@@ -4323,9 +4315,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class F32DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class F32DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit F32DloadMinStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MIN, OpCodeType::F32_STORE) {
+  explicit F32DloadMinStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MIN, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 12;
     nAlu = 1;
@@ -4393,9 +4385,9 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32DloadAddStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I32DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadAddStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD_STORE), DualLoadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD, OpCodeType::I32_I32STORE) {
+  explicit I32DloadAddStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 3;
     nAlu = 2;
@@ -4403,9 +4395,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadSubStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I32DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadSubStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB_STORE), DualLoadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB, OpCodeType::I32_I32STORE) {
+  explicit I32DloadSubStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 3;
     nAlu = 2;
@@ -4413,9 +4405,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadMulStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I32DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadMulStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL_STORE), DualLoadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL, OpCodeType::I32_I32STORE) {
+  explicit I32DloadMulStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 3;
     nAlu = 2;
@@ -4423,9 +4415,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadMaxStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I32DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadMaxStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX_STORE), DualLoadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX, OpCodeType::I32_I32STORE) {
+  explicit I32DloadMaxStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 3;
     nAlu = 2;
@@ -4433,9 +4425,9 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadMinStoreInstr : public VpuInstr, public DualLoadComputeStoreInstr {
+class I32DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadMinStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN_STORE), DualLoadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN, OpCodeType::I32_I32STORE) {
+  explicit I32DloadMinStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     nDtype = 3;
     nAlu = 2;
@@ -4445,7 +4437,7 @@ public:
 
 class I32LoadAddStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadAddStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_ADD, OpCodeType::I32_I32STORE) {
+  explicit I32LoadAddStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     nDtype = 3;
@@ -4457,7 +4449,7 @@ public:
 
 class I32LoadSubStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadSubStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_SUB, OpCodeType::I32_I32STORE) {
+  explicit I32LoadSubStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     nDtype = 3;
@@ -4469,7 +4461,7 @@ public:
 
 class I32LoadMulStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadMulStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MUL, OpCodeType::I32_I32STORE) {
+  explicit I32LoadMulStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     nDtype = 3;
@@ -4481,7 +4473,7 @@ public:
 
 class I32LoadMaxStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadMaxStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MAX, OpCodeType::I32_I32STORE) {
+  explicit I32LoadMaxStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     nDtype = 3;
@@ -4493,7 +4485,7 @@ public:
 
 class I32LoadMinStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadMinStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MIN, OpCodeType::I32_I32STORE) {
+  explicit I32LoadMinStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     nDtype = 3;
@@ -5141,7 +5133,6 @@ std::shared_ptr<VpuInstr> VpuInstr::create(OpCodeType opCode, const std::vector<
     case OpCodeType::SET_DEQUANTIZE:      ret = std::shared_ptr<SetDequantizeInstr>(new SetDequantizeInstr); break;
     case OpCodeType::SET_DEQUANTIZE2:     ret = std::shared_ptr<SetDequantize2Instr>(new SetDequantize2Instr); break;
     case OpCodeType::SET_FS:              ret = std::shared_ptr<SetFsInstr>(new SetFsInstr); break;
-    case OpCodeType::SET_CMASK_HIGH:      ret = std::shared_ptr<SetCmaskHighInstr>(new SetCmaskHighInstr); break;
     case OpCodeType::NOP:                 ret = std::shared_ptr<NopInstr>(new NopInstr); break;
     case OpCodeType::OP_END:              ret = std::shared_ptr<OpEndInstr>(new OpEndInstr); break;
     case OpCodeType::I8_DLOAD:            ret = std::shared_ptr<I8DloadInstr>(new I8DloadInstr); break;
@@ -5167,7 +5158,7 @@ std::shared_ptr<VpuInstr> VpuInstr::create(OpCodeType opCode, const std::vector<
     case OpCodeType::I16_STORE:           ret = std::shared_ptr<I16StoreInstr>(new I16StoreInstr); break;
     case OpCodeType::F16_STORE:           ret = std::shared_ptr<F16StoreInstr>(new F16StoreInstr); break;
     case OpCodeType::F32_STORE:           ret = std::shared_ptr<F32StoreInstr>(new F32StoreInstr); break;
-    case OpCodeType::I32_I32STORE:        ret = std::shared_ptr<I32I32storeInstr>(new I32I32storeInstr); break;
+    case OpCodeType::I32_STORE:           ret = std::shared_ptr<I32StoreInstr>(new I32StoreInstr); break;
     case OpCodeType::F32_ADD:             ret = std::shared_ptr<F32AddInstr>(new F32AddInstr); break;
     case OpCodeType::F32_SUB:             ret = std::shared_ptr<F32SubInstr>(new F32SubInstr); break;
     case OpCodeType::F32_MUL:             ret = std::shared_ptr<F32MulInstr>(new F32MulInstr); break;
@@ -5468,8 +5459,8 @@ std::shared_ptr<VpuInstr> VpuInstr::create(OpCodeType opCode, const std::vector<
     case OpCodeType::S_SETRF:             ret = std::shared_ptr<SSetrfInstr>(new SSetrfInstr); break;
     default: break;
   }
-  for (size_t i = 0; i < args.size(); ++i)
-    ret->setters[i](args[i]);
+  if (args.size() > 0)
+    ret->setArgs(args);
   return ret;
 }
 
