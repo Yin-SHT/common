@@ -26,7 +26,7 @@
   void set##field(uint32_t field) {\
     uint32_t m = (((uint32_t)1<<(high-low+1))-1)<<low;\
     fields = (fields&(~m)) | (field<<low)&m;\
-    n##field = field; }
+    VpuInstr::set##field(field); }
 #endif
 
 #ifndef VPU_PUSH_GETTER_SETTER
@@ -862,31 +862,84 @@ protected:
   std::vector<uint8_t> binary;
 
 public:
-  uint32_t nAlu = 0;
-  uint32_t nBankBroadcast = 0;
-  uint32_t nBankMask = 0;
-  uint32_t nBaseAddr = 0;
-  uint32_t nChannelBroadcast = 0;
-  uint32_t nClusterBroadcast = 0;
-  uint32_t nClusterMask = 0;
-  uint32_t nDequantize = 0;
-  uint32_t nDtype = 0;
-  uint32_t nEnable = 0;
-  uint32_t nFsSel = 0;
-  uint32_t nHasImm = 0;
-  uint32_t nImm = 0;
-  uint32_t nMode = 0;
-  uint32_t nOffset = 0;
-  uint32_t nQuantize = 0;
-  uint32_t nRd = 0;
-  uint32_t nRfSel = 0;
-  uint32_t nRs = 0;
-  uint32_t nRt = 0;
-  uint32_t nSpRd0 = 0;
-  uint32_t nSpRd1 = 0;
-  uint32_t nSrcNum = 0;
-  uint32_t nStride = 0;
-  uint32_t nStrideLength = 0;
+  uint32_t getAlu() { return alu; }
+  uint32_t getBankBroadcast() { return bankBroadcast; }
+  uint32_t getBankMask() { return bankMask; }
+  uint32_t getBaseAddr() { return baseAddr; }
+  uint32_t getChannelBroadcast() { return channelBroadcast; }
+  uint32_t getClusterBroadcast() { return clusterBroadcast; }
+  uint32_t getClusterMask() { return clusterMask; }
+  uint32_t getDequantize() { return dequantize; }
+  uint32_t getDtype() { return dtype; }
+  uint32_t getEnable() { return enable; }
+  uint32_t getFsSel() { return fsSel; }
+  uint32_t getHasImm() { return hasImm; }
+  uint32_t getImm() { return imm; }
+  uint32_t getMode() { return mode; }
+  uint32_t getOffset() { return offset; }
+  uint32_t getQuantize() { return quantize; }
+  uint32_t getRd() { return rd; }
+  uint32_t getRfSel() { return rfSel; }
+  uint32_t getRs() { return rs; }
+  uint32_t getRt() { return rt; }
+  uint32_t getSpRd0() { return spRd0; }
+  uint32_t getSpRd1() { return spRd1; }
+  uint32_t getSrcNum() { return srcNum; }
+  uint32_t getStride() { return stride; }
+  uint32_t getStrideLength() { return strideLength; }
+
+  void setAlu(uint32_t n) { alu = n; }
+  void setBankBroadcast(uint32_t n) { bankBroadcast = n; }
+  void setBankMask(uint32_t n) { bankMask = n; }
+  void setBaseAddr(uint32_t n) { baseAddr = n; }
+  void setChannelBroadcast(uint32_t n) { channelBroadcast = n; }
+  void setClusterBroadcast(uint32_t n) { clusterBroadcast = n; }
+  void setClusterMask(uint32_t n) { clusterMask = n; }
+  void setDequantize(uint32_t n) { dequantize = n; }
+  void setDtype(uint32_t n) { dtype = n; }
+  void setEnable(uint32_t n) { enable = n; }
+  void setFsSel(uint32_t n) { fsSel = n; }
+  void setHasImm(uint32_t n) { hasImm = n; }
+  void setImm(uint32_t n) { imm = n; }
+  void setMode(uint32_t n) { mode = n; }
+  void setOffset(uint32_t n) { offset = n; }
+  void setQuantize(uint32_t n) { quantize = n; }
+  void setRd(uint32_t n) { rd = n; }
+  void setRfSel(uint32_t n) { rfSel = n; }
+  void setRs(uint32_t n) { rs = n; }
+  void setRt(uint32_t n) { rt = n; }
+  void setSpRd0(uint32_t n) { spRd0 = n; }
+  void setSpRd1(uint32_t n) { spRd1 = n; }
+  void setSrcNum(uint32_t n) { srcNum = n; }
+  void setStride(uint32_t n) { stride = n; }
+  void setStrideLength(uint32_t n) { strideLength = n; }
+
+protected:
+  uint32_t alu = 0;
+  uint32_t bankBroadcast = 0;
+  uint32_t bankMask = 0;
+  uint32_t baseAddr = 0;
+  uint32_t channelBroadcast = 0;
+  uint32_t clusterBroadcast = 0;
+  uint32_t clusterMask = 0;
+  uint32_t dequantize = 0;
+  uint32_t dtype = 0;
+  uint32_t enable = 0;
+  uint32_t fsSel = 0;
+  uint32_t hasImm = 0;
+  uint32_t imm = 0;
+  uint32_t mode = 0;
+  uint32_t offset = 0;
+  uint32_t quantize = 0;
+  uint32_t rd = 0;
+  uint32_t rfSel = 0;
+  uint32_t rs = 0;
+  uint32_t rt = 0;
+  uint32_t spRd0 = 0;
+  uint32_t spRd1 = 0;
+  uint32_t srcNum = 0;
+  uint32_t stride = 0;
+  uint32_t strideLength = 0;
 };
 
 class DloadComputeStoreInstr {
@@ -965,7 +1018,7 @@ class SetLoadBaseInstr : public VpuInstr {
 public:
   explicit SetLoadBaseInstr() : VpuInstr(OpCodeType::SET_LOAD_BASE) {
     VPU_PUSH_GETTER_SETTER(BaseAddr);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(BaseAddr, 23, 0);
 };
@@ -974,7 +1027,7 @@ class SetLoad2BaseInstr : public VpuInstr {
 public:
   explicit SetLoad2BaseInstr() : VpuInstr(OpCodeType::SET_LOAD2_BASE) {
     VPU_PUSH_GETTER_SETTER(BaseAddr);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(BaseAddr, 23, 0);
 };
@@ -983,7 +1036,7 @@ class SetStoreBaseInstr : public VpuInstr {
 public:
   explicit SetStoreBaseInstr() : VpuInstr(OpCodeType::SET_STORE_BASE) {
     VPU_PUSH_GETTER_SETTER(BaseAddr);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(BaseAddr, 23, 0);
 };
@@ -997,7 +1050,7 @@ public:
     VPU_PUSH_GETTER_SETTER(ClusterBroadcast);
     VPU_PUSH_GETTER_SETTER(BankBroadcast);
     VPU_PUSH_GETTER_SETTER(ChannelBroadcast);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Stride, 23, 21);
   VPU_GEN_GETTER_SETTER(ClusterMask, 20, 13);
@@ -1013,7 +1066,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Stride);
     VPU_PUSH_GETTER_SETTER(ClusterMask);
     VPU_PUSH_GETTER_SETTER(BankMask);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Stride, 23, 21);
   VPU_GEN_GETTER_SETTER(ClusterMask, 20, 5);
@@ -1024,7 +1077,7 @@ class SetQuantizeInstr : public VpuInstr {
 public:
   explicit SetQuantizeInstr() : VpuInstr(OpCodeType::SET_QUANTIZE) {
     VPU_PUSH_GETTER_SETTER(Quantize);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Quantize, 15, 0);
 };
@@ -1033,7 +1086,7 @@ class SetDequantizeInstr : public VpuInstr {
 public:
   explicit SetDequantizeInstr() : VpuInstr(OpCodeType::SET_DEQUANTIZE) {
     VPU_PUSH_GETTER_SETTER(Dequantize);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Dequantize, 23, 0);
 };
@@ -1042,7 +1095,7 @@ class SetDequantize2Instr : public VpuInstr {
 public:
   explicit SetDequantize2Instr() : VpuInstr(OpCodeType::SET_DEQUANTIZE2) {
     VPU_PUSH_GETTER_SETTER(Dequantize);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Dequantize, 23, 0);
 };
@@ -1051,7 +1104,7 @@ class SetFsInstr : public VpuInstr {
 public:
   explicit SetFsInstr() : VpuInstr(OpCodeType::SET_FS) {
     VPU_PUSH_GETTER_SETTER(FsSel);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(FsSel, 7, 0);
 };
@@ -1062,7 +1115,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Enable);
     VPU_PUSH_GETTER_SETTER(Mode);
     VPU_PUSH_GETTER_SETTER(StrideLength);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Enable, 23, 23);
   VPU_GEN_GETTER_SETTER(Mode, 22, 19);
@@ -1075,7 +1128,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Enable);
     VPU_PUSH_GETTER_SETTER(Mode);
     VPU_PUSH_GETTER_SETTER(StrideLength);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Enable, 23, 23);
   VPU_GEN_GETTER_SETTER(Mode, 22, 19);
@@ -1085,14 +1138,14 @@ public:
 class NopInstr : public VpuInstr {
 public:
   explicit NopInstr() : VpuInstr(OpCodeType::NOP) {
-    nAlu = 1;
+    alu = 1;
   }
 };
 
 class OpEndInstr : public VpuInstr {
 public:
   explicit OpEndInstr() : VpuInstr(OpCodeType::OP_END) {
-    nAlu = 1;
+    alu = 1;
   }
 };
 
@@ -1102,7 +1155,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1114,7 +1167,7 @@ public:
   explicit I8LoadInstr() : VpuInstr(OpCodeType::I8_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1126,8 +1179,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1139,8 +1192,8 @@ public:
   explicit U8LoadInstr() : VpuInstr(OpCodeType::U8_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1152,8 +1205,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1165,8 +1218,8 @@ public:
   explicit E43LoadInstr() : VpuInstr(OpCodeType::E43_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1178,8 +1231,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1191,8 +1244,8 @@ public:
   explicit E52LoadInstr() : VpuInstr(OpCodeType::E52_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1204,8 +1257,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1217,8 +1270,8 @@ public:
   explicit I16LoadInstr() : VpuInstr(OpCodeType::I16_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1230,8 +1283,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1243,8 +1296,8 @@ public:
   explicit F16LoadInstr() : VpuInstr(OpCodeType::F16_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1256,8 +1309,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1269,8 +1322,8 @@ public:
   explicit F32LoadInstr() : VpuInstr(OpCodeType::F32_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1282,8 +1335,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1295,8 +1348,8 @@ public:
   explicit I32LoadInstr() : VpuInstr(OpCodeType::I32_LOAD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1307,7 +1360,7 @@ public:
   explicit I8StoreInstr() : VpuInstr(OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1318,8 +1371,8 @@ public:
   explicit U8StoreInstr() : VpuInstr(OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1330,8 +1383,8 @@ public:
   explicit E43StoreInstr() : VpuInstr(OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1342,8 +1395,8 @@ public:
   explicit E52StoreInstr() : VpuInstr(OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1354,8 +1407,8 @@ public:
   explicit I16StoreInstr() : VpuInstr(OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1366,8 +1419,8 @@ public:
   explicit F16StoreInstr() : VpuInstr(OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1378,8 +1431,8 @@ public:
   explicit F32StoreInstr() : VpuInstr(OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1390,8 +1443,8 @@ public:
   explicit I32StoreInstr() : VpuInstr(OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1403,8 +1456,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1417,8 +1470,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1431,8 +1484,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1445,8 +1498,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1459,8 +1512,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1472,8 +1525,8 @@ public:
   explicit F32GreaterInstr() : VpuInstr(OpCodeType::F32_GREATER) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1484,8 +1537,8 @@ public:
   explicit F32GreaterEqualInstr() : VpuInstr(OpCodeType::F32_GREATER_EQUAL) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1496,8 +1549,8 @@ public:
   explicit F32LessInstr() : VpuInstr(OpCodeType::F32_LESS) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1508,8 +1561,8 @@ public:
   explicit F32LessEqualInstr() : VpuInstr(OpCodeType::F32_LESS_EQUAL) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1520,8 +1573,8 @@ public:
   explicit F32EqualInstr() : VpuInstr(OpCodeType::F32_EQUAL) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1533,8 +1586,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1547,9 +1600,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1562,9 +1615,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1577,9 +1630,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1592,9 +1645,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1607,9 +1660,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1621,9 +1674,9 @@ public:
   explicit F32MoviInstr() : VpuInstr(OpCodeType::F32_MOVI) {
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
@@ -1634,9 +1687,9 @@ public:
   explicit F32GreateriInstr() : VpuInstr(OpCodeType::F32_GREATERI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1647,9 +1700,9 @@ public:
   explicit F32GreaterEqualiInstr() : VpuInstr(OpCodeType::F32_GREATER_EQUALI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1660,9 +1713,9 @@ public:
   explicit F32LessiInstr() : VpuInstr(OpCodeType::F32_LESSI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1673,9 +1726,9 @@ public:
   explicit F32LessEqualiInstr() : VpuInstr(OpCodeType::F32_LESS_EQUALI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1686,9 +1739,9 @@ public:
   explicit F32EqualiInstr() : VpuInstr(OpCodeType::F32_EQUALI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1700,9 +1753,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1714,9 +1767,9 @@ public:
   explicit F32LuiInstr() : VpuInstr(OpCodeType::F32_LUI) {
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
@@ -1727,9 +1780,9 @@ public:
   explicit F32LiInstr() : VpuInstr(OpCodeType::F32_LI) {
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 12;
-    nAlu = 1;
+    hasImm = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
@@ -1741,8 +1794,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1755,8 +1808,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1769,8 +1822,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1783,8 +1836,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1797,8 +1850,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1810,8 +1863,8 @@ public:
   explicit I32GreaterInstr() : VpuInstr(OpCodeType::I32_GREATER) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1822,8 +1875,8 @@ public:
   explicit I32GreaterEqualInstr() : VpuInstr(OpCodeType::I32_GREATER_EQUAL) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1834,8 +1887,8 @@ public:
   explicit I32LessInstr() : VpuInstr(OpCodeType::I32_LESS) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1846,8 +1899,8 @@ public:
   explicit I32LessEqualInstr() : VpuInstr(OpCodeType::I32_LESS_EQUAL) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1858,8 +1911,8 @@ public:
   explicit I32EqualInstr() : VpuInstr(OpCodeType::I32_EQUAL) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1871,8 +1924,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1885,9 +1938,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1900,9 +1953,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1915,9 +1968,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1930,9 +1983,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1945,9 +1998,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1959,9 +2012,9 @@ public:
   explicit I32MoviInstr() : VpuInstr(OpCodeType::I32_MOVI) {
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
@@ -1972,9 +2025,9 @@ public:
   explicit I32GreateriInstr() : VpuInstr(OpCodeType::I32_GREATERI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1985,9 +2038,9 @@ public:
   explicit I32GreaterEqualiInstr() : VpuInstr(OpCodeType::I32_GREATER_EQUALI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1998,9 +2051,9 @@ public:
   explicit I32LessiInstr() : VpuInstr(OpCodeType::I32_LESSI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -2011,9 +2064,9 @@ public:
   explicit I32LessEqualiInstr() : VpuInstr(OpCodeType::I32_LESS_EQUALI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -2024,9 +2077,9 @@ public:
   explicit I32EqualiInstr() : VpuInstr(OpCodeType::I32_EQUALI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -2038,9 +2091,9 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -2052,9 +2105,9 @@ public:
   explicit I32LuiInstr() : VpuInstr(OpCodeType::I32_LUI) {
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
@@ -2065,9 +2118,9 @@ public:
   explicit I32LiInstr() : VpuInstr(OpCodeType::I32_LI) {
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nHasImm = 1;
-    nDtype = 3;
-    nAlu = 2;
+    hasImm = 1;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
@@ -2078,7 +2131,7 @@ public:
   explicit I8DloadAddInstr() : VpuInstr(OpCodeType::I8_DLOAD_ADD), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2089,7 +2142,7 @@ public:
   explicit I8DloadSubInstr() : VpuInstr(OpCodeType::I8_DLOAD_SUB), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2100,7 +2153,7 @@ public:
   explicit I8DloadMulInstr() : VpuInstr(OpCodeType::I8_DLOAD_MUL), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2111,7 +2164,7 @@ public:
   explicit I8DloadMaxInstr() : VpuInstr(OpCodeType::I8_DLOAD_MAX), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2122,7 +2175,7 @@ public:
   explicit I8DloadMinInstr() : VpuInstr(OpCodeType::I8_DLOAD_MIN), DloadComputeInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2134,7 +2187,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2147,7 +2200,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2160,7 +2213,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2173,7 +2226,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2186,7 +2239,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2198,8 +2251,8 @@ public:
   explicit U8DloadAddInstr() : VpuInstr(OpCodeType::U8_DLOAD_ADD), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2210,8 +2263,8 @@ public:
   explicit U8DloadSubInstr() : VpuInstr(OpCodeType::U8_DLOAD_SUB), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2222,8 +2275,8 @@ public:
   explicit U8DloadMulInstr() : VpuInstr(OpCodeType::U8_DLOAD_MUL), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2234,8 +2287,8 @@ public:
   explicit U8DloadMaxInstr() : VpuInstr(OpCodeType::U8_DLOAD_MAX), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2246,8 +2299,8 @@ public:
   explicit U8DloadMinInstr() : VpuInstr(OpCodeType::U8_DLOAD_MIN), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2259,8 +2312,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2273,8 +2326,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2287,8 +2340,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2301,8 +2354,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2315,8 +2368,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2328,8 +2381,8 @@ public:
   explicit E43DloadAddInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2340,8 +2393,8 @@ public:
   explicit E43DloadSubInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2352,8 +2405,8 @@ public:
   explicit E43DloadMulInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2364,8 +2417,8 @@ public:
   explicit E43DloadMaxInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2376,8 +2429,8 @@ public:
   explicit E43DloadMinInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2389,8 +2442,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2403,8 +2456,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2417,8 +2470,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2431,8 +2484,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2445,8 +2498,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2458,8 +2511,8 @@ public:
   explicit E52DloadAddInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2470,8 +2523,8 @@ public:
   explicit E52DloadSubInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2482,8 +2535,8 @@ public:
   explicit E52DloadMulInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2494,8 +2547,8 @@ public:
   explicit E52DloadMaxInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2506,8 +2559,8 @@ public:
   explicit E52DloadMinInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2519,8 +2572,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2533,8 +2586,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2547,8 +2600,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2561,8 +2614,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2575,8 +2628,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2588,8 +2641,8 @@ public:
   explicit I16DloadAddInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2600,8 +2653,8 @@ public:
   explicit I16DloadSubInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2612,8 +2665,8 @@ public:
   explicit I16DloadMulInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2624,8 +2677,8 @@ public:
   explicit I16DloadMaxInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2636,8 +2689,8 @@ public:
   explicit I16DloadMinInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2649,8 +2702,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2663,8 +2716,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2677,8 +2730,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2691,8 +2744,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2705,8 +2758,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2718,8 +2771,8 @@ public:
   explicit F16DloadAddInstr() : VpuInstr(OpCodeType::F16_DLOAD_ADD), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2730,8 +2783,8 @@ public:
   explicit F16DloadSubInstr() : VpuInstr(OpCodeType::F16_DLOAD_SUB), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2742,8 +2795,8 @@ public:
   explicit F16DloadMulInstr() : VpuInstr(OpCodeType::F16_DLOAD_MUL), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2754,8 +2807,8 @@ public:
   explicit F16DloadMaxInstr() : VpuInstr(OpCodeType::F16_DLOAD_MAX), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2766,8 +2819,8 @@ public:
   explicit F16DloadMinInstr() : VpuInstr(OpCodeType::F16_DLOAD_MIN), DloadComputeInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2779,8 +2832,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2793,8 +2846,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2807,8 +2860,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2821,8 +2874,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2835,8 +2888,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2848,8 +2901,8 @@ public:
   explicit F32DloadAddInstr() : VpuInstr(OpCodeType::F32_DLOAD_ADD), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2860,8 +2913,8 @@ public:
   explicit F32DloadSubInstr() : VpuInstr(OpCodeType::F32_DLOAD_SUB), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2872,8 +2925,8 @@ public:
   explicit F32DloadMulInstr() : VpuInstr(OpCodeType::F32_DLOAD_MUL), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2884,8 +2937,8 @@ public:
   explicit F32DloadMaxInstr() : VpuInstr(OpCodeType::F32_DLOAD_MAX), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2896,8 +2949,8 @@ public:
   explicit F32DloadMinInstr() : VpuInstr(OpCodeType::F32_DLOAD_MIN), DloadComputeInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2909,8 +2962,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2923,8 +2976,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2937,8 +2990,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2951,8 +3004,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2965,8 +3018,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2978,8 +3031,8 @@ public:
   explicit I32DloadAddInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2990,8 +3043,8 @@ public:
   explicit I32DloadSubInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3002,8 +3055,8 @@ public:
   explicit I32DloadMulInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3014,8 +3067,8 @@ public:
   explicit I32DloadMaxInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3026,8 +3079,8 @@ public:
   explicit I32DloadMinInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3039,8 +3092,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -3053,8 +3106,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -3067,8 +3120,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -3081,8 +3134,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -3095,8 +3148,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -3109,7 +3162,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3122,7 +3175,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3135,7 +3188,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3148,7 +3201,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3161,7 +3214,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3174,8 +3227,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3188,8 +3241,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3202,8 +3255,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3216,8 +3269,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3230,8 +3283,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3244,8 +3297,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3258,8 +3311,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3272,8 +3325,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3286,8 +3339,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3300,8 +3353,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3314,8 +3367,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3328,8 +3381,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3342,8 +3395,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3356,8 +3409,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3370,8 +3423,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3384,8 +3437,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3398,8 +3451,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3412,8 +3465,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3426,8 +3479,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3440,8 +3493,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3454,8 +3507,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3468,8 +3521,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3482,8 +3535,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3496,8 +3549,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3510,8 +3563,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3524,8 +3577,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3538,8 +3591,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3552,8 +3605,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3566,8 +3619,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3580,8 +3633,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3594,8 +3647,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3608,8 +3661,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3622,8 +3675,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3636,8 +3689,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3650,8 +3703,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3662,7 +3715,7 @@ class I8DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I8DloadAddStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_ADD, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3671,7 +3724,7 @@ class I8DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I8DloadSubStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_SUB, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3680,7 +3733,7 @@ class I8DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I8DloadMulStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MUL, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3689,7 +3742,7 @@ class I8DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I8DloadMaxStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MAX, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3698,7 +3751,7 @@ class I8DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I8DloadMinStoreInstr() : VpuInstr(OpCodeType::I8_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I8_DLOAD, OpCodeType::F32_MIN, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3708,7 +3761,7 @@ public:
   explicit I8LoadAddStoreInstr() : VpuInstr(OpCodeType::I8_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::I8_LOAD, OpCodeType::F32_ADD, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3719,7 +3772,7 @@ public:
   explicit I8LoadSubStoreInstr() : VpuInstr(OpCodeType::I8_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::I8_LOAD, OpCodeType::F32_SUB, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3730,7 +3783,7 @@ public:
   explicit I8LoadMulStoreInstr() : VpuInstr(OpCodeType::I8_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::I8_LOAD, OpCodeType::F32_MUL, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3741,7 +3794,7 @@ public:
   explicit I8LoadMaxStoreInstr() : VpuInstr(OpCodeType::I8_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::I8_LOAD, OpCodeType::F32_MAX, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3752,7 +3805,7 @@ public:
   explicit I8LoadMinStoreInstr() : VpuInstr(OpCodeType::I8_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::I8_LOAD, OpCodeType::F32_MIN, OpCodeType::I8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nAlu = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3762,8 +3815,8 @@ class U8DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit U8DloadAddStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_ADD, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3772,8 +3825,8 @@ class U8DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit U8DloadSubStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_SUB, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3782,8 +3835,8 @@ class U8DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit U8DloadMulStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MUL, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3792,8 +3845,8 @@ class U8DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit U8DloadMaxStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MAX, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3802,8 +3855,8 @@ class U8DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit U8DloadMinStoreInstr() : VpuInstr(OpCodeType::U8_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::F32_MIN, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3813,8 +3866,8 @@ public:
   explicit U8LoadAddStoreInstr() : VpuInstr(OpCodeType::U8_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::F32_ADD, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3825,8 +3878,8 @@ public:
   explicit U8LoadSubStoreInstr() : VpuInstr(OpCodeType::U8_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::F32_SUB, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3837,8 +3890,8 @@ public:
   explicit U8LoadMulStoreInstr() : VpuInstr(OpCodeType::U8_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::F32_MUL, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3849,8 +3902,8 @@ public:
   explicit U8LoadMaxStoreInstr() : VpuInstr(OpCodeType::U8_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::F32_MAX, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3861,8 +3914,8 @@ public:
   explicit U8LoadMinStoreInstr() : VpuInstr(OpCodeType::U8_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::F32_MIN, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 5;
-    nAlu = 1;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3872,8 +3925,8 @@ class E43DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E43DloadAddStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3882,8 +3935,8 @@ class E43DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E43DloadSubStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3892,8 +3945,8 @@ class E43DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E43DloadMulStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3902,8 +3955,8 @@ class E43DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E43DloadMaxStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3912,8 +3965,8 @@ class E43DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E43DloadMinStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3923,8 +3976,8 @@ public:
   explicit E43LoadAddStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_ADD, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3935,8 +3988,8 @@ public:
   explicit E43LoadSubStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_SUB, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3947,8 +4000,8 @@ public:
   explicit E43LoadMulStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MUL, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3959,8 +4012,8 @@ public:
   explicit E43LoadMaxStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MAX, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3971,8 +4024,8 @@ public:
   explicit E43LoadMinStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MIN, OpCodeType::E43_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 18;
-    nAlu = 1;
+    dtype = 18;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3982,8 +4035,8 @@ class E52DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E52DloadAddStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -3992,8 +4045,8 @@ class E52DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E52DloadSubStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4002,8 +4055,8 @@ class E52DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E52DloadMulStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4012,8 +4065,8 @@ class E52DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E52DloadMaxStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4022,8 +4075,8 @@ class E52DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit E52DloadMinStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4033,8 +4086,8 @@ public:
   explicit E52LoadAddStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_ADD, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4045,8 +4098,8 @@ public:
   explicit E52LoadSubStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_SUB, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4057,8 +4110,8 @@ public:
   explicit E52LoadMulStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MUL, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4069,8 +4122,8 @@ public:
   explicit E52LoadMaxStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MAX, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4081,8 +4134,8 @@ public:
   explicit E52LoadMinStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MIN, OpCodeType::E52_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 17;
-    nAlu = 1;
+    dtype = 17;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4092,8 +4145,8 @@ class I16DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I16DloadAddStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4102,8 +4155,8 @@ class I16DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I16DloadSubStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4112,8 +4165,8 @@ class I16DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I16DloadMulStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4122,8 +4175,8 @@ class I16DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I16DloadMaxStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4132,8 +4185,8 @@ class I16DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I16DloadMinStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4143,8 +4196,8 @@ public:
   explicit I16LoadAddStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_ADD, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4155,8 +4208,8 @@ public:
   explicit I16LoadSubStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_SUB, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4167,8 +4220,8 @@ public:
   explicit I16LoadMulStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MUL, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4179,8 +4232,8 @@ public:
   explicit I16LoadMaxStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MAX, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4191,8 +4244,8 @@ public:
   explicit I16LoadMinStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MIN, OpCodeType::I16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 2;
-    nAlu = 1;
+    dtype = 2;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4202,8 +4255,8 @@ class F16DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F16DloadAddStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_ADD, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4212,8 +4265,8 @@ class F16DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F16DloadSubStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_SUB, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4222,8 +4275,8 @@ class F16DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F16DloadMulStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MUL, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4232,8 +4285,8 @@ class F16DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F16DloadMaxStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MAX, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4242,8 +4295,8 @@ class F16DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F16DloadMinStoreInstr() : VpuInstr(OpCodeType::F16_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::F16_DLOAD, OpCodeType::F32_MIN, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4253,8 +4306,8 @@ public:
   explicit F16LoadAddStoreInstr() : VpuInstr(OpCodeType::F16_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::F16_LOAD, OpCodeType::F32_ADD, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4265,8 +4318,8 @@ public:
   explicit F16LoadSubStoreInstr() : VpuInstr(OpCodeType::F16_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::F16_LOAD, OpCodeType::F32_SUB, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4277,8 +4330,8 @@ public:
   explicit F16LoadMulStoreInstr() : VpuInstr(OpCodeType::F16_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::F16_LOAD, OpCodeType::F32_MUL, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4289,8 +4342,8 @@ public:
   explicit F16LoadMaxStoreInstr() : VpuInstr(OpCodeType::F16_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::F16_LOAD, OpCodeType::F32_MAX, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4301,8 +4354,8 @@ public:
   explicit F16LoadMinStoreInstr() : VpuInstr(OpCodeType::F16_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::F16_LOAD, OpCodeType::F32_MIN, OpCodeType::F16_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 1;
-    nAlu = 1;
+    dtype = 1;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4312,8 +4365,8 @@ class F32DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F32DloadAddStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_ADD, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4322,8 +4375,8 @@ class F32DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F32DloadSubStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_SUB, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4332,8 +4385,8 @@ class F32DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F32DloadMulStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MUL, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4342,8 +4395,8 @@ class F32DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F32DloadMaxStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MAX, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4352,8 +4405,8 @@ class F32DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit F32DloadMinStoreInstr() : VpuInstr(OpCodeType::F32_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::F32_DLOAD, OpCodeType::F32_MIN, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4363,8 +4416,8 @@ public:
   explicit F32LoadAddStoreInstr() : VpuInstr(OpCodeType::F32_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::F32_LOAD, OpCodeType::F32_ADD, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4375,8 +4428,8 @@ public:
   explicit F32LoadSubStoreInstr() : VpuInstr(OpCodeType::F32_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::F32_LOAD, OpCodeType::F32_SUB, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4387,8 +4440,8 @@ public:
   explicit F32LoadMulStoreInstr() : VpuInstr(OpCodeType::F32_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::F32_LOAD, OpCodeType::F32_MUL, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4399,8 +4452,8 @@ public:
   explicit F32LoadMaxStoreInstr() : VpuInstr(OpCodeType::F32_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::F32_LOAD, OpCodeType::F32_MAX, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4411,8 +4464,8 @@ public:
   explicit F32LoadMinStoreInstr() : VpuInstr(OpCodeType::F32_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::F32_LOAD, OpCodeType::F32_MIN, OpCodeType::F32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 12;
-    nAlu = 1;
+    dtype = 12;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4422,8 +4475,8 @@ class I32DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I32DloadAddStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4432,8 +4485,8 @@ class I32DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I32DloadSubStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4442,8 +4495,8 @@ class I32DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I32DloadMulStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4452,8 +4505,8 @@ class I32DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I32DloadMaxStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4462,8 +4515,8 @@ class I32DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
   explicit I32DloadMinStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -4473,8 +4526,8 @@ public:
   explicit I32LoadAddStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4485,8 +4538,8 @@ public:
   explicit I32LoadSubStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4497,8 +4550,8 @@ public:
   explicit I32LoadMulStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4509,8 +4562,8 @@ public:
   explicit I32LoadMaxStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4521,8 +4574,8 @@ public:
   explicit I32LoadMinStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nAlu = 2;
+    dtype = 3;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -4534,8 +4587,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4548,8 +4601,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4562,8 +4615,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4576,8 +4629,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4590,8 +4643,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4604,8 +4657,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4618,8 +4671,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4632,8 +4685,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4646,8 +4699,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4660,8 +4713,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4674,8 +4727,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4688,8 +4741,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4702,8 +4755,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4716,8 +4769,8 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -4729,8 +4782,8 @@ public:
   explicit SLuiInstr() : VpuInstr(OpCodeType::S_LUI) {
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rt);
-    nDtype = 3;
-    nHasImm = 1;
+    dtype = 3;
+    hasImm = 1;
   }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4742,7 +4795,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4755,7 +4808,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4768,7 +4821,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4781,7 +4834,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4794,7 +4847,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4807,7 +4860,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4820,7 +4873,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4833,7 +4886,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4846,7 +4899,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4859,7 +4912,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4872,7 +4925,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4885,7 +4938,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4898,7 +4951,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4911,7 +4964,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4924,7 +4977,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4937,7 +4990,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4950,7 +5003,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4963,7 +5016,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4976,7 +5029,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -4989,7 +5042,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5002,7 +5055,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5015,7 +5068,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5026,7 +5079,7 @@ class SJumpInstr : public VpuInstr, public ScalarInstr {
 public:
   explicit SJumpInstr() : VpuInstr(OpCodeType::S_JUMP) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -5035,7 +5088,7 @@ class SJalInstr : public VpuInstr, public ScalarInstr {
 public:
   explicit SJalInstr() : VpuInstr(OpCodeType::S_JAL) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
@@ -5044,7 +5097,7 @@ class SJrInstr : public VpuInstr, public ScalarInstr {
 public:
   explicit SJrInstr() : VpuInstr(OpCodeType::S_JR) {
     VPU_PUSH_GETTER_SETTER(Rs);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
 };
@@ -5055,7 +5108,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5068,7 +5121,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5081,7 +5134,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5094,7 +5147,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5107,7 +5160,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5120,7 +5173,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5135,7 +5188,7 @@ public:
     VPU_PUSH_GETTER_SETTER(SpRd0);
     VPU_PUSH_GETTER_SETTER(SpRd1);
     VPU_PUSH_GETTER_SETTER(SrcNum);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(Rs, 23, 20);
   VPU_GEN_GETTER_SETTER(Rt, 19, 16);
@@ -5148,7 +5201,7 @@ class SSetrfInstr : public VpuInstr, public ScalarInstr {
 public:
   explicit SSetrfInstr() : VpuInstr(OpCodeType::S_SETRF) {
     VPU_PUSH_GETTER_SETTER(RfSel);
-    nDtype = 3;
+    dtype = 3;
   }
   VPU_GEN_GETTER_SETTER(RfSel, 2, 0);
 };
