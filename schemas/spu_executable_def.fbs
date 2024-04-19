@@ -32,14 +32,6 @@ enum AccessMode : int32 { ReadOnly = 0, WriteOnly, ReadWrite }
 // Defines the function of some DMAs.
 enum DmaFunc : int32 { IN = 0, OUT, SEND, RECV, LOAD, STORE }
 
-// Some CPU Ops like 'CONFIG'/'CPU'/'PP' would need auxiliary configuration.
-// We will gather all of such configurations by order in VI.
-struct ScheduleConfigDef {
-  // Indicates how many bytes to this configuration, but excludes 'length' field.
-  length:int32;
-  // ...
-}
-
 table FuncDataDef {
   data:[uint8];
 }
@@ -53,8 +45,10 @@ table FuncDataPointerDef {
 table PelsStageDef {
   // A list of VIs.
   vi_list:FuncDataPointerDef;
+  cmd_length:int32;
 
-  // All of ScheduleConfigDef would be stored here.
+  // Some CPU Ops like 'CONFIG'/'CPU'/'PP' would need auxiliary configuration.
+  // We will gather all of such configurations by order in VI.
   configs:FuncDataPointerDef;
 }
 
@@ -64,17 +58,18 @@ table PelsDef {
   input:PelsStageDef;
   main:PelsStageDef;
   output:PelsStageDef;
-
-  // configuration for initialization of SPU.
-  init_config:[uint8];
 }
 
 table ColsDef {
   vi_list:FuncDataPointerDef;
+  cmd_length:int32;
+  configs:FuncDataPointerDef;
 }
 
 table ChlsDef {
   vi_list:FuncDataPointerDef;
+  cmd_length:int32;
+  configs:FuncDataPointerDef;
 }
 
 // Source code location denoted by a file name and line within that file.
@@ -120,6 +115,10 @@ table ConstantsDef {
 table EngineCmdsDef {
   // CMDs storage.
   data:FuncDataPointerDef;
+
+  // Define CMD length, `data` consist of CMD and DmaLinkedList, 
+  // CMD is at the front of it.
+  cmd_length:int32;
   engine_type:EngineType;
 }
 
@@ -127,9 +126,9 @@ table EngineCmdsDef {
 table DmaCmdsDef {
   // CMDs storage.
   data:FuncDataPointerDef;
+  cmd_length:int32;
   dma_type:EngineType;
   func:DmaFunc;
-  interval:int32;
 }
 
 // Defines a argument reference, in which 'dma_location' is used to trace
@@ -177,8 +176,7 @@ table CoreDef {
   cols:ColsDef;
 }
 
-// Each executable function would include up to 16 PE. We select a Core
-// to execute the function, and dispatch it to different PE.
+// Each executable function would include up to 64 PEs.
 table ExecutableFuncDef {
   // A list of arguments of the function.
   args:[ArgumentDef];
