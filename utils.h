@@ -114,21 +114,46 @@ inline std::string getSharedMemoryName(size_t coreId, size_t peId) {
 
 inline std::string getEngineName(EngineType engine) {
   switch  (engine) {
-    case EngineType::SPU:  return "spu";
-    case EngineType::VPU:  return "vpu";
-    case EngineType::AE:   return "ae";
-    case EngineType::TE:   return "te";
-    case EngineType::SE:   return "se";
-    case EngineType::DMA0: return "dma0";
-    case EngineType::DMA1: return "dma1";
-    case EngineType::DMA2: return "dma2";
-    case EngineType::DMA3: return "dma3";
-    case EngineType::DMA4: return "dma4";
-    case EngineType::DMA5: return "dma5";
-    case EngineType::PELS: return "pels";
-    case EngineType::COLS: return "cols";
-    case EngineType::CHLS: return "chls";
-    default:               return "";
+    case EngineType::SPU:     return "spu";
+    case EngineType::VPU:     return "vpu";
+    case EngineType::AE:      return "ae";
+    case EngineType::TE:      return "te";
+    case EngineType::SE:      return "se";
+    case EngineType::DMA0:    return "dma0";
+    case EngineType::DMA1:    return "dma1";
+    case EngineType::DMA2:    return "dma2";
+    case EngineType::DMA3:    return "dma3";
+    case EngineType::DMA4:    return "dma4";
+    case EngineType::DMA5:    return "dma5";
+    case EngineType::PELS_I:  return "pels-i";
+    case EngineType::PELS_E:  return "pels-e";
+    case EngineType::PELS_O:  return "pels-o";
+    case EngineType::COLS:    return "cols";
+    case EngineType::CHLS:    return "chls";
+    default:                  return "";
+  }
+}
+
+inline size_t getSizeOfCmdMem(EngineType engineType) {
+  switch (engineType) {
+    case EngineType::SPU:     return kSizeSpuCmdMem;
+    case EngineType::VPU:     return kSizeVpuCmdMem;
+    case EngineType::TE:      return kSizeTeCmdMem;
+    case EngineType::AE:      return kSizeAeCmdMem;
+    case EngineType::SE:      return kSizeSeCmdMem;
+    case EngineType::DMA0:    return kSizeDmaCmdMem;
+    case EngineType::DMA1:    return kSizeDmaCmdMem;
+    case EngineType::DMA2:    return kSizeDmaCmdMem;
+    case EngineType::DMA3:    return kSizeDmaCmdMem;
+    case EngineType::DMA4:    return kSizeDmaCmdMem;
+    case EngineType::DMA5:    return kSizeDmaCmdMem;
+    case EngineType::PELS_I:  return kSizePelsCmdMem;
+    case EngineType::PELS_E:  return kSizePelsCmdMem;
+    case EngineType::PELS_O:  return kSizePelsCmdMem;
+    case EngineType::COLS:    return kSizeColsCmdMem;
+    case EngineType::CHLS:    return kSizeChlsCmdMem;
+    default:
+      return 0;
   }
 }
 

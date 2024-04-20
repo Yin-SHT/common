@@ -139,10 +139,22 @@ enum class EngineType {
   DMA4,
   DMA5,
   SIZE,
-  PELS,
+  PELS_I,
+  PELS_E,
+  PELS_O,
   COLS,
   CHLS,
   INVALID = 255,
+};
+
+struct DmaLinkedNode {
+  uint64_t srcAddr : 42;
+  uint64_t dstAddr : 42;
+  uint64_t length : 32;
+  uint64_t nextDescAddr : 42;
+  uint64_t mode : 1;
+  uint64_t pingPong : 1;
+  uint64_t broadcastMask : 16;
 };
 
 const size_t kNumCore = 4;
