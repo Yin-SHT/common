@@ -1,0 +1,49 @@
+/*
+ * Copyright (c) 2018-2023 MOFFETT AI. All Rights Reserved.
+
+ * NOTICE: All intellectual and technical information contained herein
+ * are proprietary to MOFFETT AI. Any unauthorized disemination,
+ * copying or redistribution of this file via any medium is strictly prohibited,
+ * unless you get a prior written permission or an applicable license agreement
+ * from MOFFETT AI.
+ */
+
+namespace rvv.call;
+
+file_identifier "CALL";
+file_extension "call";
+
+enum FuncType : int32 { 
+  ADD = 0, 
+}
+
+table FileLineLocDef {
+  filename:string;
+  line:int32;
+}
+
+enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, INT64, UINT8, UINT16, UINT32, 
+  UINT64, INT24, UINT24, BF24, FP32, FP64, MF16, NF16, NF18, FP8_52, FP8_43, FP16 }
+
+table TensorDesc {
+  dims:[int32];
+  addr:int64;
+}
+
+table AddDef {
+  in_shapes:[TensorDesc];
+  out_shapes:[TensorDesc];
+  dtype:DataType;
+}
+
+table OpDef {
+  func_type:FuncType;
+  data:[uint8];
+  location:FileLineLocDef;
+}
+
+table ConfigDef {
+  ops:[OpDef];
+}
+
+root_type ConfigDef;

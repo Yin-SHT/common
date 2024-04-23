@@ -172,7 +172,6 @@ inline std::string getTcmName(size_t coreId, size_t peId) {
 
 inline std::string getReadFifoName(size_t coreId=-1, size_t peId=-1) {
   std::stringstream ss;
-  ss << "/tmp/quark_sim/";
   if (coreId != size_t(-1))
     ss << "core" << coreId << ".";
   if (peId != size_t(-1))
@@ -183,7 +182,6 @@ inline std::string getReadFifoName(size_t coreId=-1, size_t peId=-1) {
 
 inline std::string getWriteFifoName(size_t coreId=-1, size_t peId=-1) {
   std::stringstream ss;
-  ss << "/tmp/quark_sim/";
   if (coreId != size_t(-1))
     ss << "core" << coreId << ".";
   if (peId != size_t(-1))
