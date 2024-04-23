@@ -47,6 +47,9 @@ public:
     TME = 56,
     ENB = 57,
     WFI = 58,
+    CALL = 61,
+    STR = 62,
+    END = 63,
     INVALID = 255
   };
   enum class EnableType {
@@ -66,11 +69,14 @@ public:
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
-      {OpCodeType::SET, "set"},
-      {OpCodeType::TMS, "tms"},
-      {OpCodeType::TME, "tme"},
-      {OpCodeType::ENB, "enb"},
-      {OpCodeType::WFI, "wfi"},
+      {OpCodeType::SET,  "set"},
+      {OpCodeType::TMS,  "tms"},
+      {OpCodeType::TME,  "tme"},
+      {OpCodeType::ENB,  "enb"},
+      {OpCodeType::WFI,  "wfi"},
+      {OpCodeType::CALL, "call"},
+      {OpCodeType::STR,  "str"},
+      {OpCodeType::END,  "end"},
     };
     return opCodeStrMap;
   }
@@ -250,14 +256,39 @@ public:
   QUARK_GEN_GETTER_SETTER(Core0, 0, 0);
 };
 
+class CallInstr : public ChlsInstr {
+public:
+  explicit CallInstr() : ChlsInstr(OpCodeType::CALL) {
+    QUARK_PUSH_GETTER_SETTER(Com);
+    QUARK_PUSH_GETTER_SETTER(Func);
+  }
+  QUARK_GEN_GETTER_SETTER(Com, 25, 24);
+  QUARK_GEN_GETTER_SETTER(Func, 15, 0);
+};
+
+class StrInstr : public ChlsInstr {
+public:
+  explicit StrInstr() : ChlsInstr(OpCodeType::STR) {
+  }
+};
+
+class EndInstr : public ChlsInstr {
+public:
+  explicit EndInstr() : ChlsInstr(OpCodeType::END) {
+  }
+};
+
 
 std::shared_ptr<ChlsInstr> ChlsInstr::create(OpCodeType opCode) {
   switch (opCode) {
-    case OpCodeType::SET: return std::shared_ptr<SetInstr>(new SetInstr);
-    case OpCodeType::TMS: return std::shared_ptr<TmsInstr>(new TmsInstr);
-    case OpCodeType::TME: return std::shared_ptr<TmeInstr>(new TmeInstr);
-    case OpCodeType::ENB: return std::shared_ptr<EnbInstr>(new EnbInstr);
-    case OpCodeType::WFI: return std::shared_ptr<WfiInstr>(new WfiInstr);
+    case OpCodeType::SET:  return std::shared_ptr<SetInstr>(new SetInstr);
+    case OpCodeType::TMS:  return std::shared_ptr<TmsInstr>(new TmsInstr);
+    case OpCodeType::TME:  return std::shared_ptr<TmeInstr>(new TmeInstr);
+    case OpCodeType::ENB:  return std::shared_ptr<EnbInstr>(new EnbInstr);
+    case OpCodeType::WFI:  return std::shared_ptr<WfiInstr>(new WfiInstr);
+    case OpCodeType::CALL: return std::shared_ptr<CallInstr>(new CallInstr);
+    case OpCodeType::STR:  return std::shared_ptr<StrInstr>(new StrInstr);
+    case OpCodeType::END:  return std::shared_ptr<EndInstr>(new EndInstr);
     default: return nullptr;
   }
 }
