@@ -26,6 +26,7 @@ namespace quark {
 #define ASIC_SPU_DEFAULT_BANK_SIZE 64
 #define ASIC_SPU_INSTR_PIPELINE_NUM 5
 #define ASIC_SPU_REG_START_IDX 0
+#define ASIC_SPU_QNT_MODE 0 // 0:K dimension, 1:C*K dimension
 
 const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { // TBD
     {"ADDRESS", {
