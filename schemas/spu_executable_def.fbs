@@ -14,15 +14,11 @@ namespace hal.spu;
 file_identifier "SPUE";
 file_extension "spue";
 
-// Defines VI as virtual instruction that can be used to schedule engines.
-enum VI : uint32 { _unused_ }
-
 // Defines data type of SPU needed.
 enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, INT64, UINT8, UINT16, UINT32, 
   UINT64, INT24, UINT24, BF24, FP32, FP64, MF16, NF16, NF18, FP8_52, FP8_43, FP16 }
 
-// Defines engines of SPU, in which from 'CONFIG' to 'INVLIAD' are CPU Ops,
-// need to be handled by runtime.
+// Defines engines of SPU.
 enum EngineType : int32 { SPU = 0, VPU, AE, TE, SE, DMA0, DMA1, DMA2, 
   DMA3, DMA4, DMA5, INVLIAD = 255 }
 
@@ -36,38 +32,37 @@ table FuncDataDef {
   data:[uint8];
 }
 
+// Defines data pointer to `func_datas`
 table FuncDataPointerDef {
-  addr:int64;
   offset:int32;
   length:int32;
 }
 
 table PelsStageDef {
-  // A list of VIs.
-  vi_list:FuncDataPointerDef;
+  cmds:FuncDataPointerDef;
   cmd_length:int32;
 
-  // Some CPU Ops like 'CONFIG'/'CPU'/'PP' would need auxiliary configuration.
-  // We will gather all of such configurations by order in VI.
+  // CPU Ops would need auxiliary configuration.
+  // We will gather all of such configurations by order in configs.
   configs:FuncDataPointerDef;
 }
 
 table PelsDef {
-  // All of VI are divided into input/main/output for forming pipeline during runtime.
+  // All of PELS are divided into input/exec/output for forming pipeline during runtime.
   // The more details please refer to [http://wiki.moffett.local:8090/pages/viewpage.action?pageId=58467128]
   input:PelsStageDef;
-  main:PelsStageDef;
+  exec:PelsStageDef;
   output:PelsStageDef;
 }
 
 table ColsDef {
-  vi_list:FuncDataPointerDef;
+  cmds:FuncDataPointerDef;
   cmd_length:int32;
   configs:FuncDataPointerDef;
 }
 
 table ChlsDef {
-  vi_list:FuncDataPointerDef;
+  cmds:FuncDataPointerDef;
   cmd_length:int32;
   configs:FuncDataPointerDef;
 }
@@ -85,6 +80,7 @@ table DataLocDef {
 
 table CmdsLocDef {
   is_dma:bool;
+  // The index in engines_cmds or dmas_cmds
   index:int32;
   offset:int32;
   length:int32;
@@ -93,8 +89,12 @@ table CmdsLocDef {
 table OpLocDef {
   name:string;
   source_locations:FileLineLocDef;
+  // The location of CMDs
   cmds_location:CmdsLocDef;
+  // The location of constant
   data_location:DataLocDef;
+  // Evaluated number of cycles
+  cycles:int64;
 }
 
 // Defines a argument to maintain its traits and storage address during runtime.
@@ -116,8 +116,8 @@ table EngineCmdsDef {
   // CMDs storage.
   data:FuncDataPointerDef;
 
-  // Define CMD length, `data` consist of CMD and DmaLinkedList, 
-  // CMD is at the front of it.
+  // Define CMDs length, `data` consist of CMDs and DmaLinkedList, 
+  // CMDs is at the front of it.
   cmd_length:int32;
   engine_type:EngineType;
 }
@@ -138,7 +138,7 @@ table ArgumentRefDef {
   // The index in args.
   arg_index:int32;
 
-  // DMA Cmds location associate with argument.
+  // DMA CMDs location associate with argument.
   dma_locations:[CmdsLocDef];
 }
 
@@ -195,7 +195,8 @@ table ExecutableDef {
   // A list of funcs for each entry point.
   funcs:[ExecutableFuncDef];
 
-  // A list of data for each func
+  // A list of data for each func, `funcs` and `func_datas`
+  // are in one-to-one correspondence.
   func_datas:[FuncDataDef];
 
   // A map of entry point ordinals to source locations.
