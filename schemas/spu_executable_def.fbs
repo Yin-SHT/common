@@ -186,6 +186,9 @@ table ExecutableFuncDef {
 
   // It is used by Chip-Level Scheduler
   chls:ChlsDef;
+
+  // Here stores various datas including CMDs, constants
+  func_data:[FuncDataDef];
 }
 
 table ExecutableDef {
@@ -194,10 +197,6 @@ table ExecutableDef {
 
   // A list of funcs for each entry point.
   funcs:[ExecutableFuncDef];
-
-  // A list of data for each func, `funcs` and `func_datas`
-  // are in one-to-one correspondence.
-  func_datas:[FuncDataDef];
 
   // A map of entry point ordinals to source locations.
   source_locations:[FileLineLocDef];
