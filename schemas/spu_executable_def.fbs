@@ -80,7 +80,7 @@ table DataLocDef {
 
 table CmdsLocDef {
   is_dma:bool;
-  // The index in engines_cmds or dmas_cmds
+  // The index in engines_cmds or dmas_cmds.
   index:int32;
   offset:int32;
   length:int32;
@@ -89,11 +89,11 @@ table CmdsLocDef {
 table OpLocDef {
   name:string;
   source_locations:FileLineLocDef;
-  // The location of CMDs
+  // The location of CMDs.
   cmds_location:CmdsLocDef;
-  // The location of constant
+  // The location of constant.
   data_location:DataLocDef;
-  // Evaluated number of cycles
+  // Evaluated number of cycles.
   cycles:int64;
 }
 
@@ -111,7 +111,7 @@ table ConstantsDef {
   data:FuncDataPointerDef;
 }
 
-// Defines engine CMDs, here engine excludes DMA
+// Defines engine CMDs, here engine excludes DMA.
 table EngineCmdsDef {
   // CMDs storage.
   data:FuncDataPointerDef;
@@ -155,7 +155,7 @@ table PeDef {
   // A list of CMDs for each DMA.
   dmas_cmds:[DmaCmdsDef];
 
-  // It is used by low-level runtime to execute the whole executable function
+  // It is used by low-level runtime to execute the whole executable function.
   pels:PelsDef;
 
   // Argument references for current PE.
@@ -172,11 +172,12 @@ table CoreDef {
   // A list of PE to dispath.
   pes:[PeDef];
 
-  // It is used by Core-Level Scheduler
+  // It is used by Core-Level Scheduler.
   cols:ColsDef;
 
-  // Here stores various datas including CMDs, constants
-  func_data:[FuncDataDef];
+  // It indicates the range of current Core of datas 
+  // that including CMDs and constants in `func_datas`.
+  data:FuncDataPointerDef;
 }
 
 // Each executable function would include up to 64 PEs.
@@ -187,7 +188,7 @@ table ExecutableFuncDef {
   // A list of Core to dispath.
   cores:[CoreDef];
 
-  // It is used by Chip-Level Scheduler
+  // It is used by Chip-Level Scheduler.
   chls:ChlsDef;
 }
 
@@ -197,6 +198,10 @@ table ExecutableDef {
 
   // A list of funcs for each entry point.
   funcs:[ExecutableFuncDef];
+
+  // A list of data for each func, `funcs` and `func_datas`
+  // are in one-to-one correspondence.
+  func_datas:[FuncDataDef];
 
   // A map of entry point ordinals to source locations.
   source_locations:[FileLineLocDef];
