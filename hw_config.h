@@ -251,8 +251,8 @@ const size_t kDma2InstrStartAddr  = 0x000B4000;     const size_t kDma2InstrEndAd
 const size_t kDma3InstrStartAddr  = 0x000B6000;     const size_t kDma3InstrEndAddr    = 0x000B7FFF;
 const size_t kDma4InstrStartAddr  = 0x000B8000;     const size_t kDma4InstrEndAddr    = 0x000B9FFF;
 const size_t kDma5InstrStartAddr  = 0x000BA000;     const size_t kDma5InstrEndAddr    = 0x000BBFFF;
-const size_t kTcmStartAddr        = 0x00100000;     const size_t kTcmEndAddr          = 0x0013FFFF;
-const size_t kSharedMemStartAddr  = 0x001FFFFF;     const size_t kSharedMemEndAddr    = 0x003FFFFF;
+const size_t kTcmStartAddr        = 0x00100000;     const size_t kTcmEndAddr          = 0x001FFFFF;
+const size_t kSharedMemStartAddr  = 0x00200000;     const size_t kSharedMemEndAddr    = 0x003FFFFF;
 
 // The following indices are for SET instruction of CHLS.
 const size_t kChlsInstrConfigL   = 20;    const size_t kChlsInstrConfigH   = 21;
