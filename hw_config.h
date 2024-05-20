@@ -187,9 +187,9 @@ const size_t kNumVpuScalarReg = 32;
 
 // RVV address mapping
 const size_t kCoreRvvSysStartAddr = 0x000040000000; const size_t kCoreRvvSysEndAddr   = 0x00005FFFFFFF;  
-const size_t kCoreRvvDdrStartAddr = 0x000080000000; const size_t kCoreRvvDdrEndAddr   = 0x00607FFFFFFF;
+const size_t kCoreRvvDdrStartAddr = 0x008000000000; const size_t kCoreRvvDdrEndAddr   = 0x00807FFFFFFF;
 const size_t kPeRvvSysStartAddr   = 0x000040000000; const size_t kPeRvvSysEndAddr     = 0x00005FFFFFFF;
-const size_t kPeRvvDdrStartAddr   = 0x000080000000; const size_t kPeRvvDdrEndAddr     = 0x00008000FFFF;
+const size_t kPeRvvDdrStartAddr   = 0x008000000000; const size_t kPeRvvDdrEndAddr     = 0x00807FFFFFFF;
 
 // Chip-Level address mapping
 const size_t kCore0StartAddr      = 0x40000000;     const size_t kCore0EndAddr        = 0x4FFFFFFF;
