@@ -74,8 +74,8 @@ public:
     SET_FS = 8,
     SET_LOAD_AAI = 9,
     SET_STORE_AAI = 10,
-    NOP = 11,
-    OP_END = 12,
+    VPU_NOP = 11,
+    VPU_END = 12,
     I8_DLOAD = 13,
     I8_LOAD = 14,
     U8_DLOAD = 15,
@@ -414,8 +414,8 @@ public:
       {OpCodeType::SET_FS,              {"set_fs",              0xffffff00, 0x0a000000}},
       {OpCodeType::SET_LOAD_AAI,        {"set_load_aai",        0xff070000, 0x0b000000}},
       {OpCodeType::SET_STORE_AAI,       {"set_store_aai",       0xff070000, 0x0c000000}},
-      {OpCodeType::NOP,                 {"nop",                 0xffffffff, 0x00000000}},
-      {OpCodeType::OP_END,              {"op_end",              0xffffffff, 0xff000000}},
+      {OpCodeType::VPU_NOP,             {"vpu_nop",             0xffffffff, 0x00000000}},
+      {OpCodeType::VPU_END,             {"vpu_end",             0xffffffff, 0xff000000}},
       {OpCodeType::I8_DLOAD,            {"i8_dload",            0xff0f0000, 0xc4020000}},
       {OpCodeType::I8_LOAD,             {"i8_load",             0xffcf0000, 0xc4000000}},
       {OpCodeType::U8_DLOAD,            {"u8_dload",            0xff0f0000, 0xd4020000}},
@@ -1135,16 +1135,16 @@ public:
   VPU_GEN_GETTER_SETTER(StrideLength, 15, 0);
 };
 
-class NopInstr : public VpuInstr {
+class VpuNopInstr : public VpuInstr {
 public:
-  explicit NopInstr() : VpuInstr(OpCodeType::NOP) {
+  explicit VpuNopInstr() : VpuInstr(OpCodeType::VPU_NOP) {
     alu = 1;
   }
 };
 
-class OpEndInstr : public VpuInstr {
+class VpuEndInstr : public VpuInstr {
 public:
-  explicit OpEndInstr() : VpuInstr(OpCodeType::OP_END) {
+  explicit VpuEndInstr() : VpuInstr(OpCodeType::VPU_END) {
     alu = 1;
   }
 };
@@ -5221,8 +5221,8 @@ std::shared_ptr<VpuInstr> VpuInstr::create(OpCodeType opCode, const std::vector<
     case OpCodeType::SET_FS:              ret = std::shared_ptr<SetFsInstr>(new SetFsInstr); break;
     case OpCodeType::SET_LOAD_AAI:        ret = std::shared_ptr<SetLoadAaiInstr>(new SetLoadAaiInstr); break;
     case OpCodeType::SET_STORE_AAI:       ret = std::shared_ptr<SetStoreAaiInstr>(new SetStoreAaiInstr); break;
-    case OpCodeType::NOP:                 ret = std::shared_ptr<NopInstr>(new NopInstr); break;
-    case OpCodeType::OP_END:              ret = std::shared_ptr<OpEndInstr>(new OpEndInstr); break;
+    case OpCodeType::VPU_NOP:             ret = std::shared_ptr<VpuNopInstr>(new VpuNopInstr); break;
+    case OpCodeType::VPU_END:             ret = std::shared_ptr<VpuEndInstr>(new VpuEndInstr); break;
     case OpCodeType::I8_DLOAD:            ret = std::shared_ptr<I8DloadInstr>(new I8DloadInstr); break;
     case OpCodeType::I8_LOAD:             ret = std::shared_ptr<I8LoadInstr>(new I8LoadInstr); break;
     case OpCodeType::U8_DLOAD:            ret = std::shared_ptr<U8DloadInstr>(new U8DloadInstr); break;

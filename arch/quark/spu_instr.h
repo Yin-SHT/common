@@ -41,6 +41,7 @@ namespace quark {
 class SpuInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType {
+    NOP = 0,
     LDT = 1,
     LDW = 2,
     LDM = 3,
@@ -69,6 +70,7 @@ public:
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
+      {OpCodeType::NOP,  "nop"},
       {OpCodeType::LDT,  "ldt"},
       {OpCodeType::LDW,  "ldw"},
       {OpCodeType::LDM,  "ldm"},
@@ -209,6 +211,12 @@ protected:
   std::vector<std::function<void(uint32_t)>> setters;
   std::string text;
   std::vector<uint8_t> binary;
+};
+
+class NopInstr : public SpuInstr {
+public:
+  explicit NopInstr() : SpuInstr(OpCodeType::NOP) {
+  }
 };
 
 class LdtInstr : public SpuInstr {
@@ -544,6 +552,7 @@ public:
 
 std::shared_ptr<SpuInstr> SpuInstr::create(OpCodeType opCode) {
   switch (opCode) {
+    case OpCodeType::NOP:  return std::shared_ptr<NopInstr>(new NopInstr);
     case OpCodeType::LDT:  return std::shared_ptr<LdtInstr>(new LdtInstr);
     case OpCodeType::LDW:  return std::shared_ptr<LdwInstr>(new LdwInstr);
     case OpCodeType::LDM:  return std::shared_ptr<LdmInstr>(new LdmInstr);

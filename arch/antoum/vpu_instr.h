@@ -71,8 +71,8 @@ public:
     SET_QUANTIZE = 5,
     SET_DEQUANTIZE = 6,
     SET_DEQUANTIZE2 = 7,
-    NOP = 8,
-    OP_END = 9,
+    VPU_NOP = 8,
+    VPU_END = 9,
     F16_LOAD = 10,
     F16_LOAD_UPPER = 11,
     F16_LOAD_CONST = 12,
@@ -202,8 +202,8 @@ public:
       {OpCodeType::SET_QUANTIZE,        {"set_quantize",        0xffff0000, 0x09000000}},
       {OpCodeType::SET_DEQUANTIZE,      {"set_dequantize",      0xffff0000, 0x03000000}},
       {OpCodeType::SET_DEQUANTIZE2,     {"set_dequantize2",     0xffff0000, 0x06000000}},
-      {OpCodeType::NOP,                 {"nop",                 0xffffffff, 0x00000000}},
-      {OpCodeType::OP_END,              {"op_end",              0xffffffff, 0xff000000}},
+      {OpCodeType::VPU_NOP,             {"vpu_nop",             0xffffffff, 0x00000000}},
+      {OpCodeType::VPU_END,             {"vpu_end",             0xffffffff, 0xff000000}},
       {OpCodeType::F16_LOAD,            {"f16_load",            0xffcf0000, 0xe0000000}},
       {OpCodeType::F16_LOAD_UPPER,      {"f16_load_upper",      0xffcf0000, 0xe1000000}},
       {OpCodeType::F16_LOAD_CONST,      {"f16_load_const",      0xffcf0000, 0xe0040000}},
@@ -651,15 +651,15 @@ public:
   VPU_GEN_GETTER_SETTER(Dequantize, 15, 0);
 };
 
-class NopInstr : public VpuInstr {
+class VpuNopInstr : public VpuInstr {
 public:
-  explicit NopInstr() : VpuInstr(OpCodeType::NOP) {
+  explicit VpuNopInstr() : VpuInstr(OpCodeType::VPU_NOP) {
   }
 };
 
-class OpEndInstr : public VpuInstr {
+class VpuEndInstr : public VpuInstr {
 public:
-  explicit OpEndInstr() : VpuInstr(OpCodeType::OP_END) {
+  explicit VpuEndInstr() : VpuInstr(OpCodeType::VPU_END) {
   }
 };
 
@@ -1974,8 +1974,8 @@ std::shared_ptr<VpuInstr> VpuInstr::create(OpCodeType opCode, const std::vector<
     case OpCodeType::SET_QUANTIZE:        ret = std::shared_ptr<SetQuantizeInstr>(new SetQuantizeInstr); break;
     case OpCodeType::SET_DEQUANTIZE:      ret = std::shared_ptr<SetDequantizeInstr>(new SetDequantizeInstr); break;
     case OpCodeType::SET_DEQUANTIZE2:     ret = std::shared_ptr<SetDequantize2Instr>(new SetDequantize2Instr); break;
-    case OpCodeType::NOP:                 ret = std::shared_ptr<NopInstr>(new NopInstr); break;
-    case OpCodeType::OP_END:              ret = std::shared_ptr<OpEndInstr>(new OpEndInstr); break;
+    case OpCodeType::VPU_NOP:             ret = std::shared_ptr<VpuNopInstr>(new VpuNopInstr); break;
+    case OpCodeType::VPU_END:             ret = std::shared_ptr<VpuEndInstr>(new VpuEndInstr); break;
     case OpCodeType::F16_LOAD:            ret = std::shared_ptr<F16LoadInstr>(new F16LoadInstr); break;
     case OpCodeType::F16_LOAD_UPPER:      ret = std::shared_ptr<F16LoadUpperInstr>(new F16LoadUpperInstr); break;
     case OpCodeType::F16_LOAD_CONST:      ret = std::shared_ptr<F16LoadConstInstr>(new F16LoadConstInstr); break;

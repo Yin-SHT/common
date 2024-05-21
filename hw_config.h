@@ -63,6 +63,7 @@ const size_t kFp8Format = 0;
 
 const size_t kNumCore = 4;
 const size_t kSizeMemPage = 8192;
+const size_t kIduTransGranularity = 16;
 
 const size_t kSizeAtcmMem = 128UL*1024;
 const size_t kSizeBtcmMem = 128UL*1024;
@@ -168,6 +169,7 @@ const size_t kSizePerVpuCmd = 4;
 const size_t kSizePerPelsCmd = 4;
 const size_t kSizePerColsCmd = 4;
 const size_t kSizePerChlsCmd = 4;
+const size_t kIduTransGranularity = 32;
 
 // Sizes of command memmory of each Engine
 const size_t kSizeSpuCmdMem = 2UL << 10;
