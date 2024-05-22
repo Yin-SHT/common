@@ -42,6 +42,7 @@ namespace pels {
 class PelsInstr : public spu::InstrInterface {
 public:
   enum class OpCodeType {
+    NOP = 0,
     SET = 19,
     TMS = 55,
     TME = 56,
@@ -71,6 +72,7 @@ public:
 
   static const std::map<OpCodeType, std::string>& getOpCodeStrMap() {
     static const std::map<OpCodeType, std::string> opCodeStrMap = {
+      {OpCodeType::NOP,  "nop"},
       {OpCodeType::SET,  "set"},
       {OpCodeType::TMS,  "tms"},
       {OpCodeType::TME,  "tme"},
@@ -200,6 +202,12 @@ protected:
   std::vector<uint8_t> binary;
 };
 
+class NopInstr : public PelsInstr {
+public:
+  explicit NopInstr() : PelsInstr(OpCodeType::NOP) {
+  }
+};
+
 class SetInstr : public PelsInstr {
 public:
   explicit SetInstr() : PelsInstr(OpCodeType::SET) {
@@ -317,7 +325,7 @@ public:
     QUARK_PUSH_GETTER_SETTER(Func);
   }
   QUARK_GEN_GETTER_SETTER(Com, 25, 24);
-  QUARK_GEN_GETTER_SETTER(Func, 15, 0);
+  QUARK_GEN_GETTER_SETTER(Func, 23, 0);
 };
 
 class StrInstr : public PelsInstr {
@@ -335,6 +343,7 @@ public:
 
 std::shared_ptr<PelsInstr> PelsInstr::create(OpCodeType opCode) {
   switch (opCode) {
+    case OpCodeType::NOP:  return std::shared_ptr<NopInstr>(new NopInstr);
     case OpCodeType::SET:  return std::shared_ptr<SetInstr>(new SetInstr);
     case OpCodeType::TMS:  return std::shared_ptr<TmsInstr>(new TmsInstr);
     case OpCodeType::TME:  return std::shared_ptr<TmeInstr>(new TmeInstr);
