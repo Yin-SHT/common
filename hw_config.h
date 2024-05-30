@@ -202,10 +202,13 @@ const size_t kCore3StartAddr      = 0x70000000;     const size_t kCore3EndAddr  
 const size_t kDdrStartAddr        = 0x008000000000; const size_t kDdrEndAddr          = 0x017FFFFFFFFF;
 
 // Core-Level address mapping
-const size_t kCoreRegStartAddr    = 0x00000000;     const size_t kCoreRegEndAddr      = 0x000FFFFF;
-const size_t kIduL2StartAddr      = 0x00100000;     const size_t kIduL2EndAddr        = 0x001FFFFF;
-const size_t kIduL1StartAddr      = 0x00200000;     const size_t kIduL1EndAddr        = 0x002FFFFF;
-const size_t kSmBrdStartAddr      = 0x00300000;     const size_t kSmBrdEndAddr        = 0x004FFFFF;
+const size_t kCoreRegStartAddr    = 0x00000000;     const size_t kCoreRegEndAddr      = 0x00000FFF;
+const size_t kDdmaRegStartAddr    = 0x00001000;     const size_t kDdmaRegEndAddr      = 0x00001FFF;
+const size_t kCdmaRegStartAddr    = 0x00002000;     const size_t kCdmaRegEndAddr      = 0x00002FFF;
+const size_t kIduL2StartAddr      = 0x00100000;     const size_t kIduL2EndAddr        = 0x010FFFFF;
+const size_t kIduL1StartAddr      = 0x01100000;     const size_t kIduL1EndAddr        = 0x011FFFFF;
+const size_t kSmBrdStartAddr      = 0x01200000;     const size_t kSmBrdEndAddr        = 0x013FFFFF;
+const size_t kLlcSpmStartAddr     = 0x01400000;     const size_t kLlcSpmEndAddr       = 0x023FFFFF;
 const size_t kPe0StartAddr        = 0x08000000;     const size_t kPe0EndAddr          = 0x087FFFFF;
 const size_t kPe1StartAddr        = 0x08800000;     const size_t kPe1EndAddr          = 0x08FFFFFF;
 const size_t kPe2StartAddr        = 0x09000000;     const size_t kPe2EndAddr          = 0x097FFFFF;
@@ -241,8 +244,11 @@ const size_t kDma2RegStartAddr    = 0x0000D000;     const size_t kDma2RegEndAddr
 const size_t kDma3RegStartAddr    = 0x0000E000;     const size_t kDma3RegEndAddr      = 0x0000EFFF;
 const size_t kDma4RegStartAddr    = 0x0000F000;     const size_t kDma4RegEndAddr      = 0x0000FFFF;
 const size_t kDma5RegStartAddr    = 0x00010000;     const size_t kDma5RegEndAddr      = 0x00010FFF;
-const size_t kWdmaStartAddr       = 0x00011000;     const size_t kWdmaEndAddr         = 0x00011FFF;
-const size_t kSchedInstrStartAddr = 0x00080000;     const size_t kSchedInstrEndAddr   = 0x00087FFF;
+const size_t kWdmaRegStartAddr    = 0x00011000;     const size_t kWdmaRegEndAddr      = 0x00011FFF;
+const size_t kRvvMailBoxStartAddr = 0x00012000;     const size_t kRvvMailBoxEndAddr   = 0x00012FFF;
+const size_t kPelsIInstrStartAddr = 0x00080000;     const size_t kPelsIInstrEndAddr   = 0x00081FFF;
+const size_t kPelsEInstrStartAddr = 0x00082000;     const size_t kPelsEInstrEndAddr   = 0x00083FFF;
+const size_t kPelsOInstrStartAddr = 0x00084000;     const size_t kPelsOInstrEndAddr   = 0x00085FFF;
 const size_t kSpuInstrStartAddr   = 0x00088000;     const size_t kSpuInstrEndAddr     = 0x0008FFFF;
 const size_t kVpuInstrStartAddr   = 0x00090000;     const size_t kVpuInstrEndAddr     = 0x00097FFF;
 const size_t kAeInstrStartAddr    = 0x00098000;     const size_t kAeInstrEndAddr      = 0x0009FFFF;
