@@ -194,11 +194,12 @@ const size_t kPeRvvSysStartAddr   = 0x000040000000; const size_t kPeRvvSysEndAdd
 const size_t kPeRvvDdrStartAddr   = 0x008000000000; const size_t kPeRvvDdrEndAddr     = 0x017FFFFFFFFF;
 
 // Chip-Level address mapping
+const size_t kChipRegStartAddr    = 0x00000000;     const size_t kChipRegEndAddr      = 0x000FFFFF;
 const size_t kCore0StartAddr      = 0x40000000;     const size_t kCore0EndAddr        = 0x4FFFFFFF;
 const size_t kCore1StartAddr      = 0x50000000;     const size_t kCore1EndAddr        = 0x5FFFFFFF;
 const size_t kCore2StartAddr      = 0x60000000;     const size_t kCore2EndAddr        = 0x6FFFFFFF;
 const size_t kCore3StartAddr      = 0x70000000;     const size_t kCore3EndAddr        = 0x7FFFFFFF;
-const size_t kDdrStartAddr        = 0x08000000000;  const size_t kDdrEndAddr          = 0x0FFFFFFFFFF;
+const size_t kDdrStartAddr        = 0x008000000000; const size_t kDdrEndAddr          = 0x017FFFFFFFFF;
 
 // Core-Level address mapping
 const size_t kCoreRegStartAddr    = 0x00000000;     const size_t kCoreRegEndAddr      = 0x000FFFFF;
