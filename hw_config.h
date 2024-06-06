@@ -148,6 +148,13 @@ enum class EngineType {
   INVALID = 255,
 };
 
+enum class MemoryType {
+  UNKNOWN = 0,
+  DDR,
+  SHARED_MEM,
+  LLC_SPM,
+};
+
 struct DmaLinkedNode {
   uint64_t srcAddr : 42;
   uint64_t dstAddr : 42;
@@ -164,6 +171,7 @@ const size_t kNumPe = 16;
 const size_t kSizeDdr = 192UL << 30;
 const size_t kSizeTcm = 256UL << 10;
 const size_t kSizeSharedMem = 1UL << 20;
+const size_t kSizeLlcSpm = 16UL << 20;
 const size_t kSizePerSpuCmd = 4;
 const size_t kSizePerVpuCmd = 4;
 const size_t kSizePerPelsCmd = 4;

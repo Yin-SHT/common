@@ -112,6 +112,12 @@ inline std::string getSharedMemoryName(size_t coreId, size_t peId) {
   return ss.str();
 }
 
+inline std::string getLlcSpmName(size_t coreId) {
+  std::stringstream ss;
+  ss << "core" << coreId << "." << "llc-spm";
+  return ss.str();
+}
+
 inline std::string getEngineName(EngineType engine) {
   switch  (engine) {
     case EngineType::SPU:     return "spu";
