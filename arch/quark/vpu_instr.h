@@ -415,7 +415,7 @@ public:
       {OpCodeType::SET_LOAD_AAI,        {"set_load_aai",        0xff070000, 0x0b000000}},
       {OpCodeType::SET_STORE_AAI,       {"set_store_aai",       0xff070000, 0x0c000000}},
       {OpCodeType::VPU_NOP,             {"vpu_nop",             0xffffffff, 0x00000000}},
-      {OpCodeType::VPU_END,             {"vpu_end",             0xffffffff, 0xff000000}},
+      {OpCodeType::VPU_END,             {"vpu_end",             0xfffffffe, 0xff000000}},
       {OpCodeType::I8_DLOAD,            {"i8_dload",            0xff0f0000, 0xc4020000}},
       {OpCodeType::I8_LOAD,             {"i8_load",             0xffcf0000, 0xc4000000}},
       {OpCodeType::U8_DLOAD,            {"u8_dload",            0xff0f0000, 0xd4020000}},
@@ -862,6 +862,7 @@ protected:
   std::vector<uint8_t> binary;
 
 public:
+  uint32_t getAddressAlign() { return addressAlign; }
   uint32_t getAlu() { return alu; }
   uint32_t getBankBroadcast() { return bankBroadcast; }
   uint32_t getBankMask() { return bankMask; }
@@ -888,6 +889,7 @@ public:
   uint32_t getStride() { return stride; }
   uint32_t getStrideLength() { return strideLength; }
 
+  void setAddressAlign(uint32_t n) { addressAlign = n; }
   void setAlu(uint32_t n) { alu = n; }
   void setBankBroadcast(uint32_t n) { bankBroadcast = n; }
   void setBankMask(uint32_t n) { bankMask = n; }
@@ -915,6 +917,7 @@ public:
   void setStrideLength(uint32_t n) { strideLength = n; }
 
 protected:
+  uint32_t addressAlign = 0;
   uint32_t alu = 0;
   uint32_t bankBroadcast = 0;
   uint32_t bankMask = 0;
@@ -1145,8 +1148,10 @@ public:
 class VpuEndInstr : public VpuInstr {
 public:
   explicit VpuEndInstr() : VpuInstr(OpCodeType::VPU_END) {
+    VPU_PUSH_GETTER_SETTER(AddressAlign);
     alu = 1;
   }
+  VPU_GEN_GETTER_SETTER(AddressAlign, 0, 0);
 };
 
 class I8DloadInstr : public VpuInstr, public DloadInstr {
