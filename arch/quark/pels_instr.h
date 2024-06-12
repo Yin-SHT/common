@@ -337,7 +337,9 @@ public:
 class EndInstr : public PelsInstr {
 public:
   explicit EndInstr() : PelsInstr(OpCodeType::END) {
+    QUARK_PUSH_GETTER_SETTER(AddressAlign);
   }
+  QUARK_GEN_GETTER_SETTER(AddressAlign, 0, 0);
 };
 
 

@@ -331,7 +331,9 @@ public:
 class EndInstr : public ColsInstr {
 public:
   explicit EndInstr() : ColsInstr(OpCodeType::END) {
+    QUARK_PUSH_GETTER_SETTER(AddressAlign);
   }
+  QUARK_GEN_GETTER_SETTER(AddressAlign, 0, 0);
 };
 
 

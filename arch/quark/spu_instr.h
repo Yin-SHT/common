@@ -50,6 +50,7 @@ public:
     TR = 6,
     ACT = 7,
     SRT = 8,
+    CMP = 23,
     TPK = 9,
     PCK = 10,
     CPY = 11,
@@ -79,6 +80,7 @@ public:
       {OpCodeType::TR,   "tr"},
       {OpCodeType::ACT,  "act"},
       {OpCodeType::SRT,  "srt"},
+      {OpCodeType::CMP,  "cmp"},
       {OpCodeType::TPK,  "tpk"},
       {OpCodeType::PCK,  "pck"},
       {OpCodeType::CPY,  "cpy"},
@@ -225,6 +227,7 @@ public:
     QUARK_PUSH_GETTER_SETTER(RSrcAddr);
     QUARK_PUSH_GETTER_SETTER(BDst);
     QUARK_PUSH_GETTER_SETTER(RLength);
+    QUARK_PUSH_GETTER_SETTER(Layout);
     QUARK_PUSH_GETTER_SETTER(Dqt);
     QUARK_PUSH_GETTER_SETTER(Dtype);
     QUARK_PUSH_GETTER_SETTER(Bank);
@@ -233,6 +236,7 @@ public:
   QUARK_GEN_GETTER_SETTER(RSrcAddr, 25, 23);
   QUARK_GEN_GETTER_SETTER(BDst, 22, 20);
   QUARK_GEN_GETTER_SETTER(RLength, 19, 17);
+  QUARK_GEN_GETTER_SETTER(Layout, 7, 7);
   QUARK_GEN_GETTER_SETTER(Dqt, 6, 6);
   QUARK_GEN_GETTER_SETTER(Dtype, 5, 3);
   QUARK_GEN_GETTER_SETTER(Bank, 2, 1);
@@ -346,15 +350,37 @@ public:
   explicit SrtInstr() : SpuInstr(OpCodeType::SRT) {
     QUARK_PUSH_GETTER_SETTER(RMask);
     QUARK_PUSH_GETTER_SETTER(RInterval);
+    QUARK_PUSH_GETTER_SETTER(Bitonic);
     QUARK_PUSH_GETTER_SETTER(Bank);
     QUARK_PUSH_GETTER_SETTER(Dtype);
     QUARK_PUSH_GETTER_SETTER(Order);
   }
   QUARK_GEN_GETTER_SETTER(RMask, 25, 25);
   QUARK_GEN_GETTER_SETTER(RInterval, 24, 24);
+  QUARK_GEN_GETTER_SETTER(Bitonic, 6, 6);
   QUARK_GEN_GETTER_SETTER(Bank, 5, 4);
   QUARK_GEN_GETTER_SETTER(Dtype, 3, 1);
   QUARK_GEN_GETTER_SETTER(Order, 0, 0);
+};
+
+class CmpInstr : public SpuInstr {
+public:
+  explicit CmpInstr() : SpuInstr(OpCodeType::CMP) {
+    QUARK_PUSH_GETTER_SETTER(RMask);
+    QUARK_PUSH_GETTER_SETTER(RInterval);
+    QUARK_PUSH_GETTER_SETTER(RSeg);
+    QUARK_PUSH_GETTER_SETTER(Bitonic);
+    QUARK_PUSH_GETTER_SETTER(Bank);
+    QUARK_PUSH_GETTER_SETTER(Dtype);
+    QUARK_PUSH_GETTER_SETTER(Mode);
+  }
+  QUARK_GEN_GETTER_SETTER(RMask, 25, 25);
+  QUARK_GEN_GETTER_SETTER(RInterval, 24, 24);
+  QUARK_GEN_GETTER_SETTER(RSeg, 23, 23);
+  QUARK_GEN_GETTER_SETTER(Bitonic, 6, 6);
+  QUARK_GEN_GETTER_SETTER(Bank, 5, 4);
+  QUARK_GEN_GETTER_SETTER(Dtype, 3, 1);
+  QUARK_GEN_GETTER_SETTER(Mode, 0, 0);
 };
 
 class TpkInstr : public SpuInstr {
@@ -407,6 +433,7 @@ public:
     QUARK_PUSH_GETTER_SETTER(SurIdx);
     QUARK_PUSH_GETTER_SETTER(LineIdx);
     QUARK_PUSH_GETTER_SETTER(LenIdx);
+    QUARK_PUSH_GETTER_SETTER(Direction);
     QUARK_PUSH_GETTER_SETTER(SrcDynamic);
     QUARK_PUSH_GETTER_SETTER(DstDynamic);
     QUARK_PUSH_GETTER_SETTER(Bank);
@@ -421,8 +448,9 @@ public:
   QUARK_GEN_GETTER_SETTER(SurIdx, 25, 23);
   QUARK_GEN_GETTER_SETTER(LineIdx, 22, 20);
   QUARK_GEN_GETTER_SETTER(LenIdx, 19, 19);
-  QUARK_GEN_GETTER_SETTER(SrcDynamic, 17, 16);
-  QUARK_GEN_GETTER_SETTER(DstDynamic, 15, 14);
+  QUARK_GEN_GETTER_SETTER(Direction, 16, 16);
+  QUARK_GEN_GETTER_SETTER(SrcDynamic, 15, 15);
+  QUARK_GEN_GETTER_SETTER(DstDynamic, 14, 14);
   QUARK_GEN_GETTER_SETTER(Bank, 13, 12);
   QUARK_GEN_GETTER_SETTER(Dtype, 11, 9);
   QUARK_GEN_GETTER_SETTER(Extend, 8, 8);
@@ -533,8 +561,8 @@ public:
     QUARK_PUSH_GETTER_SETTER(LoopId);
     QUARK_PUSH_GETTER_SETTER(AddrIncMask);
   }
-  QUARK_GEN_GETTER_SETTER(LoopId, 25, 18);
-  QUARK_GEN_GETTER_SETTER(AddrIncMask, 17, 10);
+  QUARK_GEN_GETTER_SETTER(LoopId, 25, 23);
+  QUARK_GEN_GETTER_SETTER(AddrIncMask, 22, 15);
 };
 
 class DcfgInstr : public SpuInstr {
@@ -546,7 +574,9 @@ public:
 class EndInstr : public SpuInstr {
 public:
   explicit EndInstr() : SpuInstr(OpCodeType::END) {
+    QUARK_PUSH_GETTER_SETTER(AddressAlign);
   }
+  QUARK_GEN_GETTER_SETTER(AddressAlign, 0, 0);
 };
 
 
@@ -561,6 +591,7 @@ std::shared_ptr<SpuInstr> SpuInstr::create(OpCodeType opCode) {
     case OpCodeType::TR:   return std::shared_ptr<TrInstr>(new TrInstr);
     case OpCodeType::ACT:  return std::shared_ptr<ActInstr>(new ActInstr);
     case OpCodeType::SRT:  return std::shared_ptr<SrtInstr>(new SrtInstr);
+    case OpCodeType::CMP:  return std::shared_ptr<CmpInstr>(new CmpInstr);
     case OpCodeType::TPK:  return std::shared_ptr<TpkInstr>(new TpkInstr);
     case OpCodeType::PCK:  return std::shared_ptr<PckInstr>(new PckInstr);
     case OpCodeType::CPY:  return std::shared_ptr<CpyInstr>(new CpyInstr);

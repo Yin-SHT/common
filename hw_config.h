@@ -856,7 +856,7 @@ enum class DmaSetIndexMap {
   DmacConvertStride = 42,
   DmacDynIdxMode = 43,
   DmacDynIdxStAddr = 44,
-  DmacDynIdxStLen = 45,
+  DmacDynIdxLen = 45,
   DmacDynSrcSegLen = 46,
   DmacDynDstSegLen = 47,
 };

@@ -283,7 +283,9 @@ public:
 class EndInstr : public ChlsInstr {
 public:
   explicit EndInstr() : ChlsInstr(OpCodeType::END) {
+    QUARK_PUSH_GETTER_SETTER(AddressAlign);
   }
+  QUARK_GEN_GETTER_SETTER(AddressAlign, 0, 0);
 };
 
 
