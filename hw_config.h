@@ -156,13 +156,17 @@ enum class MemoryType {
 };
 
 struct DmaLinkedNode {
-  uint64_t srcAddr : 42;
-  uint64_t dstAddr : 42;
-  uint64_t length : 32;
-  uint64_t nextDescAddr : 42;
-  uint64_t mode : 1;
+  uint64_t srcAddr : 40;
+  uint64_t reserved : 24;
+  uint64_t dstAddr : 40;
+  uint64_t reserved2 : 24;
+  uint64_t length : 12;
+  uint64_t reserved3 : 52;
+  uint64_t reserved4 : 33;
   uint64_t pingPong : 1;
   uint64_t broadcastMask : 16;
+  uint64_t reserved5 : 13;
+  uint64_t end : 1;
 };
 
 const size_t kNumCore = 4;
@@ -177,7 +181,7 @@ const size_t kSizePerVpuCmd = 4;
 const size_t kSizePerPelsCmd = 4;
 const size_t kSizePerColsCmd = 4;
 const size_t kSizePerChlsCmd = 4;
-const size_t kIduTransGranularity = 32;
+const size_t kIduTransGranularity = 64;
 
 // Sizes of command memmory of each Engine
 const size_t kSizeSpuCmdMem = 2UL << 10;
