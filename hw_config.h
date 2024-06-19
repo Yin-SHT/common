@@ -162,13 +162,15 @@ struct DmaLinkedNode {
   uint64_t reserved2 : 24;
   uint64_t length : 12;
   uint64_t reserved3 : 52;
-  uint64_t reserved4 : 33;
+  uint64_t signature : 32;
+  uint64_t reserved4 : 1;
   uint64_t pingPong : 1;
   uint64_t broadcastMask : 16;
   uint64_t reserved5 : 13;
   uint64_t end : 1;
 };
 
+const size_t kDmaLinkedNodeSignature = 0b10011011000000101001000011011110;
 const size_t kNumCore = 4;
 const size_t kSizeMemPage = 8192;
 const size_t kNumPe = 16;
