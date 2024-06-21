@@ -196,6 +196,16 @@ inline std::string getWriteFifoName(size_t coreId=-1, size_t peId=-1) {
   return ss.str();
 }
 
+inline std::string getIrqFifoName(size_t coreId=-1, size_t peId=-1) {
+  std::stringstream ss;
+  if (coreId != size_t(-1))
+    ss << "core" << coreId << ".";
+  if (peId != size_t(-1))
+    ss << "pe" << peId << ".";
+  ss << "irq_fifo";
+  return ss.str();
+}
+
 };
 
 #endif
