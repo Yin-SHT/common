@@ -100,21 +100,35 @@ public:
 
 namespace quark {
 
-inline std::string getDdrName(size_t coreId) {
+inline std::string getDdrName(std::string prefix="") {
   std::stringstream ss;
-  ss << "core" << coreId << "." << "ddr";
+  if (!prefix.empty())
+    ss << prefix << "_";
+  ss << "ddr";
   return ss.str();
 }
 
-inline std::string getSharedMemoryName(size_t coreId, size_t peId) {
+inline std::string getLlcSpmName(size_t coreId, std::string prefix="") {
   std::stringstream ss;
-  ss << "core" << coreId << "." << "pe" << peId << "." << "sm";
+  if (!prefix.empty())
+    ss << prefix << "_";
+  ss << "llc_core" << coreId;
   return ss.str();
 }
 
-inline std::string getLlcSpmName(size_t coreId) {
+inline std::string getSharedMemoryName(size_t coreId, size_t peId, std::string prefix="") {
   std::stringstream ss;
-  ss << "core" << coreId << "." << "llc-spm";
+  if (!prefix.empty())
+    ss << prefix << "_";
+  ss << "sm_core" << coreId << "_" << "pe" << peId;
+  return ss.str();
+}
+
+inline std::string getTcmName(size_t coreId, size_t peId, std::string prefix="") {
+  std::stringstream ss;
+  if (!prefix.empty())
+    ss << prefix << "_";
+  ss << "tcm_core" << coreId << "_" << "pe" << peId;
   return ss.str();
 }
 
@@ -167,12 +181,6 @@ inline std::string getCmdMemoryName(size_t coreId, size_t peId, EngineType engin
   std::stringstream ss;
   ss << "core" << coreId << "." << "pe" << peId << "." 
     << getEngineName(engine) << "." << "cmd";
-  return ss.str();
-}
-
-inline std::string getTcmName(size_t coreId, size_t peId) {
-  std::stringstream ss;
-  ss << "core" << coreId << "." << "pe" << peId << "." << "tcm";
   return ss.str();
 }
 
