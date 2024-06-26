@@ -80,664 +80,460 @@ public:
     I8_LOAD = 14,
     U8_DLOAD = 15,
     U8_LOAD = 16,
-    E43_DLOAD = 17,
-    E43_LOAD = 18,
-    E52_DLOAD = 19,
-    E52_LOAD = 20,
-    I16_DLOAD = 21,
-    I16_LOAD = 22,
-    F16_DLOAD = 23,
-    F16_LOAD = 24,
-    F32_DLOAD = 25,
-    F32_LOAD = 26,
-    I32_DLOAD = 27,
-    I32_LOAD = 28,
-    I8_STORE = 29,
-    U8_STORE = 30,
-    E43_STORE = 31,
-    E52_STORE = 32,
-    I16_STORE = 33,
-    F16_STORE = 34,
-    F32_STORE = 35,
-    I32_STORE = 36,
-    F32_ADD = 37,
-    F32_SUB = 38,
-    F32_MUL = 39,
-    F32_MAX = 40,
-    F32_MIN = 41,
-    F32_GREATER = 42,
-    F32_GREATER_EQUAL = 43,
-    F32_LESS = 44,
-    F32_LESS_EQUAL = 45,
-    F32_EQUAL = 46,
-    F32_SEL = 47,
-    F32_ADDI = 48,
-    F32_SUBI = 49,
-    F32_MULI = 50,
-    F32_MAXI = 51,
-    F32_MINI = 52,
-    F32_MOVI = 53,
-    F32_GREATERI = 54,
-    F32_GREATER_EQUALI = 55,
-    F32_LESSI = 56,
-    F32_LESS_EQUALI = 57,
-    F32_EQUALI = 58,
-    F32_SELI = 59,
-    F32_LUI = 60,
-    F32_LI = 61,
-    I32_ADD = 62,
-    I32_SUB = 63,
-    I32_MUL = 64,
-    I32_MAX = 65,
-    I32_MIN = 66,
-    I32_GREATER = 67,
-    I32_GREATER_EQUAL = 68,
-    I32_LESS = 69,
-    I32_LESS_EQUAL = 70,
-    I32_EQUAL = 71,
-    I32_SEL = 72,
-    I32_ADDI = 73,
-    I32_SUBI = 74,
-    I32_MULI = 75,
-    I32_MAXI = 76,
-    I32_MINI = 77,
-    I32_MOVI = 78,
-    I32_GREATERI = 79,
-    I32_GREATER_EQUALI = 80,
-    I32_LESSI = 81,
-    I32_LESS_EQUALI = 82,
-    I32_EQUALI = 83,
-    I32_SELI = 84,
-    I32_LUI = 85,
-    I32_LI = 86,
-    I8_DLOAD_ADD = 87,
-    I8_DLOAD_SUB = 88,
-    I8_DLOAD_MUL = 89,
-    I8_DLOAD_MAX = 90,
-    I8_DLOAD_MIN = 91,
-    I8_LOAD_ADD = 92,
-    I8_LOAD_SUB = 93,
-    I8_LOAD_MUL = 94,
-    I8_LOAD_MAX = 95,
-    I8_LOAD_MIN = 96,
-    U8_DLOAD_ADD = 97,
-    U8_DLOAD_SUB = 98,
-    U8_DLOAD_MUL = 99,
-    U8_DLOAD_MAX = 100,
-    U8_DLOAD_MIN = 101,
-    U8_LOAD_ADD = 102,
-    U8_LOAD_SUB = 103,
-    U8_LOAD_MUL = 104,
-    U8_LOAD_MAX = 105,
-    U8_LOAD_MIN = 106,
-    E43_DLOAD_ADD = 107,
-    E43_DLOAD_SUB = 108,
-    E43_DLOAD_MUL = 109,
-    E43_DLOAD_MAX = 110,
-    E43_DLOAD_MIN = 111,
-    E43_LOAD_ADD = 112,
-    E43_LOAD_SUB = 113,
-    E43_LOAD_MUL = 114,
-    E43_LOAD_MAX = 115,
-    E43_LOAD_MIN = 116,
-    E52_DLOAD_ADD = 117,
-    E52_DLOAD_SUB = 118,
-    E52_DLOAD_MUL = 119,
-    E52_DLOAD_MAX = 120,
-    E52_DLOAD_MIN = 121,
-    E52_LOAD_ADD = 122,
-    E52_LOAD_SUB = 123,
-    E52_LOAD_MUL = 124,
-    E52_LOAD_MAX = 125,
-    E52_LOAD_MIN = 126,
-    I16_DLOAD_ADD = 127,
-    I16_DLOAD_SUB = 128,
-    I16_DLOAD_MUL = 129,
-    I16_DLOAD_MAX = 130,
-    I16_DLOAD_MIN = 131,
-    I16_LOAD_ADD = 132,
-    I16_LOAD_SUB = 133,
-    I16_LOAD_MUL = 134,
-    I16_LOAD_MAX = 135,
-    I16_LOAD_MIN = 136,
-    F16_DLOAD_ADD = 137,
-    F16_DLOAD_SUB = 138,
-    F16_DLOAD_MUL = 139,
-    F16_DLOAD_MAX = 140,
-    F16_DLOAD_MIN = 141,
-    F16_LOAD_ADD = 142,
-    F16_LOAD_SUB = 143,
-    F16_LOAD_MUL = 144,
-    F16_LOAD_MAX = 145,
-    F16_LOAD_MIN = 146,
-    F32_DLOAD_ADD = 147,
-    F32_DLOAD_SUB = 148,
-    F32_DLOAD_MUL = 149,
-    F32_DLOAD_MAX = 150,
-    F32_DLOAD_MIN = 151,
-    F32_LOAD_ADD = 152,
-    F32_LOAD_SUB = 153,
-    F32_LOAD_MUL = 154,
-    F32_LOAD_MAX = 155,
-    F32_LOAD_MIN = 156,
-    I32_DLOAD_ADD = 157,
-    I32_DLOAD_SUB = 158,
-    I32_DLOAD_MUL = 159,
-    I32_DLOAD_MAX = 160,
-    I32_DLOAD_MIN = 161,
-    I32_LOAD_ADD = 162,
-    I32_LOAD_SUB = 163,
-    I32_LOAD_MUL = 164,
-    I32_LOAD_MAX = 165,
-    I32_LOAD_MIN = 166,
-    I8_ADD_STORE = 167,
-    I8_SUB_STORE = 168,
-    I8_MUL_STORE = 169,
-    I8_MAX_STORE = 170,
-    I8_MIN_STORE = 171,
-    U8_ADD_STORE = 172,
-    U8_SUB_STORE = 173,
-    U8_MUL_STORE = 174,
-    U8_MAX_STORE = 175,
-    U8_MIN_STORE = 176,
-    E43_ADD_STORE = 177,
-    E43_SUB_STORE = 178,
-    E43_MUL_STORE = 179,
-    E43_MAX_STORE = 180,
-    E43_MIN_STORE = 181,
-    E52_ADD_STORE = 182,
-    E52_SUB_STORE = 183,
-    E52_MUL_STORE = 184,
-    E52_MAX_STORE = 185,
-    E52_MIN_STORE = 186,
-    I16_ADD_STORE = 187,
-    I16_SUB_STORE = 188,
-    I16_MUL_STORE = 189,
-    I16_MAX_STORE = 190,
-    I16_MIN_STORE = 191,
-    F16_ADD_STORE = 192,
-    F16_SUB_STORE = 193,
-    F16_MUL_STORE = 194,
-    F16_MAX_STORE = 195,
-    F16_MIN_STORE = 196,
-    F32_ADD_STORE = 197,
-    F32_SUB_STORE = 198,
-    F32_MUL_STORE = 199,
-    F32_MAX_STORE = 200,
-    F32_MIN_STORE = 201,
-    I32_ADD_STORE = 202,
-    I32_SUB_STORE = 203,
-    I32_MUL_STORE = 204,
-    I32_MAX_STORE = 205,
-    I32_MIN_STORE = 206,
-    I8_DLOAD_ADD_STORE = 207,
-    I8_DLOAD_SUB_STORE = 208,
-    I8_DLOAD_MUL_STORE = 209,
-    I8_DLOAD_MAX_STORE = 210,
-    I8_DLOAD_MIN_STORE = 211,
-    I8_LOAD_ADD_STORE = 212,
-    I8_LOAD_SUB_STORE = 213,
-    I8_LOAD_MUL_STORE = 214,
-    I8_LOAD_MAX_STORE = 215,
-    I8_LOAD_MIN_STORE = 216,
-    U8_DLOAD_ADD_STORE = 217,
-    U8_DLOAD_SUB_STORE = 218,
-    U8_DLOAD_MUL_STORE = 219,
-    U8_DLOAD_MAX_STORE = 220,
-    U8_DLOAD_MIN_STORE = 221,
-    U8_LOAD_ADD_STORE = 222,
-    U8_LOAD_SUB_STORE = 223,
-    U8_LOAD_MUL_STORE = 224,
-    U8_LOAD_MAX_STORE = 225,
-    U8_LOAD_MIN_STORE = 226,
-    E43_DLOAD_ADD_STORE = 227,
-    E43_DLOAD_SUB_STORE = 228,
-    E43_DLOAD_MUL_STORE = 229,
-    E43_DLOAD_MAX_STORE = 230,
-    E43_DLOAD_MIN_STORE = 231,
-    E43_LOAD_ADD_STORE = 232,
-    E43_LOAD_SUB_STORE = 233,
-    E43_LOAD_MUL_STORE = 234,
-    E43_LOAD_MAX_STORE = 235,
-    E43_LOAD_MIN_STORE = 236,
-    E52_DLOAD_ADD_STORE = 237,
-    E52_DLOAD_SUB_STORE = 238,
-    E52_DLOAD_MUL_STORE = 239,
-    E52_DLOAD_MAX_STORE = 240,
-    E52_DLOAD_MIN_STORE = 241,
-    E52_LOAD_ADD_STORE = 242,
-    E52_LOAD_SUB_STORE = 243,
-    E52_LOAD_MUL_STORE = 244,
-    E52_LOAD_MAX_STORE = 245,
-    E52_LOAD_MIN_STORE = 246,
-    I16_DLOAD_ADD_STORE = 247,
-    I16_DLOAD_SUB_STORE = 248,
-    I16_DLOAD_MUL_STORE = 249,
-    I16_DLOAD_MAX_STORE = 250,
-    I16_DLOAD_MIN_STORE = 251,
-    I16_LOAD_ADD_STORE = 252,
-    I16_LOAD_SUB_STORE = 253,
-    I16_LOAD_MUL_STORE = 254,
-    I16_LOAD_MAX_STORE = 255,
-    I16_LOAD_MIN_STORE = 256,
-    F16_DLOAD_ADD_STORE = 257,
-    F16_DLOAD_SUB_STORE = 258,
-    F16_DLOAD_MUL_STORE = 259,
-    F16_DLOAD_MAX_STORE = 260,
-    F16_DLOAD_MIN_STORE = 261,
-    F16_LOAD_ADD_STORE = 262,
-    F16_LOAD_SUB_STORE = 263,
-    F16_LOAD_MUL_STORE = 264,
-    F16_LOAD_MAX_STORE = 265,
-    F16_LOAD_MIN_STORE = 266,
-    F32_DLOAD_ADD_STORE = 267,
-    F32_DLOAD_SUB_STORE = 268,
-    F32_DLOAD_MUL_STORE = 269,
-    F32_DLOAD_MAX_STORE = 270,
-    F32_DLOAD_MIN_STORE = 271,
-    F32_LOAD_ADD_STORE = 272,
-    F32_LOAD_SUB_STORE = 273,
-    F32_LOAD_MUL_STORE = 274,
-    F32_LOAD_MAX_STORE = 275,
-    F32_LOAD_MIN_STORE = 276,
-    I32_DLOAD_ADD_STORE = 277,
-    I32_DLOAD_SUB_STORE = 278,
-    I32_DLOAD_MUL_STORE = 279,
-    I32_DLOAD_MAX_STORE = 280,
-    I32_DLOAD_MIN_STORE = 281,
-    I32_LOAD_ADD_STORE = 282,
-    I32_LOAD_SUB_STORE = 283,
-    I32_LOAD_MUL_STORE = 284,
-    I32_LOAD_MAX_STORE = 285,
-    I32_LOAD_MIN_STORE = 286,
-    S_ADDI = 287,
-    S_ADDIU = 288,
-    S_SUBI = 289,
-    S_ANDI = 290,
-    S_ORI = 291,
-    S_XORI = 292,
-    S_SGTI = 293,
-    S_SLTI = 294,
-    S_SEQI = 295,
-    S_SGEI = 296,
-    S_SLEI = 297,
-    S_SRAI = 298,
-    S_SRLI = 299,
-    S_SLLI = 300,
-    S_LUI = 301,
-    S_ADD = 302,
-    S_ADDU = 303,
-    S_SUB = 304,
-    S_MUL = 305,
-    S_MULH = 306,
-    S_MULHU = 307,
-    S_MIN = 308,
-    S_MAX = 309,
-    S_MINU = 310,
-    S_MAXU = 311,
-    S_AND = 312,
-    S_OR = 313,
-    S_XOR = 314,
-    S_SGT = 315,
-    S_SLT = 316,
-    S_SEQ = 317,
-    S_SGE = 318,
-    S_SLE = 319,
-    S_CMPSEL = 320,
-    S_SRA = 321,
-    S_SRL = 322,
-    S_SLL = 323,
-    S_JUMP = 324,
-    S_JAL = 325,
-    S_JR = 326,
-    S_BNE = 327,
-    S_BEQ = 328,
-    S_BLT = 329,
-    S_BLTU = 330,
-    S_BGE = 331,
-    S_BGEU = 332,
-    S_SETCFG = 333,
-    S_SETRF = 334,
+    F16_DLOAD = 17,
+    F16_LOAD = 18,
+    F32_DLOAD = 19,
+    F32_LOAD = 20,
+    I8_STORE = 21,
+    U8_STORE = 22,
+    F16_STORE = 23,
+    F32_STORE = 24,
+    F32_ADD = 25,
+    F32_SUB = 26,
+    F32_MUL = 27,
+    F32_MAX = 28,
+    F32_MIN = 29,
+    F32_GREATER = 30,
+    F32_GREATER_EQUAL = 31,
+    F32_LESS = 32,
+    F32_LESS_EQUAL = 33,
+    F32_EQUAL = 34,
+    F32_SEL = 35,
+    I32_AND = 36,
+    I32_OR = 37,
+    I32_NOT = 38,
+    I32_XOR = 39,
+    I32_XNOR = 40,
+    F32_ADDI = 41,
+    F32_SUBI = 42,
+    F32_MULI = 43,
+    F32_MAXI = 44,
+    F32_MINI = 45,
+    F32_MOVI = 46,
+    F32_GREATERI = 47,
+    F32_GREATER_EQUALI = 48,
+    F32_LESSI = 49,
+    F32_LESS_EQUALI = 50,
+    F32_EQUALI = 51,
+    F32_SELI = 52,
+    F32_LUI = 53,
+    F32_LI = 54,
+    I32_ANDI = 55,
+    I32_ORI = 56,
+    I32_NOTI = 57,
+    I32_XORI = 58,
+    I32_XNORI = 59,
+    I8_DLOAD_ADD = 60,
+    I8_DLOAD_SUB = 61,
+    I8_DLOAD_MUL = 62,
+    I8_DLOAD_MAX = 63,
+    I8_DLOAD_MIN = 64,
+    I8_LOAD_ADD = 65,
+    I8_LOAD_SUB = 66,
+    I8_LOAD_MUL = 67,
+    I8_LOAD_MAX = 68,
+    I8_LOAD_MIN = 69,
+    U8_DLOAD_ADD = 70,
+    U8_DLOAD_SUB = 71,
+    U8_DLOAD_MUL = 72,
+    U8_DLOAD_MAX = 73,
+    U8_DLOAD_MIN = 74,
+    U8_LOAD_ADD = 75,
+    U8_LOAD_SUB = 76,
+    U8_LOAD_MUL = 77,
+    U8_LOAD_MAX = 78,
+    U8_LOAD_MIN = 79,
+    F16_DLOAD_ADD = 80,
+    F16_DLOAD_SUB = 81,
+    F16_DLOAD_MUL = 82,
+    F16_DLOAD_MAX = 83,
+    F16_DLOAD_MIN = 84,
+    F16_LOAD_ADD = 85,
+    F16_LOAD_SUB = 86,
+    F16_LOAD_MUL = 87,
+    F16_LOAD_MAX = 88,
+    F16_LOAD_MIN = 89,
+    F32_DLOAD_ADD = 90,
+    F32_DLOAD_SUB = 91,
+    F32_DLOAD_MUL = 92,
+    F32_DLOAD_MAX = 93,
+    F32_DLOAD_MIN = 94,
+    F32_LOAD_ADD = 95,
+    F32_LOAD_SUB = 96,
+    F32_LOAD_MUL = 97,
+    F32_LOAD_MAX = 98,
+    F32_LOAD_MIN = 99,
+    I32_DLOAD_AND = 100,
+    I32_DLOAD_OR = 101,
+    I32_DLOAD_NOT = 102,
+    I32_DLOAD_XOR = 103,
+    I32_DLOAD_XNOR = 104,
+    I32_LOAD_AND = 105,
+    I32_LOAD_OR = 106,
+    I32_LOAD_NOT = 107,
+    I32_LOAD_XOR = 108,
+    I32_LOAD_XNOR = 109,
+    I8_ADD_STORE = 110,
+    I8_SUB_STORE = 111,
+    I8_MUL_STORE = 112,
+    I8_MAX_STORE = 113,
+    I8_MIN_STORE = 114,
+    U8_ADD_STORE = 115,
+    U8_SUB_STORE = 116,
+    U8_MUL_STORE = 117,
+    U8_MAX_STORE = 118,
+    U8_MIN_STORE = 119,
+    F16_ADD_STORE = 120,
+    F16_SUB_STORE = 121,
+    F16_MUL_STORE = 122,
+    F16_MAX_STORE = 123,
+    F16_MIN_STORE = 124,
+    F32_ADD_STORE = 125,
+    F32_SUB_STORE = 126,
+    F32_MUL_STORE = 127,
+    F32_MAX_STORE = 128,
+    F32_MIN_STORE = 129,
+    I32_AND_STORE = 130,
+    I32_OR_STORE = 131,
+    I32_NOT_STORE = 132,
+    I32_XOR_STORE = 133,
+    I32_XNOR_STORE = 134,
+    I8_DLOAD_ADD_STORE = 135,
+    I8_DLOAD_SUB_STORE = 136,
+    I8_DLOAD_MUL_STORE = 137,
+    I8_DLOAD_MAX_STORE = 138,
+    I8_DLOAD_MIN_STORE = 139,
+    I8_LOAD_ADD_STORE = 140,
+    I8_LOAD_SUB_STORE = 141,
+    I8_LOAD_MUL_STORE = 142,
+    I8_LOAD_MAX_STORE = 143,
+    I8_LOAD_MIN_STORE = 144,
+    U8_DLOAD_ADD_STORE = 145,
+    U8_DLOAD_SUB_STORE = 146,
+    U8_DLOAD_MUL_STORE = 147,
+    U8_DLOAD_MAX_STORE = 148,
+    U8_DLOAD_MIN_STORE = 149,
+    U8_LOAD_ADD_STORE = 150,
+    U8_LOAD_SUB_STORE = 151,
+    U8_LOAD_MUL_STORE = 152,
+    U8_LOAD_MAX_STORE = 153,
+    U8_LOAD_MIN_STORE = 154,
+    F16_DLOAD_ADD_STORE = 155,
+    F16_DLOAD_SUB_STORE = 156,
+    F16_DLOAD_MUL_STORE = 157,
+    F16_DLOAD_MAX_STORE = 158,
+    F16_DLOAD_MIN_STORE = 159,
+    F16_LOAD_ADD_STORE = 160,
+    F16_LOAD_SUB_STORE = 161,
+    F16_LOAD_MUL_STORE = 162,
+    F16_LOAD_MAX_STORE = 163,
+    F16_LOAD_MIN_STORE = 164,
+    F32_DLOAD_ADD_STORE = 165,
+    F32_DLOAD_SUB_STORE = 166,
+    F32_DLOAD_MUL_STORE = 167,
+    F32_DLOAD_MAX_STORE = 168,
+    F32_DLOAD_MIN_STORE = 169,
+    F32_LOAD_ADD_STORE = 170,
+    F32_LOAD_SUB_STORE = 171,
+    F32_LOAD_MUL_STORE = 172,
+    F32_LOAD_MAX_STORE = 173,
+    F32_LOAD_MIN_STORE = 174,
+    I32_DLOAD_AND_STORE = 175,
+    I32_DLOAD_OR_STORE = 176,
+    I32_DLOAD_NOT_STORE = 177,
+    I32_DLOAD_XOR_STORE = 178,
+    I32_DLOAD_XNOR_STORE = 179,
+    I32_LOAD_AND_STORE = 180,
+    I32_LOAD_OR_STORE = 181,
+    I32_LOAD_NOT_STORE = 182,
+    I32_LOAD_XOR_STORE = 183,
+    I32_LOAD_XNOR_STORE = 184,
+    S_ADDI = 185,
+    S_ADDIU = 186,
+    S_SUBI = 187,
+    S_ANDI = 188,
+    S_ORI = 189,
+    S_XORI = 190,
+    S_SGTI = 191,
+    S_SLTI = 192,
+    S_SEQI = 193,
+    S_SGEI = 194,
+    S_SLEI = 195,
+    S_SRAI = 196,
+    S_SRLI = 197,
+    S_SLLI = 198,
+    S_LUI = 199,
+    S_ADD = 200,
+    S_ADDU = 201,
+    S_SUB = 202,
+    S_MUL = 203,
+    S_MULH = 204,
+    S_MULHU = 205,
+    S_MIN = 206,
+    S_MAX = 207,
+    S_MINU = 208,
+    S_MAXU = 209,
+    S_AND = 210,
+    S_OR = 211,
+    S_XOR = 212,
+    S_SGT = 213,
+    S_SLT = 214,
+    S_SEQ = 215,
+    S_SGE = 216,
+    S_SLE = 217,
+    S_CMPSEL = 218,
+    S_SRA = 219,
+    S_SRL = 220,
+    S_SLL = 221,
+    S_JUMP = 222,
+    S_JAL = 223,
+    S_JR = 224,
+    S_BNE = 225,
+    S_BEQ = 226,
+    S_BLT = 227,
+    S_BLTU = 228,
+    S_BGE = 229,
+    S_BGEU = 230,
+    S_SETCFG = 231,
+    S_SETRF = 232,
     INVALID = 65536
   };
 
   static const std::map<OpCodeType, OpCodeItem>& getOpCodeMap() {
     static const std::map<OpCodeType, OpCodeItem> opCodeMap = {
-      {OpCodeType::SET_LOAD_BASE,       {"set_load_base",       0xff000000, 0x01000000}},
-      {OpCodeType::SET_LOAD2_BASE,      {"set_load2_base",      0xff000000, 0x04000000}},
-      {OpCodeType::SET_STORE_BASE,      {"set_store_base",      0xff000000, 0x07000000}},
-      {OpCodeType::SET_LOAD_GLB,        {"set_load_glb",        0xff000001, 0x02000000}},
-      {OpCodeType::SET_STORE_GLB,       {"set_store_glb",       0xff000001, 0x08000000}},
-      {OpCodeType::SET_QUANTIZE,        {"set_quantize",        0xffff0000, 0x09000000}},
-      {OpCodeType::SET_DEQUANTIZE,      {"set_dequantize",      0xff000000, 0x03000000}},
-      {OpCodeType::SET_DEQUANTIZE2,     {"set_dequantize2",     0xff000000, 0x06000000}},
-      {OpCodeType::SET_FS,              {"set_fs",              0xffffff00, 0x0a000000}},
-      {OpCodeType::SET_LOAD_AAI,        {"set_load_aai",        0xff070000, 0x0b000000}},
-      {OpCodeType::SET_STORE_AAI,       {"set_store_aai",       0xff070000, 0x0c000000}},
-      {OpCodeType::VPU_NOP,             {"vpu_nop",             0xffffffff, 0x00000000}},
-      {OpCodeType::VPU_END,             {"vpu_end",             0xfffffffe, 0xff000000}},
-      {OpCodeType::I8_DLOAD,            {"i8_dload",            0xff0f0000, 0xc4020000}},
-      {OpCodeType::I8_LOAD,             {"i8_load",             0xffcf0000, 0xc4000000}},
-      {OpCodeType::U8_DLOAD,            {"u8_dload",            0xff0f0000, 0xd4020000}},
-      {OpCodeType::U8_LOAD,             {"u8_load",             0xffcf0000, 0xd4000000}},
-      {OpCodeType::E43_DLOAD,           {"e43_dload",           0xff0f0000, 0xf6020000}},
-      {OpCodeType::E43_LOAD,            {"e43_load",            0xffcf0000, 0xf6000000}},
-      {OpCodeType::E52_DLOAD,           {"e52_dload",           0xff0f0000, 0xe6020000}},
-      {OpCodeType::E52_LOAD,            {"e52_load",            0xffcf0000, 0xe6000000}},
-      {OpCodeType::I16_DLOAD,           {"i16_dload",           0xff0f0000, 0xc6020000}},
-      {OpCodeType::I16_LOAD,            {"i16_load",            0xffcf0000, 0xc6000000}},
-      {OpCodeType::F16_DLOAD,           {"f16_dload",           0xff0f0000, 0xe4020000}},
-      {OpCodeType::F16_LOAD,            {"f16_load",            0xffcf0000, 0xe4000000}},
-      {OpCodeType::F32_DLOAD,           {"f32_dload",           0xff0f0000, 0xf4020000}},
-      {OpCodeType::F32_LOAD,            {"f32_load",            0xffcf0000, 0xf4000000}},
-      {OpCodeType::I32_DLOAD,           {"i32_dload",           0xff0f0000, 0xd2020000}},
-      {OpCodeType::I32_LOAD,            {"i32_load",            0xffcf0000, 0xd2000000}},
-      {OpCodeType::I8_STORE,            {"i8_store",            0xffcf0000, 0xcc000000}},
-      {OpCodeType::U8_STORE,            {"u8_store",            0xffcf0000, 0xdc000000}},
-      {OpCodeType::E43_STORE,           {"e43_store",           0xffcf0000, 0xfe000000}},
-      {OpCodeType::E52_STORE,           {"e52_store",           0xffcf0000, 0xee000000}},
-      {OpCodeType::I16_STORE,           {"i16_store",           0xffcf0000, 0xce000000}},
-      {OpCodeType::F16_STORE,           {"f16_store",           0xffcf0000, 0xec000000}},
-      {OpCodeType::F32_STORE,           {"f32_store",           0xffcf0000, 0xfc000000}},
-      {OpCodeType::I32_STORE,           {"i32_store",           0xffcf0000, 0xda000000}},
-      {OpCodeType::F32_ADD,             {"f32_add",             0xff007fff, 0x80000000}},
-      {OpCodeType::F32_SUB,             {"f32_sub",             0xff007fff, 0x81000000}},
-      {OpCodeType::F32_MUL,             {"f32_mul",             0xff007fff, 0x82000000}},
-      {OpCodeType::F32_MAX,             {"f32_max",             0xff007fff, 0x83000000}},
-      {OpCodeType::F32_MIN,             {"f32_min",             0xff007fff, 0x84000000}},
-      {OpCodeType::F32_GREATER,         {"f32_greater",         0xffe07fff, 0x87000000}},
-      {OpCodeType::F32_GREATER_EQUAL,   {"f32_greater_equal",   0xffe07fff, 0x8a000000}},
-      {OpCodeType::F32_LESS,            {"f32_less",            0xffe07fff, 0x89000000}},
-      {OpCodeType::F32_LESS_EQUAL,      {"f32_less_equal",      0xffe07fff, 0x8b000000}},
-      {OpCodeType::F32_EQUAL,           {"f32_equal",           0xffe07fff, 0x88000000}},
-      {OpCodeType::F32_SEL,             {"f32_sel",             0xff007fff, 0x8c000000}},
-      {OpCodeType::F32_ADDI,            {"f32_addi",            0xff030000, 0xa0000000}},
-      {OpCodeType::F32_SUBI,            {"f32_subi",            0xff030000, 0xa1000000}},
-      {OpCodeType::F32_MULI,            {"f32_muli",            0xff030000, 0xa2000000}},
-      {OpCodeType::F32_MAXI,            {"f32_maxi",            0xff030000, 0xa3000000}},
-      {OpCodeType::F32_MINI,            {"f32_mini",            0xff030000, 0xa4000000}},
-      {OpCodeType::F32_MOVI,            {"f32_movi",            0xff1f0000, 0xa5000000}},
-      {OpCodeType::F32_GREATERI,        {"f32_greateri",        0xffe30000, 0xa7000000}},
-      {OpCodeType::F32_GREATER_EQUALI,  {"f32_greater_equali",  0xffe30000, 0xaa000000}},
-      {OpCodeType::F32_LESSI,           {"f32_lessi",           0xffe30000, 0xa9000000}},
-      {OpCodeType::F32_LESS_EQUALI,     {"f32_less_equali",     0xffe30000, 0xab000000}},
-      {OpCodeType::F32_EQUALI,          {"f32_equali",          0xffe30000, 0xa8000000}},
-      {OpCodeType::F32_SELI,            {"f32_seli",            0xff030000, 0xac000000}},
-      {OpCodeType::F32_LUI,             {"f32_lui",             0xff1f0000, 0xad000000}},
-      {OpCodeType::F32_LI,              {"f32_li",              0xff1f0000, 0xae000000}},
-      {OpCodeType::I32_ADD,             {"i32_add",             0xff007fff, 0x90000000}},
-      {OpCodeType::I32_SUB,             {"i32_sub",             0xff007fff, 0x91000000}},
-      {OpCodeType::I32_MUL,             {"i32_mul",             0xff007fff, 0x92000000}},
-      {OpCodeType::I32_MAX,             {"i32_max",             0xff007fff, 0x93000000}},
-      {OpCodeType::I32_MIN,             {"i32_min",             0xff007fff, 0x94000000}},
-      {OpCodeType::I32_GREATER,         {"i32_greater",         0xffe07fff, 0x97000000}},
-      {OpCodeType::I32_GREATER_EQUAL,   {"i32_greater_equal",   0xffe07fff, 0x9a000000}},
-      {OpCodeType::I32_LESS,            {"i32_less",            0xffe07fff, 0x99000000}},
-      {OpCodeType::I32_LESS_EQUAL,      {"i32_less_equal",      0xffe07fff, 0x9b000000}},
-      {OpCodeType::I32_EQUAL,           {"i32_equal",           0xffe07fff, 0x98000000}},
-      {OpCodeType::I32_SEL,             {"i32_sel",             0xff007fff, 0x9c000000}},
-      {OpCodeType::I32_ADDI,            {"i32_addi",            0xff030000, 0xb0000000}},
-      {OpCodeType::I32_SUBI,            {"i32_subi",            0xff030000, 0xb1000000}},
-      {OpCodeType::I32_MULI,            {"i32_muli",            0xff030000, 0xb2000000}},
-      {OpCodeType::I32_MAXI,            {"i32_maxi",            0xff030000, 0xb3000000}},
-      {OpCodeType::I32_MINI,            {"i32_mini",            0xff030000, 0xb4000000}},
-      {OpCodeType::I32_MOVI,            {"i32_movi",            0xff1f0000, 0xb5000000}},
-      {OpCodeType::I32_GREATERI,        {"i32_greateri",        0xffe30000, 0xb7000000}},
-      {OpCodeType::I32_GREATER_EQUALI,  {"i32_greater_equali",  0xffe30000, 0xba000000}},
-      {OpCodeType::I32_LESSI,           {"i32_lessi",           0xffe30000, 0xb9000000}},
-      {OpCodeType::I32_LESS_EQUALI,     {"i32_less_equali",     0xffe30000, 0xbb000000}},
-      {OpCodeType::I32_EQUALI,          {"i32_equali",          0xffe30000, 0xb8000000}},
-      {OpCodeType::I32_SELI,            {"i32_seli",            0xff030000, 0xbc000000}},
-      {OpCodeType::I32_LUI,             {"i32_lui",             0xff1f0000, 0xbd000000}},
-      {OpCodeType::I32_LI,              {"i32_li",              0xff1f0000, 0xbe000000}},
-      {OpCodeType::I8_DLOAD_ADD,        {"i8_dload_add",        0xff3f0000, 0xc0030000}},
-      {OpCodeType::I8_DLOAD_SUB,        {"i8_dload_sub",        0xff3f0000, 0xc0070000}},
-      {OpCodeType::I8_DLOAD_MUL,        {"i8_dload_mul",        0xff3f0000, 0xc1030000}},
-      {OpCodeType::I8_DLOAD_MAX,        {"i8_dload_max",        0xff3f0000, 0xc1070000}},
-      {OpCodeType::I8_DLOAD_MIN,        {"i8_dload_min",        0xff3f0000, 0xc4030000}},
-      {OpCodeType::I8_LOAD_ADD,         {"i8_load_add",         0xff0f0000, 0xc0010000}},
-      {OpCodeType::I8_LOAD_SUB,         {"i8_load_sub",         0xff0f0000, 0xc0050000}},
-      {OpCodeType::I8_LOAD_MUL,         {"i8_load_mul",         0xff0f0000, 0xc1010000}},
-      {OpCodeType::I8_LOAD_MAX,         {"i8_load_max",         0xff0f0000, 0xc1050000}},
-      {OpCodeType::I8_LOAD_MIN,         {"i8_load_min",         0xff0f0000, 0xc4010000}},
-      {OpCodeType::U8_DLOAD_ADD,        {"u8_dload_add",        0xff3f0000, 0xd0030000}},
-      {OpCodeType::U8_DLOAD_SUB,        {"u8_dload_sub",        0xff3f0000, 0xd0070000}},
-      {OpCodeType::U8_DLOAD_MUL,        {"u8_dload_mul",        0xff3f0000, 0xd1030000}},
-      {OpCodeType::U8_DLOAD_MAX,        {"u8_dload_max",        0xff3f0000, 0xd1070000}},
-      {OpCodeType::U8_DLOAD_MIN,        {"u8_dload_min",        0xff3f0000, 0xd4030000}},
-      {OpCodeType::U8_LOAD_ADD,         {"u8_load_add",         0xff0f0000, 0xd0010000}},
-      {OpCodeType::U8_LOAD_SUB,         {"u8_load_sub",         0xff0f0000, 0xd0050000}},
-      {OpCodeType::U8_LOAD_MUL,         {"u8_load_mul",         0xff0f0000, 0xd1010000}},
-      {OpCodeType::U8_LOAD_MAX,         {"u8_load_max",         0xff0f0000, 0xd1050000}},
-      {OpCodeType::U8_LOAD_MIN,         {"u8_load_min",         0xff0f0000, 0xd4010000}},
-      {OpCodeType::E43_DLOAD_ADD,       {"e43_dload_add",       0xff3f0000, 0xf2030000}},
-      {OpCodeType::E43_DLOAD_SUB,       {"e43_dload_sub",       0xff3f0000, 0xf2070000}},
-      {OpCodeType::E43_DLOAD_MUL,       {"e43_dload_mul",       0xff3f0000, 0xf3030000}},
-      {OpCodeType::E43_DLOAD_MAX,       {"e43_dload_max",       0xff3f0000, 0xf3070000}},
-      {OpCodeType::E43_DLOAD_MIN,       {"e43_dload_min",       0xff3f0000, 0xf6030000}},
-      {OpCodeType::E43_LOAD_ADD,        {"e43_load_add",        0xff0f0000, 0xf2010000}},
-      {OpCodeType::E43_LOAD_SUB,        {"e43_load_sub",        0xff0f0000, 0xf2050000}},
-      {OpCodeType::E43_LOAD_MUL,        {"e43_load_mul",        0xff0f0000, 0xf3010000}},
-      {OpCodeType::E43_LOAD_MAX,        {"e43_load_max",        0xff0f0000, 0xf3050000}},
-      {OpCodeType::E43_LOAD_MIN,        {"e43_load_min",        0xff0f0000, 0xf6010000}},
-      {OpCodeType::E52_DLOAD_ADD,       {"e52_dload_add",       0xff3f0000, 0xe2030000}},
-      {OpCodeType::E52_DLOAD_SUB,       {"e52_dload_sub",       0xff3f0000, 0xe2070000}},
-      {OpCodeType::E52_DLOAD_MUL,       {"e52_dload_mul",       0xff3f0000, 0xe3030000}},
-      {OpCodeType::E52_DLOAD_MAX,       {"e52_dload_max",       0xff3f0000, 0xe3070000}},
-      {OpCodeType::E52_DLOAD_MIN,       {"e52_dload_min",       0xff3f0000, 0xe6030000}},
-      {OpCodeType::E52_LOAD_ADD,        {"e52_load_add",        0xff0f0000, 0xe2010000}},
-      {OpCodeType::E52_LOAD_SUB,        {"e52_load_sub",        0xff0f0000, 0xe2050000}},
-      {OpCodeType::E52_LOAD_MUL,        {"e52_load_mul",        0xff0f0000, 0xe3010000}},
-      {OpCodeType::E52_LOAD_MAX,        {"e52_load_max",        0xff0f0000, 0xe3050000}},
-      {OpCodeType::E52_LOAD_MIN,        {"e52_load_min",        0xff0f0000, 0xe6010000}},
-      {OpCodeType::I16_DLOAD_ADD,       {"i16_dload_add",       0xff3f0000, 0xc2030000}},
-      {OpCodeType::I16_DLOAD_SUB,       {"i16_dload_sub",       0xff3f0000, 0xc2070000}},
-      {OpCodeType::I16_DLOAD_MUL,       {"i16_dload_mul",       0xff3f0000, 0xc3030000}},
-      {OpCodeType::I16_DLOAD_MAX,       {"i16_dload_max",       0xff3f0000, 0xc3070000}},
-      {OpCodeType::I16_DLOAD_MIN,       {"i16_dload_min",       0xff3f0000, 0xc6030000}},
-      {OpCodeType::I16_LOAD_ADD,        {"i16_load_add",        0xff0f0000, 0xc2010000}},
-      {OpCodeType::I16_LOAD_SUB,        {"i16_load_sub",        0xff0f0000, 0xc2050000}},
-      {OpCodeType::I16_LOAD_MUL,        {"i16_load_mul",        0xff0f0000, 0xc3010000}},
-      {OpCodeType::I16_LOAD_MAX,        {"i16_load_max",        0xff0f0000, 0xc3050000}},
-      {OpCodeType::I16_LOAD_MIN,        {"i16_load_min",        0xff0f0000, 0xc6010000}},
-      {OpCodeType::F16_DLOAD_ADD,       {"f16_dload_add",       0xff3f0000, 0xe0030000}},
-      {OpCodeType::F16_DLOAD_SUB,       {"f16_dload_sub",       0xff3f0000, 0xe0070000}},
-      {OpCodeType::F16_DLOAD_MUL,       {"f16_dload_mul",       0xff3f0000, 0xe1030000}},
-      {OpCodeType::F16_DLOAD_MAX,       {"f16_dload_max",       0xff3f0000, 0xe1070000}},
-      {OpCodeType::F16_DLOAD_MIN,       {"f16_dload_min",       0xff3f0000, 0xe4030000}},
-      {OpCodeType::F16_LOAD_ADD,        {"f16_load_add",        0xff0f0000, 0xe0010000}},
-      {OpCodeType::F16_LOAD_SUB,        {"f16_load_sub",        0xff0f0000, 0xe0050000}},
-      {OpCodeType::F16_LOAD_MUL,        {"f16_load_mul",        0xff0f0000, 0xe1010000}},
-      {OpCodeType::F16_LOAD_MAX,        {"f16_load_max",        0xff0f0000, 0xe1050000}},
-      {OpCodeType::F16_LOAD_MIN,        {"f16_load_min",        0xff0f0000, 0xe4010000}},
-      {OpCodeType::F32_DLOAD_ADD,       {"f32_dload_add",       0xff3f0000, 0xf0030000}},
-      {OpCodeType::F32_DLOAD_SUB,       {"f32_dload_sub",       0xff3f0000, 0xf0070000}},
-      {OpCodeType::F32_DLOAD_MUL,       {"f32_dload_mul",       0xff3f0000, 0xf1030000}},
-      {OpCodeType::F32_DLOAD_MAX,       {"f32_dload_max",       0xff3f0000, 0xf1070000}},
-      {OpCodeType::F32_DLOAD_MIN,       {"f32_dload_min",       0xff3f0000, 0xf4030000}},
-      {OpCodeType::F32_LOAD_ADD,        {"f32_load_add",        0xff0f0000, 0xf0010000}},
-      {OpCodeType::F32_LOAD_SUB,        {"f32_load_sub",        0xff0f0000, 0xf0050000}},
-      {OpCodeType::F32_LOAD_MUL,        {"f32_load_mul",        0xff0f0000, 0xf1010000}},
-      {OpCodeType::F32_LOAD_MAX,        {"f32_load_max",        0xff0f0000, 0xf1050000}},
-      {OpCodeType::F32_LOAD_MIN,        {"f32_load_min",        0xff0f0000, 0xf4010000}},
-      {OpCodeType::I32_DLOAD_ADD,       {"i32_dload_add",       0xff3f0000, 0xd20b0000}},
-      {OpCodeType::I32_DLOAD_SUB,       {"i32_dload_sub",       0xff3f0000, 0xd20f0000}},
-      {OpCodeType::I32_DLOAD_MUL,       {"i32_dload_mul",       0xff3f0000, 0xd30b0000}},
-      {OpCodeType::I32_DLOAD_MAX,       {"i32_dload_max",       0xff3f0000, 0xd30f0000}},
-      {OpCodeType::I32_DLOAD_MIN,       {"i32_dload_min",       0xff3f0000, 0xd60b0000}},
-      {OpCodeType::I32_LOAD_ADD,        {"i32_load_add",        0xff0f0000, 0xd2090000}},
-      {OpCodeType::I32_LOAD_SUB,        {"i32_load_sub",        0xff0f0000, 0xd20d0000}},
-      {OpCodeType::I32_LOAD_MUL,        {"i32_load_mul",        0xff0f0000, 0xd3090000}},
-      {OpCodeType::I32_LOAD_MAX,        {"i32_load_max",        0xff0f0000, 0xd30d0000}},
-      {OpCodeType::I32_LOAD_MIN,        {"i32_load_min",        0xff0f0000, 0xd6090000}},
-      {OpCodeType::I8_ADD_STORE,        {"i8_add_store",        0xff0f0000, 0xc8010000}},
-      {OpCodeType::I8_SUB_STORE,        {"i8_sub_store",        0xff0f0000, 0xc8050000}},
-      {OpCodeType::I8_MUL_STORE,        {"i8_mul_store",        0xff0f0000, 0xc9010000}},
-      {OpCodeType::I8_MAX_STORE,        {"i8_max_store",        0xff0f0000, 0xc9050000}},
-      {OpCodeType::I8_MIN_STORE,        {"i8_min_store",        0xff0f0000, 0xcc010000}},
-      {OpCodeType::U8_ADD_STORE,        {"u8_add_store",        0xff0f0000, 0xd8010000}},
-      {OpCodeType::U8_SUB_STORE,        {"u8_sub_store",        0xff0f0000, 0xd8050000}},
-      {OpCodeType::U8_MUL_STORE,        {"u8_mul_store",        0xff0f0000, 0xd9010000}},
-      {OpCodeType::U8_MAX_STORE,        {"u8_max_store",        0xff0f0000, 0xd9050000}},
-      {OpCodeType::U8_MIN_STORE,        {"u8_min_store",        0xff0f0000, 0xdc010000}},
-      {OpCodeType::E43_ADD_STORE,       {"e43_add_store",       0xff0f0000, 0xfa010000}},
-      {OpCodeType::E43_SUB_STORE,       {"e43_sub_store",       0xff0f0000, 0xfa050000}},
-      {OpCodeType::E43_MUL_STORE,       {"e43_mul_store",       0xff0f0000, 0xfb010000}},
-      {OpCodeType::E43_MAX_STORE,       {"e43_max_store",       0xff0f0000, 0xfb050000}},
-      {OpCodeType::E43_MIN_STORE,       {"e43_min_store",       0xff0f0000, 0xfe010000}},
-      {OpCodeType::E52_ADD_STORE,       {"e52_add_store",       0xff0f0000, 0xea010000}},
-      {OpCodeType::E52_SUB_STORE,       {"e52_sub_store",       0xff0f0000, 0xea050000}},
-      {OpCodeType::E52_MUL_STORE,       {"e52_mul_store",       0xff0f0000, 0xeb010000}},
-      {OpCodeType::E52_MAX_STORE,       {"e52_max_store",       0xff0f0000, 0xeb050000}},
-      {OpCodeType::E52_MIN_STORE,       {"e52_min_store",       0xff0f0000, 0xee010000}},
-      {OpCodeType::I16_ADD_STORE,       {"i16_add_store",       0xff0f0000, 0xca010000}},
-      {OpCodeType::I16_SUB_STORE,       {"i16_sub_store",       0xff0f0000, 0xca050000}},
-      {OpCodeType::I16_MUL_STORE,       {"i16_mul_store",       0xff0f0000, 0xcb010000}},
-      {OpCodeType::I16_MAX_STORE,       {"i16_max_store",       0xff0f0000, 0xcb050000}},
-      {OpCodeType::I16_MIN_STORE,       {"i16_min_store",       0xff0f0000, 0xce010000}},
-      {OpCodeType::F16_ADD_STORE,       {"f16_add_store",       0xff0f0000, 0xe8010000}},
-      {OpCodeType::F16_SUB_STORE,       {"f16_sub_store",       0xff0f0000, 0xe8050000}},
-      {OpCodeType::F16_MUL_STORE,       {"f16_mul_store",       0xff0f0000, 0xe9010000}},
-      {OpCodeType::F16_MAX_STORE,       {"f16_max_store",       0xff0f0000, 0xe9050000}},
-      {OpCodeType::F16_MIN_STORE,       {"f16_min_store",       0xff0f0000, 0xec010000}},
-      {OpCodeType::F32_ADD_STORE,       {"f32_add_store",       0xff0f0000, 0xf8010000}},
-      {OpCodeType::F32_SUB_STORE,       {"f32_sub_store",       0xff0f0000, 0xf8050000}},
-      {OpCodeType::F32_MUL_STORE,       {"f32_mul_store",       0xff0f0000, 0xf9010000}},
-      {OpCodeType::F32_MAX_STORE,       {"f32_max_store",       0xff0f0000, 0xf9050000}},
-      {OpCodeType::F32_MIN_STORE,       {"f32_min_store",       0xff0f0000, 0xfc010000}},
-      {OpCodeType::I32_ADD_STORE,       {"i32_add_store",       0xff0f0000, 0xda090000}},
-      {OpCodeType::I32_SUB_STORE,       {"i32_sub_store",       0xff0f0000, 0xda0d0000}},
-      {OpCodeType::I32_MUL_STORE,       {"i32_mul_store",       0xff0f0000, 0xdb090000}},
-      {OpCodeType::I32_MAX_STORE,       {"i32_max_store",       0xff0f0000, 0xdb0d0000}},
-      {OpCodeType::I32_MIN_STORE,       {"i32_min_store",       0xff0f0000, 0xde090000}},
-      {OpCodeType::I8_DLOAD_ADD_STORE,  {"i8_dload_add_store",  0xffff0000, 0xc00a0000}},
-      {OpCodeType::I8_DLOAD_SUB_STORE,  {"i8_dload_sub_store",  0xffff0000, 0xc00e0000}},
-      {OpCodeType::I8_DLOAD_MUL_STORE,  {"i8_dload_mul_store",  0xffff0000, 0xc10a0000}},
-      {OpCodeType::I8_DLOAD_MAX_STORE,  {"i8_dload_max_store",  0xffff0000, 0xc10e0000}},
-      {OpCodeType::I8_DLOAD_MIN_STORE,  {"i8_dload_min_store",  0xffff0000, 0xc40a0000}},
-      {OpCodeType::I8_LOAD_ADD_STORE,   {"i8_load_add_store",   0xffcf0000, 0xc0080000}},
-      {OpCodeType::I8_LOAD_SUB_STORE,   {"i8_load_sub_store",   0xffcf0000, 0xc00c0000}},
-      {OpCodeType::I8_LOAD_MUL_STORE,   {"i8_load_mul_store",   0xffcf0000, 0xc1080000}},
-      {OpCodeType::I8_LOAD_MAX_STORE,   {"i8_load_max_store",   0xffcf0000, 0xc10c0000}},
-      {OpCodeType::I8_LOAD_MIN_STORE,   {"i8_load_min_store",   0xffcf0000, 0xc4080000}},
-      {OpCodeType::U8_DLOAD_ADD_STORE,  {"u8_dload_add_store",  0xffff0000, 0xd00a0000}},
-      {OpCodeType::U8_DLOAD_SUB_STORE,  {"u8_dload_sub_store",  0xffff0000, 0xd00e0000}},
-      {OpCodeType::U8_DLOAD_MUL_STORE,  {"u8_dload_mul_store",  0xffff0000, 0xd10a0000}},
-      {OpCodeType::U8_DLOAD_MAX_STORE,  {"u8_dload_max_store",  0xffff0000, 0xd10e0000}},
-      {OpCodeType::U8_DLOAD_MIN_STORE,  {"u8_dload_min_store",  0xffff0000, 0xd40a0000}},
-      {OpCodeType::U8_LOAD_ADD_STORE,   {"u8_load_add_store",   0xffcf0000, 0xd0080000}},
-      {OpCodeType::U8_LOAD_SUB_STORE,   {"u8_load_sub_store",   0xffcf0000, 0xd00c0000}},
-      {OpCodeType::U8_LOAD_MUL_STORE,   {"u8_load_mul_store",   0xffcf0000, 0xd1080000}},
-      {OpCodeType::U8_LOAD_MAX_STORE,   {"u8_load_max_store",   0xffcf0000, 0xd10c0000}},
-      {OpCodeType::U8_LOAD_MIN_STORE,   {"u8_load_min_store",   0xffcf0000, 0xd4080000}},
-      {OpCodeType::E43_DLOAD_ADD_STORE, {"e43_dload_add_store", 0xffff0000, 0xf20a0000}},
-      {OpCodeType::E43_DLOAD_SUB_STORE, {"e43_dload_sub_store", 0xffff0000, 0xf20e0000}},
-      {OpCodeType::E43_DLOAD_MUL_STORE, {"e43_dload_mul_store", 0xffff0000, 0xf30a0000}},
-      {OpCodeType::E43_DLOAD_MAX_STORE, {"e43_dload_max_store", 0xffff0000, 0xf30e0000}},
-      {OpCodeType::E43_DLOAD_MIN_STORE, {"e43_dload_min_store", 0xffff0000, 0xf60a0000}},
-      {OpCodeType::E43_LOAD_ADD_STORE,  {"e43_load_add_store",  0xffcf0000, 0xf2080000}},
-      {OpCodeType::E43_LOAD_SUB_STORE,  {"e43_load_sub_store",  0xffcf0000, 0xf20c0000}},
-      {OpCodeType::E43_LOAD_MUL_STORE,  {"e43_load_mul_store",  0xffcf0000, 0xf3080000}},
-      {OpCodeType::E43_LOAD_MAX_STORE,  {"e43_load_max_store",  0xffcf0000, 0xf30c0000}},
-      {OpCodeType::E43_LOAD_MIN_STORE,  {"e43_load_min_store",  0xffcf0000, 0xf6080000}},
-      {OpCodeType::E52_DLOAD_ADD_STORE, {"e52_dload_add_store", 0xffff0000, 0xe20a0000}},
-      {OpCodeType::E52_DLOAD_SUB_STORE, {"e52_dload_sub_store", 0xffff0000, 0xe20e0000}},
-      {OpCodeType::E52_DLOAD_MUL_STORE, {"e52_dload_mul_store", 0xffff0000, 0xe30a0000}},
-      {OpCodeType::E52_DLOAD_MAX_STORE, {"e52_dload_max_store", 0xffff0000, 0xe30e0000}},
-      {OpCodeType::E52_DLOAD_MIN_STORE, {"e52_dload_min_store", 0xffff0000, 0xe60a0000}},
-      {OpCodeType::E52_LOAD_ADD_STORE,  {"e52_load_add_store",  0xffcf0000, 0xe2080000}},
-      {OpCodeType::E52_LOAD_SUB_STORE,  {"e52_load_sub_store",  0xffcf0000, 0xe20c0000}},
-      {OpCodeType::E52_LOAD_MUL_STORE,  {"e52_load_mul_store",  0xffcf0000, 0xe3080000}},
-      {OpCodeType::E52_LOAD_MAX_STORE,  {"e52_load_max_store",  0xffcf0000, 0xe30c0000}},
-      {OpCodeType::E52_LOAD_MIN_STORE,  {"e52_load_min_store",  0xffcf0000, 0xe6080000}},
-      {OpCodeType::I16_DLOAD_ADD_STORE, {"i16_dload_add_store", 0xffff0000, 0xc20a0000}},
-      {OpCodeType::I16_DLOAD_SUB_STORE, {"i16_dload_sub_store", 0xffff0000, 0xc20e0000}},
-      {OpCodeType::I16_DLOAD_MUL_STORE, {"i16_dload_mul_store", 0xffff0000, 0xc30a0000}},
-      {OpCodeType::I16_DLOAD_MAX_STORE, {"i16_dload_max_store", 0xffff0000, 0xc30e0000}},
-      {OpCodeType::I16_DLOAD_MIN_STORE, {"i16_dload_min_store", 0xffff0000, 0xc60a0000}},
-      {OpCodeType::I16_LOAD_ADD_STORE,  {"i16_load_add_store",  0xffcf0000, 0xc2080000}},
-      {OpCodeType::I16_LOAD_SUB_STORE,  {"i16_load_sub_store",  0xffcf0000, 0xc20c0000}},
-      {OpCodeType::I16_LOAD_MUL_STORE,  {"i16_load_mul_store",  0xffcf0000, 0xc3080000}},
-      {OpCodeType::I16_LOAD_MAX_STORE,  {"i16_load_max_store",  0xffcf0000, 0xc30c0000}},
-      {OpCodeType::I16_LOAD_MIN_STORE,  {"i16_load_min_store",  0xffcf0000, 0xc6080000}},
-      {OpCodeType::F16_DLOAD_ADD_STORE, {"f16_dload_add_store", 0xffff0000, 0xe00a0000}},
-      {OpCodeType::F16_DLOAD_SUB_STORE, {"f16_dload_sub_store", 0xffff0000, 0xe00e0000}},
-      {OpCodeType::F16_DLOAD_MUL_STORE, {"f16_dload_mul_store", 0xffff0000, 0xe10a0000}},
-      {OpCodeType::F16_DLOAD_MAX_STORE, {"f16_dload_max_store", 0xffff0000, 0xe10e0000}},
-      {OpCodeType::F16_DLOAD_MIN_STORE, {"f16_dload_min_store", 0xffff0000, 0xe40a0000}},
-      {OpCodeType::F16_LOAD_ADD_STORE,  {"f16_load_add_store",  0xffcf0000, 0xe0080000}},
-      {OpCodeType::F16_LOAD_SUB_STORE,  {"f16_load_sub_store",  0xffcf0000, 0xe00c0000}},
-      {OpCodeType::F16_LOAD_MUL_STORE,  {"f16_load_mul_store",  0xffcf0000, 0xe1080000}},
-      {OpCodeType::F16_LOAD_MAX_STORE,  {"f16_load_max_store",  0xffcf0000, 0xe10c0000}},
-      {OpCodeType::F16_LOAD_MIN_STORE,  {"f16_load_min_store",  0xffcf0000, 0xe4080000}},
-      {OpCodeType::F32_DLOAD_ADD_STORE, {"f32_dload_add_store", 0xffff0000, 0xf00a0000}},
-      {OpCodeType::F32_DLOAD_SUB_STORE, {"f32_dload_sub_store", 0xffff0000, 0xf00e0000}},
-      {OpCodeType::F32_DLOAD_MUL_STORE, {"f32_dload_mul_store", 0xffff0000, 0xf10a0000}},
-      {OpCodeType::F32_DLOAD_MAX_STORE, {"f32_dload_max_store", 0xffff0000, 0xf10e0000}},
-      {OpCodeType::F32_DLOAD_MIN_STORE, {"f32_dload_min_store", 0xffff0000, 0xf40a0000}},
-      {OpCodeType::F32_LOAD_ADD_STORE,  {"f32_load_add_store",  0xffcf0000, 0xf0080000}},
-      {OpCodeType::F32_LOAD_SUB_STORE,  {"f32_load_sub_store",  0xffcf0000, 0xf00c0000}},
-      {OpCodeType::F32_LOAD_MUL_STORE,  {"f32_load_mul_store",  0xffcf0000, 0xf1080000}},
-      {OpCodeType::F32_LOAD_MAX_STORE,  {"f32_load_max_store",  0xffcf0000, 0xf10c0000}},
-      {OpCodeType::F32_LOAD_MIN_STORE,  {"f32_load_min_store",  0xffcf0000, 0xf4080000}},
-      {OpCodeType::I32_DLOAD_ADD_STORE, {"i32_dload_add_store", 0xffff0000, 0xda0a0000}},
-      {OpCodeType::I32_DLOAD_SUB_STORE, {"i32_dload_sub_store", 0xffff0000, 0xda0e0000}},
-      {OpCodeType::I32_DLOAD_MUL_STORE, {"i32_dload_mul_store", 0xffff0000, 0xdb0a0000}},
-      {OpCodeType::I32_DLOAD_MAX_STORE, {"i32_dload_max_store", 0xffff0000, 0xdb0e0000}},
-      {OpCodeType::I32_DLOAD_MIN_STORE, {"i32_dload_min_store", 0xffff0000, 0xde0a0000}},
-      {OpCodeType::I32_LOAD_ADD_STORE,  {"i32_load_add_store",  0xffcf0000, 0xda080000}},
-      {OpCodeType::I32_LOAD_SUB_STORE,  {"i32_load_sub_store",  0xffcf0000, 0xda0c0000}},
-      {OpCodeType::I32_LOAD_MUL_STORE,  {"i32_load_mul_store",  0xffcf0000, 0xdb080000}},
-      {OpCodeType::I32_LOAD_MAX_STORE,  {"i32_load_max_store",  0xffcf0000, 0xdb0c0000}},
-      {OpCodeType::I32_LOAD_MIN_STORE,  {"i32_load_min_store",  0xffcf0000, 0xde080000}},
-      {OpCodeType::S_ADDI,              {"s_addi",              0xff000000, 0x40000000}},
-      {OpCodeType::S_ADDIU,             {"s_addiu",             0xff000000, 0x41000000}},
-      {OpCodeType::S_SUBI,              {"s_subi",              0xff000000, 0x42000000}},
-      {OpCodeType::S_ANDI,              {"s_andi",              0xff000000, 0x43000000}},
-      {OpCodeType::S_ORI,               {"s_ori",               0xff000000, 0x44000000}},
-      {OpCodeType::S_XORI,              {"s_xori",              0xff000000, 0x45000000}},
-      {OpCodeType::S_SGTI,              {"s_sgti",              0xff000000, 0x46000000}},
-      {OpCodeType::S_SLTI,              {"s_slti",              0xff000000, 0x47000000}},
-      {OpCodeType::S_SEQI,              {"s_seqi",              0xff000000, 0x48000000}},
-      {OpCodeType::S_SGEI,              {"s_sgei",              0xff000000, 0x49000000}},
-      {OpCodeType::S_SLEI,              {"s_slei",              0xff000000, 0x4a000000}},
-      {OpCodeType::S_SRAI,              {"s_srai",              0xff000000, 0x4b000000}},
-      {OpCodeType::S_SRLI,              {"s_srli",              0xff000000, 0x4c000000}},
-      {OpCodeType::S_SLLI,              {"s_slli",              0xff000000, 0x4d000000}},
-      {OpCodeType::S_LUI,               {"s_lui",               0xfff00000, 0x4e000000}},
-      {OpCodeType::S_ADD,               {"s_add",               0xff000fff, 0x51000000}},
-      {OpCodeType::S_ADDU,              {"s_addu",              0xff000fff, 0x52000000}},
-      {OpCodeType::S_SUB,               {"s_sub",               0xff000fff, 0x53000000}},
-      {OpCodeType::S_MUL,               {"s_mul",               0xff000fff, 0x54000000}},
-      {OpCodeType::S_MULH,              {"s_mulh",              0xff000fff, 0x55000000}},
-      {OpCodeType::S_MULHU,             {"s_mulhu",             0xff000fff, 0x56000000}},
-      {OpCodeType::S_MIN,               {"s_min",               0xff000fff, 0x57000000}},
-      {OpCodeType::S_MAX,               {"s_max",               0xff000fff, 0x58000000}},
-      {OpCodeType::S_MINU,              {"s_minu",              0xff000fff, 0x59000000}},
-      {OpCodeType::S_MAXU,              {"s_maxu",              0xff000fff, 0x5a000000}},
-      {OpCodeType::S_AND,               {"s_and",               0xff000fff, 0x5b000000}},
-      {OpCodeType::S_OR,                {"s_or",                0xff000fff, 0x5c000000}},
-      {OpCodeType::S_XOR,               {"s_xor",               0xff000fff, 0x5d000000}},
-      {OpCodeType::S_SGT,               {"s_sgt",               0xff000fff, 0x5e000000}},
-      {OpCodeType::S_SLT,               {"s_slt",               0xff000fff, 0x5f000000}},
-      {OpCodeType::S_SEQ,               {"s_seq",               0xff000fff, 0x60000000}},
-      {OpCodeType::S_SGE,               {"s_sge",               0xff000fff, 0x61000000}},
-      {OpCodeType::S_SLE,               {"s_sle",               0xff000fff, 0x62000000}},
-      {OpCodeType::S_CMPSEL,            {"s_cmpsel",            0xff000fff, 0x63000000}},
-      {OpCodeType::S_SRA,               {"s_sra",               0xff000fff, 0x64000000}},
-      {OpCodeType::S_SRL,               {"s_srl",               0xff000fff, 0x65000000}},
-      {OpCodeType::S_SLL,               {"s_sll",               0xff000fff, 0x66000000}},
-      {OpCodeType::S_JUMP,              {"s_jump",              0xffff0000, 0x69000000}},
-      {OpCodeType::S_JAL,               {"s_jal",               0xffff0000, 0x6a000000}},
-      {OpCodeType::S_JR,                {"s_jr",                0xff0fffff, 0x6b000000}},
-      {OpCodeType::S_BNE,               {"s_bne",               0xff000000, 0x6c000000}},
-      {OpCodeType::S_BEQ,               {"s_beq",               0xff000000, 0x6d000000}},
-      {OpCodeType::S_BLT,               {"s_blt",               0xff000000, 0x6e000000}},
-      {OpCodeType::S_BLTU,              {"s_bltu",              0xff000000, 0x6f000000}},
-      {OpCodeType::S_BGE,               {"s_bge",               0xff000000, 0x70000000}},
-      {OpCodeType::S_BGEU,              {"s_bgeu",              0xff000000, 0x71000000}},
-      {OpCodeType::S_SETCFG,            {"s_setcfg",            0xff00001f, 0x74000000}},
-      {OpCodeType::S_SETRF,             {"s_setrf",             0xfffffff8, 0x75000000}},
+      {OpCodeType::SET_LOAD_BASE,        {"set_load_base",        0xff000000, 0x01000000}},
+      {OpCodeType::SET_LOAD2_BASE,       {"set_load2_base",       0xff000000, 0x04000000}},
+      {OpCodeType::SET_STORE_BASE,       {"set_store_base",       0xff000000, 0x07000000}},
+      {OpCodeType::SET_LOAD_GLB,         {"set_load_glb",         0xff000001, 0x02000000}},
+      {OpCodeType::SET_STORE_GLB,        {"set_store_glb",        0xff000001, 0x08000000}},
+      {OpCodeType::SET_QUANTIZE,         {"set_quantize",         0xffff0000, 0x09000000}},
+      {OpCodeType::SET_DEQUANTIZE,       {"set_dequantize",       0xff000000, 0x03000000}},
+      {OpCodeType::SET_DEQUANTIZE2,      {"set_dequantize2",      0xff000000, 0x06000000}},
+      {OpCodeType::SET_FS,               {"set_fs",               0xffffff00, 0x0a000000}},
+      {OpCodeType::SET_LOAD_AAI,         {"set_load_aai",         0xff070000, 0x0b000000}},
+      {OpCodeType::SET_STORE_AAI,        {"set_store_aai",        0xff070000, 0x0c000000}},
+      {OpCodeType::VPU_NOP,              {"vpu_nop",              0xffffffff, 0x00000000}},
+      {OpCodeType::VPU_END,              {"vpu_end",              0xfffffffe, 0xff000000}},
+      {OpCodeType::I8_DLOAD,             {"i8_dload",             0xff0f0000, 0xc0020000}},
+      {OpCodeType::I8_LOAD,              {"i8_load",              0xffcf0000, 0xc0000000}},
+      {OpCodeType::U8_DLOAD,             {"u8_dload",             0xff0f0000, 0xd0020000}},
+      {OpCodeType::U8_LOAD,              {"u8_load",              0xffcf0000, 0xd0000000}},
+      {OpCodeType::F16_DLOAD,            {"f16_dload",            0xff0f0000, 0xe0020000}},
+      {OpCodeType::F16_LOAD,             {"f16_load",             0xffcf0000, 0xe0000000}},
+      {OpCodeType::F32_DLOAD,            {"f32_dload",            0xff0f0000, 0xf0020000}},
+      {OpCodeType::F32_LOAD,             {"f32_load",             0xffcf0000, 0xf0000000}},
+      {OpCodeType::I8_STORE,             {"i8_store",             0xffcf0000, 0xc8000000}},
+      {OpCodeType::U8_STORE,             {"u8_store",             0xffcf0000, 0xd8000000}},
+      {OpCodeType::F16_STORE,            {"f16_store",            0xffcf0000, 0xe8000000}},
+      {OpCodeType::F32_STORE,            {"f32_store",            0xffcf0000, 0xf8000000}},
+      {OpCodeType::F32_ADD,              {"f32_add",              0xff007fff, 0x90000000}},
+      {OpCodeType::F32_SUB,              {"f32_sub",              0xff007fff, 0x91000000}},
+      {OpCodeType::F32_MUL,              {"f32_mul",              0xff007fff, 0x92000000}},
+      {OpCodeType::F32_MAX,              {"f32_max",              0xff007fff, 0x93000000}},
+      {OpCodeType::F32_MIN,              {"f32_min",              0xff007fff, 0x94000000}},
+      {OpCodeType::F32_GREATER,          {"f32_greater",          0xffe07fff, 0x97000000}},
+      {OpCodeType::F32_GREATER_EQUAL,    {"f32_greater_equal",    0xffe07fff, 0x9a000000}},
+      {OpCodeType::F32_LESS,             {"f32_less",             0xffe07fff, 0x99000000}},
+      {OpCodeType::F32_LESS_EQUAL,       {"f32_less_equal",       0xffe07fff, 0x9b000000}},
+      {OpCodeType::F32_EQUAL,            {"f32_equal",            0xffe07fff, 0x98000000}},
+      {OpCodeType::F32_SEL,              {"f32_sel",              0xff007fff, 0x9c000000}},
+      {OpCodeType::I32_AND,              {"i32_and",              0xff007fff, 0x80000000}},
+      {OpCodeType::I32_OR,               {"i32_or",               0xff007fff, 0x81000000}},
+      {OpCodeType::I32_NOT,              {"i32_not",              0xff007fff, 0x82000000}},
+      {OpCodeType::I32_XOR,              {"i32_xor",              0xff007fff, 0x83000000}},
+      {OpCodeType::I32_XNOR,             {"i32_xnor",             0xff007fff, 0x84000000}},
+      {OpCodeType::F32_ADDI,             {"f32_addi",             0xff030000, 0xb0000000}},
+      {OpCodeType::F32_SUBI,             {"f32_subi",             0xff030000, 0xb1000000}},
+      {OpCodeType::F32_MULI,             {"f32_muli",             0xff030000, 0xb2000000}},
+      {OpCodeType::F32_MAXI,             {"f32_maxi",             0xff030000, 0xb3000000}},
+      {OpCodeType::F32_MINI,             {"f32_mini",             0xff030000, 0xb4000000}},
+      {OpCodeType::F32_MOVI,             {"f32_movi",             0xff1f0000, 0xb5000000}},
+      {OpCodeType::F32_GREATERI,         {"f32_greateri",         0xffe30000, 0xb7000000}},
+      {OpCodeType::F32_GREATER_EQUALI,   {"f32_greater_equali",   0xffe30000, 0xba000000}},
+      {OpCodeType::F32_LESSI,            {"f32_lessi",            0xffe30000, 0xb9000000}},
+      {OpCodeType::F32_LESS_EQUALI,      {"f32_less_equali",      0xffe30000, 0xbb000000}},
+      {OpCodeType::F32_EQUALI,           {"f32_equali",           0xffe30000, 0xb8000000}},
+      {OpCodeType::F32_SELI,             {"f32_seli",             0xff030000, 0xbc000000}},
+      {OpCodeType::F32_LUI,              {"f32_lui",              0xff1f0000, 0xbd000000}},
+      {OpCodeType::F32_LI,               {"f32_li",               0xff1f0000, 0xbe000000}},
+      {OpCodeType::I32_ANDI,             {"i32_andi",             0xff030000, 0xa0000000}},
+      {OpCodeType::I32_ORI,              {"i32_ori",              0xff030000, 0xa1000000}},
+      {OpCodeType::I32_NOTI,             {"i32_noti",             0xff030000, 0xa2000000}},
+      {OpCodeType::I32_XORI,             {"i32_xori",             0xff030000, 0xa3000000}},
+      {OpCodeType::I32_XNORI,            {"i32_xnori",            0xff030000, 0xa4000000}},
+      {OpCodeType::I8_DLOAD_ADD,         {"i8_dload_add",         0xff3f0000, 0xc0030000}},
+      {OpCodeType::I8_DLOAD_SUB,         {"i8_dload_sub",         0xff3f0000, 0xc0070000}},
+      {OpCodeType::I8_DLOAD_MUL,         {"i8_dload_mul",         0xff3f0000, 0xc1030000}},
+      {OpCodeType::I8_DLOAD_MAX,         {"i8_dload_max",         0xff3f0000, 0xc1070000}},
+      {OpCodeType::I8_DLOAD_MIN,         {"i8_dload_min",         0xff3f0000, 0xc4030000}},
+      {OpCodeType::I8_LOAD_ADD,          {"i8_load_add",          0xff0f0000, 0xc0010000}},
+      {OpCodeType::I8_LOAD_SUB,          {"i8_load_sub",          0xff0f0000, 0xc0050000}},
+      {OpCodeType::I8_LOAD_MUL,          {"i8_load_mul",          0xff0f0000, 0xc1010000}},
+      {OpCodeType::I8_LOAD_MAX,          {"i8_load_max",          0xff0f0000, 0xc1050000}},
+      {OpCodeType::I8_LOAD_MIN,          {"i8_load_min",          0xff0f0000, 0xc4010000}},
+      {OpCodeType::U8_DLOAD_ADD,         {"u8_dload_add",         0xff3f0000, 0xd0030000}},
+      {OpCodeType::U8_DLOAD_SUB,         {"u8_dload_sub",         0xff3f0000, 0xd0070000}},
+      {OpCodeType::U8_DLOAD_MUL,         {"u8_dload_mul",         0xff3f0000, 0xd1030000}},
+      {OpCodeType::U8_DLOAD_MAX,         {"u8_dload_max",         0xff3f0000, 0xd1070000}},
+      {OpCodeType::U8_DLOAD_MIN,         {"u8_dload_min",         0xff3f0000, 0xd4030000}},
+      {OpCodeType::U8_LOAD_ADD,          {"u8_load_add",          0xff0f0000, 0xd0010000}},
+      {OpCodeType::U8_LOAD_SUB,          {"u8_load_sub",          0xff0f0000, 0xd0050000}},
+      {OpCodeType::U8_LOAD_MUL,          {"u8_load_mul",          0xff0f0000, 0xd1010000}},
+      {OpCodeType::U8_LOAD_MAX,          {"u8_load_max",          0xff0f0000, 0xd1050000}},
+      {OpCodeType::U8_LOAD_MIN,          {"u8_load_min",          0xff0f0000, 0xd4010000}},
+      {OpCodeType::F16_DLOAD_ADD,        {"f16_dload_add",        0xff3f0000, 0xe0030000}},
+      {OpCodeType::F16_DLOAD_SUB,        {"f16_dload_sub",        0xff3f0000, 0xe0070000}},
+      {OpCodeType::F16_DLOAD_MUL,        {"f16_dload_mul",        0xff3f0000, 0xe1030000}},
+      {OpCodeType::F16_DLOAD_MAX,        {"f16_dload_max",        0xff3f0000, 0xe1070000}},
+      {OpCodeType::F16_DLOAD_MIN,        {"f16_dload_min",        0xff3f0000, 0xe4030000}},
+      {OpCodeType::F16_LOAD_ADD,         {"f16_load_add",         0xff0f0000, 0xe0010000}},
+      {OpCodeType::F16_LOAD_SUB,         {"f16_load_sub",         0xff0f0000, 0xe0050000}},
+      {OpCodeType::F16_LOAD_MUL,         {"f16_load_mul",         0xff0f0000, 0xe1010000}},
+      {OpCodeType::F16_LOAD_MAX,         {"f16_load_max",         0xff0f0000, 0xe1050000}},
+      {OpCodeType::F16_LOAD_MIN,         {"f16_load_min",         0xff0f0000, 0xe4010000}},
+      {OpCodeType::F32_DLOAD_ADD,        {"f32_dload_add",        0xff3f0000, 0xf0030000}},
+      {OpCodeType::F32_DLOAD_SUB,        {"f32_dload_sub",        0xff3f0000, 0xf0070000}},
+      {OpCodeType::F32_DLOAD_MUL,        {"f32_dload_mul",        0xff3f0000, 0xf1030000}},
+      {OpCodeType::F32_DLOAD_MAX,        {"f32_dload_max",        0xff3f0000, 0xf1070000}},
+      {OpCodeType::F32_DLOAD_MIN,        {"f32_dload_min",        0xff3f0000, 0xf4030000}},
+      {OpCodeType::F32_LOAD_ADD,         {"f32_load_add",         0xff0f0000, 0xf0010000}},
+      {OpCodeType::F32_LOAD_SUB,         {"f32_load_sub",         0xff0f0000, 0xf0050000}},
+      {OpCodeType::F32_LOAD_MUL,         {"f32_load_mul",         0xff0f0000, 0xf1010000}},
+      {OpCodeType::F32_LOAD_MAX,         {"f32_load_max",         0xff0f0000, 0xf1050000}},
+      {OpCodeType::F32_LOAD_MIN,         {"f32_load_min",         0xff0f0000, 0xf4010000}},
+      {OpCodeType::I32_DLOAD_AND,        {"i32_dload_and",        0xff3f0000, 0xd2030000}},
+      {OpCodeType::I32_DLOAD_OR,         {"i32_dload_or",         0xff3f0000, 0xd2070000}},
+      {OpCodeType::I32_DLOAD_NOT,        {"i32_dload_not",        0xff3f0000, 0xd3030000}},
+      {OpCodeType::I32_DLOAD_XOR,        {"i32_dload_xor",        0xff3f0000, 0xd3070000}},
+      {OpCodeType::I32_DLOAD_XNOR,       {"i32_dload_xnor",       0xff3f0000, 0xd6030000}},
+      {OpCodeType::I32_LOAD_AND,         {"i32_load_and",         0xff0f0000, 0xd2010000}},
+      {OpCodeType::I32_LOAD_OR,          {"i32_load_or",          0xff0f0000, 0xd2050000}},
+      {OpCodeType::I32_LOAD_NOT,         {"i32_load_not",         0xff0f0000, 0xd3010000}},
+      {OpCodeType::I32_LOAD_XOR,         {"i32_load_xor",         0xff0f0000, 0xd3050000}},
+      {OpCodeType::I32_LOAD_XNOR,        {"i32_load_xnor",        0xff0f0000, 0xd6010000}},
+      {OpCodeType::I8_ADD_STORE,         {"i8_add_store",         0xff0f0000, 0xc8010000}},
+      {OpCodeType::I8_SUB_STORE,         {"i8_sub_store",         0xff0f0000, 0xc8050000}},
+      {OpCodeType::I8_MUL_STORE,         {"i8_mul_store",         0xff0f0000, 0xc9010000}},
+      {OpCodeType::I8_MAX_STORE,         {"i8_max_store",         0xff0f0000, 0xc9050000}},
+      {OpCodeType::I8_MIN_STORE,         {"i8_min_store",         0xff0f0000, 0xcc010000}},
+      {OpCodeType::U8_ADD_STORE,         {"u8_add_store",         0xff0f0000, 0xd8010000}},
+      {OpCodeType::U8_SUB_STORE,         {"u8_sub_store",         0xff0f0000, 0xd8050000}},
+      {OpCodeType::U8_MUL_STORE,         {"u8_mul_store",         0xff0f0000, 0xd9010000}},
+      {OpCodeType::U8_MAX_STORE,         {"u8_max_store",         0xff0f0000, 0xd9050000}},
+      {OpCodeType::U8_MIN_STORE,         {"u8_min_store",         0xff0f0000, 0xdc010000}},
+      {OpCodeType::F16_ADD_STORE,        {"f16_add_store",        0xff0f0000, 0xe8010000}},
+      {OpCodeType::F16_SUB_STORE,        {"f16_sub_store",        0xff0f0000, 0xe8050000}},
+      {OpCodeType::F16_MUL_STORE,        {"f16_mul_store",        0xff0f0000, 0xe9010000}},
+      {OpCodeType::F16_MAX_STORE,        {"f16_max_store",        0xff0f0000, 0xe9050000}},
+      {OpCodeType::F16_MIN_STORE,        {"f16_min_store",        0xff0f0000, 0xec010000}},
+      {OpCodeType::F32_ADD_STORE,        {"f32_add_store",        0xff0f0000, 0xf8010000}},
+      {OpCodeType::F32_SUB_STORE,        {"f32_sub_store",        0xff0f0000, 0xf8050000}},
+      {OpCodeType::F32_MUL_STORE,        {"f32_mul_store",        0xff0f0000, 0xf9010000}},
+      {OpCodeType::F32_MAX_STORE,        {"f32_max_store",        0xff0f0000, 0xf9050000}},
+      {OpCodeType::F32_MIN_STORE,        {"f32_min_store",        0xff0f0000, 0xfc010000}},
+      {OpCodeType::I32_AND_STORE,        {"i32_and_store",        0xff0f0000, 0xda010000}},
+      {OpCodeType::I32_OR_STORE,         {"i32_or_store",         0xff0f0000, 0xda050000}},
+      {OpCodeType::I32_NOT_STORE,        {"i32_not_store",        0xff0f0000, 0xdb010000}},
+      {OpCodeType::I32_XOR_STORE,        {"i32_xor_store",        0xff0f0000, 0xdb050000}},
+      {OpCodeType::I32_XNOR_STORE,       {"i32_xnor_store",       0xff0f0000, 0xde010000}},
+      {OpCodeType::I8_DLOAD_ADD_STORE,   {"i8_dload_add_store",   0xffff0000, 0xc80a0000}},
+      {OpCodeType::I8_DLOAD_SUB_STORE,   {"i8_dload_sub_store",   0xffff0000, 0xc80e0000}},
+      {OpCodeType::I8_DLOAD_MUL_STORE,   {"i8_dload_mul_store",   0xffff0000, 0xc90a0000}},
+      {OpCodeType::I8_DLOAD_MAX_STORE,   {"i8_dload_max_store",   0xffff0000, 0xc90e0000}},
+      {OpCodeType::I8_DLOAD_MIN_STORE,   {"i8_dload_min_store",   0xffff0000, 0xcc0a0000}},
+      {OpCodeType::I8_LOAD_ADD_STORE,    {"i8_load_add_store",    0xffcf0000, 0xc8080000}},
+      {OpCodeType::I8_LOAD_SUB_STORE,    {"i8_load_sub_store",    0xffcf0000, 0xc80c0000}},
+      {OpCodeType::I8_LOAD_MUL_STORE,    {"i8_load_mul_store",    0xffcf0000, 0xc9080000}},
+      {OpCodeType::I8_LOAD_MAX_STORE,    {"i8_load_max_store",    0xffcf0000, 0xc90c0000}},
+      {OpCodeType::I8_LOAD_MIN_STORE,    {"i8_load_min_store",    0xffcf0000, 0xcc080000}},
+      {OpCodeType::U8_DLOAD_ADD_STORE,   {"u8_dload_add_store",   0xffff0000, 0xd80a0000}},
+      {OpCodeType::U8_DLOAD_SUB_STORE,   {"u8_dload_sub_store",   0xffff0000, 0xd80e0000}},
+      {OpCodeType::U8_DLOAD_MUL_STORE,   {"u8_dload_mul_store",   0xffff0000, 0xd90a0000}},
+      {OpCodeType::U8_DLOAD_MAX_STORE,   {"u8_dload_max_store",   0xffff0000, 0xd90e0000}},
+      {OpCodeType::U8_DLOAD_MIN_STORE,   {"u8_dload_min_store",   0xffff0000, 0xdc0a0000}},
+      {OpCodeType::U8_LOAD_ADD_STORE,    {"u8_load_add_store",    0xffcf0000, 0xd8080000}},
+      {OpCodeType::U8_LOAD_SUB_STORE,    {"u8_load_sub_store",    0xffcf0000, 0xd80c0000}},
+      {OpCodeType::U8_LOAD_MUL_STORE,    {"u8_load_mul_store",    0xffcf0000, 0xd9080000}},
+      {OpCodeType::U8_LOAD_MAX_STORE,    {"u8_load_max_store",    0xffcf0000, 0xd90c0000}},
+      {OpCodeType::U8_LOAD_MIN_STORE,    {"u8_load_min_store",    0xffcf0000, 0xdc080000}},
+      {OpCodeType::F16_DLOAD_ADD_STORE,  {"f16_dload_add_store",  0xffff0000, 0xe80a0000}},
+      {OpCodeType::F16_DLOAD_SUB_STORE,  {"f16_dload_sub_store",  0xffff0000, 0xe80e0000}},
+      {OpCodeType::F16_DLOAD_MUL_STORE,  {"f16_dload_mul_store",  0xffff0000, 0xe90a0000}},
+      {OpCodeType::F16_DLOAD_MAX_STORE,  {"f16_dload_max_store",  0xffff0000, 0xe90e0000}},
+      {OpCodeType::F16_DLOAD_MIN_STORE,  {"f16_dload_min_store",  0xffff0000, 0xec0a0000}},
+      {OpCodeType::F16_LOAD_ADD_STORE,   {"f16_load_add_store",   0xffcf0000, 0xe8080000}},
+      {OpCodeType::F16_LOAD_SUB_STORE,   {"f16_load_sub_store",   0xffcf0000, 0xe80c0000}},
+      {OpCodeType::F16_LOAD_MUL_STORE,   {"f16_load_mul_store",   0xffcf0000, 0xe9080000}},
+      {OpCodeType::F16_LOAD_MAX_STORE,   {"f16_load_max_store",   0xffcf0000, 0xe90c0000}},
+      {OpCodeType::F16_LOAD_MIN_STORE,   {"f16_load_min_store",   0xffcf0000, 0xec080000}},
+      {OpCodeType::F32_DLOAD_ADD_STORE,  {"f32_dload_add_store",  0xffff0000, 0xf80a0000}},
+      {OpCodeType::F32_DLOAD_SUB_STORE,  {"f32_dload_sub_store",  0xffff0000, 0xf80e0000}},
+      {OpCodeType::F32_DLOAD_MUL_STORE,  {"f32_dload_mul_store",  0xffff0000, 0xf90a0000}},
+      {OpCodeType::F32_DLOAD_MAX_STORE,  {"f32_dload_max_store",  0xffff0000, 0xf90e0000}},
+      {OpCodeType::F32_DLOAD_MIN_STORE,  {"f32_dload_min_store",  0xffff0000, 0xfc0a0000}},
+      {OpCodeType::F32_LOAD_ADD_STORE,   {"f32_load_add_store",   0xffcf0000, 0xf8080000}},
+      {OpCodeType::F32_LOAD_SUB_STORE,   {"f32_load_sub_store",   0xffcf0000, 0xf80c0000}},
+      {OpCodeType::F32_LOAD_MUL_STORE,   {"f32_load_mul_store",   0xffcf0000, 0xf9080000}},
+      {OpCodeType::F32_LOAD_MAX_STORE,   {"f32_load_max_store",   0xffcf0000, 0xf90c0000}},
+      {OpCodeType::F32_LOAD_MIN_STORE,   {"f32_load_min_store",   0xffcf0000, 0xfc080000}},
+      {OpCodeType::I32_DLOAD_AND_STORE,  {"i32_dload_and_store",  0xffff0000, 0xda0a0000}},
+      {OpCodeType::I32_DLOAD_OR_STORE,   {"i32_dload_or_store",   0xffff0000, 0xda0e0000}},
+      {OpCodeType::I32_DLOAD_NOT_STORE,  {"i32_dload_not_store",  0xffff0000, 0xdb0a0000}},
+      {OpCodeType::I32_DLOAD_XOR_STORE,  {"i32_dload_xor_store",  0xffff0000, 0xdb0e0000}},
+      {OpCodeType::I32_DLOAD_XNOR_STORE, {"i32_dload_xnor_store", 0xffff0000, 0xde0a0000}},
+      {OpCodeType::I32_LOAD_AND_STORE,   {"i32_load_and_store",   0xffcf0000, 0xda080000}},
+      {OpCodeType::I32_LOAD_OR_STORE,    {"i32_load_or_store",    0xffcf0000, 0xda0c0000}},
+      {OpCodeType::I32_LOAD_NOT_STORE,   {"i32_load_not_store",   0xffcf0000, 0xdb080000}},
+      {OpCodeType::I32_LOAD_XOR_STORE,   {"i32_load_xor_store",   0xffcf0000, 0xdb0c0000}},
+      {OpCodeType::I32_LOAD_XNOR_STORE,  {"i32_load_xnor_store",  0xffcf0000, 0xde080000}},
+      {OpCodeType::S_ADDI,               {"s_addi",               0xff000000, 0x40000000}},
+      {OpCodeType::S_ADDIU,              {"s_addiu",              0xff000000, 0x41000000}},
+      {OpCodeType::S_SUBI,               {"s_subi",               0xff000000, 0x42000000}},
+      {OpCodeType::S_ANDI,               {"s_andi",               0xff000000, 0x43000000}},
+      {OpCodeType::S_ORI,                {"s_ori",                0xff000000, 0x44000000}},
+      {OpCodeType::S_XORI,               {"s_xori",               0xff000000, 0x45000000}},
+      {OpCodeType::S_SGTI,               {"s_sgti",               0xff000000, 0x46000000}},
+      {OpCodeType::S_SLTI,               {"s_slti",               0xff000000, 0x47000000}},
+      {OpCodeType::S_SEQI,               {"s_seqi",               0xff000000, 0x48000000}},
+      {OpCodeType::S_SGEI,               {"s_sgei",               0xff000000, 0x49000000}},
+      {OpCodeType::S_SLEI,               {"s_slei",               0xff000000, 0x4a000000}},
+      {OpCodeType::S_SRAI,               {"s_srai",               0xff000000, 0x4b000000}},
+      {OpCodeType::S_SRLI,               {"s_srli",               0xff000000, 0x4c000000}},
+      {OpCodeType::S_SLLI,               {"s_slli",               0xff000000, 0x4d000000}},
+      {OpCodeType::S_LUI,                {"s_lui",                0xfff00000, 0x4e000000}},
+      {OpCodeType::S_ADD,                {"s_add",                0xff000fff, 0x51000000}},
+      {OpCodeType::S_ADDU,               {"s_addu",               0xff000fff, 0x52000000}},
+      {OpCodeType::S_SUB,                {"s_sub",                0xff000fff, 0x53000000}},
+      {OpCodeType::S_MUL,                {"s_mul",                0xff000fff, 0x54000000}},
+      {OpCodeType::S_MULH,               {"s_mulh",               0xff000fff, 0x55000000}},
+      {OpCodeType::S_MULHU,              {"s_mulhu",              0xff000fff, 0x56000000}},
+      {OpCodeType::S_MIN,                {"s_min",                0xff000fff, 0x57000000}},
+      {OpCodeType::S_MAX,                {"s_max",                0xff000fff, 0x58000000}},
+      {OpCodeType::S_MINU,               {"s_minu",               0xff000fff, 0x59000000}},
+      {OpCodeType::S_MAXU,               {"s_maxu",               0xff000fff, 0x5a000000}},
+      {OpCodeType::S_AND,                {"s_and",                0xff000fff, 0x5b000000}},
+      {OpCodeType::S_OR,                 {"s_or",                 0xff000fff, 0x5c000000}},
+      {OpCodeType::S_XOR,                {"s_xor",                0xff000fff, 0x5d000000}},
+      {OpCodeType::S_SGT,                {"s_sgt",                0xff000fff, 0x5e000000}},
+      {OpCodeType::S_SLT,                {"s_slt",                0xff000fff, 0x5f000000}},
+      {OpCodeType::S_SEQ,                {"s_seq",                0xff000fff, 0x60000000}},
+      {OpCodeType::S_SGE,                {"s_sge",                0xff000fff, 0x61000000}},
+      {OpCodeType::S_SLE,                {"s_sle",                0xff000fff, 0x62000000}},
+      {OpCodeType::S_CMPSEL,             {"s_cmpsel",             0xff000fff, 0x63000000}},
+      {OpCodeType::S_SRA,                {"s_sra",                0xff000fff, 0x64000000}},
+      {OpCodeType::S_SRL,                {"s_srl",                0xff000fff, 0x65000000}},
+      {OpCodeType::S_SLL,                {"s_sll",                0xff000fff, 0x66000000}},
+      {OpCodeType::S_JUMP,               {"s_jump",               0xffff0000, 0x69000000}},
+      {OpCodeType::S_JAL,                {"s_jal",                0xffff0000, 0x6a000000}},
+      {OpCodeType::S_JR,                 {"s_jr",                 0xff0fffff, 0x6b000000}},
+      {OpCodeType::S_BNE,                {"s_bne",                0xff000000, 0x6c000000}},
+      {OpCodeType::S_BEQ,                {"s_beq",                0xff000000, 0x6d000000}},
+      {OpCodeType::S_BLT,                {"s_blt",                0xff000000, 0x6e000000}},
+      {OpCodeType::S_BLTU,               {"s_bltu",               0xff000000, 0x6f000000}},
+      {OpCodeType::S_BGE,                {"s_bge",                0xff000000, 0x70000000}},
+      {OpCodeType::S_BGEU,               {"s_bgeu",               0xff000000, 0x71000000}},
+      {OpCodeType::S_SETCFG,             {"s_setcfg",             0xff00001f, 0x74000000}},
+      {OpCodeType::S_SETRF,              {"s_setrf",              0xfffffff8, 0x75000000}},
     };
     return opCodeMap;
   }
@@ -1204,84 +1000,6 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class E43DloadInstr : public VpuInstr, public DloadInstr {
-public:
-  explicit E43DloadInstr() : VpuInstr(OpCodeType::E43_DLOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rs, 23, 22);
-};
-
-class E43LoadInstr : public VpuInstr, public LoadInstr {
-public:
-  explicit E43LoadInstr() : VpuInstr(OpCodeType::E43_LOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E52DloadInstr : public VpuInstr, public DloadInstr {
-public:
-  explicit E52DloadInstr() : VpuInstr(OpCodeType::E52_DLOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rs, 23, 22);
-};
-
-class E52LoadInstr : public VpuInstr, public LoadInstr {
-public:
-  explicit E52LoadInstr() : VpuInstr(OpCodeType::E52_LOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class I16DloadInstr : public VpuInstr, public DloadInstr {
-public:
-  explicit I16DloadInstr() : VpuInstr(OpCodeType::I16_DLOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rs, 23, 22);
-};
-
-class I16LoadInstr : public VpuInstr, public LoadInstr {
-public:
-  explicit I16LoadInstr() : VpuInstr(OpCodeType::I16_LOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
 class F16DloadInstr : public VpuInstr, public DloadInstr {
 public:
   explicit F16DloadInstr() : VpuInstr(OpCodeType::F16_DLOAD) {
@@ -1334,32 +1052,6 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32DloadInstr : public VpuInstr, public DloadInstr {
-public:
-  explicit I32DloadInstr() : VpuInstr(OpCodeType::I32_DLOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rs, 23, 22);
-};
-
-class I32LoadInstr : public VpuInstr, public LoadInstr {
-public:
-  explicit I32LoadInstr() : VpuInstr(OpCodeType::I32_LOAD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
 class I8StoreInstr : public VpuInstr, public StoreInstr {
 public:
   explicit I8StoreInstr() : VpuInstr(OpCodeType::I8_STORE) {
@@ -1377,42 +1069,6 @@ public:
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43StoreInstr : public VpuInstr, public StoreInstr {
-public:
-  explicit E43StoreInstr() : VpuInstr(OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52StoreInstr : public VpuInstr, public StoreInstr {
-public:
-  explicit E52StoreInstr() : VpuInstr(OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16StoreInstr : public VpuInstr, public StoreInstr {
-public:
-  explicit I16StoreInstr() : VpuInstr(OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -1438,18 +1094,6 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 12;
     alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I32StoreInstr : public VpuInstr, public StoreInstr {
-public:
-  explicit I32StoreInstr() : VpuInstr(OpCodeType::I32_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -1592,6 +1236,76 @@ public:
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 12;
+    alu = 1;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I32AndInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I32AndInstr() : VpuInstr(OpCodeType::I32_AND) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 5;
+    alu = 1;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I32OrInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I32OrInstr() : VpuInstr(OpCodeType::I32_OR) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 5;
+    alu = 1;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I32NotInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I32NotInstr() : VpuInstr(OpCodeType::I32_NOT) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 5;
+    alu = 1;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I32XorInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I32XorInstr() : VpuInstr(OpCodeType::I32_XOR) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 5;
+    alu = 1;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I32XnorInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I32XnorInstr() : VpuInstr(OpCodeType::I32_XNOR) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 5;
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
@@ -1793,340 +1507,77 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
-class I32AddInstr : public VpuInstr, public VectorInstr {
+class I32AndiInstr : public VpuInstr, public VectorInstr {
 public:
-  explicit I32AddInstr() : VpuInstr(OpCodeType::I32_ADD) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32SubInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32SubInstr() : VpuInstr(OpCodeType::I32_SUB) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32MulInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32MulInstr() : VpuInstr(OpCodeType::I32_MUL) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32MaxInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32MaxInstr() : VpuInstr(OpCodeType::I32_MAX) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32MinInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32MinInstr() : VpuInstr(OpCodeType::I32_MIN) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32GreaterInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32GreaterInstr() : VpuInstr(OpCodeType::I32_GREATER) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-};
-
-class I32GreaterEqualInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32GreaterEqualInstr() : VpuInstr(OpCodeType::I32_GREATER_EQUAL) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-};
-
-class I32LessInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32LessInstr() : VpuInstr(OpCodeType::I32_LESS) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-};
-
-class I32LessEqualInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32LessEqualInstr() : VpuInstr(OpCodeType::I32_LESS_EQUAL) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-};
-
-class I32EqualInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32EqualInstr() : VpuInstr(OpCodeType::I32_EQUAL) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-};
-
-class I32SelInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32SelInstr() : VpuInstr(OpCodeType::I32_SEL) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32AddiInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32AddiInstr() : VpuInstr(OpCodeType::I32_ADDI) {
+  explicit I32AndiInstr() : VpuInstr(OpCodeType::I32_ANDI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
-class I32SubiInstr : public VpuInstr, public VectorInstr {
+class I32OriInstr : public VpuInstr, public VectorInstr {
 public:
-  explicit I32SubiInstr() : VpuInstr(OpCodeType::I32_SUBI) {
+  explicit I32OriInstr() : VpuInstr(OpCodeType::I32_ORI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
-class I32MuliInstr : public VpuInstr, public VectorInstr {
+class I32NotiInstr : public VpuInstr, public VectorInstr {
 public:
-  explicit I32MuliInstr() : VpuInstr(OpCodeType::I32_MULI) {
+  explicit I32NotiInstr() : VpuInstr(OpCodeType::I32_NOTI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
-class I32MaxiInstr : public VpuInstr, public VectorInstr {
+class I32XoriInstr : public VpuInstr, public VectorInstr {
 public:
-  explicit I32MaxiInstr() : VpuInstr(OpCodeType::I32_MAXI) {
+  explicit I32XoriInstr() : VpuInstr(OpCodeType::I32_XORI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
-class I32MiniInstr : public VpuInstr, public VectorInstr {
+class I32XnoriInstr : public VpuInstr, public VectorInstr {
 public:
-  explicit I32MiniInstr() : VpuInstr(OpCodeType::I32_MINI) {
+  explicit I32XnoriInstr() : VpuInstr(OpCodeType::I32_XNORI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32MoviInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32MoviInstr() : VpuInstr(OpCodeType::I32_MOVI) {
-    VPU_PUSH_GETTER_SETTER(Imm);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32GreateriInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32GreateriInstr() : VpuInstr(OpCodeType::I32_GREATERI) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Imm);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-};
-
-class I32GreaterEqualiInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32GreaterEqualiInstr() : VpuInstr(OpCodeType::I32_GREATER_EQUALI) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Imm);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-};
-
-class I32LessiInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32LessiInstr() : VpuInstr(OpCodeType::I32_LESSI) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Imm);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-};
-
-class I32LessEqualiInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32LessEqualiInstr() : VpuInstr(OpCodeType::I32_LESS_EQUALI) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Imm);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-};
-
-class I32EqualiInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32EqualiInstr() : VpuInstr(OpCodeType::I32_EQUALI) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Imm);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-};
-
-class I32SeliInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32SeliInstr() : VpuInstr(OpCodeType::I32_SELI) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Imm);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32LuiInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32LuiInstr() : VpuInstr(OpCodeType::I32_LUI) {
-    VPU_PUSH_GETTER_SETTER(Imm);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
-  VPU_GEN_GETTER_SETTER(Imm, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
-};
-
-class I32LiInstr : public VpuInstr, public VectorInstr {
-public:
-  explicit I32LiInstr() : VpuInstr(OpCodeType::I32_LI) {
-    VPU_PUSH_GETTER_SETTER(Imm);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    hasImm = 1;
-    dtype = 3;
-    alu = 2;
-  }
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
@@ -2374,396 +1825,6 @@ public:
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43DloadAddInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E43DloadAddInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43DloadSubInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E43DloadSubInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43DloadMulInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E43DloadMulInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E43DloadMaxInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43DloadMinInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E43DloadMinInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN), DloadComputeInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43LoadAddInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E43LoadAddInstr() : VpuInstr(OpCodeType::E43_LOAD_ADD), LoadComputeInstr(OpCodeType::E43_LOAD, OpCodeType::F32_ADD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43LoadSubInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E43LoadSubInstr() : VpuInstr(OpCodeType::E43_LOAD_SUB), LoadComputeInstr(OpCodeType::E43_LOAD, OpCodeType::F32_SUB) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43LoadMulInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E43LoadMulInstr() : VpuInstr(OpCodeType::E43_LOAD_MUL), LoadComputeInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MUL) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43LoadMaxInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E43LoadMaxInstr() : VpuInstr(OpCodeType::E43_LOAD_MAX), LoadComputeInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MAX) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E43LoadMinInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E43LoadMinInstr() : VpuInstr(OpCodeType::E43_LOAD_MIN), LoadComputeInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MIN) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52DloadAddInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E52DloadAddInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52DloadSubInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E52DloadSubInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52DloadMulInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E52DloadMulInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E52DloadMaxInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52DloadMinInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit E52DloadMinInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN), DloadComputeInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52LoadAddInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E52LoadAddInstr() : VpuInstr(OpCodeType::E52_LOAD_ADD), LoadComputeInstr(OpCodeType::E52_LOAD, OpCodeType::F32_ADD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52LoadSubInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E52LoadSubInstr() : VpuInstr(OpCodeType::E52_LOAD_SUB), LoadComputeInstr(OpCodeType::E52_LOAD, OpCodeType::F32_SUB) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52LoadMulInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E52LoadMulInstr() : VpuInstr(OpCodeType::E52_LOAD_MUL), LoadComputeInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MUL) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52LoadMaxInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E52LoadMaxInstr() : VpuInstr(OpCodeType::E52_LOAD_MAX), LoadComputeInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MAX) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class E52LoadMinInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit E52LoadMinInstr() : VpuInstr(OpCodeType::E52_LOAD_MIN), LoadComputeInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MIN) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16DloadAddInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit I16DloadAddInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16DloadSubInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit I16DloadSubInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16DloadMulInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit I16DloadMulInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit I16DloadMaxInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16DloadMinInstr : public VpuInstr, public DloadComputeInstr {
-public:
-  explicit I16DloadMinInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN), DloadComputeInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16LoadAddInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit I16LoadAddInstr() : VpuInstr(OpCodeType::I16_LOAD_ADD), LoadComputeInstr(OpCodeType::I16_LOAD, OpCodeType::F32_ADD) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16LoadSubInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit I16LoadSubInstr() : VpuInstr(OpCodeType::I16_LOAD_SUB), LoadComputeInstr(OpCodeType::I16_LOAD, OpCodeType::F32_SUB) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16LoadMulInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit I16LoadMulInstr() : VpuInstr(OpCodeType::I16_LOAD_MUL), LoadComputeInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MUL) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16LoadMaxInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit I16LoadMaxInstr() : VpuInstr(OpCodeType::I16_LOAD_MAX), LoadComputeInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MAX) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-};
-
-class I16LoadMinInstr : public VpuInstr, public LoadComputeInstr {
-public:
-  explicit I16LoadMinInstr() : VpuInstr(OpCodeType::I16_LOAD_MIN), LoadComputeInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MIN) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 2;
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -3031,130 +2092,130 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadAddInstr : public VpuInstr, public DloadComputeInstr {
+class I32DloadAndInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadAddInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD) {
+  explicit I32DloadAndInstr() : VpuInstr(OpCodeType::I32_DLOAD_AND), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_AND) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadSubInstr : public VpuInstr, public DloadComputeInstr {
+class I32DloadOrInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadSubInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB) {
+  explicit I32DloadOrInstr() : VpuInstr(OpCodeType::I32_DLOAD_OR), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_OR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadMulInstr : public VpuInstr, public DloadComputeInstr {
+class I32DloadNotInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadMulInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL) {
+  explicit I32DloadNotInstr() : VpuInstr(OpCodeType::I32_DLOAD_NOT), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_NOT) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadMaxInstr : public VpuInstr, public DloadComputeInstr {
+class I32DloadXorInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadMaxInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX) {
+  explicit I32DloadXorInstr() : VpuInstr(OpCodeType::I32_DLOAD_XOR), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32DloadMinInstr : public VpuInstr, public DloadComputeInstr {
+class I32DloadXnorInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadMinInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN) {
+  explicit I32DloadXnorInstr() : VpuInstr(OpCodeType::I32_DLOAD_XNOR), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XNOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32LoadAddInstr : public VpuInstr, public LoadComputeInstr {
+class I32LoadAndInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadAddInstr() : VpuInstr(OpCodeType::I32_LOAD_ADD), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_ADD) {
+  explicit I32LoadAndInstr() : VpuInstr(OpCodeType::I32_LOAD_AND), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_AND) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32LoadSubInstr : public VpuInstr, public LoadComputeInstr {
+class I32LoadOrInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadSubInstr() : VpuInstr(OpCodeType::I32_LOAD_SUB), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_SUB) {
+  explicit I32LoadOrInstr() : VpuInstr(OpCodeType::I32_LOAD_OR), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_OR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32LoadMulInstr : public VpuInstr, public LoadComputeInstr {
+class I32LoadNotInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadMulInstr() : VpuInstr(OpCodeType::I32_LOAD_MUL), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MUL) {
+  explicit I32LoadNotInstr() : VpuInstr(OpCodeType::I32_LOAD_NOT), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_NOT) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32LoadMaxInstr : public VpuInstr, public LoadComputeInstr {
+class I32LoadXorInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadMaxInstr() : VpuInstr(OpCodeType::I32_LOAD_MAX), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MAX) {
+  explicit I32LoadXorInstr() : VpuInstr(OpCodeType::I32_LOAD_XOR), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
 };
 
-class I32LoadMinInstr : public VpuInstr, public LoadComputeInstr {
+class I32LoadXnorInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadMinInstr() : VpuInstr(OpCodeType::I32_LOAD_MIN), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MIN) {
+  explicit I32LoadXnorInstr() : VpuInstr(OpCodeType::I32_LOAD_XNOR), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XNOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -3289,216 +2350,6 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43AddStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E43AddStoreInstr() : VpuInstr(OpCodeType::E43_ADD_STORE), ComputeStoreInstr(OpCodeType::F32_ADD, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43SubStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E43SubStoreInstr() : VpuInstr(OpCodeType::E43_SUB_STORE), ComputeStoreInstr(OpCodeType::F32_SUB, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43MulStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E43MulStoreInstr() : VpuInstr(OpCodeType::E43_MUL_STORE), ComputeStoreInstr(OpCodeType::F32_MUL, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43MaxStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E43MaxStoreInstr() : VpuInstr(OpCodeType::E43_MAX_STORE), ComputeStoreInstr(OpCodeType::F32_MAX, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43MinStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E43MinStoreInstr() : VpuInstr(OpCodeType::E43_MIN_STORE), ComputeStoreInstr(OpCodeType::F32_MIN, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52AddStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E52AddStoreInstr() : VpuInstr(OpCodeType::E52_ADD_STORE), ComputeStoreInstr(OpCodeType::F32_ADD, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52SubStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E52SubStoreInstr() : VpuInstr(OpCodeType::E52_SUB_STORE), ComputeStoreInstr(OpCodeType::F32_SUB, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52MulStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E52MulStoreInstr() : VpuInstr(OpCodeType::E52_MUL_STORE), ComputeStoreInstr(OpCodeType::F32_MUL, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52MaxStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E52MaxStoreInstr() : VpuInstr(OpCodeType::E52_MAX_STORE), ComputeStoreInstr(OpCodeType::F32_MAX, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52MinStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit E52MinStoreInstr() : VpuInstr(OpCodeType::E52_MIN_STORE), ComputeStoreInstr(OpCodeType::F32_MIN, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16AddStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit I16AddStoreInstr() : VpuInstr(OpCodeType::I16_ADD_STORE), ComputeStoreInstr(OpCodeType::F32_ADD, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16SubStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit I16SubStoreInstr() : VpuInstr(OpCodeType::I16_SUB_STORE), ComputeStoreInstr(OpCodeType::F32_SUB, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16MulStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit I16MulStoreInstr() : VpuInstr(OpCodeType::I16_MUL_STORE), ComputeStoreInstr(OpCodeType::F32_MUL, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16MaxStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit I16MaxStoreInstr() : VpuInstr(OpCodeType::I16_MAX_STORE), ComputeStoreInstr(OpCodeType::F32_MAX, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Rs, 21, 20);
-  VPU_GEN_GETTER_SETTER(Rd, 23, 22);
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16MinStoreInstr : public VpuInstr, public ComputeStoreInstr {
-public:
-  explicit I16MinStoreInstr() : VpuInstr(OpCodeType::I16_MIN_STORE), ComputeStoreInstr(OpCodeType::F32_MIN, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Rd);
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -3646,70 +2497,70 @@ public:
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32AddStoreInstr : public VpuInstr, public ComputeStoreInstr {
+class I32AndStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32AddStoreInstr() : VpuInstr(OpCodeType::I32_ADD_STORE), ComputeStoreInstr(OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
+  explicit I32AndStoreInstr() : VpuInstr(OpCodeType::I32_AND_STORE), ComputeStoreInstr(OpCodeType::I32_AND, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32SubStoreInstr : public VpuInstr, public ComputeStoreInstr {
+class I32OrStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32SubStoreInstr() : VpuInstr(OpCodeType::I32_SUB_STORE), ComputeStoreInstr(OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
+  explicit I32OrStoreInstr() : VpuInstr(OpCodeType::I32_OR_STORE), ComputeStoreInstr(OpCodeType::I32_OR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32MulStoreInstr : public VpuInstr, public ComputeStoreInstr {
+class I32NotStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32MulStoreInstr() : VpuInstr(OpCodeType::I32_MUL_STORE), ComputeStoreInstr(OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
+  explicit I32NotStoreInstr() : VpuInstr(OpCodeType::I32_NOT_STORE), ComputeStoreInstr(OpCodeType::I32_NOT, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32MaxStoreInstr : public VpuInstr, public ComputeStoreInstr {
+class I32XorStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32MaxStoreInstr() : VpuInstr(OpCodeType::I32_MAX_STORE), ComputeStoreInstr(OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
+  explicit I32XorStoreInstr() : VpuInstr(OpCodeType::I32_XOR_STORE), ComputeStoreInstr(OpCodeType::I32_XOR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32MinStoreInstr : public VpuInstr, public ComputeStoreInstr {
+class I32XnorStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32MinStoreInstr() : VpuInstr(OpCodeType::I32_MIN_STORE), ComputeStoreInstr(OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
+  explicit I32XnorStoreInstr() : VpuInstr(OpCodeType::I32_XNOR_STORE), ComputeStoreInstr(OpCodeType::I32_XNOR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3920,336 +2771,6 @@ public:
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     dtype = 5;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E43DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E43DloadAddStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_ADD, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E43DloadSubStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_SUB, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E43DloadMulStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MUL, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E43DloadMaxStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MAX, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E43DloadMinStoreInstr() : VpuInstr(OpCodeType::E43_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::E43_DLOAD, OpCodeType::F32_MIN, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E43LoadAddStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E43LoadAddStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_ADD, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E43LoadSubStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E43LoadSubStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_SUB, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E43LoadMulStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E43LoadMulStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MUL, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E43LoadMaxStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E43LoadMaxStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MAX, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E43LoadMinStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E43LoadMinStoreInstr() : VpuInstr(OpCodeType::E43_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::E43_LOAD, OpCodeType::F32_MIN, OpCodeType::E43_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 18;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E52DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E52DloadAddStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_ADD, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E52DloadSubStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_SUB, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E52DloadMulStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MUL, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E52DloadMaxStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MAX, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit E52DloadMinStoreInstr() : VpuInstr(OpCodeType::E52_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::E52_DLOAD, OpCodeType::F32_MIN, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class E52LoadAddStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E52LoadAddStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_ADD, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E52LoadSubStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E52LoadSubStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_SUB, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E52LoadMulStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E52LoadMulStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MUL, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E52LoadMaxStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E52LoadMaxStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MAX, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class E52LoadMinStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit E52LoadMinStoreInstr() : VpuInstr(OpCodeType::E52_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::E52_LOAD, OpCodeType::F32_MIN, OpCodeType::E52_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 17;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class I16DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit I16DloadAddStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_ADD, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit I16DloadSubStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_SUB, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit I16DloadMulStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MUL, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit I16DloadMaxStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MAX, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
-public:
-  explicit I16DloadMinStoreInstr() : VpuInstr(OpCodeType::I16_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I16_DLOAD, OpCodeType::F32_MIN, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-};
-
-class I16LoadAddStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit I16LoadAddStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_ADD, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class I16LoadSubStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit I16LoadSubStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_SUB, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class I16LoadMulStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit I16LoadMulStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MUL, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class I16LoadMaxStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit I16LoadMaxStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MAX, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 2;
-    alu = 1;
-  }
-  VPU_GEN_GETTER_SETTER(Offset, 15, 0);
-  VPU_GEN_GETTER_SETTER(Rt, 21, 20);
-};
-
-class I16LoadMinStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
-public:
-  explicit I16LoadMinStoreInstr() : VpuInstr(OpCodeType::I16_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::I16_LOAD, OpCodeType::F32_MIN, OpCodeType::I16_STORE) {
-    VPU_PUSH_GETTER_SETTER(Offset);
-    VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 2;
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
@@ -4476,111 +2997,111 @@ public:
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32DloadAddStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
+class I32DloadAndStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadAddStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_ADD_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
+  explicit I32DloadAndStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_AND_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_AND, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadSubStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
+class I32DloadOrStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadSubStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_SUB_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
+  explicit I32DloadOrStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_OR_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_OR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadMulStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
+class I32DloadNotStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadMulStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MUL_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
+  explicit I32DloadNotStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_NOT_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_NOT, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadMaxStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
+class I32DloadXorStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadMaxStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MAX_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
+  explicit I32DloadXorStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_XOR_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XOR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32DloadMinStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
+class I32DloadXnorStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadMinStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_MIN_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
+  explicit I32DloadXnorStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_XNOR_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XNOR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
-class I32LoadAddStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
+class I32LoadAndStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadAddStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_ADD_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_ADD, OpCodeType::I32_STORE) {
+  explicit I32LoadAndStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_AND_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_AND, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32LoadSubStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
+class I32LoadOrStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadSubStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_SUB_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_SUB, OpCodeType::I32_STORE) {
+  explicit I32LoadOrStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_OR_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_OR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32LoadMulStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
+class I32LoadNotStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadMulStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MUL_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MUL, OpCodeType::I32_STORE) {
+  explicit I32LoadNotStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_NOT_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_NOT, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32LoadMaxStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
+class I32LoadXorStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadMaxStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MAX_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MAX, OpCodeType::I32_STORE) {
+  explicit I32LoadXorStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_XOR_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XOR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
 };
 
-class I32LoadMinStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
+class I32LoadXnorStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadMinStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_MIN_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_MIN, OpCodeType::I32_STORE) {
+  explicit I32LoadXnorStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_XNOR_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XNOR, OpCodeType::U8_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
-    dtype = 3;
-    alu = 2;
+    dtype = 5;
+    alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -5215,341 +3736,239 @@ public:
 std::shared_ptr<VpuInstr> VpuInstr::create(OpCodeType opCode, const std::vector<size_t> &args) {
   std::shared_ptr<VpuInstr> ret = nullptr;
   switch (opCode) {
-    case OpCodeType::SET_LOAD_BASE:       ret = std::shared_ptr<SetLoadBaseInstr>(new SetLoadBaseInstr); break;
-    case OpCodeType::SET_LOAD2_BASE:      ret = std::shared_ptr<SetLoad2BaseInstr>(new SetLoad2BaseInstr); break;
-    case OpCodeType::SET_STORE_BASE:      ret = std::shared_ptr<SetStoreBaseInstr>(new SetStoreBaseInstr); break;
-    case OpCodeType::SET_LOAD_GLB:        ret = std::shared_ptr<SetLoadGlbInstr>(new SetLoadGlbInstr); break;
-    case OpCodeType::SET_STORE_GLB:       ret = std::shared_ptr<SetStoreGlbInstr>(new SetStoreGlbInstr); break;
-    case OpCodeType::SET_QUANTIZE:        ret = std::shared_ptr<SetQuantizeInstr>(new SetQuantizeInstr); break;
-    case OpCodeType::SET_DEQUANTIZE:      ret = std::shared_ptr<SetDequantizeInstr>(new SetDequantizeInstr); break;
-    case OpCodeType::SET_DEQUANTIZE2:     ret = std::shared_ptr<SetDequantize2Instr>(new SetDequantize2Instr); break;
-    case OpCodeType::SET_FS:              ret = std::shared_ptr<SetFsInstr>(new SetFsInstr); break;
-    case OpCodeType::SET_LOAD_AAI:        ret = std::shared_ptr<SetLoadAaiInstr>(new SetLoadAaiInstr); break;
-    case OpCodeType::SET_STORE_AAI:       ret = std::shared_ptr<SetStoreAaiInstr>(new SetStoreAaiInstr); break;
-    case OpCodeType::VPU_NOP:             ret = std::shared_ptr<VpuNopInstr>(new VpuNopInstr); break;
-    case OpCodeType::VPU_END:             ret = std::shared_ptr<VpuEndInstr>(new VpuEndInstr); break;
-    case OpCodeType::I8_DLOAD:            ret = std::shared_ptr<I8DloadInstr>(new I8DloadInstr); break;
-    case OpCodeType::I8_LOAD:             ret = std::shared_ptr<I8LoadInstr>(new I8LoadInstr); break;
-    case OpCodeType::U8_DLOAD:            ret = std::shared_ptr<U8DloadInstr>(new U8DloadInstr); break;
-    case OpCodeType::U8_LOAD:             ret = std::shared_ptr<U8LoadInstr>(new U8LoadInstr); break;
-    case OpCodeType::E43_DLOAD:           ret = std::shared_ptr<E43DloadInstr>(new E43DloadInstr); break;
-    case OpCodeType::E43_LOAD:            ret = std::shared_ptr<E43LoadInstr>(new E43LoadInstr); break;
-    case OpCodeType::E52_DLOAD:           ret = std::shared_ptr<E52DloadInstr>(new E52DloadInstr); break;
-    case OpCodeType::E52_LOAD:            ret = std::shared_ptr<E52LoadInstr>(new E52LoadInstr); break;
-    case OpCodeType::I16_DLOAD:           ret = std::shared_ptr<I16DloadInstr>(new I16DloadInstr); break;
-    case OpCodeType::I16_LOAD:            ret = std::shared_ptr<I16LoadInstr>(new I16LoadInstr); break;
-    case OpCodeType::F16_DLOAD:           ret = std::shared_ptr<F16DloadInstr>(new F16DloadInstr); break;
-    case OpCodeType::F16_LOAD:            ret = std::shared_ptr<F16LoadInstr>(new F16LoadInstr); break;
-    case OpCodeType::F32_DLOAD:           ret = std::shared_ptr<F32DloadInstr>(new F32DloadInstr); break;
-    case OpCodeType::F32_LOAD:            ret = std::shared_ptr<F32LoadInstr>(new F32LoadInstr); break;
-    case OpCodeType::I32_DLOAD:           ret = std::shared_ptr<I32DloadInstr>(new I32DloadInstr); break;
-    case OpCodeType::I32_LOAD:            ret = std::shared_ptr<I32LoadInstr>(new I32LoadInstr); break;
-    case OpCodeType::I8_STORE:            ret = std::shared_ptr<I8StoreInstr>(new I8StoreInstr); break;
-    case OpCodeType::U8_STORE:            ret = std::shared_ptr<U8StoreInstr>(new U8StoreInstr); break;
-    case OpCodeType::E43_STORE:           ret = std::shared_ptr<E43StoreInstr>(new E43StoreInstr); break;
-    case OpCodeType::E52_STORE:           ret = std::shared_ptr<E52StoreInstr>(new E52StoreInstr); break;
-    case OpCodeType::I16_STORE:           ret = std::shared_ptr<I16StoreInstr>(new I16StoreInstr); break;
-    case OpCodeType::F16_STORE:           ret = std::shared_ptr<F16StoreInstr>(new F16StoreInstr); break;
-    case OpCodeType::F32_STORE:           ret = std::shared_ptr<F32StoreInstr>(new F32StoreInstr); break;
-    case OpCodeType::I32_STORE:           ret = std::shared_ptr<I32StoreInstr>(new I32StoreInstr); break;
-    case OpCodeType::F32_ADD:             ret = std::shared_ptr<F32AddInstr>(new F32AddInstr); break;
-    case OpCodeType::F32_SUB:             ret = std::shared_ptr<F32SubInstr>(new F32SubInstr); break;
-    case OpCodeType::F32_MUL:             ret = std::shared_ptr<F32MulInstr>(new F32MulInstr); break;
-    case OpCodeType::F32_MAX:             ret = std::shared_ptr<F32MaxInstr>(new F32MaxInstr); break;
-    case OpCodeType::F32_MIN:             ret = std::shared_ptr<F32MinInstr>(new F32MinInstr); break;
-    case OpCodeType::F32_GREATER:         ret = std::shared_ptr<F32GreaterInstr>(new F32GreaterInstr); break;
-    case OpCodeType::F32_GREATER_EQUAL:   ret = std::shared_ptr<F32GreaterEqualInstr>(new F32GreaterEqualInstr); break;
-    case OpCodeType::F32_LESS:            ret = std::shared_ptr<F32LessInstr>(new F32LessInstr); break;
-    case OpCodeType::F32_LESS_EQUAL:      ret = std::shared_ptr<F32LessEqualInstr>(new F32LessEqualInstr); break;
-    case OpCodeType::F32_EQUAL:           ret = std::shared_ptr<F32EqualInstr>(new F32EqualInstr); break;
-    case OpCodeType::F32_SEL:             ret = std::shared_ptr<F32SelInstr>(new F32SelInstr); break;
-    case OpCodeType::F32_ADDI:            ret = std::shared_ptr<F32AddiInstr>(new F32AddiInstr); break;
-    case OpCodeType::F32_SUBI:            ret = std::shared_ptr<F32SubiInstr>(new F32SubiInstr); break;
-    case OpCodeType::F32_MULI:            ret = std::shared_ptr<F32MuliInstr>(new F32MuliInstr); break;
-    case OpCodeType::F32_MAXI:            ret = std::shared_ptr<F32MaxiInstr>(new F32MaxiInstr); break;
-    case OpCodeType::F32_MINI:            ret = std::shared_ptr<F32MiniInstr>(new F32MiniInstr); break;
-    case OpCodeType::F32_MOVI:            ret = std::shared_ptr<F32MoviInstr>(new F32MoviInstr); break;
-    case OpCodeType::F32_GREATERI:        ret = std::shared_ptr<F32GreateriInstr>(new F32GreateriInstr); break;
-    case OpCodeType::F32_GREATER_EQUALI:  ret = std::shared_ptr<F32GreaterEqualiInstr>(new F32GreaterEqualiInstr); break;
-    case OpCodeType::F32_LESSI:           ret = std::shared_ptr<F32LessiInstr>(new F32LessiInstr); break;
-    case OpCodeType::F32_LESS_EQUALI:     ret = std::shared_ptr<F32LessEqualiInstr>(new F32LessEqualiInstr); break;
-    case OpCodeType::F32_EQUALI:          ret = std::shared_ptr<F32EqualiInstr>(new F32EqualiInstr); break;
-    case OpCodeType::F32_SELI:            ret = std::shared_ptr<F32SeliInstr>(new F32SeliInstr); break;
-    case OpCodeType::F32_LUI:             ret = std::shared_ptr<F32LuiInstr>(new F32LuiInstr); break;
-    case OpCodeType::F32_LI:              ret = std::shared_ptr<F32LiInstr>(new F32LiInstr); break;
-    case OpCodeType::I32_ADD:             ret = std::shared_ptr<I32AddInstr>(new I32AddInstr); break;
-    case OpCodeType::I32_SUB:             ret = std::shared_ptr<I32SubInstr>(new I32SubInstr); break;
-    case OpCodeType::I32_MUL:             ret = std::shared_ptr<I32MulInstr>(new I32MulInstr); break;
-    case OpCodeType::I32_MAX:             ret = std::shared_ptr<I32MaxInstr>(new I32MaxInstr); break;
-    case OpCodeType::I32_MIN:             ret = std::shared_ptr<I32MinInstr>(new I32MinInstr); break;
-    case OpCodeType::I32_GREATER:         ret = std::shared_ptr<I32GreaterInstr>(new I32GreaterInstr); break;
-    case OpCodeType::I32_GREATER_EQUAL:   ret = std::shared_ptr<I32GreaterEqualInstr>(new I32GreaterEqualInstr); break;
-    case OpCodeType::I32_LESS:            ret = std::shared_ptr<I32LessInstr>(new I32LessInstr); break;
-    case OpCodeType::I32_LESS_EQUAL:      ret = std::shared_ptr<I32LessEqualInstr>(new I32LessEqualInstr); break;
-    case OpCodeType::I32_EQUAL:           ret = std::shared_ptr<I32EqualInstr>(new I32EqualInstr); break;
-    case OpCodeType::I32_SEL:             ret = std::shared_ptr<I32SelInstr>(new I32SelInstr); break;
-    case OpCodeType::I32_ADDI:            ret = std::shared_ptr<I32AddiInstr>(new I32AddiInstr); break;
-    case OpCodeType::I32_SUBI:            ret = std::shared_ptr<I32SubiInstr>(new I32SubiInstr); break;
-    case OpCodeType::I32_MULI:            ret = std::shared_ptr<I32MuliInstr>(new I32MuliInstr); break;
-    case OpCodeType::I32_MAXI:            ret = std::shared_ptr<I32MaxiInstr>(new I32MaxiInstr); break;
-    case OpCodeType::I32_MINI:            ret = std::shared_ptr<I32MiniInstr>(new I32MiniInstr); break;
-    case OpCodeType::I32_MOVI:            ret = std::shared_ptr<I32MoviInstr>(new I32MoviInstr); break;
-    case OpCodeType::I32_GREATERI:        ret = std::shared_ptr<I32GreateriInstr>(new I32GreateriInstr); break;
-    case OpCodeType::I32_GREATER_EQUALI:  ret = std::shared_ptr<I32GreaterEqualiInstr>(new I32GreaterEqualiInstr); break;
-    case OpCodeType::I32_LESSI:           ret = std::shared_ptr<I32LessiInstr>(new I32LessiInstr); break;
-    case OpCodeType::I32_LESS_EQUALI:     ret = std::shared_ptr<I32LessEqualiInstr>(new I32LessEqualiInstr); break;
-    case OpCodeType::I32_EQUALI:          ret = std::shared_ptr<I32EqualiInstr>(new I32EqualiInstr); break;
-    case OpCodeType::I32_SELI:            ret = std::shared_ptr<I32SeliInstr>(new I32SeliInstr); break;
-    case OpCodeType::I32_LUI:             ret = std::shared_ptr<I32LuiInstr>(new I32LuiInstr); break;
-    case OpCodeType::I32_LI:              ret = std::shared_ptr<I32LiInstr>(new I32LiInstr); break;
-    case OpCodeType::I8_DLOAD_ADD:        ret = std::shared_ptr<I8DloadAddInstr>(new I8DloadAddInstr); break;
-    case OpCodeType::I8_DLOAD_SUB:        ret = std::shared_ptr<I8DloadSubInstr>(new I8DloadSubInstr); break;
-    case OpCodeType::I8_DLOAD_MUL:        ret = std::shared_ptr<I8DloadMulInstr>(new I8DloadMulInstr); break;
-    case OpCodeType::I8_DLOAD_MAX:        ret = std::shared_ptr<I8DloadMaxInstr>(new I8DloadMaxInstr); break;
-    case OpCodeType::I8_DLOAD_MIN:        ret = std::shared_ptr<I8DloadMinInstr>(new I8DloadMinInstr); break;
-    case OpCodeType::I8_LOAD_ADD:         ret = std::shared_ptr<I8LoadAddInstr>(new I8LoadAddInstr); break;
-    case OpCodeType::I8_LOAD_SUB:         ret = std::shared_ptr<I8LoadSubInstr>(new I8LoadSubInstr); break;
-    case OpCodeType::I8_LOAD_MUL:         ret = std::shared_ptr<I8LoadMulInstr>(new I8LoadMulInstr); break;
-    case OpCodeType::I8_LOAD_MAX:         ret = std::shared_ptr<I8LoadMaxInstr>(new I8LoadMaxInstr); break;
-    case OpCodeType::I8_LOAD_MIN:         ret = std::shared_ptr<I8LoadMinInstr>(new I8LoadMinInstr); break;
-    case OpCodeType::U8_DLOAD_ADD:        ret = std::shared_ptr<U8DloadAddInstr>(new U8DloadAddInstr); break;
-    case OpCodeType::U8_DLOAD_SUB:        ret = std::shared_ptr<U8DloadSubInstr>(new U8DloadSubInstr); break;
-    case OpCodeType::U8_DLOAD_MUL:        ret = std::shared_ptr<U8DloadMulInstr>(new U8DloadMulInstr); break;
-    case OpCodeType::U8_DLOAD_MAX:        ret = std::shared_ptr<U8DloadMaxInstr>(new U8DloadMaxInstr); break;
-    case OpCodeType::U8_DLOAD_MIN:        ret = std::shared_ptr<U8DloadMinInstr>(new U8DloadMinInstr); break;
-    case OpCodeType::U8_LOAD_ADD:         ret = std::shared_ptr<U8LoadAddInstr>(new U8LoadAddInstr); break;
-    case OpCodeType::U8_LOAD_SUB:         ret = std::shared_ptr<U8LoadSubInstr>(new U8LoadSubInstr); break;
-    case OpCodeType::U8_LOAD_MUL:         ret = std::shared_ptr<U8LoadMulInstr>(new U8LoadMulInstr); break;
-    case OpCodeType::U8_LOAD_MAX:         ret = std::shared_ptr<U8LoadMaxInstr>(new U8LoadMaxInstr); break;
-    case OpCodeType::U8_LOAD_MIN:         ret = std::shared_ptr<U8LoadMinInstr>(new U8LoadMinInstr); break;
-    case OpCodeType::E43_DLOAD_ADD:       ret = std::shared_ptr<E43DloadAddInstr>(new E43DloadAddInstr); break;
-    case OpCodeType::E43_DLOAD_SUB:       ret = std::shared_ptr<E43DloadSubInstr>(new E43DloadSubInstr); break;
-    case OpCodeType::E43_DLOAD_MUL:       ret = std::shared_ptr<E43DloadMulInstr>(new E43DloadMulInstr); break;
-    case OpCodeType::E43_DLOAD_MAX:       ret = std::shared_ptr<E43DloadMaxInstr>(new E43DloadMaxInstr); break;
-    case OpCodeType::E43_DLOAD_MIN:       ret = std::shared_ptr<E43DloadMinInstr>(new E43DloadMinInstr); break;
-    case OpCodeType::E43_LOAD_ADD:        ret = std::shared_ptr<E43LoadAddInstr>(new E43LoadAddInstr); break;
-    case OpCodeType::E43_LOAD_SUB:        ret = std::shared_ptr<E43LoadSubInstr>(new E43LoadSubInstr); break;
-    case OpCodeType::E43_LOAD_MUL:        ret = std::shared_ptr<E43LoadMulInstr>(new E43LoadMulInstr); break;
-    case OpCodeType::E43_LOAD_MAX:        ret = std::shared_ptr<E43LoadMaxInstr>(new E43LoadMaxInstr); break;
-    case OpCodeType::E43_LOAD_MIN:        ret = std::shared_ptr<E43LoadMinInstr>(new E43LoadMinInstr); break;
-    case OpCodeType::E52_DLOAD_ADD:       ret = std::shared_ptr<E52DloadAddInstr>(new E52DloadAddInstr); break;
-    case OpCodeType::E52_DLOAD_SUB:       ret = std::shared_ptr<E52DloadSubInstr>(new E52DloadSubInstr); break;
-    case OpCodeType::E52_DLOAD_MUL:       ret = std::shared_ptr<E52DloadMulInstr>(new E52DloadMulInstr); break;
-    case OpCodeType::E52_DLOAD_MAX:       ret = std::shared_ptr<E52DloadMaxInstr>(new E52DloadMaxInstr); break;
-    case OpCodeType::E52_DLOAD_MIN:       ret = std::shared_ptr<E52DloadMinInstr>(new E52DloadMinInstr); break;
-    case OpCodeType::E52_LOAD_ADD:        ret = std::shared_ptr<E52LoadAddInstr>(new E52LoadAddInstr); break;
-    case OpCodeType::E52_LOAD_SUB:        ret = std::shared_ptr<E52LoadSubInstr>(new E52LoadSubInstr); break;
-    case OpCodeType::E52_LOAD_MUL:        ret = std::shared_ptr<E52LoadMulInstr>(new E52LoadMulInstr); break;
-    case OpCodeType::E52_LOAD_MAX:        ret = std::shared_ptr<E52LoadMaxInstr>(new E52LoadMaxInstr); break;
-    case OpCodeType::E52_LOAD_MIN:        ret = std::shared_ptr<E52LoadMinInstr>(new E52LoadMinInstr); break;
-    case OpCodeType::I16_DLOAD_ADD:       ret = std::shared_ptr<I16DloadAddInstr>(new I16DloadAddInstr); break;
-    case OpCodeType::I16_DLOAD_SUB:       ret = std::shared_ptr<I16DloadSubInstr>(new I16DloadSubInstr); break;
-    case OpCodeType::I16_DLOAD_MUL:       ret = std::shared_ptr<I16DloadMulInstr>(new I16DloadMulInstr); break;
-    case OpCodeType::I16_DLOAD_MAX:       ret = std::shared_ptr<I16DloadMaxInstr>(new I16DloadMaxInstr); break;
-    case OpCodeType::I16_DLOAD_MIN:       ret = std::shared_ptr<I16DloadMinInstr>(new I16DloadMinInstr); break;
-    case OpCodeType::I16_LOAD_ADD:        ret = std::shared_ptr<I16LoadAddInstr>(new I16LoadAddInstr); break;
-    case OpCodeType::I16_LOAD_SUB:        ret = std::shared_ptr<I16LoadSubInstr>(new I16LoadSubInstr); break;
-    case OpCodeType::I16_LOAD_MUL:        ret = std::shared_ptr<I16LoadMulInstr>(new I16LoadMulInstr); break;
-    case OpCodeType::I16_LOAD_MAX:        ret = std::shared_ptr<I16LoadMaxInstr>(new I16LoadMaxInstr); break;
-    case OpCodeType::I16_LOAD_MIN:        ret = std::shared_ptr<I16LoadMinInstr>(new I16LoadMinInstr); break;
-    case OpCodeType::F16_DLOAD_ADD:       ret = std::shared_ptr<F16DloadAddInstr>(new F16DloadAddInstr); break;
-    case OpCodeType::F16_DLOAD_SUB:       ret = std::shared_ptr<F16DloadSubInstr>(new F16DloadSubInstr); break;
-    case OpCodeType::F16_DLOAD_MUL:       ret = std::shared_ptr<F16DloadMulInstr>(new F16DloadMulInstr); break;
-    case OpCodeType::F16_DLOAD_MAX:       ret = std::shared_ptr<F16DloadMaxInstr>(new F16DloadMaxInstr); break;
-    case OpCodeType::F16_DLOAD_MIN:       ret = std::shared_ptr<F16DloadMinInstr>(new F16DloadMinInstr); break;
-    case OpCodeType::F16_LOAD_ADD:        ret = std::shared_ptr<F16LoadAddInstr>(new F16LoadAddInstr); break;
-    case OpCodeType::F16_LOAD_SUB:        ret = std::shared_ptr<F16LoadSubInstr>(new F16LoadSubInstr); break;
-    case OpCodeType::F16_LOAD_MUL:        ret = std::shared_ptr<F16LoadMulInstr>(new F16LoadMulInstr); break;
-    case OpCodeType::F16_LOAD_MAX:        ret = std::shared_ptr<F16LoadMaxInstr>(new F16LoadMaxInstr); break;
-    case OpCodeType::F16_LOAD_MIN:        ret = std::shared_ptr<F16LoadMinInstr>(new F16LoadMinInstr); break;
-    case OpCodeType::F32_DLOAD_ADD:       ret = std::shared_ptr<F32DloadAddInstr>(new F32DloadAddInstr); break;
-    case OpCodeType::F32_DLOAD_SUB:       ret = std::shared_ptr<F32DloadSubInstr>(new F32DloadSubInstr); break;
-    case OpCodeType::F32_DLOAD_MUL:       ret = std::shared_ptr<F32DloadMulInstr>(new F32DloadMulInstr); break;
-    case OpCodeType::F32_DLOAD_MAX:       ret = std::shared_ptr<F32DloadMaxInstr>(new F32DloadMaxInstr); break;
-    case OpCodeType::F32_DLOAD_MIN:       ret = std::shared_ptr<F32DloadMinInstr>(new F32DloadMinInstr); break;
-    case OpCodeType::F32_LOAD_ADD:        ret = std::shared_ptr<F32LoadAddInstr>(new F32LoadAddInstr); break;
-    case OpCodeType::F32_LOAD_SUB:        ret = std::shared_ptr<F32LoadSubInstr>(new F32LoadSubInstr); break;
-    case OpCodeType::F32_LOAD_MUL:        ret = std::shared_ptr<F32LoadMulInstr>(new F32LoadMulInstr); break;
-    case OpCodeType::F32_LOAD_MAX:        ret = std::shared_ptr<F32LoadMaxInstr>(new F32LoadMaxInstr); break;
-    case OpCodeType::F32_LOAD_MIN:        ret = std::shared_ptr<F32LoadMinInstr>(new F32LoadMinInstr); break;
-    case OpCodeType::I32_DLOAD_ADD:       ret = std::shared_ptr<I32DloadAddInstr>(new I32DloadAddInstr); break;
-    case OpCodeType::I32_DLOAD_SUB:       ret = std::shared_ptr<I32DloadSubInstr>(new I32DloadSubInstr); break;
-    case OpCodeType::I32_DLOAD_MUL:       ret = std::shared_ptr<I32DloadMulInstr>(new I32DloadMulInstr); break;
-    case OpCodeType::I32_DLOAD_MAX:       ret = std::shared_ptr<I32DloadMaxInstr>(new I32DloadMaxInstr); break;
-    case OpCodeType::I32_DLOAD_MIN:       ret = std::shared_ptr<I32DloadMinInstr>(new I32DloadMinInstr); break;
-    case OpCodeType::I32_LOAD_ADD:        ret = std::shared_ptr<I32LoadAddInstr>(new I32LoadAddInstr); break;
-    case OpCodeType::I32_LOAD_SUB:        ret = std::shared_ptr<I32LoadSubInstr>(new I32LoadSubInstr); break;
-    case OpCodeType::I32_LOAD_MUL:        ret = std::shared_ptr<I32LoadMulInstr>(new I32LoadMulInstr); break;
-    case OpCodeType::I32_LOAD_MAX:        ret = std::shared_ptr<I32LoadMaxInstr>(new I32LoadMaxInstr); break;
-    case OpCodeType::I32_LOAD_MIN:        ret = std::shared_ptr<I32LoadMinInstr>(new I32LoadMinInstr); break;
-    case OpCodeType::I8_ADD_STORE:        ret = std::shared_ptr<I8AddStoreInstr>(new I8AddStoreInstr); break;
-    case OpCodeType::I8_SUB_STORE:        ret = std::shared_ptr<I8SubStoreInstr>(new I8SubStoreInstr); break;
-    case OpCodeType::I8_MUL_STORE:        ret = std::shared_ptr<I8MulStoreInstr>(new I8MulStoreInstr); break;
-    case OpCodeType::I8_MAX_STORE:        ret = std::shared_ptr<I8MaxStoreInstr>(new I8MaxStoreInstr); break;
-    case OpCodeType::I8_MIN_STORE:        ret = std::shared_ptr<I8MinStoreInstr>(new I8MinStoreInstr); break;
-    case OpCodeType::U8_ADD_STORE:        ret = std::shared_ptr<U8AddStoreInstr>(new U8AddStoreInstr); break;
-    case OpCodeType::U8_SUB_STORE:        ret = std::shared_ptr<U8SubStoreInstr>(new U8SubStoreInstr); break;
-    case OpCodeType::U8_MUL_STORE:        ret = std::shared_ptr<U8MulStoreInstr>(new U8MulStoreInstr); break;
-    case OpCodeType::U8_MAX_STORE:        ret = std::shared_ptr<U8MaxStoreInstr>(new U8MaxStoreInstr); break;
-    case OpCodeType::U8_MIN_STORE:        ret = std::shared_ptr<U8MinStoreInstr>(new U8MinStoreInstr); break;
-    case OpCodeType::E43_ADD_STORE:       ret = std::shared_ptr<E43AddStoreInstr>(new E43AddStoreInstr); break;
-    case OpCodeType::E43_SUB_STORE:       ret = std::shared_ptr<E43SubStoreInstr>(new E43SubStoreInstr); break;
-    case OpCodeType::E43_MUL_STORE:       ret = std::shared_ptr<E43MulStoreInstr>(new E43MulStoreInstr); break;
-    case OpCodeType::E43_MAX_STORE:       ret = std::shared_ptr<E43MaxStoreInstr>(new E43MaxStoreInstr); break;
-    case OpCodeType::E43_MIN_STORE:       ret = std::shared_ptr<E43MinStoreInstr>(new E43MinStoreInstr); break;
-    case OpCodeType::E52_ADD_STORE:       ret = std::shared_ptr<E52AddStoreInstr>(new E52AddStoreInstr); break;
-    case OpCodeType::E52_SUB_STORE:       ret = std::shared_ptr<E52SubStoreInstr>(new E52SubStoreInstr); break;
-    case OpCodeType::E52_MUL_STORE:       ret = std::shared_ptr<E52MulStoreInstr>(new E52MulStoreInstr); break;
-    case OpCodeType::E52_MAX_STORE:       ret = std::shared_ptr<E52MaxStoreInstr>(new E52MaxStoreInstr); break;
-    case OpCodeType::E52_MIN_STORE:       ret = std::shared_ptr<E52MinStoreInstr>(new E52MinStoreInstr); break;
-    case OpCodeType::I16_ADD_STORE:       ret = std::shared_ptr<I16AddStoreInstr>(new I16AddStoreInstr); break;
-    case OpCodeType::I16_SUB_STORE:       ret = std::shared_ptr<I16SubStoreInstr>(new I16SubStoreInstr); break;
-    case OpCodeType::I16_MUL_STORE:       ret = std::shared_ptr<I16MulStoreInstr>(new I16MulStoreInstr); break;
-    case OpCodeType::I16_MAX_STORE:       ret = std::shared_ptr<I16MaxStoreInstr>(new I16MaxStoreInstr); break;
-    case OpCodeType::I16_MIN_STORE:       ret = std::shared_ptr<I16MinStoreInstr>(new I16MinStoreInstr); break;
-    case OpCodeType::F16_ADD_STORE:       ret = std::shared_ptr<F16AddStoreInstr>(new F16AddStoreInstr); break;
-    case OpCodeType::F16_SUB_STORE:       ret = std::shared_ptr<F16SubStoreInstr>(new F16SubStoreInstr); break;
-    case OpCodeType::F16_MUL_STORE:       ret = std::shared_ptr<F16MulStoreInstr>(new F16MulStoreInstr); break;
-    case OpCodeType::F16_MAX_STORE:       ret = std::shared_ptr<F16MaxStoreInstr>(new F16MaxStoreInstr); break;
-    case OpCodeType::F16_MIN_STORE:       ret = std::shared_ptr<F16MinStoreInstr>(new F16MinStoreInstr); break;
-    case OpCodeType::F32_ADD_STORE:       ret = std::shared_ptr<F32AddStoreInstr>(new F32AddStoreInstr); break;
-    case OpCodeType::F32_SUB_STORE:       ret = std::shared_ptr<F32SubStoreInstr>(new F32SubStoreInstr); break;
-    case OpCodeType::F32_MUL_STORE:       ret = std::shared_ptr<F32MulStoreInstr>(new F32MulStoreInstr); break;
-    case OpCodeType::F32_MAX_STORE:       ret = std::shared_ptr<F32MaxStoreInstr>(new F32MaxStoreInstr); break;
-    case OpCodeType::F32_MIN_STORE:       ret = std::shared_ptr<F32MinStoreInstr>(new F32MinStoreInstr); break;
-    case OpCodeType::I32_ADD_STORE:       ret = std::shared_ptr<I32AddStoreInstr>(new I32AddStoreInstr); break;
-    case OpCodeType::I32_SUB_STORE:       ret = std::shared_ptr<I32SubStoreInstr>(new I32SubStoreInstr); break;
-    case OpCodeType::I32_MUL_STORE:       ret = std::shared_ptr<I32MulStoreInstr>(new I32MulStoreInstr); break;
-    case OpCodeType::I32_MAX_STORE:       ret = std::shared_ptr<I32MaxStoreInstr>(new I32MaxStoreInstr); break;
-    case OpCodeType::I32_MIN_STORE:       ret = std::shared_ptr<I32MinStoreInstr>(new I32MinStoreInstr); break;
-    case OpCodeType::I8_DLOAD_ADD_STORE:  ret = std::shared_ptr<I8DloadAddStoreInstr>(new I8DloadAddStoreInstr); break;
-    case OpCodeType::I8_DLOAD_SUB_STORE:  ret = std::shared_ptr<I8DloadSubStoreInstr>(new I8DloadSubStoreInstr); break;
-    case OpCodeType::I8_DLOAD_MUL_STORE:  ret = std::shared_ptr<I8DloadMulStoreInstr>(new I8DloadMulStoreInstr); break;
-    case OpCodeType::I8_DLOAD_MAX_STORE:  ret = std::shared_ptr<I8DloadMaxStoreInstr>(new I8DloadMaxStoreInstr); break;
-    case OpCodeType::I8_DLOAD_MIN_STORE:  ret = std::shared_ptr<I8DloadMinStoreInstr>(new I8DloadMinStoreInstr); break;
-    case OpCodeType::I8_LOAD_ADD_STORE:   ret = std::shared_ptr<I8LoadAddStoreInstr>(new I8LoadAddStoreInstr); break;
-    case OpCodeType::I8_LOAD_SUB_STORE:   ret = std::shared_ptr<I8LoadSubStoreInstr>(new I8LoadSubStoreInstr); break;
-    case OpCodeType::I8_LOAD_MUL_STORE:   ret = std::shared_ptr<I8LoadMulStoreInstr>(new I8LoadMulStoreInstr); break;
-    case OpCodeType::I8_LOAD_MAX_STORE:   ret = std::shared_ptr<I8LoadMaxStoreInstr>(new I8LoadMaxStoreInstr); break;
-    case OpCodeType::I8_LOAD_MIN_STORE:   ret = std::shared_ptr<I8LoadMinStoreInstr>(new I8LoadMinStoreInstr); break;
-    case OpCodeType::U8_DLOAD_ADD_STORE:  ret = std::shared_ptr<U8DloadAddStoreInstr>(new U8DloadAddStoreInstr); break;
-    case OpCodeType::U8_DLOAD_SUB_STORE:  ret = std::shared_ptr<U8DloadSubStoreInstr>(new U8DloadSubStoreInstr); break;
-    case OpCodeType::U8_DLOAD_MUL_STORE:  ret = std::shared_ptr<U8DloadMulStoreInstr>(new U8DloadMulStoreInstr); break;
-    case OpCodeType::U8_DLOAD_MAX_STORE:  ret = std::shared_ptr<U8DloadMaxStoreInstr>(new U8DloadMaxStoreInstr); break;
-    case OpCodeType::U8_DLOAD_MIN_STORE:  ret = std::shared_ptr<U8DloadMinStoreInstr>(new U8DloadMinStoreInstr); break;
-    case OpCodeType::U8_LOAD_ADD_STORE:   ret = std::shared_ptr<U8LoadAddStoreInstr>(new U8LoadAddStoreInstr); break;
-    case OpCodeType::U8_LOAD_SUB_STORE:   ret = std::shared_ptr<U8LoadSubStoreInstr>(new U8LoadSubStoreInstr); break;
-    case OpCodeType::U8_LOAD_MUL_STORE:   ret = std::shared_ptr<U8LoadMulStoreInstr>(new U8LoadMulStoreInstr); break;
-    case OpCodeType::U8_LOAD_MAX_STORE:   ret = std::shared_ptr<U8LoadMaxStoreInstr>(new U8LoadMaxStoreInstr); break;
-    case OpCodeType::U8_LOAD_MIN_STORE:   ret = std::shared_ptr<U8LoadMinStoreInstr>(new U8LoadMinStoreInstr); break;
-    case OpCodeType::E43_DLOAD_ADD_STORE: ret = std::shared_ptr<E43DloadAddStoreInstr>(new E43DloadAddStoreInstr); break;
-    case OpCodeType::E43_DLOAD_SUB_STORE: ret = std::shared_ptr<E43DloadSubStoreInstr>(new E43DloadSubStoreInstr); break;
-    case OpCodeType::E43_DLOAD_MUL_STORE: ret = std::shared_ptr<E43DloadMulStoreInstr>(new E43DloadMulStoreInstr); break;
-    case OpCodeType::E43_DLOAD_MAX_STORE: ret = std::shared_ptr<E43DloadMaxStoreInstr>(new E43DloadMaxStoreInstr); break;
-    case OpCodeType::E43_DLOAD_MIN_STORE: ret = std::shared_ptr<E43DloadMinStoreInstr>(new E43DloadMinStoreInstr); break;
-    case OpCodeType::E43_LOAD_ADD_STORE:  ret = std::shared_ptr<E43LoadAddStoreInstr>(new E43LoadAddStoreInstr); break;
-    case OpCodeType::E43_LOAD_SUB_STORE:  ret = std::shared_ptr<E43LoadSubStoreInstr>(new E43LoadSubStoreInstr); break;
-    case OpCodeType::E43_LOAD_MUL_STORE:  ret = std::shared_ptr<E43LoadMulStoreInstr>(new E43LoadMulStoreInstr); break;
-    case OpCodeType::E43_LOAD_MAX_STORE:  ret = std::shared_ptr<E43LoadMaxStoreInstr>(new E43LoadMaxStoreInstr); break;
-    case OpCodeType::E43_LOAD_MIN_STORE:  ret = std::shared_ptr<E43LoadMinStoreInstr>(new E43LoadMinStoreInstr); break;
-    case OpCodeType::E52_DLOAD_ADD_STORE: ret = std::shared_ptr<E52DloadAddStoreInstr>(new E52DloadAddStoreInstr); break;
-    case OpCodeType::E52_DLOAD_SUB_STORE: ret = std::shared_ptr<E52DloadSubStoreInstr>(new E52DloadSubStoreInstr); break;
-    case OpCodeType::E52_DLOAD_MUL_STORE: ret = std::shared_ptr<E52DloadMulStoreInstr>(new E52DloadMulStoreInstr); break;
-    case OpCodeType::E52_DLOAD_MAX_STORE: ret = std::shared_ptr<E52DloadMaxStoreInstr>(new E52DloadMaxStoreInstr); break;
-    case OpCodeType::E52_DLOAD_MIN_STORE: ret = std::shared_ptr<E52DloadMinStoreInstr>(new E52DloadMinStoreInstr); break;
-    case OpCodeType::E52_LOAD_ADD_STORE:  ret = std::shared_ptr<E52LoadAddStoreInstr>(new E52LoadAddStoreInstr); break;
-    case OpCodeType::E52_LOAD_SUB_STORE:  ret = std::shared_ptr<E52LoadSubStoreInstr>(new E52LoadSubStoreInstr); break;
-    case OpCodeType::E52_LOAD_MUL_STORE:  ret = std::shared_ptr<E52LoadMulStoreInstr>(new E52LoadMulStoreInstr); break;
-    case OpCodeType::E52_LOAD_MAX_STORE:  ret = std::shared_ptr<E52LoadMaxStoreInstr>(new E52LoadMaxStoreInstr); break;
-    case OpCodeType::E52_LOAD_MIN_STORE:  ret = std::shared_ptr<E52LoadMinStoreInstr>(new E52LoadMinStoreInstr); break;
-    case OpCodeType::I16_DLOAD_ADD_STORE: ret = std::shared_ptr<I16DloadAddStoreInstr>(new I16DloadAddStoreInstr); break;
-    case OpCodeType::I16_DLOAD_SUB_STORE: ret = std::shared_ptr<I16DloadSubStoreInstr>(new I16DloadSubStoreInstr); break;
-    case OpCodeType::I16_DLOAD_MUL_STORE: ret = std::shared_ptr<I16DloadMulStoreInstr>(new I16DloadMulStoreInstr); break;
-    case OpCodeType::I16_DLOAD_MAX_STORE: ret = std::shared_ptr<I16DloadMaxStoreInstr>(new I16DloadMaxStoreInstr); break;
-    case OpCodeType::I16_DLOAD_MIN_STORE: ret = std::shared_ptr<I16DloadMinStoreInstr>(new I16DloadMinStoreInstr); break;
-    case OpCodeType::I16_LOAD_ADD_STORE:  ret = std::shared_ptr<I16LoadAddStoreInstr>(new I16LoadAddStoreInstr); break;
-    case OpCodeType::I16_LOAD_SUB_STORE:  ret = std::shared_ptr<I16LoadSubStoreInstr>(new I16LoadSubStoreInstr); break;
-    case OpCodeType::I16_LOAD_MUL_STORE:  ret = std::shared_ptr<I16LoadMulStoreInstr>(new I16LoadMulStoreInstr); break;
-    case OpCodeType::I16_LOAD_MAX_STORE:  ret = std::shared_ptr<I16LoadMaxStoreInstr>(new I16LoadMaxStoreInstr); break;
-    case OpCodeType::I16_LOAD_MIN_STORE:  ret = std::shared_ptr<I16LoadMinStoreInstr>(new I16LoadMinStoreInstr); break;
-    case OpCodeType::F16_DLOAD_ADD_STORE: ret = std::shared_ptr<F16DloadAddStoreInstr>(new F16DloadAddStoreInstr); break;
-    case OpCodeType::F16_DLOAD_SUB_STORE: ret = std::shared_ptr<F16DloadSubStoreInstr>(new F16DloadSubStoreInstr); break;
-    case OpCodeType::F16_DLOAD_MUL_STORE: ret = std::shared_ptr<F16DloadMulStoreInstr>(new F16DloadMulStoreInstr); break;
-    case OpCodeType::F16_DLOAD_MAX_STORE: ret = std::shared_ptr<F16DloadMaxStoreInstr>(new F16DloadMaxStoreInstr); break;
-    case OpCodeType::F16_DLOAD_MIN_STORE: ret = std::shared_ptr<F16DloadMinStoreInstr>(new F16DloadMinStoreInstr); break;
-    case OpCodeType::F16_LOAD_ADD_STORE:  ret = std::shared_ptr<F16LoadAddStoreInstr>(new F16LoadAddStoreInstr); break;
-    case OpCodeType::F16_LOAD_SUB_STORE:  ret = std::shared_ptr<F16LoadSubStoreInstr>(new F16LoadSubStoreInstr); break;
-    case OpCodeType::F16_LOAD_MUL_STORE:  ret = std::shared_ptr<F16LoadMulStoreInstr>(new F16LoadMulStoreInstr); break;
-    case OpCodeType::F16_LOAD_MAX_STORE:  ret = std::shared_ptr<F16LoadMaxStoreInstr>(new F16LoadMaxStoreInstr); break;
-    case OpCodeType::F16_LOAD_MIN_STORE:  ret = std::shared_ptr<F16LoadMinStoreInstr>(new F16LoadMinStoreInstr); break;
-    case OpCodeType::F32_DLOAD_ADD_STORE: ret = std::shared_ptr<F32DloadAddStoreInstr>(new F32DloadAddStoreInstr); break;
-    case OpCodeType::F32_DLOAD_SUB_STORE: ret = std::shared_ptr<F32DloadSubStoreInstr>(new F32DloadSubStoreInstr); break;
-    case OpCodeType::F32_DLOAD_MUL_STORE: ret = std::shared_ptr<F32DloadMulStoreInstr>(new F32DloadMulStoreInstr); break;
-    case OpCodeType::F32_DLOAD_MAX_STORE: ret = std::shared_ptr<F32DloadMaxStoreInstr>(new F32DloadMaxStoreInstr); break;
-    case OpCodeType::F32_DLOAD_MIN_STORE: ret = std::shared_ptr<F32DloadMinStoreInstr>(new F32DloadMinStoreInstr); break;
-    case OpCodeType::F32_LOAD_ADD_STORE:  ret = std::shared_ptr<F32LoadAddStoreInstr>(new F32LoadAddStoreInstr); break;
-    case OpCodeType::F32_LOAD_SUB_STORE:  ret = std::shared_ptr<F32LoadSubStoreInstr>(new F32LoadSubStoreInstr); break;
-    case OpCodeType::F32_LOAD_MUL_STORE:  ret = std::shared_ptr<F32LoadMulStoreInstr>(new F32LoadMulStoreInstr); break;
-    case OpCodeType::F32_LOAD_MAX_STORE:  ret = std::shared_ptr<F32LoadMaxStoreInstr>(new F32LoadMaxStoreInstr); break;
-    case OpCodeType::F32_LOAD_MIN_STORE:  ret = std::shared_ptr<F32LoadMinStoreInstr>(new F32LoadMinStoreInstr); break;
-    case OpCodeType::I32_DLOAD_ADD_STORE: ret = std::shared_ptr<I32DloadAddStoreInstr>(new I32DloadAddStoreInstr); break;
-    case OpCodeType::I32_DLOAD_SUB_STORE: ret = std::shared_ptr<I32DloadSubStoreInstr>(new I32DloadSubStoreInstr); break;
-    case OpCodeType::I32_DLOAD_MUL_STORE: ret = std::shared_ptr<I32DloadMulStoreInstr>(new I32DloadMulStoreInstr); break;
-    case OpCodeType::I32_DLOAD_MAX_STORE: ret = std::shared_ptr<I32DloadMaxStoreInstr>(new I32DloadMaxStoreInstr); break;
-    case OpCodeType::I32_DLOAD_MIN_STORE: ret = std::shared_ptr<I32DloadMinStoreInstr>(new I32DloadMinStoreInstr); break;
-    case OpCodeType::I32_LOAD_ADD_STORE:  ret = std::shared_ptr<I32LoadAddStoreInstr>(new I32LoadAddStoreInstr); break;
-    case OpCodeType::I32_LOAD_SUB_STORE:  ret = std::shared_ptr<I32LoadSubStoreInstr>(new I32LoadSubStoreInstr); break;
-    case OpCodeType::I32_LOAD_MUL_STORE:  ret = std::shared_ptr<I32LoadMulStoreInstr>(new I32LoadMulStoreInstr); break;
-    case OpCodeType::I32_LOAD_MAX_STORE:  ret = std::shared_ptr<I32LoadMaxStoreInstr>(new I32LoadMaxStoreInstr); break;
-    case OpCodeType::I32_LOAD_MIN_STORE:  ret = std::shared_ptr<I32LoadMinStoreInstr>(new I32LoadMinStoreInstr); break;
-    case OpCodeType::S_ADDI:              ret = std::shared_ptr<SAddiInstr>(new SAddiInstr); break;
-    case OpCodeType::S_ADDIU:             ret = std::shared_ptr<SAddiuInstr>(new SAddiuInstr); break;
-    case OpCodeType::S_SUBI:              ret = std::shared_ptr<SSubiInstr>(new SSubiInstr); break;
-    case OpCodeType::S_ANDI:              ret = std::shared_ptr<SAndiInstr>(new SAndiInstr); break;
-    case OpCodeType::S_ORI:               ret = std::shared_ptr<SOriInstr>(new SOriInstr); break;
-    case OpCodeType::S_XORI:              ret = std::shared_ptr<SXoriInstr>(new SXoriInstr); break;
-    case OpCodeType::S_SGTI:              ret = std::shared_ptr<SSgtiInstr>(new SSgtiInstr); break;
-    case OpCodeType::S_SLTI:              ret = std::shared_ptr<SSltiInstr>(new SSltiInstr); break;
-    case OpCodeType::S_SEQI:              ret = std::shared_ptr<SSeqiInstr>(new SSeqiInstr); break;
-    case OpCodeType::S_SGEI:              ret = std::shared_ptr<SSgeiInstr>(new SSgeiInstr); break;
-    case OpCodeType::S_SLEI:              ret = std::shared_ptr<SSleiInstr>(new SSleiInstr); break;
-    case OpCodeType::S_SRAI:              ret = std::shared_ptr<SSraiInstr>(new SSraiInstr); break;
-    case OpCodeType::S_SRLI:              ret = std::shared_ptr<SSrliInstr>(new SSrliInstr); break;
-    case OpCodeType::S_SLLI:              ret = std::shared_ptr<SSlliInstr>(new SSlliInstr); break;
-    case OpCodeType::S_LUI:               ret = std::shared_ptr<SLuiInstr>(new SLuiInstr); break;
-    case OpCodeType::S_ADD:               ret = std::shared_ptr<SAddInstr>(new SAddInstr); break;
-    case OpCodeType::S_ADDU:              ret = std::shared_ptr<SAdduInstr>(new SAdduInstr); break;
-    case OpCodeType::S_SUB:               ret = std::shared_ptr<SSubInstr>(new SSubInstr); break;
-    case OpCodeType::S_MUL:               ret = std::shared_ptr<SMulInstr>(new SMulInstr); break;
-    case OpCodeType::S_MULH:              ret = std::shared_ptr<SMulhInstr>(new SMulhInstr); break;
-    case OpCodeType::S_MULHU:             ret = std::shared_ptr<SMulhuInstr>(new SMulhuInstr); break;
-    case OpCodeType::S_MIN:               ret = std::shared_ptr<SMinInstr>(new SMinInstr); break;
-    case OpCodeType::S_MAX:               ret = std::shared_ptr<SMaxInstr>(new SMaxInstr); break;
-    case OpCodeType::S_MINU:              ret = std::shared_ptr<SMinuInstr>(new SMinuInstr); break;
-    case OpCodeType::S_MAXU:              ret = std::shared_ptr<SMaxuInstr>(new SMaxuInstr); break;
-    case OpCodeType::S_AND:               ret = std::shared_ptr<SAndInstr>(new SAndInstr); break;
-    case OpCodeType::S_OR:                ret = std::shared_ptr<SOrInstr>(new SOrInstr); break;
-    case OpCodeType::S_XOR:               ret = std::shared_ptr<SXorInstr>(new SXorInstr); break;
-    case OpCodeType::S_SGT:               ret = std::shared_ptr<SSgtInstr>(new SSgtInstr); break;
-    case OpCodeType::S_SLT:               ret = std::shared_ptr<SSltInstr>(new SSltInstr); break;
-    case OpCodeType::S_SEQ:               ret = std::shared_ptr<SSeqInstr>(new SSeqInstr); break;
-    case OpCodeType::S_SGE:               ret = std::shared_ptr<SSgeInstr>(new SSgeInstr); break;
-    case OpCodeType::S_SLE:               ret = std::shared_ptr<SSleInstr>(new SSleInstr); break;
-    case OpCodeType::S_CMPSEL:            ret = std::shared_ptr<SCmpselInstr>(new SCmpselInstr); break;
-    case OpCodeType::S_SRA:               ret = std::shared_ptr<SSraInstr>(new SSraInstr); break;
-    case OpCodeType::S_SRL:               ret = std::shared_ptr<SSrlInstr>(new SSrlInstr); break;
-    case OpCodeType::S_SLL:               ret = std::shared_ptr<SSllInstr>(new SSllInstr); break;
-    case OpCodeType::S_JUMP:              ret = std::shared_ptr<SJumpInstr>(new SJumpInstr); break;
-    case OpCodeType::S_JAL:               ret = std::shared_ptr<SJalInstr>(new SJalInstr); break;
-    case OpCodeType::S_JR:                ret = std::shared_ptr<SJrInstr>(new SJrInstr); break;
-    case OpCodeType::S_BNE:               ret = std::shared_ptr<SBneInstr>(new SBneInstr); break;
-    case OpCodeType::S_BEQ:               ret = std::shared_ptr<SBeqInstr>(new SBeqInstr); break;
-    case OpCodeType::S_BLT:               ret = std::shared_ptr<SBltInstr>(new SBltInstr); break;
-    case OpCodeType::S_BLTU:              ret = std::shared_ptr<SBltuInstr>(new SBltuInstr); break;
-    case OpCodeType::S_BGE:               ret = std::shared_ptr<SBgeInstr>(new SBgeInstr); break;
-    case OpCodeType::S_BGEU:              ret = std::shared_ptr<SBgeuInstr>(new SBgeuInstr); break;
-    case OpCodeType::S_SETCFG:            ret = std::shared_ptr<SSetcfgInstr>(new SSetcfgInstr); break;
-    case OpCodeType::S_SETRF:             ret = std::shared_ptr<SSetrfInstr>(new SSetrfInstr); break;
+    case OpCodeType::SET_LOAD_BASE:        ret = std::shared_ptr<SetLoadBaseInstr>(new SetLoadBaseInstr); break;
+    case OpCodeType::SET_LOAD2_BASE:       ret = std::shared_ptr<SetLoad2BaseInstr>(new SetLoad2BaseInstr); break;
+    case OpCodeType::SET_STORE_BASE:       ret = std::shared_ptr<SetStoreBaseInstr>(new SetStoreBaseInstr); break;
+    case OpCodeType::SET_LOAD_GLB:         ret = std::shared_ptr<SetLoadGlbInstr>(new SetLoadGlbInstr); break;
+    case OpCodeType::SET_STORE_GLB:        ret = std::shared_ptr<SetStoreGlbInstr>(new SetStoreGlbInstr); break;
+    case OpCodeType::SET_QUANTIZE:         ret = std::shared_ptr<SetQuantizeInstr>(new SetQuantizeInstr); break;
+    case OpCodeType::SET_DEQUANTIZE:       ret = std::shared_ptr<SetDequantizeInstr>(new SetDequantizeInstr); break;
+    case OpCodeType::SET_DEQUANTIZE2:      ret = std::shared_ptr<SetDequantize2Instr>(new SetDequantize2Instr); break;
+    case OpCodeType::SET_FS:               ret = std::shared_ptr<SetFsInstr>(new SetFsInstr); break;
+    case OpCodeType::SET_LOAD_AAI:         ret = std::shared_ptr<SetLoadAaiInstr>(new SetLoadAaiInstr); break;
+    case OpCodeType::SET_STORE_AAI:        ret = std::shared_ptr<SetStoreAaiInstr>(new SetStoreAaiInstr); break;
+    case OpCodeType::VPU_NOP:              ret = std::shared_ptr<VpuNopInstr>(new VpuNopInstr); break;
+    case OpCodeType::VPU_END:              ret = std::shared_ptr<VpuEndInstr>(new VpuEndInstr); break;
+    case OpCodeType::I8_DLOAD:             ret = std::shared_ptr<I8DloadInstr>(new I8DloadInstr); break;
+    case OpCodeType::I8_LOAD:              ret = std::shared_ptr<I8LoadInstr>(new I8LoadInstr); break;
+    case OpCodeType::U8_DLOAD:             ret = std::shared_ptr<U8DloadInstr>(new U8DloadInstr); break;
+    case OpCodeType::U8_LOAD:              ret = std::shared_ptr<U8LoadInstr>(new U8LoadInstr); break;
+    case OpCodeType::F16_DLOAD:            ret = std::shared_ptr<F16DloadInstr>(new F16DloadInstr); break;
+    case OpCodeType::F16_LOAD:             ret = std::shared_ptr<F16LoadInstr>(new F16LoadInstr); break;
+    case OpCodeType::F32_DLOAD:            ret = std::shared_ptr<F32DloadInstr>(new F32DloadInstr); break;
+    case OpCodeType::F32_LOAD:             ret = std::shared_ptr<F32LoadInstr>(new F32LoadInstr); break;
+    case OpCodeType::I8_STORE:             ret = std::shared_ptr<I8StoreInstr>(new I8StoreInstr); break;
+    case OpCodeType::U8_STORE:             ret = std::shared_ptr<U8StoreInstr>(new U8StoreInstr); break;
+    case OpCodeType::F16_STORE:            ret = std::shared_ptr<F16StoreInstr>(new F16StoreInstr); break;
+    case OpCodeType::F32_STORE:            ret = std::shared_ptr<F32StoreInstr>(new F32StoreInstr); break;
+    case OpCodeType::F32_ADD:              ret = std::shared_ptr<F32AddInstr>(new F32AddInstr); break;
+    case OpCodeType::F32_SUB:              ret = std::shared_ptr<F32SubInstr>(new F32SubInstr); break;
+    case OpCodeType::F32_MUL:              ret = std::shared_ptr<F32MulInstr>(new F32MulInstr); break;
+    case OpCodeType::F32_MAX:              ret = std::shared_ptr<F32MaxInstr>(new F32MaxInstr); break;
+    case OpCodeType::F32_MIN:              ret = std::shared_ptr<F32MinInstr>(new F32MinInstr); break;
+    case OpCodeType::F32_GREATER:          ret = std::shared_ptr<F32GreaterInstr>(new F32GreaterInstr); break;
+    case OpCodeType::F32_GREATER_EQUAL:    ret = std::shared_ptr<F32GreaterEqualInstr>(new F32GreaterEqualInstr); break;
+    case OpCodeType::F32_LESS:             ret = std::shared_ptr<F32LessInstr>(new F32LessInstr); break;
+    case OpCodeType::F32_LESS_EQUAL:       ret = std::shared_ptr<F32LessEqualInstr>(new F32LessEqualInstr); break;
+    case OpCodeType::F32_EQUAL:            ret = std::shared_ptr<F32EqualInstr>(new F32EqualInstr); break;
+    case OpCodeType::F32_SEL:              ret = std::shared_ptr<F32SelInstr>(new F32SelInstr); break;
+    case OpCodeType::I32_AND:              ret = std::shared_ptr<I32AndInstr>(new I32AndInstr); break;
+    case OpCodeType::I32_OR:               ret = std::shared_ptr<I32OrInstr>(new I32OrInstr); break;
+    case OpCodeType::I32_NOT:              ret = std::shared_ptr<I32NotInstr>(new I32NotInstr); break;
+    case OpCodeType::I32_XOR:              ret = std::shared_ptr<I32XorInstr>(new I32XorInstr); break;
+    case OpCodeType::I32_XNOR:             ret = std::shared_ptr<I32XnorInstr>(new I32XnorInstr); break;
+    case OpCodeType::F32_ADDI:             ret = std::shared_ptr<F32AddiInstr>(new F32AddiInstr); break;
+    case OpCodeType::F32_SUBI:             ret = std::shared_ptr<F32SubiInstr>(new F32SubiInstr); break;
+    case OpCodeType::F32_MULI:             ret = std::shared_ptr<F32MuliInstr>(new F32MuliInstr); break;
+    case OpCodeType::F32_MAXI:             ret = std::shared_ptr<F32MaxiInstr>(new F32MaxiInstr); break;
+    case OpCodeType::F32_MINI:             ret = std::shared_ptr<F32MiniInstr>(new F32MiniInstr); break;
+    case OpCodeType::F32_MOVI:             ret = std::shared_ptr<F32MoviInstr>(new F32MoviInstr); break;
+    case OpCodeType::F32_GREATERI:         ret = std::shared_ptr<F32GreateriInstr>(new F32GreateriInstr); break;
+    case OpCodeType::F32_GREATER_EQUALI:   ret = std::shared_ptr<F32GreaterEqualiInstr>(new F32GreaterEqualiInstr); break;
+    case OpCodeType::F32_LESSI:            ret = std::shared_ptr<F32LessiInstr>(new F32LessiInstr); break;
+    case OpCodeType::F32_LESS_EQUALI:      ret = std::shared_ptr<F32LessEqualiInstr>(new F32LessEqualiInstr); break;
+    case OpCodeType::F32_EQUALI:           ret = std::shared_ptr<F32EqualiInstr>(new F32EqualiInstr); break;
+    case OpCodeType::F32_SELI:             ret = std::shared_ptr<F32SeliInstr>(new F32SeliInstr); break;
+    case OpCodeType::F32_LUI:              ret = std::shared_ptr<F32LuiInstr>(new F32LuiInstr); break;
+    case OpCodeType::F32_LI:               ret = std::shared_ptr<F32LiInstr>(new F32LiInstr); break;
+    case OpCodeType::I32_ANDI:             ret = std::shared_ptr<I32AndiInstr>(new I32AndiInstr); break;
+    case OpCodeType::I32_ORI:              ret = std::shared_ptr<I32OriInstr>(new I32OriInstr); break;
+    case OpCodeType::I32_NOTI:             ret = std::shared_ptr<I32NotiInstr>(new I32NotiInstr); break;
+    case OpCodeType::I32_XORI:             ret = std::shared_ptr<I32XoriInstr>(new I32XoriInstr); break;
+    case OpCodeType::I32_XNORI:            ret = std::shared_ptr<I32XnoriInstr>(new I32XnoriInstr); break;
+    case OpCodeType::I8_DLOAD_ADD:         ret = std::shared_ptr<I8DloadAddInstr>(new I8DloadAddInstr); break;
+    case OpCodeType::I8_DLOAD_SUB:         ret = std::shared_ptr<I8DloadSubInstr>(new I8DloadSubInstr); break;
+    case OpCodeType::I8_DLOAD_MUL:         ret = std::shared_ptr<I8DloadMulInstr>(new I8DloadMulInstr); break;
+    case OpCodeType::I8_DLOAD_MAX:         ret = std::shared_ptr<I8DloadMaxInstr>(new I8DloadMaxInstr); break;
+    case OpCodeType::I8_DLOAD_MIN:         ret = std::shared_ptr<I8DloadMinInstr>(new I8DloadMinInstr); break;
+    case OpCodeType::I8_LOAD_ADD:          ret = std::shared_ptr<I8LoadAddInstr>(new I8LoadAddInstr); break;
+    case OpCodeType::I8_LOAD_SUB:          ret = std::shared_ptr<I8LoadSubInstr>(new I8LoadSubInstr); break;
+    case OpCodeType::I8_LOAD_MUL:          ret = std::shared_ptr<I8LoadMulInstr>(new I8LoadMulInstr); break;
+    case OpCodeType::I8_LOAD_MAX:          ret = std::shared_ptr<I8LoadMaxInstr>(new I8LoadMaxInstr); break;
+    case OpCodeType::I8_LOAD_MIN:          ret = std::shared_ptr<I8LoadMinInstr>(new I8LoadMinInstr); break;
+    case OpCodeType::U8_DLOAD_ADD:         ret = std::shared_ptr<U8DloadAddInstr>(new U8DloadAddInstr); break;
+    case OpCodeType::U8_DLOAD_SUB:         ret = std::shared_ptr<U8DloadSubInstr>(new U8DloadSubInstr); break;
+    case OpCodeType::U8_DLOAD_MUL:         ret = std::shared_ptr<U8DloadMulInstr>(new U8DloadMulInstr); break;
+    case OpCodeType::U8_DLOAD_MAX:         ret = std::shared_ptr<U8DloadMaxInstr>(new U8DloadMaxInstr); break;
+    case OpCodeType::U8_DLOAD_MIN:         ret = std::shared_ptr<U8DloadMinInstr>(new U8DloadMinInstr); break;
+    case OpCodeType::U8_LOAD_ADD:          ret = std::shared_ptr<U8LoadAddInstr>(new U8LoadAddInstr); break;
+    case OpCodeType::U8_LOAD_SUB:          ret = std::shared_ptr<U8LoadSubInstr>(new U8LoadSubInstr); break;
+    case OpCodeType::U8_LOAD_MUL:          ret = std::shared_ptr<U8LoadMulInstr>(new U8LoadMulInstr); break;
+    case OpCodeType::U8_LOAD_MAX:          ret = std::shared_ptr<U8LoadMaxInstr>(new U8LoadMaxInstr); break;
+    case OpCodeType::U8_LOAD_MIN:          ret = std::shared_ptr<U8LoadMinInstr>(new U8LoadMinInstr); break;
+    case OpCodeType::F16_DLOAD_ADD:        ret = std::shared_ptr<F16DloadAddInstr>(new F16DloadAddInstr); break;
+    case OpCodeType::F16_DLOAD_SUB:        ret = std::shared_ptr<F16DloadSubInstr>(new F16DloadSubInstr); break;
+    case OpCodeType::F16_DLOAD_MUL:        ret = std::shared_ptr<F16DloadMulInstr>(new F16DloadMulInstr); break;
+    case OpCodeType::F16_DLOAD_MAX:        ret = std::shared_ptr<F16DloadMaxInstr>(new F16DloadMaxInstr); break;
+    case OpCodeType::F16_DLOAD_MIN:        ret = std::shared_ptr<F16DloadMinInstr>(new F16DloadMinInstr); break;
+    case OpCodeType::F16_LOAD_ADD:         ret = std::shared_ptr<F16LoadAddInstr>(new F16LoadAddInstr); break;
+    case OpCodeType::F16_LOAD_SUB:         ret = std::shared_ptr<F16LoadSubInstr>(new F16LoadSubInstr); break;
+    case OpCodeType::F16_LOAD_MUL:         ret = std::shared_ptr<F16LoadMulInstr>(new F16LoadMulInstr); break;
+    case OpCodeType::F16_LOAD_MAX:         ret = std::shared_ptr<F16LoadMaxInstr>(new F16LoadMaxInstr); break;
+    case OpCodeType::F16_LOAD_MIN:         ret = std::shared_ptr<F16LoadMinInstr>(new F16LoadMinInstr); break;
+    case OpCodeType::F32_DLOAD_ADD:        ret = std::shared_ptr<F32DloadAddInstr>(new F32DloadAddInstr); break;
+    case OpCodeType::F32_DLOAD_SUB:        ret = std::shared_ptr<F32DloadSubInstr>(new F32DloadSubInstr); break;
+    case OpCodeType::F32_DLOAD_MUL:        ret = std::shared_ptr<F32DloadMulInstr>(new F32DloadMulInstr); break;
+    case OpCodeType::F32_DLOAD_MAX:        ret = std::shared_ptr<F32DloadMaxInstr>(new F32DloadMaxInstr); break;
+    case OpCodeType::F32_DLOAD_MIN:        ret = std::shared_ptr<F32DloadMinInstr>(new F32DloadMinInstr); break;
+    case OpCodeType::F32_LOAD_ADD:         ret = std::shared_ptr<F32LoadAddInstr>(new F32LoadAddInstr); break;
+    case OpCodeType::F32_LOAD_SUB:         ret = std::shared_ptr<F32LoadSubInstr>(new F32LoadSubInstr); break;
+    case OpCodeType::F32_LOAD_MUL:         ret = std::shared_ptr<F32LoadMulInstr>(new F32LoadMulInstr); break;
+    case OpCodeType::F32_LOAD_MAX:         ret = std::shared_ptr<F32LoadMaxInstr>(new F32LoadMaxInstr); break;
+    case OpCodeType::F32_LOAD_MIN:         ret = std::shared_ptr<F32LoadMinInstr>(new F32LoadMinInstr); break;
+    case OpCodeType::I32_DLOAD_AND:        ret = std::shared_ptr<I32DloadAndInstr>(new I32DloadAndInstr); break;
+    case OpCodeType::I32_DLOAD_OR:         ret = std::shared_ptr<I32DloadOrInstr>(new I32DloadOrInstr); break;
+    case OpCodeType::I32_DLOAD_NOT:        ret = std::shared_ptr<I32DloadNotInstr>(new I32DloadNotInstr); break;
+    case OpCodeType::I32_DLOAD_XOR:        ret = std::shared_ptr<I32DloadXorInstr>(new I32DloadXorInstr); break;
+    case OpCodeType::I32_DLOAD_XNOR:       ret = std::shared_ptr<I32DloadXnorInstr>(new I32DloadXnorInstr); break;
+    case OpCodeType::I32_LOAD_AND:         ret = std::shared_ptr<I32LoadAndInstr>(new I32LoadAndInstr); break;
+    case OpCodeType::I32_LOAD_OR:          ret = std::shared_ptr<I32LoadOrInstr>(new I32LoadOrInstr); break;
+    case OpCodeType::I32_LOAD_NOT:         ret = std::shared_ptr<I32LoadNotInstr>(new I32LoadNotInstr); break;
+    case OpCodeType::I32_LOAD_XOR:         ret = std::shared_ptr<I32LoadXorInstr>(new I32LoadXorInstr); break;
+    case OpCodeType::I32_LOAD_XNOR:        ret = std::shared_ptr<I32LoadXnorInstr>(new I32LoadXnorInstr); break;
+    case OpCodeType::I8_ADD_STORE:         ret = std::shared_ptr<I8AddStoreInstr>(new I8AddStoreInstr); break;
+    case OpCodeType::I8_SUB_STORE:         ret = std::shared_ptr<I8SubStoreInstr>(new I8SubStoreInstr); break;
+    case OpCodeType::I8_MUL_STORE:         ret = std::shared_ptr<I8MulStoreInstr>(new I8MulStoreInstr); break;
+    case OpCodeType::I8_MAX_STORE:         ret = std::shared_ptr<I8MaxStoreInstr>(new I8MaxStoreInstr); break;
+    case OpCodeType::I8_MIN_STORE:         ret = std::shared_ptr<I8MinStoreInstr>(new I8MinStoreInstr); break;
+    case OpCodeType::U8_ADD_STORE:         ret = std::shared_ptr<U8AddStoreInstr>(new U8AddStoreInstr); break;
+    case OpCodeType::U8_SUB_STORE:         ret = std::shared_ptr<U8SubStoreInstr>(new U8SubStoreInstr); break;
+    case OpCodeType::U8_MUL_STORE:         ret = std::shared_ptr<U8MulStoreInstr>(new U8MulStoreInstr); break;
+    case OpCodeType::U8_MAX_STORE:         ret = std::shared_ptr<U8MaxStoreInstr>(new U8MaxStoreInstr); break;
+    case OpCodeType::U8_MIN_STORE:         ret = std::shared_ptr<U8MinStoreInstr>(new U8MinStoreInstr); break;
+    case OpCodeType::F16_ADD_STORE:        ret = std::shared_ptr<F16AddStoreInstr>(new F16AddStoreInstr); break;
+    case OpCodeType::F16_SUB_STORE:        ret = std::shared_ptr<F16SubStoreInstr>(new F16SubStoreInstr); break;
+    case OpCodeType::F16_MUL_STORE:        ret = std::shared_ptr<F16MulStoreInstr>(new F16MulStoreInstr); break;
+    case OpCodeType::F16_MAX_STORE:        ret = std::shared_ptr<F16MaxStoreInstr>(new F16MaxStoreInstr); break;
+    case OpCodeType::F16_MIN_STORE:        ret = std::shared_ptr<F16MinStoreInstr>(new F16MinStoreInstr); break;
+    case OpCodeType::F32_ADD_STORE:        ret = std::shared_ptr<F32AddStoreInstr>(new F32AddStoreInstr); break;
+    case OpCodeType::F32_SUB_STORE:        ret = std::shared_ptr<F32SubStoreInstr>(new F32SubStoreInstr); break;
+    case OpCodeType::F32_MUL_STORE:        ret = std::shared_ptr<F32MulStoreInstr>(new F32MulStoreInstr); break;
+    case OpCodeType::F32_MAX_STORE:        ret = std::shared_ptr<F32MaxStoreInstr>(new F32MaxStoreInstr); break;
+    case OpCodeType::F32_MIN_STORE:        ret = std::shared_ptr<F32MinStoreInstr>(new F32MinStoreInstr); break;
+    case OpCodeType::I32_AND_STORE:        ret = std::shared_ptr<I32AndStoreInstr>(new I32AndStoreInstr); break;
+    case OpCodeType::I32_OR_STORE:         ret = std::shared_ptr<I32OrStoreInstr>(new I32OrStoreInstr); break;
+    case OpCodeType::I32_NOT_STORE:        ret = std::shared_ptr<I32NotStoreInstr>(new I32NotStoreInstr); break;
+    case OpCodeType::I32_XOR_STORE:        ret = std::shared_ptr<I32XorStoreInstr>(new I32XorStoreInstr); break;
+    case OpCodeType::I32_XNOR_STORE:       ret = std::shared_ptr<I32XnorStoreInstr>(new I32XnorStoreInstr); break;
+    case OpCodeType::I8_DLOAD_ADD_STORE:   ret = std::shared_ptr<I8DloadAddStoreInstr>(new I8DloadAddStoreInstr); break;
+    case OpCodeType::I8_DLOAD_SUB_STORE:   ret = std::shared_ptr<I8DloadSubStoreInstr>(new I8DloadSubStoreInstr); break;
+    case OpCodeType::I8_DLOAD_MUL_STORE:   ret = std::shared_ptr<I8DloadMulStoreInstr>(new I8DloadMulStoreInstr); break;
+    case OpCodeType::I8_DLOAD_MAX_STORE:   ret = std::shared_ptr<I8DloadMaxStoreInstr>(new I8DloadMaxStoreInstr); break;
+    case OpCodeType::I8_DLOAD_MIN_STORE:   ret = std::shared_ptr<I8DloadMinStoreInstr>(new I8DloadMinStoreInstr); break;
+    case OpCodeType::I8_LOAD_ADD_STORE:    ret = std::shared_ptr<I8LoadAddStoreInstr>(new I8LoadAddStoreInstr); break;
+    case OpCodeType::I8_LOAD_SUB_STORE:    ret = std::shared_ptr<I8LoadSubStoreInstr>(new I8LoadSubStoreInstr); break;
+    case OpCodeType::I8_LOAD_MUL_STORE:    ret = std::shared_ptr<I8LoadMulStoreInstr>(new I8LoadMulStoreInstr); break;
+    case OpCodeType::I8_LOAD_MAX_STORE:    ret = std::shared_ptr<I8LoadMaxStoreInstr>(new I8LoadMaxStoreInstr); break;
+    case OpCodeType::I8_LOAD_MIN_STORE:    ret = std::shared_ptr<I8LoadMinStoreInstr>(new I8LoadMinStoreInstr); break;
+    case OpCodeType::U8_DLOAD_ADD_STORE:   ret = std::shared_ptr<U8DloadAddStoreInstr>(new U8DloadAddStoreInstr); break;
+    case OpCodeType::U8_DLOAD_SUB_STORE:   ret = std::shared_ptr<U8DloadSubStoreInstr>(new U8DloadSubStoreInstr); break;
+    case OpCodeType::U8_DLOAD_MUL_STORE:   ret = std::shared_ptr<U8DloadMulStoreInstr>(new U8DloadMulStoreInstr); break;
+    case OpCodeType::U8_DLOAD_MAX_STORE:   ret = std::shared_ptr<U8DloadMaxStoreInstr>(new U8DloadMaxStoreInstr); break;
+    case OpCodeType::U8_DLOAD_MIN_STORE:   ret = std::shared_ptr<U8DloadMinStoreInstr>(new U8DloadMinStoreInstr); break;
+    case OpCodeType::U8_LOAD_ADD_STORE:    ret = std::shared_ptr<U8LoadAddStoreInstr>(new U8LoadAddStoreInstr); break;
+    case OpCodeType::U8_LOAD_SUB_STORE:    ret = std::shared_ptr<U8LoadSubStoreInstr>(new U8LoadSubStoreInstr); break;
+    case OpCodeType::U8_LOAD_MUL_STORE:    ret = std::shared_ptr<U8LoadMulStoreInstr>(new U8LoadMulStoreInstr); break;
+    case OpCodeType::U8_LOAD_MAX_STORE:    ret = std::shared_ptr<U8LoadMaxStoreInstr>(new U8LoadMaxStoreInstr); break;
+    case OpCodeType::U8_LOAD_MIN_STORE:    ret = std::shared_ptr<U8LoadMinStoreInstr>(new U8LoadMinStoreInstr); break;
+    case OpCodeType::F16_DLOAD_ADD_STORE:  ret = std::shared_ptr<F16DloadAddStoreInstr>(new F16DloadAddStoreInstr); break;
+    case OpCodeType::F16_DLOAD_SUB_STORE:  ret = std::shared_ptr<F16DloadSubStoreInstr>(new F16DloadSubStoreInstr); break;
+    case OpCodeType::F16_DLOAD_MUL_STORE:  ret = std::shared_ptr<F16DloadMulStoreInstr>(new F16DloadMulStoreInstr); break;
+    case OpCodeType::F16_DLOAD_MAX_STORE:  ret = std::shared_ptr<F16DloadMaxStoreInstr>(new F16DloadMaxStoreInstr); break;
+    case OpCodeType::F16_DLOAD_MIN_STORE:  ret = std::shared_ptr<F16DloadMinStoreInstr>(new F16DloadMinStoreInstr); break;
+    case OpCodeType::F16_LOAD_ADD_STORE:   ret = std::shared_ptr<F16LoadAddStoreInstr>(new F16LoadAddStoreInstr); break;
+    case OpCodeType::F16_LOAD_SUB_STORE:   ret = std::shared_ptr<F16LoadSubStoreInstr>(new F16LoadSubStoreInstr); break;
+    case OpCodeType::F16_LOAD_MUL_STORE:   ret = std::shared_ptr<F16LoadMulStoreInstr>(new F16LoadMulStoreInstr); break;
+    case OpCodeType::F16_LOAD_MAX_STORE:   ret = std::shared_ptr<F16LoadMaxStoreInstr>(new F16LoadMaxStoreInstr); break;
+    case OpCodeType::F16_LOAD_MIN_STORE:   ret = std::shared_ptr<F16LoadMinStoreInstr>(new F16LoadMinStoreInstr); break;
+    case OpCodeType::F32_DLOAD_ADD_STORE:  ret = std::shared_ptr<F32DloadAddStoreInstr>(new F32DloadAddStoreInstr); break;
+    case OpCodeType::F32_DLOAD_SUB_STORE:  ret = std::shared_ptr<F32DloadSubStoreInstr>(new F32DloadSubStoreInstr); break;
+    case OpCodeType::F32_DLOAD_MUL_STORE:  ret = std::shared_ptr<F32DloadMulStoreInstr>(new F32DloadMulStoreInstr); break;
+    case OpCodeType::F32_DLOAD_MAX_STORE:  ret = std::shared_ptr<F32DloadMaxStoreInstr>(new F32DloadMaxStoreInstr); break;
+    case OpCodeType::F32_DLOAD_MIN_STORE:  ret = std::shared_ptr<F32DloadMinStoreInstr>(new F32DloadMinStoreInstr); break;
+    case OpCodeType::F32_LOAD_ADD_STORE:   ret = std::shared_ptr<F32LoadAddStoreInstr>(new F32LoadAddStoreInstr); break;
+    case OpCodeType::F32_LOAD_SUB_STORE:   ret = std::shared_ptr<F32LoadSubStoreInstr>(new F32LoadSubStoreInstr); break;
+    case OpCodeType::F32_LOAD_MUL_STORE:   ret = std::shared_ptr<F32LoadMulStoreInstr>(new F32LoadMulStoreInstr); break;
+    case OpCodeType::F32_LOAD_MAX_STORE:   ret = std::shared_ptr<F32LoadMaxStoreInstr>(new F32LoadMaxStoreInstr); break;
+    case OpCodeType::F32_LOAD_MIN_STORE:   ret = std::shared_ptr<F32LoadMinStoreInstr>(new F32LoadMinStoreInstr); break;
+    case OpCodeType::I32_DLOAD_AND_STORE:  ret = std::shared_ptr<I32DloadAndStoreInstr>(new I32DloadAndStoreInstr); break;
+    case OpCodeType::I32_DLOAD_OR_STORE:   ret = std::shared_ptr<I32DloadOrStoreInstr>(new I32DloadOrStoreInstr); break;
+    case OpCodeType::I32_DLOAD_NOT_STORE:  ret = std::shared_ptr<I32DloadNotStoreInstr>(new I32DloadNotStoreInstr); break;
+    case OpCodeType::I32_DLOAD_XOR_STORE:  ret = std::shared_ptr<I32DloadXorStoreInstr>(new I32DloadXorStoreInstr); break;
+    case OpCodeType::I32_DLOAD_XNOR_STORE: ret = std::shared_ptr<I32DloadXnorStoreInstr>(new I32DloadXnorStoreInstr); break;
+    case OpCodeType::I32_LOAD_AND_STORE:   ret = std::shared_ptr<I32LoadAndStoreInstr>(new I32LoadAndStoreInstr); break;
+    case OpCodeType::I32_LOAD_OR_STORE:    ret = std::shared_ptr<I32LoadOrStoreInstr>(new I32LoadOrStoreInstr); break;
+    case OpCodeType::I32_LOAD_NOT_STORE:   ret = std::shared_ptr<I32LoadNotStoreInstr>(new I32LoadNotStoreInstr); break;
+    case OpCodeType::I32_LOAD_XOR_STORE:   ret = std::shared_ptr<I32LoadXorStoreInstr>(new I32LoadXorStoreInstr); break;
+    case OpCodeType::I32_LOAD_XNOR_STORE:  ret = std::shared_ptr<I32LoadXnorStoreInstr>(new I32LoadXnorStoreInstr); break;
+    case OpCodeType::S_ADDI:               ret = std::shared_ptr<SAddiInstr>(new SAddiInstr); break;
+    case OpCodeType::S_ADDIU:              ret = std::shared_ptr<SAddiuInstr>(new SAddiuInstr); break;
+    case OpCodeType::S_SUBI:               ret = std::shared_ptr<SSubiInstr>(new SSubiInstr); break;
+    case OpCodeType::S_ANDI:               ret = std::shared_ptr<SAndiInstr>(new SAndiInstr); break;
+    case OpCodeType::S_ORI:                ret = std::shared_ptr<SOriInstr>(new SOriInstr); break;
+    case OpCodeType::S_XORI:               ret = std::shared_ptr<SXoriInstr>(new SXoriInstr); break;
+    case OpCodeType::S_SGTI:               ret = std::shared_ptr<SSgtiInstr>(new SSgtiInstr); break;
+    case OpCodeType::S_SLTI:               ret = std::shared_ptr<SSltiInstr>(new SSltiInstr); break;
+    case OpCodeType::S_SEQI:               ret = std::shared_ptr<SSeqiInstr>(new SSeqiInstr); break;
+    case OpCodeType::S_SGEI:               ret = std::shared_ptr<SSgeiInstr>(new SSgeiInstr); break;
+    case OpCodeType::S_SLEI:               ret = std::shared_ptr<SSleiInstr>(new SSleiInstr); break;
+    case OpCodeType::S_SRAI:               ret = std::shared_ptr<SSraiInstr>(new SSraiInstr); break;
+    case OpCodeType::S_SRLI:               ret = std::shared_ptr<SSrliInstr>(new SSrliInstr); break;
+    case OpCodeType::S_SLLI:               ret = std::shared_ptr<SSlliInstr>(new SSlliInstr); break;
+    case OpCodeType::S_LUI:                ret = std::shared_ptr<SLuiInstr>(new SLuiInstr); break;
+    case OpCodeType::S_ADD:                ret = std::shared_ptr<SAddInstr>(new SAddInstr); break;
+    case OpCodeType::S_ADDU:               ret = std::shared_ptr<SAdduInstr>(new SAdduInstr); break;
+    case OpCodeType::S_SUB:                ret = std::shared_ptr<SSubInstr>(new SSubInstr); break;
+    case OpCodeType::S_MUL:                ret = std::shared_ptr<SMulInstr>(new SMulInstr); break;
+    case OpCodeType::S_MULH:               ret = std::shared_ptr<SMulhInstr>(new SMulhInstr); break;
+    case OpCodeType::S_MULHU:              ret = std::shared_ptr<SMulhuInstr>(new SMulhuInstr); break;
+    case OpCodeType::S_MIN:                ret = std::shared_ptr<SMinInstr>(new SMinInstr); break;
+    case OpCodeType::S_MAX:                ret = std::shared_ptr<SMaxInstr>(new SMaxInstr); break;
+    case OpCodeType::S_MINU:               ret = std::shared_ptr<SMinuInstr>(new SMinuInstr); break;
+    case OpCodeType::S_MAXU:               ret = std::shared_ptr<SMaxuInstr>(new SMaxuInstr); break;
+    case OpCodeType::S_AND:                ret = std::shared_ptr<SAndInstr>(new SAndInstr); break;
+    case OpCodeType::S_OR:                 ret = std::shared_ptr<SOrInstr>(new SOrInstr); break;
+    case OpCodeType::S_XOR:                ret = std::shared_ptr<SXorInstr>(new SXorInstr); break;
+    case OpCodeType::S_SGT:                ret = std::shared_ptr<SSgtInstr>(new SSgtInstr); break;
+    case OpCodeType::S_SLT:                ret = std::shared_ptr<SSltInstr>(new SSltInstr); break;
+    case OpCodeType::S_SEQ:                ret = std::shared_ptr<SSeqInstr>(new SSeqInstr); break;
+    case OpCodeType::S_SGE:                ret = std::shared_ptr<SSgeInstr>(new SSgeInstr); break;
+    case OpCodeType::S_SLE:                ret = std::shared_ptr<SSleInstr>(new SSleInstr); break;
+    case OpCodeType::S_CMPSEL:             ret = std::shared_ptr<SCmpselInstr>(new SCmpselInstr); break;
+    case OpCodeType::S_SRA:                ret = std::shared_ptr<SSraInstr>(new SSraInstr); break;
+    case OpCodeType::S_SRL:                ret = std::shared_ptr<SSrlInstr>(new SSrlInstr); break;
+    case OpCodeType::S_SLL:                ret = std::shared_ptr<SSllInstr>(new SSllInstr); break;
+    case OpCodeType::S_JUMP:               ret = std::shared_ptr<SJumpInstr>(new SJumpInstr); break;
+    case OpCodeType::S_JAL:                ret = std::shared_ptr<SJalInstr>(new SJalInstr); break;
+    case OpCodeType::S_JR:                 ret = std::shared_ptr<SJrInstr>(new SJrInstr); break;
+    case OpCodeType::S_BNE:                ret = std::shared_ptr<SBneInstr>(new SBneInstr); break;
+    case OpCodeType::S_BEQ:                ret = std::shared_ptr<SBeqInstr>(new SBeqInstr); break;
+    case OpCodeType::S_BLT:                ret = std::shared_ptr<SBltInstr>(new SBltInstr); break;
+    case OpCodeType::S_BLTU:               ret = std::shared_ptr<SBltuInstr>(new SBltuInstr); break;
+    case OpCodeType::S_BGE:                ret = std::shared_ptr<SBgeInstr>(new SBgeInstr); break;
+    case OpCodeType::S_BGEU:               ret = std::shared_ptr<SBgeuInstr>(new SBgeuInstr); break;
+    case OpCodeType::S_SETCFG:             ret = std::shared_ptr<SSetcfgInstr>(new SSetcfgInstr); break;
+    case OpCodeType::S_SETRF:              ret = std::shared_ptr<SSetrfInstr>(new SSetrfInstr); break;
     default: break;
   }
   if (args.size() > 0)
