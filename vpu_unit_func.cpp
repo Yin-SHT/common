@@ -1,7 +1,7 @@
 #include "dtype/bfloat16.h"
 // #include "bfloat24.cpp"
 #include "dtype/bfloat24.h"
-#include "fp16.h"
+#include "dtype/fp16.h"
 #include "vpu_unit_func.h"
 #include <cfenv>
 #include<stdio.h>
