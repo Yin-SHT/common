@@ -499,8 +499,8 @@ public:
     QUARK_PUSH_GETTER_SETTER(LoopId);
     QUARK_PUSH_GETTER_SETTER(Count);
   }
-  QUARK_GEN_GETTER_SETTER(LoopId, 25, 20);
-  QUARK_GEN_GETTER_SETTER(Count, 19, 7);
+  QUARK_GEN_GETTER_SETTER(LoopId, 25, 23);
+  QUARK_GEN_GETTER_SETTER(Count, 22, 7);
 };
 
 class LpeInstr : public SpuInstr {
