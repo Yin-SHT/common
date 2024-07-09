@@ -103,6 +103,7 @@ struct TensorShapeDesc {
   TensorShape beg;
   TensorShape end;
   uint64_t addr;
+  uint64_t mtype;
   DataType dtype;
 };
 
