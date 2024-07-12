@@ -69,7 +69,8 @@ enum DataType {
   DTYPE_FP8_43,
   DTYPE_FP16,
   DTYPE_INT4,
-  DTYPE_INT2
+  DTYPE_INT2,
+  DTYPE_FP4,
 };
 
 enum HwVersion {
@@ -150,9 +151,11 @@ const std::map<std::string, DataType> dTypeMapping = {
   { "nf18",       DTYPE_NF18   },
   { "fp8_52",     DTYPE_FP8_52 },
   { "fp8_43",     DTYPE_FP8_43 },
+  { "f4",         DTYPE_FP4    },
+  { "fp4",        DTYPE_FP4    },
 };
 
-const std::map<DataType, int> dTypeWidthMapping = {
+const std::map<DataType, float> dTypeWidthMapping = {
   { DTYPE_INT8,   1 },
   { DTYPE_BF16,   2 },
   { DTYPE_INT16,  2 },
@@ -173,6 +176,8 @@ const std::map<DataType, int> dTypeWidthMapping = {
   { DTYPE_FP8_52, 1 },
   { DTYPE_FP8_43, 1 },
   { DTYPE_FP16,   2 },
+  { DTYPE_INT4,   0.5 },
+  { DTYPE_FP4,    0.5 },
 };
 
 inline std::string dataTypeToString(DataType dtype) {
