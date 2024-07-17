@@ -131,6 +131,13 @@ table DmaCmdsDef {
   func:DmaFunc;
 }
 
+// Defines a segment that is used to save DMA bandwidth when
+// PE does not need accessing full argument.
+table ArgumentSegmentDef {
+  offset:int32;
+  length:int32;
+}
+
 // Defines a argument reference, in which 'dma_location' is used to trace
 // the location in DMA CMDs for address modification since the address
 // of tensor would be reallocated by runtime.
@@ -140,6 +147,12 @@ table ArgumentRefDef {
 
   // DMA CMDs location associate with argument.
   dma_locations:[CmdsLocDef];
+
+  // Input segments
+  in_segments:[ArgumentSegmentDef];
+
+  // Output segments
+  out_segments:[ArgumentSegmentDef];
 }
 
 table PeDef {
