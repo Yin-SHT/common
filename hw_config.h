@@ -202,10 +202,12 @@ const size_t kVpuVectorRegDepth = 64;
 const size_t kNumVpuScalarReg = 32;
 
 // RVV address mapping
+const size_t kChipRvvSysStartAddr = 0x000100000000; const size_t kChipRvvSysEndAddr   = 0x0001FFFFFFFF;  
+const size_t kChipRvvDdrStartAddr = 0x006000000000; const size_t kChipRvvDdrEndAddr   = 0x007FFFFFFFFF;
 const size_t kCoreRvvSysStartAddr = 0x000040000000; const size_t kCoreRvvSysEndAddr   = 0x00005FFFFFFF;  
-const size_t kCoreRvvDdrStartAddr = 0x008000000000; const size_t kCoreRvvDdrEndAddr   = 0x017FFFFFFFFF;
+const size_t kCoreRvvDdrStartAddr = 0x006000000000; const size_t kCoreRvvDdrEndAddr   = 0x007FFFFFFFFF;
 const size_t kPeRvvSysStartAddr   = 0x000040000000; const size_t kPeRvvSysEndAddr     = 0x00005FFFFFFF;
-const size_t kPeRvvDdrStartAddr   = 0x008000000000; const size_t kPeRvvDdrEndAddr     = 0x017FFFFFFFFF;
+const size_t kPeRvvDdrStartAddr   = 0x006000000000; const size_t kPeRvvDdrEndAddr     = 0x007FFFFFFFFF;
 
 // Chip-Level address mapping
 const size_t kChipRegStartAddr    = 0x00000000;     const size_t kChipRegEndAddr      = 0x000FFFFF;
@@ -213,7 +215,7 @@ const size_t kCore0StartAddr      = 0x40000000;     const size_t kCore0EndAddr  
 const size_t kCore1StartAddr      = 0x50000000;     const size_t kCore1EndAddr        = 0x5FFFFFFF;
 const size_t kCore2StartAddr      = 0x60000000;     const size_t kCore2EndAddr        = 0x6FFFFFFF;
 const size_t kCore3StartAddr      = 0x70000000;     const size_t kCore3EndAddr        = 0x7FFFFFFF;
-const size_t kDdrStartAddr        = 0x008000000000; const size_t kDdrEndAddr          = 0x017FFFFFFFFF;
+const size_t kDdrStartAddr        = 0x006000000000; const size_t kDdrEndAddr          = 0x007FFFFFFFFF;
 
 // Core-Level address mapping
 const size_t kCoreRegStartAddr    = 0x00000000;     const size_t kCoreRegEndAddr      = 0x00000FFF;
