@@ -201,312 +201,248 @@ const size_t kNumVpuVectorReg = 4;
 const size_t kVpuVectorRegDepth = 64;
 const size_t kNumVpuScalarReg = 32;
 
-// RVV address mapping
-const size_t kChipRvvSysStartAddr = 0x000100000000; const size_t kChipRvvSysEndAddr   = 0x0001FFFFFFFF;  
-const size_t kChipRvvDdrStartAddr = 0x006000000000; const size_t kChipRvvDdrEndAddr   = 0x007FFFFFFFFF;
-const size_t kCoreRvvSysStartAddr = 0x000040000000; const size_t kCoreRvvSysEndAddr   = 0x00005FFFFFFF;  
-const size_t kCoreRvvDdrStartAddr = 0x006000000000; const size_t kCoreRvvDdrEndAddr   = 0x007FFFFFFFFF;
-const size_t kPeRvvSysStartAddr   = 0x000040000000; const size_t kPeRvvSysEndAddr     = 0x00005FFFFFFF;
-const size_t kPeRvvDdrStartAddr   = 0x006000000000; const size_t kPeRvvDdrEndAddr     = 0x007FFFFFFFFF;
-
-// Chip-Level address mapping
-const size_t kChipRegStartAddr    = 0x00000000;     const size_t kChipRegEndAddr      = 0x000FFFFF;
-const size_t kCore0StartAddr      = 0x40000000;     const size_t kCore0EndAddr        = 0x4FFFFFFF;
-const size_t kCore1StartAddr      = 0x50000000;     const size_t kCore1EndAddr        = 0x5FFFFFFF;
-const size_t kCore2StartAddr      = 0x60000000;     const size_t kCore2EndAddr        = 0x6FFFFFFF;
-const size_t kCore3StartAddr      = 0x70000000;     const size_t kCore3EndAddr        = 0x7FFFFFFF;
-const size_t kDdrStartAddr        = 0x006000000000; const size_t kDdrEndAddr          = 0x007FFFFFFFFF;
-
-// Core-Level address mapping
-const size_t kCoreRegStartAddr    = 0x00000000;     const size_t kCoreRegEndAddr      = 0x00000FFF;
-const size_t kDdmaRegStartAddr    = 0x00001000;     const size_t kDdmaRegEndAddr      = 0x00001FFF;
-const size_t kCdmaRegStartAddr    = 0x00002000;     const size_t kCdmaRegEndAddr      = 0x00002FFF;
-const size_t kIduL2StartAddr      = 0x00100000;     const size_t kIduL2EndAddr        = 0x010FFFFF;
-const size_t kIduL1StartAddr      = 0x01100000;     const size_t kIduL1EndAddr        = 0x011FFFFF;
-const size_t kSmBrdStartAddr      = 0x01200000;     const size_t kSmBrdEndAddr        = 0x013FFFFF;
-const size_t kLlcSpmStartAddr     = 0x01400000;     const size_t kLlcSpmEndAddr       = 0x023FFFFF;
-const size_t kPe0StartAddr        = 0x08000000;     const size_t kPe0EndAddr          = 0x087FFFFF;
-const size_t kPe1StartAddr        = 0x08800000;     const size_t kPe1EndAddr          = 0x08FFFFFF;
-const size_t kPe2StartAddr        = 0x09000000;     const size_t kPe2EndAddr          = 0x097FFFFF;
-const size_t kPe3StartAddr        = 0x09800000;     const size_t kPe3EndAddr          = 0x09FFFFFF;
-const size_t kPe4StartAddr        = 0x0A000000;     const size_t kPe4EndAddr          = 0x0A7FFFFF;
-const size_t kPe5StartAddr        = 0x0A800000;     const size_t kPe5EndAddr          = 0x0AFFFFFF;
-const size_t kPe6StartAddr        = 0x0B000000;     const size_t kPe6EndAddr          = 0x0B7FFFFF;
-const size_t kPe7StartAddr        = 0x0B800000;     const size_t kPe7EndAddr          = 0x0BFFFFFF;
-const size_t kPe8StartAddr        = 0x0C000000;     const size_t kPe8EndAddr          = 0x0C7FFFFF;
-const size_t kPe9StartAddr        = 0x0C800000;     const size_t kPe9EndAddr          = 0x0CFFFFFF;
-const size_t kPe10StartAddr       = 0x0D000000;     const size_t kPe10EndAddr         = 0x0D7FFFFF;
-const size_t kPe11StartAddr       = 0x0D800000;     const size_t kPe11EndAddr         = 0x0DFFFFFF;
-const size_t kPe12StartAddr       = 0x0E000000;     const size_t kPe12EndAddr         = 0x0E7FFFFF;
-const size_t kPe13StartAddr       = 0x0E800000;     const size_t kPe13EndAddr         = 0x0EFFFFFF;
-const size_t kPe14StartAddr       = 0x0F000000;     const size_t kPe14EndAddr         = 0x0F8FFFFF;
-const size_t kPe15StartAddr       = 0x0F800000;     const size_t kPe15EndAddr         = 0x0FFFFFFF;
-
-// PE-Level address mapping
-const size_t kPeRegStartAddr      = 0x00000000;     const size_t kPeRegEndAddr        = 0x00000FFF;
-const size_t kRvvRegStartAddr     = 0x00001000;     const size_t kRvvRegEndAddr       = 0x00001FFF;
-const size_t kIduRegStartAddr     = 0x00002000;     const size_t kIduRegEndAddr       = 0x00002FFF;
-const size_t kIcuRegStartAddr     = 0x00003000;     const size_t kIcuRegEndAddr       = 0x00003FFF;
-const size_t kExcepRegStartAddr   = 0x00004000;     const size_t kExcepRegEndAddr     = 0x00004FFF;
-const size_t kDebugRegStartAddr   = 0x00005000;     const size_t kDebugRegEndAddr     = 0x00005FFF;
-const size_t kSpuRegStartAddr     = 0x00006000;     const size_t kSpuRegEndAddr       = 0x00006FFF;
-const size_t kVpuRegStartAddr     = 0x00007000;     const size_t kVpuRegEndAddr       = 0x00007FFF;
-const size_t kAeRegStartAddr      = 0x00008000;     const size_t kAeRegEndAddr        = 0x00008FFF;
-const size_t kTeRegStartAddr      = 0x00009000;     const size_t kTeRegEndAddr        = 0x00009FFF;
-const size_t kSeRegStartAddr      = 0x0000A000;     const size_t kSeRegEndAddr        = 0x0000AFFF;
-const size_t kDma0RegStartAddr    = 0x0000B000;     const size_t kDma0RegEndAddr      = 0x0000BFFF;
-const size_t kDma1RegStartAddr    = 0x0000C000;     const size_t kDma1RegEndAddr      = 0x0000CFFF;
-const size_t kDma2RegStartAddr    = 0x0000D000;     const size_t kDma2RegEndAddr      = 0x0000DFFF;
-const size_t kDma3RegStartAddr    = 0x0000E000;     const size_t kDma3RegEndAddr      = 0x0000EFFF;
-const size_t kDma4RegStartAddr    = 0x0000F000;     const size_t kDma4RegEndAddr      = 0x0000FFFF;
-const size_t kDma5RegStartAddr    = 0x00010000;     const size_t kDma5RegEndAddr      = 0x00010FFF;
-const size_t kWdmaRegStartAddr    = 0x00011000;     const size_t kWdmaRegEndAddr      = 0x00011FFF;
-const size_t kRvvMailBoxStartAddr = 0x00012000;     const size_t kRvvMailBoxEndAddr   = 0x00012FFF;
-const size_t kPelsIInstrStartAddr = 0x00080000;     const size_t kPelsIInstrEndAddr   = 0x00081FFF;
-const size_t kPelsEInstrStartAddr = 0x00082000;     const size_t kPelsEInstrEndAddr   = 0x00083FFF;
-const size_t kPelsOInstrStartAddr = 0x00084000;     const size_t kPelsOInstrEndAddr   = 0x00085FFF;
-const size_t kSpuInstrStartAddr   = 0x00088000;     const size_t kSpuInstrEndAddr     = 0x0008FFFF;
-const size_t kVpuInstrStartAddr   = 0x00090000;     const size_t kVpuInstrEndAddr     = 0x00097FFF;
-const size_t kAeInstrStartAddr    = 0x00098000;     const size_t kAeInstrEndAddr      = 0x0009FFFF;
-const size_t kTeInstrStartAddr    = 0x000A0000;     const size_t kTeInstrEndAddr      = 0x000A7FFF;
-const size_t kSeInstrStartAddr    = 0x000A8000;     const size_t kSeInstrEndAddr      = 0x000AFFFF;
-const size_t kDma0InstrStartAddr  = 0x000B0000;     const size_t kDma0InstrEndAddr    = 0x000B1FFF;
-const size_t kDma1InstrStartAddr  = 0x000B2000;     const size_t kDma1InstrEndAddr    = 0x000B3FFF;
-const size_t kDma2InstrStartAddr  = 0x000B4000;     const size_t kDma2InstrEndAddr    = 0x000B5FFF;
-const size_t kDma3InstrStartAddr  = 0x000B6000;     const size_t kDma3InstrEndAddr    = 0x000B7FFF;
-const size_t kDma4InstrStartAddr  = 0x000B8000;     const size_t kDma4InstrEndAddr    = 0x000B9FFF;
-const size_t kDma5InstrStartAddr  = 0x000BA000;     const size_t kDma5InstrEndAddr    = 0x000BBFFF;
-const size_t kTcmStartAddr        = 0x00100000;     const size_t kTcmEndAddr          = 0x001FFFFF;
-const size_t kSharedMemStartAddr  = 0x00200000;     const size_t kSharedMemEndAddr    = 0x003FFFFF;
-
-// The following indices are for SET instruction of CHLS.
-enum class ChlsSetIndexMap {
-  ChipEnCtrl0 = 0,
-  ChipEnCtrl1 = 1,
-  ChipEnCtrl2 = 2,
-  ChipEnCtrl3 = 3,
-  ChipEnCtrl4 = 4,
-  ChipDoneIntSt0 = 8,
-  ChipDoneIntSt1 = 9,
-  ChipDoneIntSt2 = 10,
-  ChipDoneIntSt3 = 11,
-  ChipDoneIntSt4 = 12,
-  ChipRvvIrqSt = 16,
-  ChipRvvIraSt = 17,
-  ChlsInstrConfigL = 20,
-  ChlsInstrConfigH = 21,
-  Cols0InstrConfigL = 24,
-  Cols0InstrConfigH = 25,
-  Cols1InstrConfigL = 26,
-  Cols1InstrConfigH = 27,
-  Cols2InstrConfigL = 28,
-  Cols2InstrConfigH = 29,
-  Cols3InstrConfigL = 30,
-  Cols3InstrConfigH = 31,
-  Core0RvPrgmConfigL = 32,
-  Core0RvPrgmConfigH = 33,
-  Core1RvPrgmConfigL = 34,
-  Core1RvPrgmConfigH = 35,
-  Core2RvPrgmConfigL = 36,
-  Core2RvPrgmConfigH = 37,
-  Core3RvPrgmConfigL = 38,
-  Core3RvPrgmConfigH = 39,
+struct AddrRange {
+  AddrRange(size_t start, size_t end) :
+      start(start), end(end) {}
+  bool check(size_t addr) const {
+    return (addr >= start && addr <= end);
+  }
+  size_t start;
+  size_t end;
 };
 
-// The following indices are for SET instruction of COLS.
-enum class ColsSetIndexMap {
-  CoreEnCtrl0 = 0,
-  CoreEnCtrl1 = 1,
-  CoreEnCtrl2 = 2,
-  CoreEnCtrl3 = 3,
-  CoreEnCtrl4 = 4,
-  CoreEnCtrl5 = 5,
-  CoreDoneIntSt0 = 8,
-  CoreDoneIntSt1 = 9,
-  CoreDoneIntSt2 = 10,
-  CoreDoneIntSt3 = 11,
-  CoreDoneIntSt4 = 12,
-  CoreDoneIntSt5 = 13,
-  CoreRvvIrqSt = 16,
-  CoreRvvIraSt = 17,
-  ColsInstrConfigL = 20,
-  ColsInstrConfigH = 21,
-  Pels0IInstrConfigL = 24,
-  Pels0IInstrConfigH = 25,
-  Pels0EInstrConfigL = 26,
-  Pels0EInstrConfigH = 27,
-  Pels0OInstrConfigL = 28,
-  Pels0OInstrConfigH = 29,
-  Pels1IInstrConfigL = 32,
-  Pels1IInstrConfigH = 33,
-  Pels1EInstrConfigL = 34,
-  Pels1EInstrConfigH = 35,
-  Pels1OInstrConfigL = 36,
-  Pels1OInstrConfigH = 37,
-  Pels2IInstrConfigL = 40,
-  Pels2IInstrConfigH = 41,
-  Pels2EInstrConfigL = 42,
-  Pels2EInstrConfigH = 43,
-  Pels2OInstrConfigL = 44,
-  Pels2OInstrConfigH = 45,
-  Pels3IInstrConfigL = 48,
-  Pels3IInstrConfigH = 49,
-  Pels3EInstrConfigL = 50,
-  Pels3EInstrConfigH = 51,
-  Pels3OInstrConfigL = 52,
-  Pels3OInstrConfigH = 53,
-  Pels4IInstrConfigL = 56,
-  Pels4IInstrConfigH = 57,
-  Pels4EInstrConfigL = 58,
-  Pels4EInstrConfigH = 59,
-  Pels4OInstrConfigL = 60,
-  Pels4OInstrConfigH = 61,
-  Pels5IInstrConfigL = 64,
-  Pels5IInstrConfigH = 65,
-  Pels5EInstrConfigL = 66,
-  Pels5EInstrConfigH = 67,
-  Pels5OInstrConfigL = 68,
-  Pels5OInstrConfigH = 69,
-  Pels6IInstrConfigL = 72,
-  Pels6IInstrConfigH = 73,
-  Pels6EInstrConfigL = 74,
-  Pels6EInstrConfigH = 75,
-  Pels6OInstrConfigL = 76,
-  Pels6OInstrConfigH = 77,
-  Pels7IInstrConfigL = 80,
-  Pels7IInstrConfigH = 81,
-  Pels7EInstrConfigL = 82,
-  Pels7EInstrConfigH = 83,
-  Pels7OInstrConfigL = 84,
-  Pels7OInstrConfigH = 85,
-  Pels8IInstrConfigL = 88,
-  Pels8IInstrConfigH = 89,
-  Pels8EInstrConfigL = 90,
-  Pels8EInstrConfigH = 91,
-  Pels8OInstrConfigL = 92,
-  Pels8OInstrConfigH = 93,
-  Pels9IInstrConfigL = 96,
-  Pels9IInstrConfigH = 97,
-  Pels9EInstrConfigL = 98,
-  Pels9EInstrConfigH = 99,
-  Pels9OInstrConfigL = 100,
-  Pels9OInstrConfigH = 101,
-  Pels10IInstrConfigL = 104,
-  Pels10IInstrConfigH = 105,
-  Pels10EInstrConfigL = 106,
-  Pels10EInstrConfigH = 107,
-  Pels10OInstrConfigL = 108,
-  Pels10OInstrConfigH = 109,
-  Pels11IInstrConfigL = 112,
-  Pels11IInstrConfigH = 113,
-  Pels11EInstrConfigL = 114,
-  Pels11EInstrConfigH = 115,
-  Pels11OInstrConfigL = 116,
-  Pels11OInstrConfigH = 117,
-  Pels12IInstrConfigL = 120,
-  Pels12IInstrConfigH = 121,
-  Pels12EInstrConfigL = 122,
-  Pels12EInstrConfigH = 123,
-  Pels12OInstrConfigL = 124,
-  Pels12OInstrConfigH = 125,
-  Pels13IInstrConfigL = 128,
-  Pels13IInstrConfigH = 129,
-  Pels13EInstrConfigL = 130,
-  Pels13EInstrConfigH = 131,
-  Pels13OInstrConfigL = 132,
-  Pels13OInstrConfigH = 133,
-  Pels14IInstrConfigL = 136,
-  Pels14IInstrConfigH = 137,
-  Pels14EInstrConfigL = 138,
-  Pels14EInstrConfigH = 139,
-  Pels14OInstrConfigL = 140,
-  Pels14OInstrConfigH = 141,
-  Pels15IInstrConfigL = 144,
-  Pels15IInstrConfigH = 145,
-  Pels15EInstrConfigL = 146,
-  Pels15EInstrConfigH = 147,
-  Pels15OInstrConfigL = 148,
-  Pels15OInstrConfigH = 149,
-  Pe0TcmConfigL = 152,
-  Pe0TcmConfigH = 153,
-  Pe1TcmConfigL = 154,
-  Pe1TcmConfigH = 155,
-  Pe2TcmConfigL = 156,
-  Pe2TcmConfigH = 157,
-  Pe3TcmConfigL = 158,
-  Pe3TcmConfigH = 159,
-  Pe4TcmConfigL = 160,
-  Pe4TcmConfigH = 161,
-  Pe5TcmConfigL = 162,
-  Pe5TcmConfigH = 163,
-  Pe6TcmConfigL = 164,
-  Pe6TcmConfigH = 165,
-  Pe7TcmConfigL = 166,
-  Pe7TcmConfigH = 167,
-  Pe8TcmConfigL = 168,
-  Pe8TcmConfigH = 169,
-  Pe9TcmConfigL = 170,
-  Pe9TcmConfigH = 171,
-  Pe10TcmConfigL = 172,
-  Pe10TcmConfigH = 173,
-  Pe11TcmConfigL = 174,
-  Pe11TcmConfigH = 175,
-  Pe12TcmConfigL = 176,
-  Pe12TcmConfigH = 177,
-  Pe13TcmConfigL = 178,
-  Pe13TcmConfigH = 179,
-  Pe14TcmConfigL = 180,
-  Pe14TcmConfigH = 181,
-  Pe15TcmConfigL = 182,
-  Pe15TcmConfigH = 183,
-  IduDispatchMode = 184,
-};
+const AddrRange kDdrMap = {0x6000000000, 0x8000000000};
+const size_t kDdrStartAddr = kDdrMap.start;
 
-// The following indices are for SET instruction of PELS.
-enum class PelsSetIndexMap {
-  PeEnCtrl0 = 0,
-  PeEnCtrl1 = 1,
-  PeEnCtrl2 = 2,
-  PeEnCtrl3 = 3,
-  PeDoneIntSt0 = 4,
-  PeDoneIntSt1 = 5,
-  PeDoneIntSt2 = 6,
-  PeDoneIntSt3 = 7,
-  PeRvvIrqSt = 8,
-  PeRvvIraSt = 9,
-  PeIoBufferSt = 12,
-  PeDmacPriority = 13,
-  PeDdmaDoneIntSt = 14,
-  PeWdmaDoneIntSt = 15,
-  PelsIInstrConfigL = 16,
-  PelsIInstrConfigH = 17,
-  PelsEInstrConfigL = 18,
-  PelsEInstrConfigH = 19,
-  PelsOInstrConfigL = 20,
-  PelsOInstrConfigH = 21,
-  SpuInstrConfigL = 24,
-  SpuInstrConfigH = 25,
-  VpuInstrConfigL = 26,
-  VpuInstrConfigH = 27,
-  AeInstrConfigL = 28,
-  AeInstrConfigH = 29,
-  TeInstrConfigL = 30,
-  TeInstrConfigH = 31,
-  SeInstrConfigL = 32,
-  SeInstrConfigH = 33,
-  Dma0InstrConfigL = 34,
-  Dma0InstrConfigH = 35,
-  Dma1InstrConfigL = 36,
-  Dma1InstrConfigH = 37,
-  Dma2InstrConfigL = 38,
-  Dma2InstrConfigH = 39,
-  Dma3InstrConfigL = 40,
-  Dma3InstrConfigH = 41,
-  Dma4InstrConfigL = 42,
-  Dma4InstrConfigH = 43,
-  Dma5InstrConfigL = 44,
-  Dma5InstrConfigH = 45,
-};
+// System Memory Map
+const AddrRange kSystemCsrMemMap = {0x100000000, 0x107ffffff};
+const AddrRange kSystemCore0MemMap = {0x120000000, 0x12fffffff};
+const AddrRange kSystemCore1MemMap = {0x130000000, 0x13fffffff};
+const AddrRange kSystemCore2MemMap = {0x140000000, 0x14fffffff};
+const AddrRange kSystemCore3MemMap = {0x150000000, 0x15fffffff};
+const AddrRange kSystemFirmwarePart0MemMap = {0x160000000, 0x167ffffff};
+const AddrRange kSystemFirmwarePart1MemMap = {0x168000000, 0x16fffffff};
+const AddrRange kSystemFirmwarePart2MemMap = {0x170000000, 0x177ffffff};
+const AddrRange kSystemFirmwarePart3MemMap = {0x178000000, 0x17fffffff};
+const AddrRange kSystemRuntimeMemMap = {0x180000000, 0x1ffffffff};
+const AddrRange kSystemTopSpmMemMap = {0xffffc0000, 0xfffffffff};
+const AddrRange kSystemPcieDmaMemMap = {0x1000000000, 0x10ffffffff};
+const AddrRange kSystemEthernetMac0MemMap = {0x2000000000, 0x20ffffffff};
+const AddrRange kSystemEthernetMac1MemMap = {0x2100000000, 0x21ffffffff};
+const AddrRange kSystemEthernetMac2MemMap = {0x2200000000, 0x22ffffffff};
+const AddrRange kSystemEthernetMac3MemMap = {0x2300000000, 0x23ffffffff};
+const AddrRange kSystemEthernetMac4MemMap = {0x2400000000, 0x24ffffffff};
+const AddrRange kSystemEthernetMac5MemMap = {0x2500000000, 0x25ffffffff};
+const AddrRange kSystemEthernetMac6MemMap = {0x2600000000, 0x26ffffffff};
+const AddrRange kSystemEthernetMac7MemMap = {0x2700000000, 0x27ffffffff};
+const AddrRange kSystemFrontPort0MemMap = {0x4000000000, 0x47ffffffff};
+const AddrRange kSystemFrontPort1MemMap = {0x4800000000, 0x4fffffffff};
+const AddrRange kSystemFrontPort2MemMap = {0x5000000000, 0x57ffffffff};
+const AddrRange kSystemFrontPort3MemMap = {0x5800000000, 0x5fffffffff};
+const AddrRange kSystemNwDdrRt0MemMap = {0x6000000000, 0x601effffff};
+const AddrRange kSystemNwDdrFw0MemMap = {0x6020000000, 0x6027ffffff};
+const AddrRange kSystemNwDdrOtherMemMap = {0x6028000000, 0x65ffffffff};
+const AddrRange kSystemNeDdrRt0MemMap = {0x6800000000, 0x681effffff};
+const AddrRange kSystemNeDdrFw0MemMap = {0x6820000000, 0x6827ffffff};
+const AddrRange kSystemNeDdrOtherMemMap = {0x6828000000, 0x6dffffffff};
+const AddrRange kSystemSwDdrRt0MemMap = {0x7000000000, 0x701effffff};
+const AddrRange kSystemSwDdrFw0MemMap = {0x7020000000, 0x7027ffffff};
+const AddrRange kSystemSwDdrOtherMemMap = {0x7028000000, 0x75ffffffff};
+const AddrRange kSystemSeDdrRt0MemMap = {0x7800000000, 0x781effffff};
+const AddrRange kSystemSeDdrFw0MemMap = {0x7820000000, 0x7827ffffff};
+const AddrRange kSystemSeDdrOtherMemMap = {0x7828000000, 0x7dffffffff};
+
+// Core Memory Map
+const AddrRange kCoreVirtualCoreCsrMemMap = {0x0, 0x7ffff};
+const AddrRange kCoreIduL1BroadcastSpaceMemMap = {0xf00000, 0xffffff};
+const AddrRange kCoreIduL2MemMap = {0x1000000, 0x1ffffff};
+const AddrRange kCoreSmBroadcastSpaceRow0MemMap = {0x2000000, 0x21fffff};
+const AddrRange kCoreSmBroadcastSpaceRow1MemMap = {0x2200000, 0x23fffff};
+const AddrRange kCoreSmBroadcastSpaceRow2MemMap = {0x2400000, 0x25fffff};
+const AddrRange kCoreSmBroadcastSpaceRow3MemMap = {0x2600000, 0x27fffff};
+const AddrRange kCoreSmBroadcastSpaceCoreMemMap = {0x2800000, 0x29fffff};
+const AddrRange kCoreLlcSpmMemMap = {0x3000000, 0x3ffffff};
+const AddrRange kCorePe0MemMap = {0x8000000, 0x87fffff};
+const AddrRange kCorePe1MemMap = {0x8800000, 0x8ffffff};
+const AddrRange kCorePe2MemMap = {0x9000000, 0x97fffff};
+const AddrRange kCorePe3MemMap = {0x9800000, 0x9ffffff};
+const AddrRange kCorePe4MemMap = {0xa000000, 0xa7fffff};
+const AddrRange kCorePe5MemMap = {0xa800000, 0xaffffff};
+const AddrRange kCorePe6MemMap = {0xb000000, 0xb7fffff};
+const AddrRange kCorePe7MemMap = {0xb800000, 0xbffffff};
+const AddrRange kCorePe8MemMap = {0xc000000, 0xc7fffff};
+const AddrRange kCorePe9MemMap = {0xc800000, 0xcffffff};
+const AddrRange kCorePe10MemMap = {0xd000000, 0xd7fffff};
+const AddrRange kCorePe11MemMap = {0xd800000, 0xdffffff};
+const AddrRange kCorePe12MemMap = {0xe000000, 0xe7fffff};
+const AddrRange kCorePe13MemMap = {0xe800000, 0xeffffff};
+const AddrRange kCorePe14MemMap = {0xf000000, 0xf7fffff};
+const AddrRange kCorePe15MemMap = {0xf800000, 0xfffffff};
+
+// Pe Memory Map
+const AddrRange kPeVirtualPeCsrMemMap = {0x0, 0x7ffff};
+const AddrRange kPeSchedulerIInstrMemMap = {0x80000, 0x81fff};
+const AddrRange kPeSchedulerEInstrMemMap = {0x82000, 0x83fff};
+const AddrRange kPeSchedulerOInstrMemMap = {0x84000, 0x85fff};
+const AddrRange kPeSpuInstrMemMap = {0x88000, 0x8ffff};
+const AddrRange kPeVpuInstrMemMap = {0x90000, 0x97fff};
+const AddrRange kPeAeInstrMemMap = {0x98000, 0x9ffff};
+const AddrRange kPeTeInstrMemMap = {0xa0000, 0xa7fff};
+const AddrRange kPeSeInstrMemMap = {0xa8000, 0xaffff};
+const AddrRange kPeDmaCtrl0InstrMemMap = {0xb0000, 0xb1fff};
+const AddrRange kPeDmaCtrl1InstrMemMap = {0xb2000, 0xb3fff};
+const AddrRange kPeDmaCtrl2InstrMemMap = {0xb4000, 0xb5fff};
+const AddrRange kPeDmaCtrl3InstrMemMap = {0xb6000, 0xb7fff};
+const AddrRange kPeDmaCtrl4InstrMemMap = {0xb8000, 0xb9fff};
+const AddrRange kPeDmaCtrl5InstrMemMap = {0xba000, 0xbbfff};
+const AddrRange kPeVirtualCsrMemMap = {0x400000, 0x47ffff};
+const AddrRange kPeTcmMemMap = {0x4c0000, 0x4fffff};
+const AddrRange kPeSharedMemoryMemMap = {0x500000, 0x6fffff};
+
+// System Registers Map
+const AddrRange kSystemNwDdr0RegMap = {0x0, 0x3fffff};
+const AddrRange kSystemNwDdr1RegMap = {0x400000, 0x7fffff};
+const AddrRange kSystemNwDdr2RegMap = {0x800000, 0xbfffff};
+const AddrRange kSystemNeDdr0RegMap = {0xc00000, 0xffffff};
+const AddrRange kSystemNeDdr1RegMap = {0x1000000, 0x13fffff};
+const AddrRange kSystemNeDdr2RegMap = {0x1400000, 0x17fffff};
+const AddrRange kSystemSwDdr0RegMap = {0x1800000, 0x1bfffff};
+const AddrRange kSystemSwDdr1RegMap = {0x1c00000, 0x1ffffff};
+const AddrRange kSystemSwDdr2RegMap = {0x2000000, 0x23fffff};
+const AddrRange kSystemSeDdr0RegMap = {0x2400000, 0x27fffff};
+const AddrRange kSystemSeDdr1RegMap = {0x2800000, 0x2bfffff};
+const AddrRange kSystemSeDdr2RegMap = {0x2c00000, 0x2ffffff};
+const AddrRange kSystemPcie0RegMap = {0x3000000, 0x33fffff};
+const AddrRange kSystemPcie1RegMap = {0x3400000, 0x37fffff};
+const AddrRange kSystemPcie2RegMap = {0x3800000, 0x3bfffff};
+const AddrRange kSystemPcie3RegMap = {0x3c00000, 0x3ffffff};
+const AddrRange kSystemCore0RegMap = {0x4000000, 0x43fffff};
+const AddrRange kSystemCore1RegMap = {0x4400000, 0x47fffff};
+const AddrRange kSystemCore2RegMap = {0x4800000, 0x4bfffff};
+const AddrRange kSystemCore3RegMap = {0x4c00000, 0x4ffffff};
+const AddrRange kSystemNorthPeripheralIoRegMap = {0x5000000, 0x53fffff};
+const AddrRange kSystemSouthPeripheralIoRegMap = {0x5400000, 0x57fffff};
+const AddrRange kSystemRingNocApbRegMap = {0x5800000, 0x5bfffff};
+const AddrRange kSystem2dMeshNocApbRegMap = {0x5c00000, 0x5ffffff};
+const AddrRange kSystemNocServiceNetworkRegMap = {0x6000000, 0x63fffff};
+const AddrRange kSystemClockGeneratorRegMap = {0x6400000, 0x67fffff};
+const AddrRange kSystemTemperatureSensorRegMap = {0x6800000, 0x6bfffff};
+const AddrRange kSystemEfuseRegMap = {0x6c00000, 0x6ffffff};
+const AddrRange kSystemTopControlRegMap = {0x7000000, 0x73fffff};
+
+// Core Registers Map
+const AddrRange kCoreCoreControlRegMap = {0x0, 0xfff};
+const AddrRange kCoreDdma0RegMap = {0x1000, 0x1fff};
+const AddrRange kCoreDdma1RegMap = {0x2000, 0x2fff};
+const AddrRange kCoreDdma2RegMap = {0x3000, 0x3fff};
+const AddrRange kCoreDdma3RegMap = {0x4000, 0x4fff};
+const AddrRange kCoreCdmaRegMap = {0x5000, 0x5fff};
+const AddrRange kCoreCoreRvvMailboxRegMap = {0x40000, 0x40fff};
+const AddrRange kCorePe0RegMap = {0x800000, 0x87ffff};
+const AddrRange kCorePe1RegMap = {0x880000, 0x8fffff};
+const AddrRange kCorePe2RegMap = {0x900000, 0x97ffff};
+const AddrRange kCorePe3RegMap = {0x980000, 0x9fffff};
+const AddrRange kCorePe4RegMap = {0xa00000, 0xa7ffff};
+const AddrRange kCorePe5RegMap = {0xa80000, 0xafffff};
+const AddrRange kCorePe6RegMap = {0xb00000, 0xb7ffff};
+const AddrRange kCorePe7RegMap = {0xb80000, 0xbfffff};
+const AddrRange kCorePe8RegMap = {0xc00000, 0xc7ffff};
+const AddrRange kCorePe9RegMap = {0xc80000, 0xcfffff};
+const AddrRange kCorePe10RegMap = {0xd00000, 0xd7ffff};
+const AddrRange kCorePe11RegMap = {0xd80000, 0xdfffff};
+const AddrRange kCorePe12RegMap = {0xe00000, 0xe7ffff};
+const AddrRange kCorePe13RegMap = {0xe80000, 0xefffff};
+const AddrRange kCorePe14RegMap = {0xf00000, 0xf7ffff};
+const AddrRange kCorePe15RegMap = {0xf80000, 0xffffff};
+
+// Pe Registers Map
+const AddrRange kPePeRegMap = {0x0, 0xfff};
+const AddrRange kPeRvvRegMap = {0x1000, 0x1fff};
+const AddrRange kPeIduRegMap = {0x2000, 0x2fff};
+const AddrRange kPeIcuRegMap = {0x3000, 0x3fff};
+const AddrRange kPeExceptionRegMap = {0x4000, 0x4fff};
+const AddrRange kPeDebugRegMap = {0x5000, 0x5fff};
+const AddrRange kPeSpuRegMap = {0x6000, 0x6fff};
+const AddrRange kPeVpuRegMap = {0x7000, 0x7fff};
+const AddrRange kPeAeRegMap = {0x8000, 0x8fff};
+const AddrRange kPeTeRegMap = {0x9000, 0x9fff};
+const AddrRange kPeSeRegMap = {0xa000, 0xafff};
+const AddrRange kPeDmaCtrl0RegMap = {0xb000, 0xbfff};
+const AddrRange kPeDmaCtrl1RegMap = {0xc000, 0xcfff};
+const AddrRange kPeDmaCtrl2RegMap = {0xd000, 0xdfff};
+const AddrRange kPeDmaCtrl3RegMap = {0xe000, 0xefff};
+const AddrRange kPeDmaCtrl4RegMap = {0xf000, 0xffff};
+const AddrRange kPeDmaCtrl5RegMap = {0x10000, 0x10fff};
+const AddrRange kPeWdmaRegMap = {0x11000, 0x11fff};
+const AddrRange kPeSmRegMap = {0x12000, 0x12fff};
+const AddrRange kPeRvvMailboxRegMap = {0x40000, 0x40fff};
+
+// Top RV Address Map
+const AddrRange kTopRvDebugModuleAddrMap = {0x0, 0xfff};
+const AddrRange kTopRvErrorDeviceAddrMap = {0x3000, 0x3fff};
+const AddrRange kTopRvTestStatusRegisterAddrMap = {0x4000, 0x4fff};
+const AddrRange kTopRvBusErrorUnitAddrMap = {0x1700000, 0x1700fff};
+const AddrRange kTopRvClintAddrMap = {0x2000000, 0x200ffff};
+const AddrRange kTopRvComposableCacheControlAddrMap = {0x2010000, 0x2013fff};
+const AddrRange kTopRvPrefetcherHardwareAddrMap = {0x2030000, 0x2037fff};
+const AddrRange kTopRvSubsystemPowerManagementControllerWithinCpuAddrMap = {0x3100000, 0x3100fff};
+const AddrRange kTopRvTilePowerManagementControllerWithCpuAddrMap = {0x3101000, 0x3101fff};
+const AddrRange kTopRvL3CacheAddrMap = {0x8000000, 0x81fffff};
+const AddrRange kTopRvZeroDeviceAddrMap = {0xa000000, 0xa1fffff};
+const AddrRange kTopRvPlatformlevelInterruptControllerPlicAddrMap = {0xc000000, 0xfffffff};
+const AddrRange kTopRvNexusTraceEncoderTeAddrMap = {0x10000000, 0x10000fff};
+const AddrRange kTopRvFrontPortBurstBundlerAddrMap = {0x10010000, 0x10010fff};
+const AddrRange kTopRvSystemPort0BurstBundlerAddrMap = {0x10020000, 0x10020fff};
+const AddrRange kTopRvFrontPortOrderObliteratorAddrMap = {0x10030000, 0x10033fff};
+const AddrRange kTopRvPl2ControlAddrMap = {0x10200000, 0x10203fff};
+const AddrRange kTopRvPeripheralPortAddrMap = {0x20000000, 0x3fffffff};
+const AddrRange kTopRvSystemPort0AddrMap = {0x100000000, 0x1ffffffff};
+const AddrRange kTopRvMemoryPortAddrMap = {0x200000000, 0x11ffffffff};
+
+// Core RV Address Map
+const AddrRange kCoreRvDebugModuleAddrMap = {0x0, 0xfff};
+const AddrRange kCoreRvErrorDeviceAddrMap = {0x3000, 0x3fff};
+const AddrRange kCoreRvTestStatusRegisterAddrMap = {0x4000, 0x4fff};
+const AddrRange kCoreRvBusErrorUnitAddrMap = {0x1700000, 0x1700fff};
+const AddrRange kCoreRvClintAddrMap = {0x2000000, 0x200ffff};
+const AddrRange kCoreRvComposableCacheControlAddrMap = {0x2010000, 0x2013fff};
+const AddrRange kCoreRvPrefetcherHardwareAddrMap = {0x2030000, 0x2037fff};
+const AddrRange kCoreRvSubsystemPowerManagementControllerWithinCpuAddrMap = {0x3100000, 0x3100fff};
+const AddrRange kCoreRvTilePowerManagementControllerWithCpuAddrMap = {0x3101000, 0x3104fff};
+const AddrRange kCoreRvL3CacheAddrMap = {0x8000000, 0x83fffff};
+const AddrRange kCoreRvZeroDeviceAddrMap = {0xa000000, 0xa3fffff};
+const AddrRange kCoreRvPlatformlevelInterruptControllerPlicAddrMap = {0xc000000, 0xfffffff};
+const AddrRange kCoreRvNexusTraceEncoderTeAddrMap = {0x10000000, 0x10003fff};
+const AddrRange kCoreRvFrontPortBurstBundlerAddrMap = {0x10010000, 0x10010fff};
+const AddrRange kCoreRvSystemPort0BurstBundlerAddrMap = {0x10020000, 0x10020fff};
+const AddrRange kCoreRvFrontPortOrderObliteratorAddrMap = {0x10030000, 0x10033fff};
+const AddrRange kCoreRvSubsystemCoherentSbusAddrMap = {0x10070000, 0x10070fff};
+const AddrRange kCoreRvPl2ControlAddrMap = {0x10200000, 0x1020ffff};
+const AddrRange kCoreRvPeripheralPortAddrMap = {0x20000000, 0x3fffffff};
+const AddrRange kCoreRvSystemPort0AddrMap = {0x40000000, 0x5fffffff};
+const AddrRange kCoreRvMemoryPortAddrMap = {0x80000000, 0x607fffffff};
+
+// Pe RV Address Map
+const AddrRange kPeRvDebugModuleAddrMap = {0x0, 0xfff};
+const AddrRange kPeRvErrorDeviceAddrMap = {0x3000, 0x3fff};
+const AddrRange kPeRvTestStatusRegisterAddrMap = {0x4000, 0x4fff};
+const AddrRange kPeRvBusErrorUnitAddrMap = {0x1700000, 0x1700fff};
+const AddrRange kPeRvClintAddrMap = {0x2000000, 0x200ffff};
+const AddrRange kPeRvSubsystemPowerManagementControllerWithinCpuAddrMap = {0x3100000, 0x3100fff};
+const AddrRange kPeRvTilePowerManagementControllerWithCpuAddrMap = {0x3101000, 0x3101fff};
+const AddrRange kPeRvPlatformlevelInterruptControllerPlicAddrMap = {0xc000000, 0xfffffff};
+const AddrRange kPeRvNexusTraceEncoderTeAddrMap = {0x10000000, 0x10000fff};
+const AddrRange kPeRvFrontPortBurstBundlerAddrMap = {0x10010000, 0x10010fff};
+const AddrRange kPeRvSystemPortBurstBundlerAddrMap = {0x10020000, 0x10020fff};
+const AddrRange kPeRvFrontPortOrderObliteratorAddrMap = {0x10030000, 0x10033fff};
+const AddrRange kPeRvPl2ControlAddrMap = {0x10200000, 0x10203fff};
+const AddrRange kPeRvPeripheralPortAddrMap = {0x20000000, 0x3fffffff};
+const AddrRange kPeRvSystemPort0AddrMap = {0x40000000, 0x5fffffff};
+const AddrRange kPeRvDataLocalStoreTodoAddrMap = {0x70000000, 0x7003ffff};
+const AddrRange kPeRvMemoryPortAddrMap = {0x80000000, 0x8000ffff};
+const AddrRange kPeRvPeCsrAddrMap = {0xa0000000, 0xa007ffff};
+const AddrRange kPeRvTcmAddrMap = {0xa00c0000, 0xa00fffff};
+const AddrRange kPeRvSharedMemoryAddrMap = {0xa0100000, 0xa02fffff};
 
 // The following indices are for SET instruction of SPU.
 enum class SpuSetIndexMap {
