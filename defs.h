@@ -91,11 +91,19 @@ struct TensorDesc {
 struct TensorShape {
   TensorShape() {}
   TensorShape(int64_t n, int64_t h, int64_t w, int64_t c):
-    N(n), H(h), W(w), C(c) {}
+    N(n), H(h), W(w), C(c) {
+      split_channel = false;
+    }
+  TensorShape(int64_t n, int64_t h, int64_t w, int64_t c, int64_t g):
+    N(n), H(h), W(w), C(c), G(g) {
+      split_channel = true;
+    }
   int64_t N;
   int64_t H;
   int64_t W;
   int64_t C;
+  int64_t G;
+  bool split_channel;
   std::vector<int64_t> dims;
 };
 
