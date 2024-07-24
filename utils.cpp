@@ -43,7 +43,7 @@ std::vector<uint8_t> bin32ToBin8(const std::vector<uint32_t> &bin32) {
 }
 
 uint32_t getTensorSize(const TensorShape &tsr) {
-  uint32_t tsrSize = tsr.N * tsr.H * tsr.W * tsr.C * (tsr.split_channel? tsr.G : 1);
+  uint32_t tsrSize = tsr.N * tsr.H * tsr.W * tsr.C * tsr.G;
   if(tsr.dims.size() > 0) {
     tsrSize = 1;
     for(auto &it : tsr.dims) {
