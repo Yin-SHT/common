@@ -47,18 +47,15 @@ std::vector<uint64_t> bin8ToBin64(const std::vector<uint8_t> &bin8);
 std::vector<uint8_t> bin64ToBin8(const std::vector<uint64_t> &bin64);
 std::vector<uint32_t> bin8ToBin32(const std::vector<uint8_t> &bin8);
 std::vector<uint8_t> bin32ToBin8(const std::vector<uint32_t> &bin32);
-uint32_t getTensorSize(const TensorShape &tsr);
 bool jsonExists(const nlohmann::json &node, const std::vector<std::string> &names);
 void split(const std::string &text, std::vector<std::string> &v);
-
-int GetRegionMode();
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-DLL_PUBLIC int GetHwVersion();
-DLL_PUBLIC void SetHwVersion(int ver);
+DLL_PUBLIC int getHwVersion();
+DLL_PUBLIC void setHwVersion(int ver);
 
 #ifdef __cplusplus
 }
@@ -74,9 +71,8 @@ protected:
     signal(SIGABRT, &abortHandler);
     signal(SIGSEGV, &abortHandler);
 
-    if (moreInitFunc) {
+    if (moreInitFunc)
       moreInitFunc();
-    }
   }
 
   static void abortHandler(int signal_number) {

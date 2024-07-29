@@ -89,7 +89,7 @@ struct TensorDesc {
 };
 
 struct TensorShape {
-  TensorShape() {}
+  TensorShape() : TensorShape(0, 0, 0, 0, 0) {}
   TensorShape(int64_t n, int64_t h, int64_t w, int64_t c, int64_t g):
     N(n), H(h), W(w), C(c), G(g) {}
   int64_t N;
@@ -182,10 +182,9 @@ const std::map<DataType, float> dTypeWidthMapping = {
 };
 
 inline std::string dataTypeToString(DataType dtype) {
-  for(auto &it : dTypeMapping) {
+  for(auto &it : dTypeMapping)
     if(it.second == dtype)
       return it.first;
-  }
   return "int8";
 }
 
@@ -193,7 +192,7 @@ inline std::string dataTypeToString(DataType dtype) {
 extern "C"{
 #endif
 
-extern DLL_PUBLIC int GetHwVersion();
+extern DLL_PUBLIC int getHwVersion();
 
 #ifdef __cplusplus
 }

@@ -32,15 +32,15 @@ static unsigned int fadd (unsigned int a, unsigned int b) {
     //v1: +0 + -0 = -0
     //v1_5: +0 + -0 = +0
     if (a==0){
-        if(GetHwVersion() == HW_VER1) return b;
-        if(GetHwVersion() == HW_VER1_5 || GetHwVersion() == HW_VER2_0){
+        if(getHwVersion() == HW_VER1) return b;
+        if(getHwVersion() == HW_VER1_5 || getHwVersion() == HW_VER2_0){
             if((b & 0xffffff) == 0x800000) return 0;
             else return b;
         }
     }
     if (b==0){
-        if(GetHwVersion() == HW_VER1) return a;
-        if(GetHwVersion() == HW_VER1_5 || GetHwVersion() == HW_VER2_0){
+        if(getHwVersion() == HW_VER1) return a;
+        if(getHwVersion() == HW_VER1_5 || getHwVersion() == HW_VER2_0){
             if((a & 0xffffff) == 0x800000) return 0;
             else return a;
         }
