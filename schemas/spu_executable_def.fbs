@@ -95,6 +95,8 @@ table OpLocDef {
   data_location:DataLocDef;
   // Evaluated number of cycles.
   cycles:int64;
+  // The location of swap.
+  swap_location:DataLocDef;
 }
 
 // Defines a argument to maintain its traits and storage address during runtime.
@@ -109,6 +111,11 @@ table ArgumentDef {
 // Defines constant data.
 table ConstantsDef {
   data:FuncDataPointerDef;
+}
+
+// Defines swap space.
+table SwapDef {
+  length:int32;
 }
 
 // Defines engine CMDs, here engine excludes DMA.
@@ -191,6 +198,9 @@ table CoreDef {
   // It indicates the range of current Core of datas 
   // that including CMDs and constants in `func_datas`.
   data:FuncDataPointerDef;
+
+  // Data swap between Inout and SM.
+  swap:SwapDef;
 }
 
 // Each executable function would include up to 64 PEs.
