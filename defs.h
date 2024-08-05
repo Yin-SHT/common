@@ -71,6 +71,7 @@ enum DataType {
   DTYPE_INT4,
   DTYPE_INT2,
   DTYPE_FP4,
+  DTYPE_INT1,
 };
 
 enum HwVersion {
@@ -110,6 +111,8 @@ struct TensorShapeDesc {
 };
 
 const std::map<std::string, DataType> dTypeMapping = {
+  { "i1",         DTYPE_INT1   },
+  { "int1",       DTYPE_INT1   },
   { "i2",         DTYPE_INT2   },
   { "int2",       DTYPE_INT2   },
   { "i4",         DTYPE_INT4   },
@@ -179,6 +182,8 @@ const std::map<DataType, float> dTypeWidthMapping = {
   { DTYPE_FP16,   2 },
   { DTYPE_INT4,   0.5 },
   { DTYPE_FP4,    0.5 },
+  { DTYPE_INT2,   0.25 },
+  { DTYPE_INT1,   0.125 },
 };
 
 inline std::string dataTypeToString(DataType dtype) {
