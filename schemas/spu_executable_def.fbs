@@ -139,10 +139,29 @@ table DmaCmdsDef {
 }
 
 // Defines a segment that is used to save DMA bandwidth when
-// PE does not need accessing full argument.
-table ArgumentSegmentDef {
-  offset:int32;
+// Core does not need accessing full argument.
+table SegmentDef {
+  src_offset:int32;
+  dst_offset:int32;
   length:int32;
+}
+
+// Aggregate all segments of the argument.
+table ArgumentSegmentDef {
+  // The index in args.
+  arg_index:int32;
+
+  // The minimum size that current Core needs to allocate.
+  alloc_size:int32;
+
+  // Whether to compress Core allocation space.
+  compress:bool;
+
+  // Input segments
+  in_segments:[SegmentDef];
+
+  // Output segments
+  out_segments:[SegmentDef];
 }
 
 // Defines a argument reference, in which 'dma_location' is used to trace
@@ -154,12 +173,6 @@ table ArgumentRefDef {
 
   // DMA CMDs location associate with argument.
   dma_locations:[CmdsLocDef];
-
-  // Input segments
-  in_segments:[ArgumentSegmentDef];
-
-  // Output segments
-  out_segments:[ArgumentSegmentDef];
 }
 
 table PeDef {
@@ -201,6 +214,9 @@ table CoreDef {
 
   // Data swap between Inout and SM.
   swap:SwapDef;
+
+  // Argument segments for current Core.
+  arg_segs:[ArgumentSegmentDef];
 }
 
 // Each executable function would include up to 64 PEs.
