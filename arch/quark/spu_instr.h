@@ -50,7 +50,7 @@ public:
     TR = 6,
     ACT = 7,
     SRT = 8,
-    CMP = 23,
+    CMP = 26,
     TPK = 9,
     PCK = 10,
     CPY = 11,
@@ -65,6 +65,9 @@ public:
     AAI = 20,
     AAIP = 21,
     DCFG = 22,
+    SMX = 23,
+    GAT = 24,
+    SCT = 25,
     END = 63,
     INVALID = 255
   };
@@ -95,6 +98,9 @@ public:
       {OpCodeType::AAI,  "aai"},
       {OpCodeType::AAIP, "aaip"},
       {OpCodeType::DCFG, "dcfg"},
+      {OpCodeType::SMX,  "smx"},
+      {OpCodeType::GAT,  "gat"},
+      {OpCodeType::SCT,  "sct"},
       {OpCodeType::END,  "end"},
     };
     return opCodeStrMap;
@@ -310,12 +316,14 @@ public:
 class GemmInstr : public SpuInstr {
 public:
   explicit GemmInstr() : SpuInstr(OpCodeType::GEMM) {
+    QUARK_PUSH_GETTER_SETTER(Scaling);
     QUARK_PUSH_GETTER_SETTER(AccSwitch);
     QUARK_PUSH_GETTER_SETTER(IDtype);
     QUARK_PUSH_GETTER_SETTER(WDtype);
     QUARK_PUSH_GETTER_SETTER(Nnzc);
     QUARK_PUSH_GETTER_SETTER(Nnzk);
   }
+  QUARK_GEN_GETTER_SETTER(Scaling, 11, 11);
   QUARK_GEN_GETTER_SETTER(AccSwitch, 10, 10);
   QUARK_GEN_GETTER_SETTER(IDtype, 9, 7);
   QUARK_GEN_GETTER_SETTER(WDtype, 6, 4);
@@ -433,32 +441,30 @@ public:
     QUARK_PUSH_GETTER_SETTER(SurIdx);
     QUARK_PUSH_GETTER_SETTER(LineIdx);
     QUARK_PUSH_GETTER_SETTER(LenIdx);
-    QUARK_PUSH_GETTER_SETTER(Direction);
+    QUARK_PUSH_GETTER_SETTER(LowPrecision);
     QUARK_PUSH_GETTER_SETTER(SrcDynamic);
     QUARK_PUSH_GETTER_SETTER(DstDynamic);
     QUARK_PUSH_GETTER_SETTER(Bank);
     QUARK_PUSH_GETTER_SETTER(Dtype);
-    QUARK_PUSH_GETTER_SETTER(Extend);
-    QUARK_PUSH_GETTER_SETTER(Squeeze);
+    QUARK_PUSH_GETTER_SETTER(ExtendSqueeze);
     QUARK_PUSH_GETTER_SETTER(ValidLen);
     QUARK_PUSH_GETTER_SETTER(FormatConvert);
     QUARK_PUSH_GETTER_SETTER(RConvertStride);
-    QUARK_PUSH_GETTER_SETTER(NocPath);
+    QUARK_PUSH_GETTER_SETTER(Direction);
   }
   QUARK_GEN_GETTER_SETTER(SurIdx, 25, 23);
   QUARK_GEN_GETTER_SETTER(LineIdx, 22, 20);
   QUARK_GEN_GETTER_SETTER(LenIdx, 19, 19);
-  QUARK_GEN_GETTER_SETTER(Direction, 16, 16);
-  QUARK_GEN_GETTER_SETTER(SrcDynamic, 15, 15);
-  QUARK_GEN_GETTER_SETTER(DstDynamic, 14, 14);
-  QUARK_GEN_GETTER_SETTER(Bank, 13, 12);
-  QUARK_GEN_GETTER_SETTER(Dtype, 11, 9);
-  QUARK_GEN_GETTER_SETTER(Extend, 8, 8);
-  QUARK_GEN_GETTER_SETTER(Squeeze, 7, 7);
+  QUARK_GEN_GETTER_SETTER(LowPrecision, 18, 15);
+  QUARK_GEN_GETTER_SETTER(SrcDynamic, 14, 14);
+  QUARK_GEN_GETTER_SETTER(DstDynamic, 13, 13);
+  QUARK_GEN_GETTER_SETTER(Bank, 12, 11);
+  QUARK_GEN_GETTER_SETTER(Dtype, 10, 8);
+  QUARK_GEN_GETTER_SETTER(ExtendSqueeze, 7, 7);
   QUARK_GEN_GETTER_SETTER(ValidLen, 6, 3);
   QUARK_GEN_GETTER_SETTER(FormatConvert, 2, 2);
   QUARK_GEN_GETTER_SETTER(RConvertStride, 1, 1);
-  QUARK_GEN_GETTER_SETTER(NocPath, 0, 0);
+  QUARK_GEN_GETTER_SETTER(Direction, 0, 0);
 };
 
 class SndInstr : public SpuInstr {
@@ -478,9 +484,11 @@ public:
 class RcvInstr : public SpuInstr {
 public:
   explicit RcvInstr() : SpuInstr(OpCodeType::RCV) {
+    QUARK_PUSH_GETTER_SETTER(RLength);
     QUARK_PUSH_GETTER_SETTER(PeId);
   }
-  QUARK_GEN_GETTER_SETTER(PeId, 6, 0);
+  QUARK_GEN_GETTER_SETTER(RLength, 25, 25);
+  QUARK_GEN_GETTER_SETTER(PeId, 5, 0);
 };
 
 class LpsInstr : public SpuInstr {
@@ -571,6 +579,44 @@ public:
   }
 };
 
+class SmxInstr : public SpuInstr {
+public:
+  explicit SmxInstr() : SpuInstr(OpCodeType::SMX) {
+  }
+};
+
+class GatInstr : public SpuInstr {
+public:
+  explicit GatInstr() : SpuInstr(OpCodeType::GAT) {
+    QUARK_PUSH_GETTER_SETTER(Nnz);
+    QUARK_PUSH_GETTER_SETTER(Lpt);
+    QUARK_PUSH_GETTER_SETTER(Bank);
+    QUARK_PUSH_GETTER_SETTER(Dtype);
+    QUARK_PUSH_GETTER_SETTER(Mode);
+  }
+  QUARK_GEN_GETTER_SETTER(Nnz, 9, 8);
+  QUARK_GEN_GETTER_SETTER(Lpt, 7, 6);
+  QUARK_GEN_GETTER_SETTER(Bank, 5, 4);
+  QUARK_GEN_GETTER_SETTER(Dtype, 3, 1);
+  QUARK_GEN_GETTER_SETTER(Mode, 0, 0);
+};
+
+class SctInstr : public SpuInstr {
+public:
+  explicit SctInstr() : SpuInstr(OpCodeType::SCT) {
+    QUARK_PUSH_GETTER_SETTER(Nnz);
+    QUARK_PUSH_GETTER_SETTER(Lpt);
+    QUARK_PUSH_GETTER_SETTER(Bank);
+    QUARK_PUSH_GETTER_SETTER(Dtype);
+    QUARK_PUSH_GETTER_SETTER(Mode);
+  }
+  QUARK_GEN_GETTER_SETTER(Nnz, 9, 8);
+  QUARK_GEN_GETTER_SETTER(Lpt, 7, 6);
+  QUARK_GEN_GETTER_SETTER(Bank, 5, 4);
+  QUARK_GEN_GETTER_SETTER(Dtype, 3, 1);
+  QUARK_GEN_GETTER_SETTER(Mode, 0, 0);
+};
+
 class EndInstr : public SpuInstr {
 public:
   explicit EndInstr() : SpuInstr(OpCodeType::END) {
@@ -606,6 +652,9 @@ std::shared_ptr<SpuInstr> SpuInstr::create(OpCodeType opCode) {
     case OpCodeType::AAI:  return std::shared_ptr<AaiInstr>(new AaiInstr);
     case OpCodeType::AAIP: return std::shared_ptr<AaipInstr>(new AaipInstr);
     case OpCodeType::DCFG: return std::shared_ptr<DcfgInstr>(new DcfgInstr);
+    case OpCodeType::SMX:  return std::shared_ptr<SmxInstr>(new SmxInstr);
+    case OpCodeType::GAT:  return std::shared_ptr<GatInstr>(new GatInstr);
+    case OpCodeType::SCT:  return std::shared_ptr<SctInstr>(new SctInstr);
     case OpCodeType::END:  return std::shared_ptr<EndInstr>(new EndInstr);
     default: return nullptr;
   }
