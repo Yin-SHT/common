@@ -25,7 +25,7 @@
   uint32_t get##field() { return (fields >> low) & (((uint32_t)1<<(high-low+1))-1); }\
   void set##field(uint32_t field) {\
     uint32_t m = (((uint32_t)1<<(high-low+1))-1)<<low;\
-    fields = (fields&(~m)) | (field<<low)&m;\
+    fields = (fields&(~m)) | ((field<<low)&m);\
     VpuInstr::set##field(field); }
 #endif
 
