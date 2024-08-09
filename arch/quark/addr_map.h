@@ -64,6 +64,9 @@ const AddrRange kSystemSeDdrOtherMemMap = {0x7828000000, 0x7dffffffff};
 
 // Core Memory Map
 const AddrRange kCoreVirtualCoreCsrMemMap = {0x0, 0x7ffff};
+const AddrRange kCoreCoreDmac0InstrMemMap = {0x80000, 0x81fff};
+const AddrRange kCoreCoreDmac1InstrMemMap = {0x82000, 0x83fff};
+const AddrRange kCoreCoreDmac2InstrMemMap = {0x84000, 0x85fff};
 const AddrRange kCoreIduL1BroadcastSpaceMemMap = {0xf00000, 0xffffff};
 const AddrRange kCoreIduL2MemMap = {0x1000000, 0x1ffffff};
 const AddrRange kCoreSmBroadcastSpaceRow0MemMap = {0x2000000, 0x21fffff};
@@ -147,6 +150,9 @@ const AddrRange kCoreDdma1RegMap = {0x2000, 0x2fff};
 const AddrRange kCoreDdma2RegMap = {0x3000, 0x3fff};
 const AddrRange kCoreDdma3RegMap = {0x4000, 0x4fff};
 const AddrRange kCoreCdmaRegMap = {0x5000, 0x5fff};
+const AddrRange kCoreCoreDmac0RegMap = {0x6000, 0x6fff};
+const AddrRange kCoreCoreDmac1RegMap = {0x7000, 0x7fff};
+const AddrRange kCoreCoreDmac2RegMap = {0x8000, 0x8fff};
 const AddrRange kCoreCoreRvvMailboxRegMap = {0x40000, 0x40fff};
 const AddrRange kCorePe0RegMap = {0x800000, 0x87ffff};
 const AddrRange kCorePe1RegMap = {0x880000, 0x8fffff};
