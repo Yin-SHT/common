@@ -15,12 +15,15 @@ file_identifier "SPUE";
 file_extension "spue";
 
 // Defines data type of SPU needed.
-enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, INT64, UINT8, UINT16, UINT32, 
-  UINT64, INT24, UINT24, BF24, FP32, FP64, MF16, NF16, NF18, FP8_52, FP8_43, FP16 }
+enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, 
+  INT64, UINT8, UINT16, UINT32, UINT64, INT24, UINT24, 
+  BF24, FP32, FP64, MF16, NF16, NF18, FP8_52, FP8_43, 
+  FP16, INT4, INT2, FP4, INT1 }
 
 // Defines engines of SPU.
-enum EngineType : int32 { SPU = 0, VPU, AE, TE, SE, DMA0, DMA1, DMA2, 
-  DMA3, DMA4, DMA5, INVLIAD = 255 }
+enum EngineType : int32 { SPU = 0, VPU, AE, TE, SE, 
+  DMA0, DMA1, DMA2, DMA3, DMA4, DMA5, PELS_I, PELS_E, 
+  PELS_O, COLS, CODMA0, CODMA1, CODMA2, CHLS, INVLIAD = 255 }
 
 // Defines accessing mode for argument.
 enum AccessMode : int32 { ReadOnly = 0, WriteOnly, ReadWrite }
@@ -205,6 +208,9 @@ table CoreDef {
   // A list of PE to dispath.
   pes:[PeDef];
 
+  // A list of CMDs for each CODMA.
+  codmas_cmds:[DmaCmdsDef];
+
   // It is used by Core-Level Scheduler.
   cols:ColsDef;
 
@@ -217,6 +223,9 @@ table CoreDef {
 
   // Argument segments for current Core.
   arg_segs:[ArgumentSegmentDef];
+
+  // Argument references for current Core.
+  arg_refs:[ArgumentRefDef];
 }
 
 // Each executable function would include up to 64 PEs.

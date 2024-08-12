@@ -621,6 +621,53 @@ enum class DmaSetIndexMap {
   DmacDynDstSegLen = 47,
 };
 
+// The following indices are for SET instruction of CODMA.
+enum class CodmaSetIndexMap {
+  CodmacSrcTsrAddr0 = 0,
+  CodmacSrcTsrAddr1 = 1,
+  CodmacSrcTsrAddr2 = 2,
+  CodmacSrcTsrAddr3 = 3,
+  CodmacSrcTsrAddr4 = 4,
+  CodmacSrcTsrAddr5 = 5,
+  CodmacSrcTsrAddr6 = 6,
+  CodmacSrcTsrAddr7 = 7,
+  CodmacDstTsrAddr0 = 8,
+  CodmacDstTsrAddr1 = 9,
+  CodmacDstTsrAddr2 = 10,
+  CodmacDstTsrAddr3 = 11,
+  CodmacDstTsrAddr4 = 12,
+  CodmacDstTsrAddr5 = 13,
+  CodmacDstTsrAddr6 = 14,
+  CodmacDstTsrAddr7 = 15,
+  CodmacSrcTsrStride0 = 16,
+  CodmacSrcTsrStride1 = 17,
+  CodmacSrcTsrStride2 = 18,
+  CodmacSrcTsrStride3 = 19,
+  CodmacSrcTsrStride4 = 20,
+  CodmacSrcTsrStride5 = 21,
+  CodmacSrcTsrStride6 = 22,
+  CodmacSrcTsrStride7 = 23,
+  CodmacDstTsrStride0 = 24,
+  CodmacDstTsrStride1 = 25,
+  CodmacDstTsrStride2 = 26,
+  CodmacDstTsrStride3 = 27,
+  CodmacDstTsrStride4 = 28,
+  CodmacDstTsrStride5 = 29,
+  CodmacDstTsrStride6 = 30,
+  CodmacDstTsrStride7 = 31,
+  CodmacSrcTsrLength = 32,
+  CodmacDstTsrLength = 33,
+  CodmacLoopCount0 = 34,
+  CodmacLoopCount1 = 35,
+  CodmacLoopCount2 = 36,
+  CodmacLoopCount3 = 37,
+  CodmacLoopCount4 = 38,
+  CodmacLoopCount5 = 39,
+  CodmacLoopCount6 = 40,
+  CodmacLoopCount7 = 41,
+  CodmacConvertStride = 42,
+};
+
 } // namespace quark
 
 #endif // QUARK_ADDR_MAP_H

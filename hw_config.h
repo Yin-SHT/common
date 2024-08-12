@@ -140,11 +140,13 @@ enum class EngineType {
   DMA3,
   DMA4,
   DMA5,
-  SIZE,
   PELS_I,
   PELS_E,
   PELS_O,
   COLS,
+  CODMA0,
+  CODMA1,
+  CODMA2,
   CHLS,
   INVALID = 255,
 };
@@ -177,7 +179,7 @@ const size_t kSizeMemPage = 8192;
 const size_t kNumPe = 16;
 const size_t kSizeDdr = 192UL << 30;
 const size_t kSizeTcm = 256UL << 10;
-const size_t kSizeSharedMem = 1UL << 20;
+const size_t kSizeSharedMem = 2UL << 20;
 const size_t kSizeLlcSpm = 16UL << 20;
 const size_t kSizePerSpuCmd = 4;
 const size_t kSizePerVpuCmd = 4;
@@ -187,15 +189,15 @@ const size_t kSizePerChlsCmd = 4;
 const size_t kIduTransGranularity = 64;
 
 // Sizes of command memmory of each Engine
-const size_t kSizeSpuCmdMem = 2UL << 10;
-const size_t kSizeVpuCmdMem = 4UL << 10;
+const size_t kSizeSpuCmdMem = 8UL << 10;
+const size_t kSizeVpuCmdMem = 32UL << 10;
 const size_t kSizeDmaCmdMem = 2UL << 10;
-const size_t kSizeAeCmdMem = 2UL << 10;
-const size_t kSizeTeCmdMem = 2UL << 10;
-const size_t kSizeSeCmdMem = 2UL << 10;
-const size_t kSizePelsCmdMem = 2UL << 10;
-const size_t kSizeColsCmdMem = 2UL << 10;
-const size_t kSizeChlsCmdMem = 2UL << 10;
+const size_t kSizeAeCmdMem = 8UL << 10;
+const size_t kSizeTeCmdMem = 8UL << 10;
+const size_t kSizeSeCmdMem = 8UL << 10;
+const size_t kSizePelsCmdMem = 4UL << 10;
+const size_t kSizeColsCmdMem = 4UL << 10;
+const size_t kSizeChlsCmdMem = 4UL << 10;
 
 // VPU-Engine inner definitions
 const size_t kNumVpuVectorReg = 4;
