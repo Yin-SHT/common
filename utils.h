@@ -144,6 +144,9 @@ inline std::string getEngineName(EngineType engine) {
     case EngineType::PELS_I:  return "pels-i";
     case EngineType::PELS_E:  return "pels-e";
     case EngineType::PELS_O:  return "pels-o";
+    case EngineType::CODMA0:  return "codma0";
+    case EngineType::CODMA1:  return "codma1";
+    case EngineType::CODMA2:  return "codma2";
     case EngineType::COLS:    return "cols";
     case EngineType::CHLS:    return "chls";
     default:                  return "";
@@ -166,6 +169,9 @@ inline size_t getSizeOfCmdMem(EngineType engineType) {
     case EngineType::PELS_I:  return kSizePelsCmdMem;
     case EngineType::PELS_E:  return kSizePelsCmdMem;
     case EngineType::PELS_O:  return kSizePelsCmdMem;
+    case EngineType::CODMA0:  return kSizeDmaCmdMem;
+    case EngineType::CODMA1:  return kSizeDmaCmdMem;
+    case EngineType::CODMA2:  return kSizeDmaCmdMem;
     case EngineType::COLS:    return kSizeColsCmdMem;
     case EngineType::CHLS:    return kSizeChlsCmdMem;
     default:
