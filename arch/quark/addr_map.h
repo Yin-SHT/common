@@ -619,6 +619,10 @@ enum class DmaSetIndexMap {
   DmacDynIdxLen = 45,
   DmacDynSrcSegLen = 46,
   DmacDynDstSegLen = 47,
+  DmacSrcBaseFifoAddrIdx = 48,
+  DmacDstBaseFifoAddrIdx = 49,
+  DmacSrcBaseFifoAddrPop = 50,
+  DmacDstBaseFifoAddrPop = 51,
 };
 
 // The following indices are for SET instruction of CODMA.
@@ -666,6 +670,10 @@ enum class CodmaSetIndexMap {
   CodmacLoopCount6 = 40,
   CodmacLoopCount7 = 41,
   CodmacConvertStride = 42,
+  CodmacSrcBaseFifoAddrIdx = 43,
+  CodmacDstBaseFifoAddrIdx = 44,
+  CodmacSrcBaseFifoAddrPop = 45,
+  CodmacDstBaseFifoAddrPop = 46,
 };
 
 } // namespace quark
