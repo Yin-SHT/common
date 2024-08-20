@@ -182,9 +182,6 @@ table PeDef {
   // Specified pe_id to execute, can be executed on any PE if it's -1.
   pe_id:int32;
 
-  // All of constant datas
-  constants:ConstantsDef;
-
   // A list of CMDs for each engine that exclude DMAs.
   engines_cmds:[EngineCmdsDef];
 
@@ -217,6 +214,9 @@ table CoreDef {
   // It indicates the range of current Core of datas 
   // that including CMDs and constants in `func_datas`.
   data:FuncDataPointerDef;
+
+  // All of constant datas
+  constants:ConstantsDef;
 
   // Data swap between Inout and SM.
   swap:SwapDef;
