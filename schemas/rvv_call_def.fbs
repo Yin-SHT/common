@@ -14,7 +14,7 @@ file_identifier "CALL";
 file_extension "call";
 
 enum FuncType : int32 { 
-  ADD = 0, 
+  CALL = 0, 
 }
 
 table FileLineLocDef {
@@ -25,15 +25,23 @@ table FileLineLocDef {
 enum DataType : int32 { INT8 = 0, BF16, INT16, INT32, INT64, UINT8, UINT16, UINT32, 
   UINT64, INT24, UINT24, BF24, FP32, FP64, MF16, NF16, NF18, FP8_52, FP8_43, FP16 }
 
+enum MemoryType : int32 { UNKNOWN = 0, ARG, LLC_SPM, SM, SWAP, CONST }
+
+enum DirectType : int32 { IN = 0, OUT, INOUT }
+
 table TensorDesc {
   dims:[int32];
+  dtype:DataType;
+  mtype:MemoryType;
+  direct:DirectType;
   addr:int64;
 }
 
-table AddDef {
-  in_shapes:[TensorDesc];
-  out_shapes:[TensorDesc];
-  dtype:DataType;
+table CallDef {
+  name:string;
+  args:[TensorDesc];
+  llvm_ir:string;
+  elf:[uint8];
 }
 
 table OpDef {
