@@ -16,17 +16,22 @@
 namespace quark {
 #endif
 
-struct AddrRange {
 #ifdef __cplusplus
+struct AddrRange {
   AddrRange(size_t start, size_t end) :
       start(start), end(end) {}
   bool check(size_t addr) const {
     return (addr >= start && addr <= end);
   }
-#endif
   size_t start;
   size_t end;
 };
+#else
+typedef struct {
+  size_t start;
+  size_t end;
+} AddrRange;
+#endif
 
 // System Memory Map
 const AddrRange kSystemCsrMemMap = {0x100000000, 0x107ffffff};
