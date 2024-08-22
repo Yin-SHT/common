@@ -158,22 +158,22 @@ const AddrRange kCoreCoreDmac0RegMap = {0x6000, 0x6fff};
 const AddrRange kCoreCoreDmac1RegMap = {0x7000, 0x7fff};
 const AddrRange kCoreCoreDmac2RegMap = {0x8000, 0x8fff};
 const AddrRange kCoreCoreRvvMailboxRegMap = {0x40000, 0x40fff};
-const AddrRange kCorePe0RegMap = {0x800000, 0x87ffff};
-const AddrRange kCorePe1RegMap = {0x880000, 0x8fffff};
-const AddrRange kCorePe2RegMap = {0x900000, 0x97ffff};
-const AddrRange kCorePe3RegMap = {0x980000, 0x9fffff};
-const AddrRange kCorePe4RegMap = {0xa00000, 0xa7ffff};
-const AddrRange kCorePe5RegMap = {0xa80000, 0xafffff};
-const AddrRange kCorePe6RegMap = {0xb00000, 0xb7ffff};
-const AddrRange kCorePe7RegMap = {0xb80000, 0xbfffff};
-const AddrRange kCorePe8RegMap = {0xc00000, 0xc7ffff};
-const AddrRange kCorePe9RegMap = {0xc80000, 0xcfffff};
-const AddrRange kCorePe10RegMap = {0xd00000, 0xd7ffff};
-const AddrRange kCorePe11RegMap = {0xd80000, 0xdfffff};
-const AddrRange kCorePe12RegMap = {0xe00000, 0xe7ffff};
-const AddrRange kCorePe13RegMap = {0xe80000, 0xefffff};
-const AddrRange kCorePe14RegMap = {0xf00000, 0xf7ffff};
-const AddrRange kCorePe15RegMap = {0xf80000, 0xffffff};
+const AddrRange kCorePe0RegMap = {0x200000, 0x21ffff};
+const AddrRange kCorePe1RegMap = {0x220000, 0x23ffff};
+const AddrRange kCorePe2RegMap = {0x240000, 0x25ffff};
+const AddrRange kCorePe3RegMap = {0x260000, 0x27ffff};
+const AddrRange kCorePe4RegMap = {0x280000, 0x29ffff};
+const AddrRange kCorePe5RegMap = {0x2a0000, 0x2bffff};
+const AddrRange kCorePe6RegMap = {0x2c0000, 0x2dffff};
+const AddrRange kCorePe7RegMap = {0x2e0000, 0x2fffff};
+const AddrRange kCorePe8RegMap = {0x300000, 0x31ffff};
+const AddrRange kCorePe9RegMap = {0x320000, 0x33ffff};
+const AddrRange kCorePe10RegMap = {0x340000, 0x35ffff};
+const AddrRange kCorePe11RegMap = {0x360000, 0x37ffff};
+const AddrRange kCorePe12RegMap = {0x380000, 0x39ffff};
+const AddrRange kCorePe13RegMap = {0x3a0000, 0x3bffff};
+const AddrRange kCorePe14RegMap = {0x3c0000, 0x3dffff};
+const AddrRange kCorePe15RegMap = {0x3e0000, 0x3fffff};
 
 // Pe Registers Map
 const AddrRange kPePeRegMap = {0x0, 0xfff};
@@ -195,7 +195,7 @@ const AddrRange kPeDmaCtrl4RegMap = {0xf000, 0xffff};
 const AddrRange kPeDmaCtrl5RegMap = {0x10000, 0x10fff};
 const AddrRange kPeWdmaRegMap = {0x11000, 0x11fff};
 const AddrRange kPeSmRegMap = {0x12000, 0x12fff};
-const AddrRange kPeRvvMailboxRegMap = {0x40000, 0x40fff};
+const AddrRange kPeRvvMailboxRegMap = {0x1c000, 0x1cfff};
 
 // Top RV Address Map
 const AddrRange kTopRvDebugModuleAddrMap = {0x0, 0xfff};
@@ -717,7 +717,7 @@ enum PeRegisterDef {
   PE_EN_CTRL1 = 4,
   PE_EN_CTRL2 = 8,
   PE_EN_CTRL3 = 12,
-  PE_EN_CTRL4 = 32,
+  PE_EN_CTRL4 = 16,
   PE_DONE_INT_ST0 = 48,
   PE_DONE_INT_ST1 = 52,
   PE_DONE_INT_ST2 = 56,
