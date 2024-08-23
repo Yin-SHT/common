@@ -23,7 +23,7 @@ enum DataType : int32 { INT8 = 0, BF16, INT16, INT32,
 // Defines engines of SPU.
 enum EngineType : int32 { SPU = 0, VPU, AE, TE, SE, 
   DMA0, DMA1, DMA2, DMA3, DMA4, DMA5, PELS_I, PELS_E, 
-  PELS_O, COLS, CODMA0, CODMA1, CODMA2, CHLS, INVLIAD = 255 }
+  PELS_O, COLS, CODMA0, CODMA1, CODMA2, CHLS, CALL, INVLIAD = 255 }
 
 // Defines accessing mode for argument.
 enum AccessMode : int32 { ReadOnly = 0, WriteOnly, ReadWrite }

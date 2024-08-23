@@ -148,6 +148,7 @@ enum class EngineType {
   CODMA1,
   CODMA2,
   CHLS,
+  CALL,
   INVALID = 255,
 };
 
