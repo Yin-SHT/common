@@ -35,6 +35,7 @@ table TensorDesc {
   mtype:MemoryType;
   direct:DirectType;
   addr:int64;
+  size:int64;
 }
 
 table CallDef {
