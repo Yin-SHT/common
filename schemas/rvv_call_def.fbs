@@ -14,7 +14,8 @@ file_identifier "CALL";
 file_extension "call";
 
 enum FuncType : int32 { 
-  CALL = 0, 
+  CALL = 0,
+  SET_REG, 
 }
 
 table FileLineLocDef {
@@ -41,6 +42,19 @@ table TensorDesc {
 table CallDef {
   name:string;
   args:[TensorDesc];
+  llvm_ir:string;
+  elf:[uint8];
+}
+
+table RegDesc {
+  addr:int64;
+  low_bit:int32;
+  high_bit:int32;
+}
+
+table SetRegDef {
+  name:string;
+  regs:[RegDesc];
   llvm_ir:string;
   elf:[uint8];
 }
