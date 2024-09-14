@@ -38,6 +38,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <signal.h>
+#include <optional>
 
 #include "json.h"
 #include "defs.h"
