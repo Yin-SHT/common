@@ -161,11 +161,9 @@ table ArgumentSegmentDef {
   // Whether to compress Core allocation space.
   compress:bool;
 
-  // Input segments
-  in_segments:[SegmentDef];
+  slice_begin:[int32];
 
-  // Output segments
-  out_segments:[SegmentDef];
+  slice_end:[int32];
 }
 
 // Defines a argument reference, in which 'dma_location' is used to trace

@@ -80,15 +80,6 @@ enum HwVersion {
   HW_VER2_0
 };
 
-struct TensorDesc {
-  uint32_t lineLength;
-  uint32_t lineNumber;
-  uint32_t lineStride;
-  uint32_t surfaceNumber;
-  uint32_t surfaceStride;
-  uint64_t address;
-};
-
 struct TensorShape {
   TensorShape() : TensorShape(0, 0, 0, 0, 0) {}
   TensorShape(int64_t n, int64_t h, int64_t w, int64_t c, int64_t g):
