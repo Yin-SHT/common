@@ -97,35 +97,53 @@ public:
 
 namespace quark {
 
-inline std::string getDdrName(std::string prefix="") {
+inline std::string getDdrName(size_t chipId, std::string prefix="") {
   std::stringstream ss;
   if (!prefix.empty())
     ss << prefix << "_";
   ss << "ddr";
+  if (chipId != size_t(-1))
+    ss << "_chip" << chipId;
   return ss.str();
 }
 
-inline std::string getLlcSpmName(size_t coreId, std::string prefix="") {
+inline std::string getLlcSpmName(size_t chipId, size_t coreId, std::string prefix="") {
   std::stringstream ss;
   if (!prefix.empty())
     ss << prefix << "_";
-  ss << "llc_core" << coreId;
+  ss << "llc";
+  if (chipId != size_t(-1))
+    ss << "_chip" << chipId;
+  if (coreId != size_t(-1))
+    ss << "_core" << coreId;
   return ss.str();
 }
 
-inline std::string getSharedMemoryName(size_t coreId, size_t peId, std::string prefix="") {
+inline std::string getSharedMemoryName(size_t chipId, size_t coreId, size_t peId, std::string prefix="") {
   std::stringstream ss;
   if (!prefix.empty())
     ss << prefix << "_";
-  ss << "sm_core" << coreId << "_" << "pe" << peId;
+  ss << "sm";
+  if (chipId != size_t(-1))
+    ss << "_chip" << chipId;
+  if (coreId != size_t(-1))
+    ss << "_core" << coreId;
+  if (peId != size_t(-1))
+    ss << "_pe" << peId;
   return ss.str();
 }
 
-inline std::string getTcmName(size_t coreId, size_t peId, std::string prefix="") {
+inline std::string getTcmName(size_t chipId, size_t coreId, size_t peId, std::string prefix="") {
   std::stringstream ss;
   if (!prefix.empty())
     ss << prefix << "_";
-  ss << "tcm_core" << coreId << "_" << "pe" << peId;
+  ss << "tcm";
+  if (chipId != size_t(-1))
+    ss << "_chip" << chipId;
+  if (coreId != size_t(-1))
+    ss << "_core" << coreId;
+  if (peId != size_t(-1))
+    ss << "_pe" << peId;
   return ss.str();
 }
 
@@ -180,15 +198,20 @@ inline size_t getSizeOfCmdMem(EngineType engineType) {
   }
 }
 
-inline std::string getCmdMemoryName(size_t coreId, size_t peId, EngineType engine) {
+inline std::string getCmdMemoryName(size_t chipId, size_t coreId, size_t peId, EngineType engine) {
   std::stringstream ss;
-  ss << "core" << coreId << "." << "pe" << peId << "." 
-    << getEngineName(engine) << "." << "cmd";
+  ss << "chip" << chipId;
+  ss << ".core" << coreId;
+  ss << ".pe" << peId;
+  ss << "." << getEngineName(engine);
+  ss << ".cmd";
   return ss.str();
 }
 
-inline std::string getReadFifoName(size_t coreId=-1, size_t peId=-1) {
+inline std::string getReadFifoName(size_t chipId=-1, size_t coreId=-1, size_t peId=-1) {
   std::stringstream ss;
+  if (chipId != size_t(-1))
+    ss << "chip" << chipId << ".";
   if (coreId != size_t(-1))
     ss << "core" << coreId << ".";
   if (peId != size_t(-1))
@@ -197,8 +220,10 @@ inline std::string getReadFifoName(size_t coreId=-1, size_t peId=-1) {
   return ss.str();
 }
 
-inline std::string getWriteFifoName(size_t coreId=-1, size_t peId=-1) {
+inline std::string getWriteFifoName(size_t chipId=-1, size_t coreId=-1, size_t peId=-1) {
   std::stringstream ss;
+  if (chipId != size_t(-1))
+    ss << "chip" << chipId << ".";
   if (coreId != size_t(-1))
     ss << "core" << coreId << ".";
   if (peId != size_t(-1))
@@ -207,8 +232,10 @@ inline std::string getWriteFifoName(size_t coreId=-1, size_t peId=-1) {
   return ss.str();
 }
 
-inline std::string getIrqFifoName(size_t coreId=-1, size_t peId=-1) {
+inline std::string getIrqFifoName(size_t chipId=-1, size_t coreId=-1, size_t peId=-1) {
   std::stringstream ss;
+  if (chipId != size_t(-1))
+    ss << "chip" << chipId << ".";
   if (coreId != size_t(-1))
     ss << "core" << coreId << ".";
   if (peId != size_t(-1))
