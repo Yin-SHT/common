@@ -18,18 +18,18 @@ namespace quark {
 
 #ifdef __cplusplus
 struct AddrRange {
-  AddrRange(size_t start, size_t end) :
+  AddrRange(uint64_t start, uint64_t end) :
       start(start), end(end) {}
-  bool check(size_t addr) const {
+  bool check(uint64_t addr) const {
     return (addr >= start && addr <= end);
   }
-  size_t start;
-  size_t end;
+  uint64_t start;
+  uint64_t end;
 };
 #else
 typedef struct {
-  size_t start;
-  size_t end;
+  uint64_t start;
+  uint64_t end;
 } AddrRange;
 #endif
 
