@@ -73,7 +73,7 @@ const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { 
                 {"SRC_MI",      SpuSetIndexMap::SpuSrcMiBankStride}
                 }},
     {"CTRL",    {
-                {"LOOP_COUNT",  SpuSetIndexMap::258},
+                {"LOOP_COUNT",  258},
                 }}
 };
 
