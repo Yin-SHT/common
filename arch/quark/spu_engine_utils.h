@@ -2,6 +2,7 @@
 #define __SPU_ENGINE_UTILS_QUARK_H
 
 #include "defs.h"
+#include "addr_map.h"
 
 namespace quark {
 
@@ -25,39 +26,54 @@ namespace quark {
 #define ASIC_SPU_P_PROCS_NUM 8
 #define ASIC_SPU_DEFAULT_BANK_SIZE 64
 #define ASIC_SPU_INSTR_PIPELINE_NUM 5
-#define ASIC_SPU_REG_START_IDX 0
 #define ASIC_SPU_QNT_MODE 0 // 0:K dimension, 1:C*K dimension
 
 const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { // TBD
     {"ADDRESS", {
-                {"SRC_TSR",     ASIC_SPU_REG_START_IDX},
-                {"SRC_WGT",     ASIC_SPU_REG_START_IDX+8},
-                {"SRC_MI",      ASIC_SPU_REG_START_IDX+16},
-                {"SRC_MO",      ASIC_SPU_REG_START_IDX+24},
-                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+32},
-                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+40},
-                {"DST_TSR",     ASIC_SPU_REG_START_IDX+48}
-                }}, // type7 x loop8
+                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrAddr0},
+                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtAddr0},
+                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpAddr0},
+                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiAddr0},
+                {"SRC_MO",      SpuSetIndexMap::SpuSrcMoAddr0},
+                {"SRC_SCALE_0", SpuSetIndexMap::SpuSrcScale0Addr0},
+                {"SRC_SCALE_1", SpuSetIndexMap::SpuSrcScale1Addr0},
+                {"SRC_SCALE_2", SpuSetIndexMap::SpuSrcScale2Addr0},
+                {"SRC_ACC",     SpuSetIndexMap::SpuSrcAccAddr0},
+                {"DST_TSR",     SpuSetIndexMap::SpuDstTsrAddr0}
+                }}, // type10 x loop8
     {"STRIDE",  {
-                {"SRC_TSR",     ASIC_SPU_REG_START_IDX+56},
-                {"SRC_WGT",     ASIC_SPU_REG_START_IDX+64},
-                {"SRC_MI",      ASIC_SPU_REG_START_IDX+72},
-                {"SRC_MO",      ASIC_SPU_REG_START_IDX+80},
-                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+88},
-                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+96},
-                {"DST_TSR",     ASIC_SPU_REG_START_IDX+104}
-                }}, // type7 x loop8
+                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrStride0},
+                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtStride0},
+                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpStride0},
+                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiStride0},
+                {"SRC_MO",      SpuSetIndexMap::SpuSrcMoStride0},
+                {"SRC_SCALE_0", SpuSetIndexMap::SpuSrcScale0Stride0},
+                {"SRC_SCALE_1", SpuSetIndexMap::SpuSrcScale1Stride0},
+                {"SRC_SCALE_2", SpuSetIndexMap::SpuSrcScale2Stride0},
+                {"SRC_ACC",     SpuSetIndexMap::SpuSrcAccStride0},
+                {"DST_TSR",     SpuSetIndexMap::SpuDstTsrStride0}
+                }}, // type10 x loop8
     {"LENGTH",  {
-                {"SRC_TSR",     ASIC_SPU_REG_START_IDX+112},
-                {"SRC_WGT",     ASIC_SPU_REG_START_IDX+114},
-                {"SRC_MI",      ASIC_SPU_REG_START_IDX+115},
-                {"SRC_MO",      ASIC_SPU_REG_START_IDX+117},
-                {"SRC_QNT",     ASIC_SPU_REG_START_IDX+119},
-                {"SRC_ACC",     ASIC_SPU_REG_START_IDX+120},
-                {"DST_TSR",     ASIC_SPU_REG_START_IDX+122}
-                }},  // type7 x 2
+                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrLength0},
+                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtLength},
+                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpLength0},
+                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiLength0},
+                {"SRC_MO",      SpuSetIndexMap::SpuSrcMoLength0},
+                {"SRC_SCALE_0", SpuSetIndexMap::SpuSrcScale0Length},
+                {"SRC_SCALE_1", SpuSetIndexMap::SpuSrcScale1Length0},
+                {"SRC_SCALE_2", SpuSetIndexMap::SpuSrcScale2Length0},
+                {"SRC_BIAS",    SpuSetIndexMap::SpuSrcBiasLength},
+                {"SRC_ACC",     SpuSetIndexMap::SpuSrcAccLength0},
+                {"DST_TSR",     SpuSetIndexMap::SpuDstTsrLength0}
+                }},  // type11 x 2
+    {"BANK_STRIDE", {
+                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrBankStride},
+                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtBankStride},
+                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpBankStride},
+                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiBankStride}
+                }},
     {"CTRL",    {
-                {"LOOP_COUNT",  ASIC_SPU_REG_START_IDX+258},
+                {"LOOP_COUNT",  SpuSetIndexMap::258},
                 }}
 };
 
@@ -66,7 +82,7 @@ const std::map<std::string, uint32_t> spuRegAddrMaskEncode = {
     {"SRC_WGT",     6},
     {"SRC_MI",      5},
     {"SRC_MO",      4},
-    {"SRC_QNT",     3},
+    {"SRC_SCALE_0", 3},
     {"SRC_ACC",     2},
     {"DST_TSR",     1},
     {"NOT_DEFINE",  0}
@@ -77,7 +93,7 @@ const std::map<uint32_t, std::string> spuRegAddrMaskDecode = {
     {6,    "SRC_WGT"},
     {5,    "SRC_MI"},
     {4,    "SRC_MO"},
-    {3,    "SRC_QNT"},
+    {3,    "SRC_SCALE_0"},
     {2,    "SRC_ACC"},
     {1,    "DST_TSR"},
     {0,    "NOT_DEFINE"}
