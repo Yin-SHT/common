@@ -30,47 +30,47 @@ namespace quark {
 
 const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { // TBD
     {"ADDRESS", {
-                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrAddr0},
-                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtAddr0},
-                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpAddr0},
-                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiAddr0},
-                {"SRC_MO",      SpuSetIndexMap::SpuSrcMoAddr0},
-                {"SRC_SCALE_0", SpuSetIndexMap::SpuSrcScale0Addr0},
-                {"SRC_SCALE_1", SpuSetIndexMap::SpuSrcScale1Addr0},
-                {"SRC_SCALE_2", SpuSetIndexMap::SpuSrcScale2Addr0},
-                {"SRC_ACC",     SpuSetIndexMap::SpuSrcAccAddr0},
-                {"DST_TSR",     SpuSetIndexMap::SpuDstTsrAddr0}
+                {"SRC_TSR",     (uint32_t)SpuSetIndexMap::SpuSrcTsrAddr0},
+                {"SRC_WGT",     (uint32_t)SpuSetIndexMap::SpuSrcWgtAddr0},
+                {"SRC_ACP",     (uint32_t)SpuSetIndexMap::SpuSrcAcpAddr0},
+                {"SRC_MI",      (uint32_t)SpuSetIndexMap::SpuSrcMiAddr0},
+                {"SRC_MO",      (uint32_t)SpuSetIndexMap::SpuSrcMoAddr0},
+                {"SRC_SCALE_0", (uint32_t)SpuSetIndexMap::SpuSrcScale0Addr0},
+                {"SRC_SCALE_1", (uint32_t)SpuSetIndexMap::SpuSrcScale1Addr0},
+                {"SRC_SCALE_2", (uint32_t)SpuSetIndexMap::SpuSrcScale2Addr0},
+                {"SRC_ACC",     (uint32_t)SpuSetIndexMap::SpuSrcAccAddr0},
+                {"DST_TSR",     (uint32_t)SpuSetIndexMap::SpuDstTsrAddr0}
                 }}, // type10 x loop8
     {"STRIDE",  {
-                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrStride0},
-                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtStride0},
-                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpStride0},
-                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiStride0},
-                {"SRC_MO",      SpuSetIndexMap::SpuSrcMoStride0},
-                {"SRC_SCALE_0", SpuSetIndexMap::SpuSrcScale0Stride0},
-                {"SRC_SCALE_1", SpuSetIndexMap::SpuSrcScale1Stride0},
-                {"SRC_SCALE_2", SpuSetIndexMap::SpuSrcScale2Stride0},
-                {"SRC_ACC",     SpuSetIndexMap::SpuSrcAccStride0},
-                {"DST_TSR",     SpuSetIndexMap::SpuDstTsrStride0}
+                {"SRC_TSR",     (uint32_t)SpuSetIndexMap::SpuSrcTsrStride0},
+                {"SRC_WGT",     (uint32_t)SpuSetIndexMap::SpuSrcWgtStride0},
+                {"SRC_ACP",     (uint32_t)SpuSetIndexMap::SpuSrcAcpStride0},
+                {"SRC_MI",      (uint32_t)SpuSetIndexMap::SpuSrcMiStride0},
+                {"SRC_MO",      (uint32_t)SpuSetIndexMap::SpuSrcMoStride0},
+                {"SRC_SCALE_0", (uint32_t)SpuSetIndexMap::SpuSrcScale0Stride0},
+                {"SRC_SCALE_1", (uint32_t)SpuSetIndexMap::SpuSrcScale1Stride0},
+                {"SRC_SCALE_2", (uint32_t)SpuSetIndexMap::SpuSrcScale2Stride0},
+                {"SRC_ACC",     (uint32_t)SpuSetIndexMap::SpuSrcAccStride0},
+                {"DST_TSR",     (uint32_t)SpuSetIndexMap::SpuDstTsrStride0}
                 }}, // type10 x loop8
     {"LENGTH",  {
-                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrLength0},
-                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtLength},
-                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpLength0},
-                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiLength0},
-                {"SRC_MO",      SpuSetIndexMap::SpuSrcMoLength0},
-                {"SRC_SCALE_0", SpuSetIndexMap::SpuSrcScale0Length},
-                {"SRC_SCALE_1", SpuSetIndexMap::SpuSrcScale1Length0},
-                {"SRC_SCALE_2", SpuSetIndexMap::SpuSrcScale2Length0},
-                {"SRC_BIAS",    SpuSetIndexMap::SpuSrcBiasLength},
-                {"SRC_ACC",     SpuSetIndexMap::SpuSrcAccLength0},
-                {"DST_TSR",     SpuSetIndexMap::SpuDstTsrLength0}
+                {"SRC_TSR",     (uint32_t)SpuSetIndexMap::SpuSrcTsrLength0},
+                {"SRC_WGT",     (uint32_t)SpuSetIndexMap::SpuSrcWgtLength},
+                {"SRC_ACP",     (uint32_t)SpuSetIndexMap::SpuSrcAcpLength0},
+                {"SRC_MI",      (uint32_t)SpuSetIndexMap::SpuSrcMiLength0},
+                {"SRC_MO",      (uint32_t)SpuSetIndexMap::SpuSrcMoLength0},
+                {"SRC_SCALE_0", (uint32_t)SpuSetIndexMap::SpuSrcScale0Length},
+                {"SRC_SCALE_1", (uint32_t)SpuSetIndexMap::SpuSrcScale1Length0},
+                {"SRC_SCALE_2", (uint32_t)SpuSetIndexMap::SpuSrcScale2Length0},
+                {"SRC_BIAS",    (uint32_t)SpuSetIndexMap::SpuSrcBiasLength},
+                {"SRC_ACC",     (uint32_t)SpuSetIndexMap::SpuSrcAccLength0},
+                {"DST_TSR",     (uint32_t)SpuSetIndexMap::SpuDstTsrLength0}
                 }},  // type11 x 2
     {"BANK_STRIDE", {
-                {"SRC_TSR",     SpuSetIndexMap::SpuSrcTsrBankStride},
-                {"SRC_WGT",     SpuSetIndexMap::SpuSrcWgtBankStride},
-                {"SRC_ACP",     SpuSetIndexMap::SpuSrcAcpBankStride},
-                {"SRC_MI",      SpuSetIndexMap::SpuSrcMiBankStride}
+                {"SRC_TSR",     (uint32_t)SpuSetIndexMap::SpuSrcTsrBankStride},
+                {"SRC_WGT",     (uint32_t)SpuSetIndexMap::SpuSrcWgtBankStride},
+                {"SRC_ACP",     (uint32_t)SpuSetIndexMap::SpuSrcAcpBankStride},
+                {"SRC_MI",      (uint32_t)SpuSetIndexMap::SpuSrcMiBankStride}
                 }},
     {"CTRL",    {
                 {"LOOP_COUNT",  258},
