@@ -44,6 +44,8 @@ enum class AluType {
   SCALAR_ALU = 0,
   FP32_ALU,
   INT32_ALU,
+  FP64_ALU,
+  INT64_ALU,
 };
 
 enum class DataMode {

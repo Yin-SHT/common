@@ -18,7 +18,8 @@ typedef union {
 
 typedef union {
 	float fp32;
-	uint32_t value;
+    double fp64;
+	uint64_t value;
 } self_float;
 
 typedef self_float union_float;
