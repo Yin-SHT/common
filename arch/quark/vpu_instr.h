@@ -463,16 +463,16 @@ public:
       {OpCodeType::F32_LOAD_MUL,         {"f32_load_mul",         0xff0f0000, 0xf1010000}},
       {OpCodeType::F32_LOAD_MAX,         {"f32_load_max",         0xff0f0000, 0xf1050000}},
       {OpCodeType::F32_LOAD_MIN,         {"f32_load_min",         0xff0f0000, 0xf4010000}},
-      {OpCodeType::I32_DLOAD_AND,        {"i32_dload_and",        0xff3f0000, 0xd2030000}},
-      {OpCodeType::I32_DLOAD_OR,         {"i32_dload_or",         0xff3f0000, 0xd2070000}},
-      {OpCodeType::I32_DLOAD_NOT,        {"i32_dload_not",        0xff3f0000, 0xd3030000}},
-      {OpCodeType::I32_DLOAD_XOR,        {"i32_dload_xor",        0xff3f0000, 0xd3070000}},
-      {OpCodeType::I32_DLOAD_XNOR,       {"i32_dload_xnor",       0xff3f0000, 0xd6030000}},
-      {OpCodeType::I32_LOAD_AND,         {"i32_load_and",         0xff0f0000, 0xd2010000}},
-      {OpCodeType::I32_LOAD_OR,          {"i32_load_or",          0xff0f0000, 0xd2050000}},
-      {OpCodeType::I32_LOAD_NOT,         {"i32_load_not",         0xff0f0000, 0xd3010000}},
-      {OpCodeType::I32_LOAD_XOR,         {"i32_load_xor",         0xff0f0000, 0xd3050000}},
-      {OpCodeType::I32_LOAD_XNOR,        {"i32_load_xnor",        0xff0f0000, 0xd6010000}},
+      {OpCodeType::I32_DLOAD_AND,        {"i32_dload_and",        0xff3f0000, 0xd20b0000}},
+      {OpCodeType::I32_DLOAD_OR,         {"i32_dload_or",         0xff3f0000, 0xd20f0000}},
+      {OpCodeType::I32_DLOAD_NOT,        {"i32_dload_not",        0xff3f0000, 0xd30b0000}},
+      {OpCodeType::I32_DLOAD_XOR,        {"i32_dload_xor",        0xff3f0000, 0xd30f0000}},
+      {OpCodeType::I32_DLOAD_XNOR,       {"i32_dload_xnor",       0xff3f0000, 0xd60b0000}},
+      {OpCodeType::I32_LOAD_AND,         {"i32_load_and",         0xff0f0000, 0xd2090000}},
+      {OpCodeType::I32_LOAD_OR,          {"i32_load_or",          0xff0f0000, 0xd20d0000}},
+      {OpCodeType::I32_LOAD_NOT,         {"i32_load_not",         0xff0f0000, 0xd3090000}},
+      {OpCodeType::I32_LOAD_XOR,         {"i32_load_xor",         0xff0f0000, 0xd30d0000}},
+      {OpCodeType::I32_LOAD_XNOR,        {"i32_load_xnor",        0xff0f0000, 0xd6090000}},
       {OpCodeType::I8_ADD_STORE,         {"i8_add_store",         0xff0f0000, 0xc8010000}},
       {OpCodeType::I8_SUB_STORE,         {"i8_sub_store",         0xff0f0000, 0xc8050000}},
       {OpCodeType::I8_MUL_STORE,         {"i8_mul_store",         0xff0f0000, 0xc9010000}},
@@ -493,11 +493,11 @@ public:
       {OpCodeType::F32_MUL_STORE,        {"f32_mul_store",        0xff0f0000, 0xf9010000}},
       {OpCodeType::F32_MAX_STORE,        {"f32_max_store",        0xff0f0000, 0xf9050000}},
       {OpCodeType::F32_MIN_STORE,        {"f32_min_store",        0xff0f0000, 0xfc010000}},
-      {OpCodeType::I32_AND_STORE,        {"i32_and_store",        0xff0f0000, 0xda010000}},
-      {OpCodeType::I32_OR_STORE,         {"i32_or_store",         0xff0f0000, 0xda050000}},
-      {OpCodeType::I32_NOT_STORE,        {"i32_not_store",        0xff0f0000, 0xdb010000}},
-      {OpCodeType::I32_XOR_STORE,        {"i32_xor_store",        0xff0f0000, 0xdb050000}},
-      {OpCodeType::I32_XNOR_STORE,       {"i32_xnor_store",       0xff0f0000, 0xde010000}},
+      {OpCodeType::I32_AND_STORE,        {"i32_and_store",        0xff0f0000, 0xda090000}},
+      {OpCodeType::I32_OR_STORE,         {"i32_or_store",         0xff0f0000, 0xda0d0000}},
+      {OpCodeType::I32_NOT_STORE,        {"i32_not_store",        0xff0f0000, 0xdb090000}},
+      {OpCodeType::I32_XOR_STORE,        {"i32_xor_store",        0xff0f0000, 0xdb0d0000}},
+      {OpCodeType::I32_XNOR_STORE,       {"i32_xnor_store",       0xff0f0000, 0xde090000}},
       {OpCodeType::I8_DLOAD_ADD_STORE,   {"i8_dload_add_store",   0xffff0000, 0xc00a0000}},
       {OpCodeType::I8_DLOAD_SUB_STORE,   {"i8_dload_sub_store",   0xffff0000, 0xc00e0000}},
       {OpCodeType::I8_DLOAD_MUL_STORE,   {"i8_dload_mul_store",   0xffff0000, 0xc10a0000}},
@@ -538,16 +538,16 @@ public:
       {OpCodeType::F32_LOAD_MUL_STORE,   {"f32_load_mul_store",   0xffcf0000, 0xf1080000}},
       {OpCodeType::F32_LOAD_MAX_STORE,   {"f32_load_max_store",   0xffcf0000, 0xf10c0000}},
       {OpCodeType::F32_LOAD_MIN_STORE,   {"f32_load_min_store",   0xffcf0000, 0xf4080000}},
-      {OpCodeType::I32_DLOAD_AND_STORE,  {"i32_dload_and_store",  0xffff0000, 0xd20a0000}},
-      {OpCodeType::I32_DLOAD_OR_STORE,   {"i32_dload_or_store",   0xffff0000, 0xd20e0000}},
-      {OpCodeType::I32_DLOAD_NOT_STORE,  {"i32_dload_not_store",  0xffff0000, 0xd30a0000}},
-      {OpCodeType::I32_DLOAD_XOR_STORE,  {"i32_dload_xor_store",  0xffff0000, 0xd30e0000}},
-      {OpCodeType::I32_DLOAD_XNOR_STORE, {"i32_dload_xnor_store", 0xffff0000, 0xd60a0000}},
-      {OpCodeType::I32_LOAD_AND_STORE,   {"i32_load_and_store",   0xffcf0000, 0xd2080000}},
-      {OpCodeType::I32_LOAD_OR_STORE,    {"i32_load_or_store",    0xffcf0000, 0xd20c0000}},
-      {OpCodeType::I32_LOAD_NOT_STORE,   {"i32_load_not_store",   0xffcf0000, 0xd3080000}},
-      {OpCodeType::I32_LOAD_XOR_STORE,   {"i32_load_xor_store",   0xffcf0000, 0xd30c0000}},
-      {OpCodeType::I32_LOAD_XNOR_STORE,  {"i32_load_xnor_store",  0xffcf0000, 0xd6080000}},
+      {OpCodeType::I32_DLOAD_AND_STORE,  {"i32_dload_and_store",  0xffff0000, 0xda0a0000}},
+      {OpCodeType::I32_DLOAD_OR_STORE,   {"i32_dload_or_store",   0xffff0000, 0xda0e0000}},
+      {OpCodeType::I32_DLOAD_NOT_STORE,  {"i32_dload_not_store",  0xffff0000, 0xdb0a0000}},
+      {OpCodeType::I32_DLOAD_XOR_STORE,  {"i32_dload_xor_store",  0xffff0000, 0xdb0e0000}},
+      {OpCodeType::I32_DLOAD_XNOR_STORE, {"i32_dload_xnor_store", 0xffff0000, 0xde0a0000}},
+      {OpCodeType::I32_LOAD_AND_STORE,   {"i32_load_and_store",   0xffcf0000, 0xda080000}},
+      {OpCodeType::I32_LOAD_OR_STORE,    {"i32_load_or_store",    0xffcf0000, 0xda0c0000}},
+      {OpCodeType::I32_LOAD_NOT_STORE,   {"i32_load_not_store",   0xffcf0000, 0xdb080000}},
+      {OpCodeType::I32_LOAD_XOR_STORE,   {"i32_load_xor_store",   0xffcf0000, 0xdb0c0000}},
+      {OpCodeType::I32_LOAD_XNOR_STORE,  {"i32_load_xnor_store",  0xffcf0000, 0xde080000}},
       {OpCodeType::S_ADDI,               {"s_addi",               0xff000000, 0x40000000}},
       {OpCodeType::S_ADDIU,              {"s_addiu",              0xff000000, 0x41000000}},
       {OpCodeType::S_SUBI,               {"s_subi",               0xff000000, 0x42000000}},
@@ -1337,7 +1337,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1351,7 +1351,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1365,7 +1365,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1379,7 +1379,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1393,7 +1393,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Rt, 17, 15);
@@ -1938,7 +1938,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1953,7 +1953,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1968,7 +1968,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1983,7 +1983,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -1998,7 +1998,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 15, 0);
@@ -2013,7 +2013,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 7, 0);
@@ -2028,7 +2028,7 @@ public:
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 7, 0);
@@ -2577,11 +2577,11 @@ public:
 
 class I32DloadAndInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadAndInstr() : VpuInstr(OpCodeType::I32_DLOAD_AND), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_AND) {
+  explicit I32DloadAndInstr() : VpuInstr(OpCodeType::I32_DLOAD_AND), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_AND) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2589,11 +2589,11 @@ public:
 
 class I32DloadOrInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadOrInstr() : VpuInstr(OpCodeType::I32_DLOAD_OR), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_OR) {
+  explicit I32DloadOrInstr() : VpuInstr(OpCodeType::I32_DLOAD_OR), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_OR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2601,11 +2601,11 @@ public:
 
 class I32DloadNotInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadNotInstr() : VpuInstr(OpCodeType::I32_DLOAD_NOT), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_NOT) {
+  explicit I32DloadNotInstr() : VpuInstr(OpCodeType::I32_DLOAD_NOT), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_NOT) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2613,11 +2613,11 @@ public:
 
 class I32DloadXorInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadXorInstr() : VpuInstr(OpCodeType::I32_DLOAD_XOR), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XOR) {
+  explicit I32DloadXorInstr() : VpuInstr(OpCodeType::I32_DLOAD_XOR), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_XOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2625,11 +2625,11 @@ public:
 
 class I32DloadXnorInstr : public VpuInstr, public DloadComputeInstr {
 public:
-  explicit I32DloadXnorInstr() : VpuInstr(OpCodeType::I32_DLOAD_XNOR), DloadComputeInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XNOR) {
+  explicit I32DloadXnorInstr() : VpuInstr(OpCodeType::I32_DLOAD_XNOR), DloadComputeInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_XNOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2637,12 +2637,12 @@ public:
 
 class I32LoadAndInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadAndInstr() : VpuInstr(OpCodeType::I32_LOAD_AND), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_AND) {
+  explicit I32LoadAndInstr() : VpuInstr(OpCodeType::I32_LOAD_AND), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_AND) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2651,12 +2651,12 @@ public:
 
 class I32LoadOrInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadOrInstr() : VpuInstr(OpCodeType::I32_LOAD_OR), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_OR) {
+  explicit I32LoadOrInstr() : VpuInstr(OpCodeType::I32_LOAD_OR), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_OR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2665,12 +2665,12 @@ public:
 
 class I32LoadNotInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadNotInstr() : VpuInstr(OpCodeType::I32_LOAD_NOT), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_NOT) {
+  explicit I32LoadNotInstr() : VpuInstr(OpCodeType::I32_LOAD_NOT), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_NOT) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2679,12 +2679,12 @@ public:
 
 class I32LoadXorInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadXorInstr() : VpuInstr(OpCodeType::I32_LOAD_XOR), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XOR) {
+  explicit I32LoadXorInstr() : VpuInstr(OpCodeType::I32_LOAD_XOR), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_XOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2693,12 +2693,12 @@ public:
 
 class I32LoadXnorInstr : public VpuInstr, public LoadComputeInstr {
 public:
-  explicit I32LoadXnorInstr() : VpuInstr(OpCodeType::I32_LOAD_XNOR), LoadComputeInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XNOR) {
+  explicit I32LoadXnorInstr() : VpuInstr(OpCodeType::I32_LOAD_XNOR), LoadComputeInstr(OpCodeType::I32_LOAD, OpCodeType::I32_XNOR) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
@@ -2982,12 +2982,12 @@ public:
 
 class I32AndStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32AndStoreInstr() : VpuInstr(OpCodeType::I32_AND_STORE), ComputeStoreInstr(OpCodeType::I32_AND, OpCodeType::U8_STORE) {
+  explicit I32AndStoreInstr() : VpuInstr(OpCodeType::I32_AND_STORE), ComputeStoreInstr(OpCodeType::I32_AND, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -2996,12 +2996,12 @@ public:
 
 class I32OrStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32OrStoreInstr() : VpuInstr(OpCodeType::I32_OR_STORE), ComputeStoreInstr(OpCodeType::I32_OR, OpCodeType::U8_STORE) {
+  explicit I32OrStoreInstr() : VpuInstr(OpCodeType::I32_OR_STORE), ComputeStoreInstr(OpCodeType::I32_OR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3010,12 +3010,12 @@ public:
 
 class I32NotStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32NotStoreInstr() : VpuInstr(OpCodeType::I32_NOT_STORE), ComputeStoreInstr(OpCodeType::I32_NOT, OpCodeType::U8_STORE) {
+  explicit I32NotStoreInstr() : VpuInstr(OpCodeType::I32_NOT_STORE), ComputeStoreInstr(OpCodeType::I32_NOT, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3024,12 +3024,12 @@ public:
 
 class I32XorStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32XorStoreInstr() : VpuInstr(OpCodeType::I32_XOR_STORE), ComputeStoreInstr(OpCodeType::I32_XOR, OpCodeType::U8_STORE) {
+  explicit I32XorStoreInstr() : VpuInstr(OpCodeType::I32_XOR_STORE), ComputeStoreInstr(OpCodeType::I32_XOR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3038,12 +3038,12 @@ public:
 
 class I32XnorStoreInstr : public VpuInstr, public ComputeStoreInstr {
 public:
-  explicit I32XnorStoreInstr() : VpuInstr(OpCodeType::I32_XNOR_STORE), ComputeStoreInstr(OpCodeType::I32_XNOR, OpCodeType::U8_STORE) {
+  explicit I32XnorStoreInstr() : VpuInstr(OpCodeType::I32_XNOR_STORE), ComputeStoreInstr(OpCodeType::I32_XNOR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Rd);
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 21, 20);
   VPU_GEN_GETTER_SETTER(Rd, 23, 22);
@@ -3482,61 +3482,61 @@ public:
 
 class I32DloadAndStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadAndStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_AND_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_AND, OpCodeType::U8_STORE) {
+  explicit I32DloadAndStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_AND_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_AND, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
 class I32DloadOrStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadOrStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_OR_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_OR, OpCodeType::U8_STORE) {
+  explicit I32DloadOrStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_OR_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_OR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
 class I32DloadNotStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadNotStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_NOT_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_NOT, OpCodeType::U8_STORE) {
+  explicit I32DloadNotStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_NOT_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_NOT, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
 class I32DloadXorStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadXorStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_XOR_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XOR, OpCodeType::U8_STORE) {
+  explicit I32DloadXorStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_XOR_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_XOR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
 class I32DloadXnorStoreInstr : public VpuInstr, public DloadComputeStoreInstr {
 public:
-  explicit I32DloadXnorStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_XNOR_STORE), DloadComputeStoreInstr(OpCodeType::U8_DLOAD, OpCodeType::I32_XNOR, OpCodeType::U8_STORE) {
+  explicit I32DloadXnorStoreInstr() : VpuInstr(OpCodeType::I32_DLOAD_XNOR_STORE), DloadComputeStoreInstr(OpCodeType::I32_DLOAD, OpCodeType::I32_XNOR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
 };
 
 class I32LoadAndStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadAndStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_AND_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_AND, OpCodeType::U8_STORE) {
+  explicit I32LoadAndStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_AND_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_AND, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3544,11 +3544,11 @@ public:
 
 class I32LoadOrStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadOrStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_OR_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_OR, OpCodeType::U8_STORE) {
+  explicit I32LoadOrStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_OR_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_OR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3556,11 +3556,11 @@ public:
 
 class I32LoadNotStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadNotStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_NOT_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_NOT, OpCodeType::U8_STORE) {
+  explicit I32LoadNotStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_NOT_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_NOT, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3568,11 +3568,11 @@ public:
 
 class I32LoadXorStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadXorStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_XOR_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XOR, OpCodeType::U8_STORE) {
+  explicit I32LoadXorStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_XOR_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_XOR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
@@ -3580,11 +3580,11 @@ public:
 
 class I32LoadXnorStoreInstr : public VpuInstr, public LoadComputeStoreInstr {
 public:
-  explicit I32LoadXnorStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_XNOR_STORE), LoadComputeStoreInstr(OpCodeType::U8_LOAD, OpCodeType::I32_XNOR, OpCodeType::U8_STORE) {
+  explicit I32LoadXnorStoreInstr() : VpuInstr(OpCodeType::I32_LOAD_XNOR_STORE), LoadComputeStoreInstr(OpCodeType::I32_LOAD, OpCodeType::I32_XNOR, OpCodeType::I32_STORE) {
     VPU_PUSH_GETTER_SETTER(Offset);
     VPU_PUSH_GETTER_SETTER(Rt);
     dtype = 5;
-    alu = 1;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Offset, 15, 0);
   VPU_GEN_GETTER_SETTER(Rt, 21, 20);
