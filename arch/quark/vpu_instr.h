@@ -153,206 +153,221 @@ public:
     I32_XNORI = 85,
     I32_SHIFTL = 86,
     I32_SHIFTR = 87,
-    I64_SHIFTL = 88,
-    I64_SHIFTR = 89,
-    I8_DLOAD_ADD = 90,
-    I8_DLOAD_SUB = 91,
-    I8_DLOAD_MUL = 92,
-    I8_DLOAD_MAX = 93,
-    I8_DLOAD_MIN = 94,
-    I8_LOAD_ADD = 95,
-    I8_LOAD_SUB = 96,
-    I8_LOAD_MUL = 97,
-    I8_LOAD_MAX = 98,
-    I8_LOAD_MIN = 99,
-    U8_DLOAD_ADD = 100,
-    U8_DLOAD_SUB = 101,
-    U8_DLOAD_MUL = 102,
-    U8_DLOAD_MAX = 103,
-    U8_DLOAD_MIN = 104,
-    U8_LOAD_ADD = 105,
-    U8_LOAD_SUB = 106,
-    U8_LOAD_MUL = 107,
-    U8_LOAD_MAX = 108,
-    U8_LOAD_MIN = 109,
-    F16_DLOAD_ADD = 110,
-    F16_DLOAD_SUB = 111,
-    F16_DLOAD_MUL = 112,
-    F16_DLOAD_MAX = 113,
-    F16_DLOAD_MIN = 114,
-    F16_LOAD_ADD = 115,
-    F16_LOAD_SUB = 116,
-    F16_LOAD_MUL = 117,
-    F16_LOAD_MAX = 118,
-    F16_LOAD_MIN = 119,
-    F32_DLOAD_ADD = 120,
-    F32_DLOAD_SUB = 121,
-    F32_DLOAD_MUL = 122,
-    F32_DLOAD_MAX = 123,
-    F32_DLOAD_MIN = 124,
-    F32_LOAD_ADD = 125,
-    F32_LOAD_SUB = 126,
-    F32_LOAD_MUL = 127,
-    F32_LOAD_MAX = 128,
-    F32_LOAD_MIN = 129,
-    I32_DLOAD_ADD = 130,
-    I32_DLOAD_SUB = 131,
-    I32_DLOAD_MUL = 132,
-    I32_DLOAD_MAX = 133,
-    I32_DLOAD_MIN = 134,
-    I32_DLOAD_AND = 135,
-    I32_DLOAD_OR = 136,
-    I32_DLOAD_NOT = 137,
-    I32_DLOAD_XOR = 138,
-    I32_DLOAD_XNOR = 139,
-    I32_LOAD_ADD = 140,
-    I32_LOAD_SUB = 141,
-    I32_LOAD_MUL = 142,
-    I32_LOAD_MAX = 143,
-    I32_LOAD_MIN = 144,
-    I32_LOAD_AND = 145,
-    I32_LOAD_OR = 146,
-    I32_LOAD_NOT = 147,
-    I32_LOAD_XOR = 148,
-    I32_LOAD_XNOR = 149,
-    I8_ADD_STORE = 150,
-    I8_SUB_STORE = 151,
-    I8_MUL_STORE = 152,
-    I8_MAX_STORE = 153,
-    I8_MIN_STORE = 154,
-    U8_ADD_STORE = 155,
-    U8_SUB_STORE = 156,
-    U8_MUL_STORE = 157,
-    U8_MAX_STORE = 158,
-    U8_MIN_STORE = 159,
-    F16_ADD_STORE = 160,
-    F16_SUB_STORE = 161,
-    F16_MUL_STORE = 162,
-    F16_MAX_STORE = 163,
-    F16_MIN_STORE = 164,
-    F32_ADD_STORE = 165,
-    F32_SUB_STORE = 166,
-    F32_MUL_STORE = 167,
-    F32_MAX_STORE = 168,
-    F32_MIN_STORE = 169,
-    I32_ADD_STORE = 170,
-    I32_SUB_STORE = 171,
-    I32_MUL_STORE = 172,
-    I32_MAX_STORE = 173,
-    I32_MIN_STORE = 174,
-    I32_AND_STORE = 175,
-    I32_OR_STORE = 176,
-    I32_NOT_STORE = 177,
-    I32_XOR_STORE = 178,
-    I32_XNOR_STORE = 179,
-    I8_DLOAD_ADD_STORE = 180,
-    I8_DLOAD_SUB_STORE = 181,
-    I8_DLOAD_MUL_STORE = 182,
-    I8_DLOAD_MAX_STORE = 183,
-    I8_DLOAD_MIN_STORE = 184,
-    I8_LOAD_ADD_STORE = 185,
-    I8_LOAD_SUB_STORE = 186,
-    I8_LOAD_MUL_STORE = 187,
-    I8_LOAD_MAX_STORE = 188,
-    I8_LOAD_MIN_STORE = 189,
-    U8_DLOAD_ADD_STORE = 190,
-    U8_DLOAD_SUB_STORE = 191,
-    U8_DLOAD_MUL_STORE = 192,
-    U8_DLOAD_MAX_STORE = 193,
-    U8_DLOAD_MIN_STORE = 194,
-    U8_LOAD_ADD_STORE = 195,
-    U8_LOAD_SUB_STORE = 196,
-    U8_LOAD_MUL_STORE = 197,
-    U8_LOAD_MAX_STORE = 198,
-    U8_LOAD_MIN_STORE = 199,
-    F16_DLOAD_ADD_STORE = 200,
-    F16_DLOAD_SUB_STORE = 201,
-    F16_DLOAD_MUL_STORE = 202,
-    F16_DLOAD_MAX_STORE = 203,
-    F16_DLOAD_MIN_STORE = 204,
-    F16_LOAD_ADD_STORE = 205,
-    F16_LOAD_SUB_STORE = 206,
-    F16_LOAD_MUL_STORE = 207,
-    F16_LOAD_MAX_STORE = 208,
-    F16_LOAD_MIN_STORE = 209,
-    F32_DLOAD_ADD_STORE = 210,
-    F32_DLOAD_SUB_STORE = 211,
-    F32_DLOAD_MUL_STORE = 212,
-    F32_DLOAD_MAX_STORE = 213,
-    F32_DLOAD_MIN_STORE = 214,
-    F32_LOAD_ADD_STORE = 215,
-    F32_LOAD_SUB_STORE = 216,
-    F32_LOAD_MUL_STORE = 217,
-    F32_LOAD_MAX_STORE = 218,
-    F32_LOAD_MIN_STORE = 219,
-    I32_DLOAD_ADD_STORE = 220,
-    I32_DLOAD_SUB_STORE = 221,
-    I32_DLOAD_MUL_STORE = 222,
-    I32_DLOAD_MAX_STORE = 223,
-    I32_DLOAD_MIN_STORE = 224,
-    I32_DLOAD_AND_STORE = 225,
-    I32_DLOAD_OR_STORE = 226,
-    I32_DLOAD_NOT_STORE = 227,
-    I32_DLOAD_XOR_STORE = 228,
-    I32_DLOAD_XNOR_STORE = 229,
-    I32_LOAD_ADD_STORE = 230,
-    I32_LOAD_SUB_STORE = 231,
-    I32_LOAD_MUL_STORE = 232,
-    I32_LOAD_MAX_STORE = 233,
-    I32_LOAD_MIN_STORE = 234,
-    I32_LOAD_AND_STORE = 235,
-    I32_LOAD_OR_STORE = 236,
-    I32_LOAD_NOT_STORE = 237,
-    I32_LOAD_XOR_STORE = 238,
-    I32_LOAD_XNOR_STORE = 239,
-    S_ADDI = 240,
-    S_ADDIU = 241,
-    S_SUBI = 242,
-    S_ANDI = 243,
-    S_ORI = 244,
-    S_XORI = 245,
-    S_SGTI = 246,
-    S_SLTI = 247,
-    S_SEQI = 248,
-    S_SGEI = 249,
-    S_SLEI = 250,
-    S_SRAI = 251,
-    S_SRLI = 252,
-    S_SLLI = 253,
-    S_LUI = 254,
-    S_ADD = 255,
-    S_ADDU = 256,
-    S_SUB = 257,
-    S_MUL = 258,
-    S_MULH = 259,
-    S_MULHU = 260,
-    S_MIN = 261,
-    S_MAX = 262,
-    S_MINU = 263,
-    S_MAXU = 264,
-    S_AND = 265,
-    S_OR = 266,
-    S_XOR = 267,
-    S_SGT = 268,
-    S_SLT = 269,
-    S_SEQ = 270,
-    S_SGE = 271,
-    S_SLE = 272,
-    S_CMPSEL = 273,
-    S_SRA = 274,
-    S_SRL = 275,
-    S_SLL = 276,
-    S_JUMP = 277,
-    S_JAL = 278,
-    S_JR = 279,
-    S_BNE = 280,
-    S_BEQ = 281,
-    S_BLT = 282,
-    S_BLTU = 283,
-    S_BGE = 284,
-    S_BGEU = 285,
-    S_SETCFG = 286,
-    S_SETRF = 287,
+    I32_SHIFTLI = 88,
+    I32_SHIFTRI = 89,
+    F64_ADD = 90,
+    F64_SUB = 91,
+    F64_MUL = 92,
+    F64_MAX = 93,
+    F64_MIN = 94,
+    F64_GREATER = 95,
+    F64_GREATER_EQUAL = 96,
+    F64_LESS = 97,
+    F64_LESS_EQUAL = 98,
+    F64_EQUAL = 99,
+    F64_SEL = 100,
+    I64_SHIFTL = 101,
+    I64_SHIFTR = 102,
+    I64_SHIFTLI = 103,
+    I64_SHIFTRI = 104,
+    I8_DLOAD_ADD = 105,
+    I8_DLOAD_SUB = 106,
+    I8_DLOAD_MUL = 107,
+    I8_DLOAD_MAX = 108,
+    I8_DLOAD_MIN = 109,
+    I8_LOAD_ADD = 110,
+    I8_LOAD_SUB = 111,
+    I8_LOAD_MUL = 112,
+    I8_LOAD_MAX = 113,
+    I8_LOAD_MIN = 114,
+    U8_DLOAD_ADD = 115,
+    U8_DLOAD_SUB = 116,
+    U8_DLOAD_MUL = 117,
+    U8_DLOAD_MAX = 118,
+    U8_DLOAD_MIN = 119,
+    U8_LOAD_ADD = 120,
+    U8_LOAD_SUB = 121,
+    U8_LOAD_MUL = 122,
+    U8_LOAD_MAX = 123,
+    U8_LOAD_MIN = 124,
+    F16_DLOAD_ADD = 125,
+    F16_DLOAD_SUB = 126,
+    F16_DLOAD_MUL = 127,
+    F16_DLOAD_MAX = 128,
+    F16_DLOAD_MIN = 129,
+    F16_LOAD_ADD = 130,
+    F16_LOAD_SUB = 131,
+    F16_LOAD_MUL = 132,
+    F16_LOAD_MAX = 133,
+    F16_LOAD_MIN = 134,
+    F32_DLOAD_ADD = 135,
+    F32_DLOAD_SUB = 136,
+    F32_DLOAD_MUL = 137,
+    F32_DLOAD_MAX = 138,
+    F32_DLOAD_MIN = 139,
+    F32_LOAD_ADD = 140,
+    F32_LOAD_SUB = 141,
+    F32_LOAD_MUL = 142,
+    F32_LOAD_MAX = 143,
+    F32_LOAD_MIN = 144,
+    I32_DLOAD_ADD = 145,
+    I32_DLOAD_SUB = 146,
+    I32_DLOAD_MUL = 147,
+    I32_DLOAD_MAX = 148,
+    I32_DLOAD_MIN = 149,
+    I32_DLOAD_AND = 150,
+    I32_DLOAD_OR = 151,
+    I32_DLOAD_NOT = 152,
+    I32_DLOAD_XOR = 153,
+    I32_DLOAD_XNOR = 154,
+    I32_LOAD_ADD = 155,
+    I32_LOAD_SUB = 156,
+    I32_LOAD_MUL = 157,
+    I32_LOAD_MAX = 158,
+    I32_LOAD_MIN = 159,
+    I32_LOAD_AND = 160,
+    I32_LOAD_OR = 161,
+    I32_LOAD_NOT = 162,
+    I32_LOAD_XOR = 163,
+    I32_LOAD_XNOR = 164,
+    I8_ADD_STORE = 165,
+    I8_SUB_STORE = 166,
+    I8_MUL_STORE = 167,
+    I8_MAX_STORE = 168,
+    I8_MIN_STORE = 169,
+    U8_ADD_STORE = 170,
+    U8_SUB_STORE = 171,
+    U8_MUL_STORE = 172,
+    U8_MAX_STORE = 173,
+    U8_MIN_STORE = 174,
+    F16_ADD_STORE = 175,
+    F16_SUB_STORE = 176,
+    F16_MUL_STORE = 177,
+    F16_MAX_STORE = 178,
+    F16_MIN_STORE = 179,
+    F32_ADD_STORE = 180,
+    F32_SUB_STORE = 181,
+    F32_MUL_STORE = 182,
+    F32_MAX_STORE = 183,
+    F32_MIN_STORE = 184,
+    I32_ADD_STORE = 185,
+    I32_SUB_STORE = 186,
+    I32_MUL_STORE = 187,
+    I32_MAX_STORE = 188,
+    I32_MIN_STORE = 189,
+    I32_AND_STORE = 190,
+    I32_OR_STORE = 191,
+    I32_NOT_STORE = 192,
+    I32_XOR_STORE = 193,
+    I32_XNOR_STORE = 194,
+    I8_DLOAD_ADD_STORE = 195,
+    I8_DLOAD_SUB_STORE = 196,
+    I8_DLOAD_MUL_STORE = 197,
+    I8_DLOAD_MAX_STORE = 198,
+    I8_DLOAD_MIN_STORE = 199,
+    I8_LOAD_ADD_STORE = 200,
+    I8_LOAD_SUB_STORE = 201,
+    I8_LOAD_MUL_STORE = 202,
+    I8_LOAD_MAX_STORE = 203,
+    I8_LOAD_MIN_STORE = 204,
+    U8_DLOAD_ADD_STORE = 205,
+    U8_DLOAD_SUB_STORE = 206,
+    U8_DLOAD_MUL_STORE = 207,
+    U8_DLOAD_MAX_STORE = 208,
+    U8_DLOAD_MIN_STORE = 209,
+    U8_LOAD_ADD_STORE = 210,
+    U8_LOAD_SUB_STORE = 211,
+    U8_LOAD_MUL_STORE = 212,
+    U8_LOAD_MAX_STORE = 213,
+    U8_LOAD_MIN_STORE = 214,
+    F16_DLOAD_ADD_STORE = 215,
+    F16_DLOAD_SUB_STORE = 216,
+    F16_DLOAD_MUL_STORE = 217,
+    F16_DLOAD_MAX_STORE = 218,
+    F16_DLOAD_MIN_STORE = 219,
+    F16_LOAD_ADD_STORE = 220,
+    F16_LOAD_SUB_STORE = 221,
+    F16_LOAD_MUL_STORE = 222,
+    F16_LOAD_MAX_STORE = 223,
+    F16_LOAD_MIN_STORE = 224,
+    F32_DLOAD_ADD_STORE = 225,
+    F32_DLOAD_SUB_STORE = 226,
+    F32_DLOAD_MUL_STORE = 227,
+    F32_DLOAD_MAX_STORE = 228,
+    F32_DLOAD_MIN_STORE = 229,
+    F32_LOAD_ADD_STORE = 230,
+    F32_LOAD_SUB_STORE = 231,
+    F32_LOAD_MUL_STORE = 232,
+    F32_LOAD_MAX_STORE = 233,
+    F32_LOAD_MIN_STORE = 234,
+    I32_DLOAD_ADD_STORE = 235,
+    I32_DLOAD_SUB_STORE = 236,
+    I32_DLOAD_MUL_STORE = 237,
+    I32_DLOAD_MAX_STORE = 238,
+    I32_DLOAD_MIN_STORE = 239,
+    I32_DLOAD_AND_STORE = 240,
+    I32_DLOAD_OR_STORE = 241,
+    I32_DLOAD_NOT_STORE = 242,
+    I32_DLOAD_XOR_STORE = 243,
+    I32_DLOAD_XNOR_STORE = 244,
+    I32_LOAD_ADD_STORE = 245,
+    I32_LOAD_SUB_STORE = 246,
+    I32_LOAD_MUL_STORE = 247,
+    I32_LOAD_MAX_STORE = 248,
+    I32_LOAD_MIN_STORE = 249,
+    I32_LOAD_AND_STORE = 250,
+    I32_LOAD_OR_STORE = 251,
+    I32_LOAD_NOT_STORE = 252,
+    I32_LOAD_XOR_STORE = 253,
+    I32_LOAD_XNOR_STORE = 254,
+    S_ADDI = 255,
+    S_ADDIU = 256,
+    S_SUBI = 257,
+    S_ANDI = 258,
+    S_ORI = 259,
+    S_XORI = 260,
+    S_SGTI = 261,
+    S_SLTI = 262,
+    S_SEQI = 263,
+    S_SGEI = 264,
+    S_SLEI = 265,
+    S_SRAI = 266,
+    S_SRLI = 267,
+    S_SLLI = 268,
+    S_LUI = 269,
+    S_ADD = 270,
+    S_ADDU = 271,
+    S_SUB = 272,
+    S_MUL = 273,
+    S_MULH = 274,
+    S_MULHU = 275,
+    S_MIN = 276,
+    S_MAX = 277,
+    S_MINU = 278,
+    S_MAXU = 279,
+    S_AND = 280,
+    S_OR = 281,
+    S_XOR = 282,
+    S_SGT = 283,
+    S_SLT = 284,
+    S_SEQ = 285,
+    S_SGE = 286,
+    S_SLE = 287,
+    S_CMPSEL = 288,
+    S_SRA = 289,
+    S_SRL = 290,
+    S_SLL = 291,
+    S_JUMP = 292,
+    S_JAL = 293,
+    S_JR = 294,
+    S_BNE = 295,
+    S_BEQ = 296,
+    S_BLT = 297,
+    S_BLTU = 298,
+    S_BGE = 299,
+    S_BGEU = 300,
+    S_SETCFG = 301,
+    S_SETRF = 302,
     INVALID = 65536
   };
 
@@ -444,10 +459,25 @@ public:
       {OpCodeType::I32_NOTI,             {"i32_noti",             0xff030000, 0xa2000000}},
       {OpCodeType::I32_XORI,             {"i32_xori",             0xff030000, 0xa3000000}},
       {OpCodeType::I32_XNORI,            {"i32_xnori",            0xff030000, 0xa4000000}},
-      {OpCodeType::I32_SHIFTL,           {"i32_shiftl",           0xff03ff00, 0xa5000000}},
-      {OpCodeType::I32_SHIFTR,           {"i32_shiftr",           0xff03ff00, 0xa6000000}},
-      {OpCodeType::I64_SHIFTL,           {"i64_shiftl",           0xff03ff00, 0xa5004000}},
-      {OpCodeType::I64_SHIFTR,           {"i64_shiftr",           0xff03ff00, 0xa6004000}},
+      {OpCodeType::I32_SHIFTL,           {"i32_shiftl",           0xff007fff, 0x85000000}},
+      {OpCodeType::I32_SHIFTR,           {"i32_shiftr",           0xff007fff, 0x86000000}},
+      {OpCodeType::I32_SHIFTLI,          {"i32_shiftli",          0xff03ff00, 0xa5000000}},
+      {OpCodeType::I32_SHIFTRI,          {"i32_shiftri",          0xff03ff00, 0xa6000000}},
+      {OpCodeType::F64_ADD,              {"f64_add",              0xff007fff, 0x90004000}},
+      {OpCodeType::F64_SUB,              {"f64_sub",              0xff007fff, 0x91004000}},
+      {OpCodeType::F64_MUL,              {"f64_mul",              0xff007fff, 0x92004000}},
+      {OpCodeType::F64_MAX,              {"f64_max",              0xff007fff, 0x93004000}},
+      {OpCodeType::F64_MIN,              {"f64_min",              0xff007fff, 0x94004000}},
+      {OpCodeType::F64_GREATER,          {"f64_greater",          0xffe07fff, 0x97004000}},
+      {OpCodeType::F64_GREATER_EQUAL,    {"f64_greater_equal",    0xffe07fff, 0x9a004000}},
+      {OpCodeType::F64_LESS,             {"f64_less",             0xffe07fff, 0x99004000}},
+      {OpCodeType::F64_LESS_EQUAL,       {"f64_less_equal",       0xffe07fff, 0x9b004000}},
+      {OpCodeType::F64_EQUAL,            {"f64_equal",            0xffe07fff, 0x98004000}},
+      {OpCodeType::F64_SEL,              {"f64_sel",              0xff007fff, 0x9c004000}},
+      {OpCodeType::I64_SHIFTL,           {"i64_shiftl",           0xff007fff, 0x85004000}},
+      {OpCodeType::I64_SHIFTR,           {"i64_shiftr",           0xff007fff, 0x86004000}},
+      {OpCodeType::I64_SHIFTLI,          {"i64_shiftli",          0xff03ff00, 0xa5004000}},
+      {OpCodeType::I64_SHIFTRI,          {"i64_shiftri",          0xff03ff00, 0xa6004000}},
       {OpCodeType::I8_DLOAD_ADD,         {"i8_dload_add",         0xff3f0000, 0xc0030000}},
       {OpCodeType::I8_DLOAD_SUB,         {"i8_dload_sub",         0xff3f0000, 0xc0070000}},
       {OpCodeType::I8_DLOAD_MUL,         {"i8_dload_mul",         0xff3f0000, 0xc1030000}},
@@ -2059,14 +2089,13 @@ class I32ShiftlInstr : public VpuInstr, public VectorInstr {
 public:
   explicit I32ShiftlInstr() : VpuInstr(OpCodeType::I32_SHIFTL) {
     VPU_PUSH_GETTER_SETTER(Rs);
-    VPU_PUSH_GETTER_SETTER(Imm);
+    VPU_PUSH_GETTER_SETTER(Rt);
     VPU_PUSH_GETTER_SETTER(Rd);
-    hasImm = 1;
     dtype = 5;
     alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
-  VPU_GEN_GETTER_SETTER(Imm, 7, 0);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
@@ -2074,6 +2103,20 @@ class I32ShiftrInstr : public VpuInstr, public VectorInstr {
 public:
   explicit I32ShiftrInstr() : VpuInstr(OpCodeType::I32_SHIFTR) {
     VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 5;
+    alu = 2;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I32ShiftliInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I32ShiftliInstr() : VpuInstr(OpCodeType::I32_SHIFTLI) {
+    VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
@@ -2085,18 +2128,176 @@ public:
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
-class I64ShiftlInstr : public VpuInstr, public VectorInstr {
+class I32ShiftriInstr : public VpuInstr, public VectorInstr {
 public:
-  explicit I64ShiftlInstr() : VpuInstr(OpCodeType::I64_SHIFTL) {
+  explicit I32ShiftriInstr() : VpuInstr(OpCodeType::I32_SHIFTRI) {
     VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
     dtype = 5;
-    alu = 4;
+    alu = 2;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
   VPU_GEN_GETTER_SETTER(Imm, 7, 0);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class F64AddInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64AddInstr() : VpuInstr(OpCodeType::F64_ADD) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class F64SubInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64SubInstr() : VpuInstr(OpCodeType::F64_SUB) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class F64MulInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64MulInstr() : VpuInstr(OpCodeType::F64_MUL) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class F64MaxInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64MaxInstr() : VpuInstr(OpCodeType::F64_MAX) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class F64MinInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64MinInstr() : VpuInstr(OpCodeType::F64_MIN) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class F64GreaterInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64GreaterInstr() : VpuInstr(OpCodeType::F64_GREATER) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+};
+
+class F64GreaterEqualInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64GreaterEqualInstr() : VpuInstr(OpCodeType::F64_GREATER_EQUAL) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+};
+
+class F64LessInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64LessInstr() : VpuInstr(OpCodeType::F64_LESS) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+};
+
+class F64LessEqualInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64LessEqualInstr() : VpuInstr(OpCodeType::F64_LESS_EQUAL) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+};
+
+class F64EqualInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64EqualInstr() : VpuInstr(OpCodeType::F64_EQUAL) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+};
+
+class F64SelInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit F64SelInstr() : VpuInstr(OpCodeType::F64_SEL) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 3;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I64ShiftlInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I64ShiftlInstr() : VpuInstr(OpCodeType::I64_SHIFTL) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 4;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
   VPU_GEN_GETTER_SETTER(Rd, 23, 21);
 };
 
@@ -2104,10 +2305,39 @@ class I64ShiftrInstr : public VpuInstr, public VectorInstr {
 public:
   explicit I64ShiftrInstr() : VpuInstr(OpCodeType::I64_SHIFTR) {
     VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Rt);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    dtype = 4;
+    alu = 4;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Rt, 17, 15);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I64ShiftliInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I64ShiftliInstr() : VpuInstr(OpCodeType::I64_SHIFTLI) {
+    VPU_PUSH_GETTER_SETTER(Rs);
     VPU_PUSH_GETTER_SETTER(Imm);
     VPU_PUSH_GETTER_SETTER(Rd);
     hasImm = 1;
-    dtype = 5;
+    dtype = 4;
+    alu = 4;
+  }
+  VPU_GEN_GETTER_SETTER(Rs, 20, 18);
+  VPU_GEN_GETTER_SETTER(Imm, 7, 0);
+  VPU_GEN_GETTER_SETTER(Rd, 23, 21);
+};
+
+class I64ShiftriInstr : public VpuInstr, public VectorInstr {
+public:
+  explicit I64ShiftriInstr() : VpuInstr(OpCodeType::I64_SHIFTRI) {
+    VPU_PUSH_GETTER_SETTER(Rs);
+    VPU_PUSH_GETTER_SETTER(Imm);
+    VPU_PUSH_GETTER_SETTER(Rd);
+    hasImm = 1;
+    dtype = 4;
     alu = 4;
   }
   VPU_GEN_GETTER_SETTER(Rs, 20, 18);
@@ -4667,8 +4897,23 @@ std::shared_ptr<VpuInstr> VpuInstr::create(OpCodeType opCode, const std::vector<
     case OpCodeType::I32_XNORI:            ret = std::shared_ptr<I32XnoriInstr>(new I32XnoriInstr); break;
     case OpCodeType::I32_SHIFTL:           ret = std::shared_ptr<I32ShiftlInstr>(new I32ShiftlInstr); break;
     case OpCodeType::I32_SHIFTR:           ret = std::shared_ptr<I32ShiftrInstr>(new I32ShiftrInstr); break;
+    case OpCodeType::I32_SHIFTLI:          ret = std::shared_ptr<I32ShiftliInstr>(new I32ShiftliInstr); break;
+    case OpCodeType::I32_SHIFTRI:          ret = std::shared_ptr<I32ShiftriInstr>(new I32ShiftriInstr); break;
+    case OpCodeType::F64_ADD:              ret = std::shared_ptr<F64AddInstr>(new F64AddInstr); break;
+    case OpCodeType::F64_SUB:              ret = std::shared_ptr<F64SubInstr>(new F64SubInstr); break;
+    case OpCodeType::F64_MUL:              ret = std::shared_ptr<F64MulInstr>(new F64MulInstr); break;
+    case OpCodeType::F64_MAX:              ret = std::shared_ptr<F64MaxInstr>(new F64MaxInstr); break;
+    case OpCodeType::F64_MIN:              ret = std::shared_ptr<F64MinInstr>(new F64MinInstr); break;
+    case OpCodeType::F64_GREATER:          ret = std::shared_ptr<F64GreaterInstr>(new F64GreaterInstr); break;
+    case OpCodeType::F64_GREATER_EQUAL:    ret = std::shared_ptr<F64GreaterEqualInstr>(new F64GreaterEqualInstr); break;
+    case OpCodeType::F64_LESS:             ret = std::shared_ptr<F64LessInstr>(new F64LessInstr); break;
+    case OpCodeType::F64_LESS_EQUAL:       ret = std::shared_ptr<F64LessEqualInstr>(new F64LessEqualInstr); break;
+    case OpCodeType::F64_EQUAL:            ret = std::shared_ptr<F64EqualInstr>(new F64EqualInstr); break;
+    case OpCodeType::F64_SEL:              ret = std::shared_ptr<F64SelInstr>(new F64SelInstr); break;
     case OpCodeType::I64_SHIFTL:           ret = std::shared_ptr<I64ShiftlInstr>(new I64ShiftlInstr); break;
     case OpCodeType::I64_SHIFTR:           ret = std::shared_ptr<I64ShiftrInstr>(new I64ShiftrInstr); break;
+    case OpCodeType::I64_SHIFTLI:          ret = std::shared_ptr<I64ShiftliInstr>(new I64ShiftliInstr); break;
+    case OpCodeType::I64_SHIFTRI:          ret = std::shared_ptr<I64ShiftriInstr>(new I64ShiftriInstr); break;
     case OpCodeType::I8_DLOAD_ADD:         ret = std::shared_ptr<I8DloadAddInstr>(new I8DloadAddInstr); break;
     case OpCodeType::I8_DLOAD_SUB:         ret = std::shared_ptr<I8DloadSubInstr>(new I8DloadSubInstr); break;
     case OpCodeType::I8_DLOAD_MUL:         ret = std::shared_ptr<I8DloadMulInstr>(new I8DloadMulInstr); break;
