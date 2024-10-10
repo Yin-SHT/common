@@ -373,15 +373,15 @@ public:
 
   static const std::map<OpCodeType, OpCodeItem>& getOpCodeMap() {
     static const std::map<OpCodeType, OpCodeItem> opCodeMap = {
-      {OpCodeType::SET_LOAD_BASE,        {"set_load_base",        0xff000000, 0x01000000}},
-      {OpCodeType::SET_LOAD2_BASE,       {"set_load2_base",       0xff000000, 0x04000000}},
-      {OpCodeType::SET_STORE_BASE,       {"set_store_base",       0xff000000, 0x07000000}},
-      {OpCodeType::SET_LOAD_GLB,         {"set_load_glb",         0xff000001, 0x02000000}},
-      {OpCodeType::SET_STORE_GLB,        {"set_store_glb",        0xff000001, 0x08000000}},
-      {OpCodeType::SET_QUANTIZE,         {"set_quantize",         0xffff0000, 0x09000000}},
-      {OpCodeType::SET_DEQUANTIZE,       {"set_dequantize",       0xff000000, 0x03000000}},
-      {OpCodeType::SET_DEQUANTIZE2,      {"set_dequantize2",      0xff000000, 0x06000000}},
-      {OpCodeType::SET_FS,               {"set_fs",               0xffffff00, 0x0a000000}},
+      {OpCodeType::SET_LOAD_BASE,        {"set_load_base",        0xdf000000, 0x01000000}},
+      {OpCodeType::SET_LOAD2_BASE,       {"set_load2_base",       0xdf000000, 0x04000000}},
+      {OpCodeType::SET_STORE_BASE,       {"set_store_base",       0xdf000000, 0x07000000}},
+      {OpCodeType::SET_LOAD_GLB,         {"set_load_glb",         0xdf000001, 0x02000000}},
+      {OpCodeType::SET_STORE_GLB,        {"set_store_glb",        0xdf000001, 0x08000000}},
+      {OpCodeType::SET_QUANTIZE,         {"set_quantize",         0xdfff0000, 0x09000000}},
+      {OpCodeType::SET_DEQUANTIZE,       {"set_dequantize",       0xdf000000, 0x03000000}},
+      {OpCodeType::SET_DEQUANTIZE2,      {"set_dequantize2",      0xdf000000, 0x06000000}},
+      {OpCodeType::SET_FS,               {"set_fs",               0xdfffff00, 0x0a000000}},
       {OpCodeType::SET_AAI,              {"set_aai",              0xff070000, 0x0b000000}},
       {OpCodeType::VPU_NOP,              {"vpu_nop",              0xffffffff, 0x00000000}},
       {OpCodeType::VPU_END,              {"vpu_end",              0xfffffffe, 0xff000000}},
@@ -808,6 +808,7 @@ public:
   uint32_t getChannelBroadcast() { return channelBroadcast; }
   uint32_t getClusterBroadcast() { return clusterBroadcast; }
   uint32_t getClusterMask() { return clusterMask; }
+  uint32_t getCsr() { return csr; }
   uint32_t getDequantize() { return dequantize; }
   uint32_t getDtype() { return dtype; }
   uint32_t getEnable() { return enable; }
@@ -835,6 +836,7 @@ public:
   void setChannelBroadcast(uint32_t n) { channelBroadcast = n; }
   void setClusterBroadcast(uint32_t n) { clusterBroadcast = n; }
   void setClusterMask(uint32_t n) { clusterMask = n; }
+  void setCsr(uint32_t n) { csr = n; }
   void setDequantize(uint32_t n) { dequantize = n; }
   void setDtype(uint32_t n) { dtype = n; }
   void setEnable(uint32_t n) { enable = n; }
@@ -863,6 +865,7 @@ protected:
   uint32_t channelBroadcast = 0;
   uint32_t clusterBroadcast = 0;
   uint32_t clusterMask = 0;
+  uint32_t csr = 0;
   uint32_t dequantize = 0;
   uint32_t dtype = 0;
   uint32_t enable = 0;
@@ -959,27 +962,33 @@ class SetLoadBaseInstr : public VpuInstr {
 public:
   explicit SetLoadBaseInstr() : VpuInstr(OpCodeType::SET_LOAD_BASE) {
     VPU_PUSH_GETTER_SETTER(BaseAddr);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(BaseAddr, 23, 0);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetLoad2BaseInstr : public VpuInstr {
 public:
   explicit SetLoad2BaseInstr() : VpuInstr(OpCodeType::SET_LOAD2_BASE) {
     VPU_PUSH_GETTER_SETTER(BaseAddr);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(BaseAddr, 23, 0);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetStoreBaseInstr : public VpuInstr {
 public:
   explicit SetStoreBaseInstr() : VpuInstr(OpCodeType::SET_STORE_BASE) {
     VPU_PUSH_GETTER_SETTER(BaseAddr);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(BaseAddr, 23, 0);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetLoadGlbInstr : public VpuInstr {
@@ -991,6 +1000,7 @@ public:
     VPU_PUSH_GETTER_SETTER(ClusterBroadcast);
     VPU_PUSH_GETTER_SETTER(BankBroadcast);
     VPU_PUSH_GETTER_SETTER(ChannelBroadcast);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Stride, 23, 21);
@@ -999,6 +1009,7 @@ public:
   VPU_GEN_GETTER_SETTER(ClusterBroadcast, 8, 6);
   VPU_GEN_GETTER_SETTER(BankBroadcast, 5, 3);
   VPU_GEN_GETTER_SETTER(ChannelBroadcast, 2, 1);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetStoreGlbInstr : public VpuInstr {
@@ -1007,47 +1018,57 @@ public:
     VPU_PUSH_GETTER_SETTER(Stride);
     VPU_PUSH_GETTER_SETTER(ClusterMask);
     VPU_PUSH_GETTER_SETTER(BankMask);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Stride, 23, 21);
   VPU_GEN_GETTER_SETTER(ClusterMask, 20, 5);
   VPU_GEN_GETTER_SETTER(BankMask, 4, 1);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetQuantizeInstr : public VpuInstr {
 public:
   explicit SetQuantizeInstr() : VpuInstr(OpCodeType::SET_QUANTIZE) {
     VPU_PUSH_GETTER_SETTER(Quantize);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Quantize, 15, 0);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetDequantizeInstr : public VpuInstr {
 public:
   explicit SetDequantizeInstr() : VpuInstr(OpCodeType::SET_DEQUANTIZE) {
     VPU_PUSH_GETTER_SETTER(Dequantize);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Dequantize, 23, 0);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetDequantize2Instr : public VpuInstr {
 public:
   explicit SetDequantize2Instr() : VpuInstr(OpCodeType::SET_DEQUANTIZE2) {
     VPU_PUSH_GETTER_SETTER(Dequantize);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(Dequantize, 23, 0);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetFsInstr : public VpuInstr {
 public:
   explicit SetFsInstr() : VpuInstr(OpCodeType::SET_FS) {
     VPU_PUSH_GETTER_SETTER(FsSel);
+    VPU_PUSH_GETTER_SETTER(Csr);
     alu = 1;
   }
   VPU_GEN_GETTER_SETTER(FsSel, 7, 0);
+  VPU_GEN_GETTER_SETTER(Csr, 29, 29);
 };
 
 class SetAaiInstr : public VpuInstr {
