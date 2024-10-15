@@ -55,7 +55,7 @@ const std::map<std::string,std::map<std::string,uint32_t>> spuRegIdxMapping = { 
                 }}, // type10 x loop8
     {"LENGTH",  {
                 {"SRC_TSR",     (uint32_t)SpuSetIndexMap::SpuSrcTsrLength0},
-                {"SRC_WGT",     (uint32_t)SpuSetIndexMap::SpuSrcWgtLength},
+                {"SRC_WGT",     (uint32_t)SpuSetIndexMap::SpuSrcWgtLength0},
                 {"SRC_ACP",     (uint32_t)SpuSetIndexMap::SpuSrcAcpLength0},
                 {"SRC_MI",      (uint32_t)SpuSetIndexMap::SpuSrcMiLength0},
                 {"SRC_MO",      (uint32_t)SpuSetIndexMap::SpuSrcMoLength0},
