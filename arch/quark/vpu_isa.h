@@ -545,7 +545,7 @@ public:
     x.fp32 = f32_to_bf24(dequantize);
     addIsa<SetDequantizeInstr>({x.value >> 8, csr&0x1});
   }
-  void setDequantize2(size_t dequantize, size_t csr=0) {
+  void setDequantize2(float dequantize, size_t csr=0) {
     bfloat24 x;
     x.fp32 = f32_to_bf24(dequantize);
     addIsa<SetDequantize2Instr>({x.value >> 8, csr&0x1});
