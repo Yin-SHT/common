@@ -76,7 +76,7 @@ std::shared_ptr<VpuIsa> VpuIsa::clone() {
 }
 
 void VpuIsa::setLoadBaseReg(size_t baseReg, size_t tmpReg) {
-  if (baseReg != -1) {
+  if (baseReg != size_t(-1)) {
     setLoadBase(0);
     ldBaseReg = baseReg;
     ldTmpReg = tmpReg;
@@ -96,7 +96,7 @@ void VpuIsa::setLoadBaseReg(size_t baseReg, size_t tmpReg) {
   }
 }
 void VpuIsa::setLoad2BaseReg(size_t baseReg, size_t tmpReg) {
-  if (baseReg != -1) {
+  if (baseReg != size_t(-1)) {
     setLoad2Base(0);
     ld2BaseReg = baseReg;
     ld2TmpReg = tmpReg;
@@ -116,7 +116,7 @@ void VpuIsa::setLoad2BaseReg(size_t baseReg, size_t tmpReg) {
   }
 }
 void VpuIsa::setStoreBaseReg(size_t baseReg, size_t tmpReg) {
-  if (baseReg != -1) {
+  if (baseReg != size_t(-1)) {
     setStoreBase(0);
     stBaseReg = baseReg;
     stTmpReg = tmpReg;
@@ -139,7 +139,7 @@ void VpuIsa::setLoadBase(size_t baseAddr, size_t csr) {
   loadHelper->setCallback(baseAddr&(~63), csr, 
       [] (int32_t base, size_t csr, void *param) {
     auto x = (quark::VpuIsa*)param;
-    if (x->ldBaseReg != -1) {
+    if (x->ldBaseReg != size_t(-1)) {
       size_t n = base&(~0x3f);
       if (n <= 0x7FFF) {
         x->sAddi(x->ldBaseReg, n, x->ldTmpReg);
@@ -157,7 +157,7 @@ void VpuIsa::setLoad2Base(size_t baseAddr, size_t csr) {
   loadHelper2->setCallback(baseAddr&(~63), csr, 
       [] (int32_t base, size_t csr, void *param) {
     auto x = (quark::VpuIsa*)param;
-    if (x->ld2BaseReg != -1) {
+    if (x->ld2BaseReg != size_t(-1)) {
       size_t n = base&(~0x3f);
       if (n <= 0x7FFF) {
         x->sAddi(x->ld2BaseReg, n, x->ld2TmpReg);
@@ -175,7 +175,7 @@ void VpuIsa::setStoreBase(size_t baseAddr, size_t csr) {
   storeHelper->setCallback(baseAddr&(~63), csr, 
       [] (int32_t base, size_t csr, void *param) { 
     auto x = (quark::VpuIsa*)param;
-    if (x->stBaseReg != -1) {
+    if (x->stBaseReg != size_t(-1)) {
       size_t n = base&(~0x3f);
       if (n <= 0x7FFF) {
         x->sAddi(x->stBaseReg, n, x->stTmpReg);
@@ -411,21 +411,21 @@ size_t VpuIsa::adjustOffset(std::shared_ptr<BaseHelper> ld, std::shared_ptr<Base
 
 void VpuIsa::updateRfSel(size_t rs, size_t rt, size_t rd) {
   bool update = false;
-  if (rs != -1 && rs != 0 && rs != 16) {
+  if (rs != size_t(-1) && rs != 0 && rs != 16) {
     bool newRsHigh = rs >= 16;
     if (rsHigh != newRsHigh) {
       rsHigh = newRsHigh;
       update = true;
     }
   }
-  if (rt != -1 && rt != 0 && rt != 16) {
+  if (rt != size_t(-1) && rt != 0 && rt != 16) {
     bool newRtHigh = rt >= 16;
     if (rtHigh != newRtHigh) {
       rtHigh = newRtHigh;
       update = true;
     }
   }
-  if (rd != -1 && rd != 0 && rd != 16) {
+  if (rd != size_t(-1) && rd != 0 && rd != 16) {
     bool newRdHigh = rd >= 16;
     if (rdHigh != newRdHigh) {
       rdHigh = newRdHigh;
@@ -538,15 +538,15 @@ void VpuIsa::addIsa(std::shared_ptr<VpuInstr> instr) {
     }
 
     if (auto x = std::dynamic_pointer_cast<SetLoadBaseInstr>(i)) {
-      if (loadDesc.base == x->getBaseAddr())
+      if ((uint32_t)loadDesc.base == x->getBaseAddr())
         return true;
       loadDesc.base = x->getBaseAddr();
     } else if (auto x = std::dynamic_pointer_cast<SetLoad2BaseInstr>(i)) {
-      if (loadDesc2.base == x->getBaseAddr())
+      if ((uint32_t)loadDesc2.base == x->getBaseAddr())
         return true;
       loadDesc2.base = x->getBaseAddr();
     } else if (auto x = std::dynamic_pointer_cast<SetStoreBaseInstr>(i)) {
-      if (storeDesc.base == x->getBaseAddr()) 
+      if ((uint32_t)storeDesc.base == x->getBaseAddr()) 
         return true;
       storeDesc.base = x->getBaseAddr();
     } else if (auto x = std::dynamic_pointer_cast<SetDequantizeInstr>(i)) {
