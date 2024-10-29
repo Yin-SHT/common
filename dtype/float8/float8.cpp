@@ -4,6 +4,7 @@
 
 
 #include "dtype/bfloat24.h"
+#include <cmath>
 
     typedef union {
         double fp64;

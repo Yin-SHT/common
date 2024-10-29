@@ -40,6 +40,9 @@ DLL_PUBLIC void _float_to_bf24(float x, uint8_t *z);
 #endif
 
 #include <math.h>
+#ifdef __cplusplus
+#include <cmath>
+#endif
 inline float subnormal(float src) {
     if(std::isnan(src)) {
 		return NAN;
